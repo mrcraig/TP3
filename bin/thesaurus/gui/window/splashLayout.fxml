@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?scenebuilder-stylesheet splashStyle.css?>
+
+<fx:root type="javafx.scene.layout.AnchorPane"  prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml" stylesheets="splashStyle.css">
+  <children>
+    <Button id="createNewDictButton" onAction="#doCreate" layoutX="81.0" layoutY="254.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="178.0" text="Create New Dictionary">
+      <font>
+        <Font name="Georgia" size="12.0" fx:id="x1" />
+      </font>
+    </Button>
+    <Button id="importFileButton" onAction="#doImport" font="$x1" layoutX="81.0" layoutY="375.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="178.0" text="Import From File" />
+    <ScrollPane layoutX="400.0" layoutY="278.0" prefHeight="231.5" prefWidth="320.0" />
+    <Line endY="325.0" layoutX="358.0" layoutY="198.0" startY="9.0" />
+    <Text font="$x1" layoutX="347.0" layoutY="103.0" scaleX="6.0" scaleY="6.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Graphical Thesaurus" />
+    <Text font="$x1" layoutX="522.0" layoutY="248.0" scaleX="3.0" scaleY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Import Recent..." />
+    <Text font="$x1" layoutX="684.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Created By Team O" />
+    <MenuBar prefHeight="24.0" prefWidth="800.0">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem id="menuSave" mnemonicParsing="false" text="Save" />
+            <MenuItem id="menuCreateNew" mnemonicParsing="false" text="Create New File" />
+            <MenuItem id="menuImport" mnemonicParsing="false" text="Import File" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem id="menuTutorial" mnemonicParsing="false" text="Tutorial" />
+            <MenuItem id="menuAbout" mnemonicParsing="false" text="About" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+  </children>
+</fx:root>
