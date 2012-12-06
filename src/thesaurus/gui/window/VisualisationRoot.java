@@ -22,8 +22,6 @@ public class VisualisationRoot extends AnchorPane {
     private TabPane mainTabWindow;
     
 	public VisualisationRoot(MainWindow inputWindow) {
-		
-		super();
 
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("visualisationLayout.fxml"));
 		fxmlLoader.setRoot(this);

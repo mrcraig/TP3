@@ -9,10 +9,6 @@ public class MainWindow extends Application {
 	private Stage stageCurrent;
 	private Scene splashSceneCurrent;
 	
-	public MainWindow(){
-		super();
-	}
-	
 	public void launchProgram(String[] args){
 		launch(args);
 	}
