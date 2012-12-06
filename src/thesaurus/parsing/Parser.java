@@ -1,24 +1,11 @@
 package thesaurus.parsing;
 
-
 import java.io.File;
-import java.io.IOException;
-
-import java.util.Map;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.PriorityQueue;
-
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
-
-
-
-
 
 //use boolean flags to indicate to characters method what it should parse - switch statement
 
@@ -29,7 +16,6 @@ public class Parser {
 	SAXParserFactory factory = SAXParserFactory.newInstance();
 	SAXParser parser;
 	List<Vertex> currentlyInUse = new LinkedList<Vertex>();
-	
 	
 	public Parser(String path)
 	{
@@ -50,8 +36,6 @@ public class Parser {
 		}
 		catch(Exception s) {System.out.println("couldn't create a parser");};
 	}
-		
-
 	
 	public List<Vertex> getAll()
 	{
@@ -83,8 +67,7 @@ public class Parser {
 		return handler.nodes;
 	}
 	
-	public List<Vertex> getCurrentlyInUse(){return currentlyInUse;}
-	
+	public List<Vertex> getCurrentlyInUse(){return currentlyInUse;}	
 	
 	/* Breadth First Search */
 	public List<Vertex> getSynmsFor(String s, int max)
@@ -130,12 +113,6 @@ public class Parser {
 			tableData.put(k,synms);
 		}	
 		return tableData;
-	}
-	
-	
-	
-	
-	
-	
+	}	
 	
 }

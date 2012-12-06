@@ -7,17 +7,12 @@
 package thesaurus.gui.canvas;
 
 import java.util.LinkedList;
-import java.util.Queue;
 
-import javafx.application.Application;
 import javafx.event.EventHandler;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 
 
 public class ViewGraph {
