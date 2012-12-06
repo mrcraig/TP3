@@ -19,6 +19,8 @@ public class SplashRoot extends AnchorPane {
 	private MainWindow referenceWindow;
 
 	public SplashRoot(MainWindow inputWindow) {
+		
+		super();
 
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("splashLayout.fxml"));
 		fxmlLoader.setRoot(this);
