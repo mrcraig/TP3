@@ -1,6 +1,7 @@
 package thesaurus.parsing;
 
 
+import java.io.File;
 import java.io.IOException;
 
 import java.util.Map;
@@ -14,6 +15,8 @@ import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
+
+
 
 
 
@@ -31,6 +34,16 @@ public class Parser {
 	public Parser(String path)
 	{
 		this.path = path;
+		try
+		{
+			 parser = factory.newSAXParser();
+		}
+		catch(Exception s) {System.out.println("couldn't create a parser");};
+	}
+	
+	public Parser(File f)
+	{
+		this.path = f.getPath();
 		try
 		{
 			 parser = factory.newSAXParser();
