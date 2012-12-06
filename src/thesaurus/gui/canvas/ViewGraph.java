@@ -58,14 +58,14 @@ public class ViewGraph {
 					gc.setFill(Color.BLACK);
 					
 					for(int i=0;i<3;i++){
-						syn[i].setX(syn[i].getX()-((int)curX.toArray()[0]-(int)curX.toArray()[1]));
-						syn[i].setY(syn[i].getY()-((int)curY.toArray()[0]-(int)curY.toArray()[1]));
+						syn[i].setX(syn[i].getX()-((Integer)curX.toArray()[0]-(Integer)curX.toArray()[1]));
+						syn[i].setY(syn[i].getY()-((Integer)curY.toArray()[0]-(Integer)curY.toArray()[1]));
 						redrawSyn(i,syn[i],gc);
 					}
 					
 					for(int i=0;i<2;i++){
-						ant[i].setX(ant[i].getX()-((int)curX.toArray()[0]-(int)curX.toArray()[1]));
-						ant[i].setY(ant[i].getY()-((int)curY.toArray()[0]-(int)curY.toArray()[1]));
+						ant[i].setX(ant[i].getX()-((Integer)curX.toArray()[0]-(Integer)curX.toArray()[1]));
+						ant[i].setY(ant[i].getY()-((Integer)curY.toArray()[0]-(Integer)curY.toArray()[1]));
 						redrawAnt(i,ant[i],gc);
 					}
 					
