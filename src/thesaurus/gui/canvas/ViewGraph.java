@@ -69,8 +69,8 @@ public class ViewGraph {
 						redrawAnt(i,ant[i],gc);
 					}
 					
-					main.setX(main.getX()-((int)curX.toArray()[0]-(int)curX.toArray()[1]));
-					main.setY(main.getY()-((int)curY.toArray()[0]-(int)curY.toArray()[1]));
+					main.setX(main.getX()-((Integer)curX.toArray()[0]-(Integer)curX.toArray()[1]));
+					main.setY(main.getY()-((Integer)curY.toArray()[0]-(Integer)curY.toArray()[1]));
 					
 					curX.remove();
 					curY.remove();
