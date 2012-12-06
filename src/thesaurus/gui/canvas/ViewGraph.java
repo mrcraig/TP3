@@ -41,8 +41,8 @@ public class ViewGraph {
 		final GraphicsContext gc = graph.getGraphicsContext2D();
 		drawNodes(gc);
 	
-		final Queue<Integer> curX = new LinkedList<Integer>();
-		final Queue<Integer> curY = new LinkedList<Integer>();
+		final LinkedList<Integer> curX = new LinkedList<Integer>();
+		final LinkedList<Integer> curY = new LinkedList<Integer>();
 		
 		
 		graph.addEventHandler(MouseEvent.MOUSE_DRAGGED,
@@ -51,6 +51,7 @@ public class ViewGraph {
 				curX.add((int)e.getX());
 				curY.add((int)e.getY());
 				
+				
 				if(curX.size()>1){
 					//two positions added, move nodes.
 					gc.setFill(Color.WHITE);
@@ -58,19 +59,19 @@ public class ViewGraph {
 					gc.setFill(Color.BLACK);
 					
 					for(int i=0;i<3;i++){
-						syn[i].setX(syn[i].getX()-((Integer)curX.toArray()[0]-(Integer)curX.toArray()[1]));
-						syn[i].setY(syn[i].getY()-((Integer)curY.toArray()[0]-(Integer)curY.toArray()[1]));
+						syn[i].setX(syn[i].getX()-(curX.get(0)-curX.get(1)));
+						syn[i].setY(syn[i].getY()-(curY.get(0)-curY.get(1)));
 						redrawSyn(i,syn[i],gc);
 					}
 					
 					for(int i=0;i<2;i++){
-						ant[i].setX(ant[i].getX()-((Integer)curX.toArray()[0]-(Integer)curX.toArray()[1]));
-						ant[i].setY(ant[i].getY()-((Integer)curY.toArray()[0]-(Integer)curY.toArray()[1]));
+						ant[i].setX(ant[i].getX()-(curX.get(0)-curX.get(1)));
+						ant[i].setY(ant[i].getY()-(curY.get(0)-curY.get(1)));
 						redrawAnt(i,ant[i],gc);
 					}
 					
-					main.setX(main.getX()-((Integer)curX.toArray()[0]-(Integer)curX.toArray()[1]));
-					main.setY(main.getY()-((Integer)curY.toArray()[0]-(Integer)curY.toArray()[1]));
+					main.setX(main.getX()-(curX.get(0)-curX.get(1)));
+					main.setY(main.getY()-(curY.get(0)-curY.get(1)));
 					
 					curX.remove();
 					curY.remove();
