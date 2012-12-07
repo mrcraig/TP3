@@ -41,7 +41,7 @@ public class FrSpring {
 			pos.add(i, create(myX, myY));
 			dis[i][0] = 0; dis[i][1] = 0;										//initialize displacement of every vertex to 0
 
-			k = Math.sqrt(((double) this.area / (double) this.size)); k *= 0.75; // compute optimal pairwise distance
+			k = Math.sqrt(((double) this.area / (double) this.size)); k *= 10; // compute optimal pairwise distance
 		}
 		mySpring();
 	}
