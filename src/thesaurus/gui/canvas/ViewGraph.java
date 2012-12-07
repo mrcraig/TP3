@@ -82,6 +82,7 @@ public class ViewGraph {
 	
 	private void drawNodes(GraphicsContext gc){
 		gc.setStroke(Color.BLACK);
+		gc.setLineWidth(3);
 		
 		/** Main Node Code */
 		main = new MainNode("Hot",gc,0,0,windowWidth,windowHeight);
