@@ -56,13 +56,17 @@ public class ViewGraph {
 					for(int i=0;i<3;i++){
 						syn[i].setX(syn[i].getX()-(curX.get(0)-curX.get(1)));
 						syn[i].setY(syn[i].getY()-(curY.get(0)-curY.get(1)));
-						redrawSyn(i,syn[i],gc);
+						redrawSyn(i);
+						
+						syn[i].moveConnector((curX.get(0)-curX.get(1)), (curY.get(0)-curY.get(1)));
 					}
 					
 					for(int i=0;i<2;i++){
 						ant[i].setX(ant[i].getX()-(curX.get(0)-curX.get(1)));
 						ant[i].setY(ant[i].getY()-(curY.get(0)-curY.get(1)));
-						redrawAnt(i,ant[i],gc);
+						redrawAnt(i);
+						
+						ant[i].moveConnector((curX.get(0)-curX.get(1)), (curY.get(0)-curY.get(1)));
 					}
 					
 					main.setX(main.getX()-(curX.get(0)-curX.get(1)));
@@ -101,17 +105,15 @@ public class ViewGraph {
 		}
 	}
 	
-	private void redrawSyn(int index, SynonymNode synNode, GraphicsContext gc){
+	private void redrawSyn(int index){
 		main.redraw();
-		syn[index] = new SynonymNode(synNode.getValue(),gc,synNode.getX(),synNode.getY());
 		syn[index].draw();
-		syn[index].drawConnector(main);
+		syn[index].redrawConnector();
 	}
 	
-	private void redrawAnt(int index, AntonymNode antNode, GraphicsContext gc){
-		ant[index] = new AntonymNode(antNode.getValue(),gc,antNode.getX(),antNode.getY());
+	private void redrawAnt(int index){
 		ant[index].draw();
-		ant[index].drawConnector(main);
+		ant[index].redrawConnector();
 	}
 	
 	public Canvas returnGraph(){

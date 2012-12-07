@@ -5,25 +5,26 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class SynonymNode extends SubNode {
-	int subX;
-	int subY;
-	int mainX;
-	int mainY;
+	private int subX;
+	private int subY;
+	private int mainX;
+	private int mainY;
 
 	public SynonymNode(String value, GraphicsContext gc, int x, int y) {
 		super(value, gc, x, y);
 	}
 	
 	public void moveConnector(int xOffset, int yOffset){
-		subX += xOffset;
-		subY += yOffset;
-		mainX += xOffset;
-		mainY += yOffset;
+		subX -= xOffset;
+		subY -= yOffset;
+		mainX -= xOffset;
+		mainY -= yOffset;
 	}
 	
 	public void redrawConnector(){
-		getGc().setFill(Color.RED);
+		getGc().setFill(Color.GREEN);
 		getGc().strokeLine(mainX, mainY, subX, subY);
+		getGc().setFill(Color.BLACK);
 	}
 
 	public void drawConnector(MainNode main) {
