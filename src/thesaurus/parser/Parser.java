@@ -61,7 +61,7 @@ public class Parser {
 	}
 	
 	
-	/* Breadth First Search */
+	/* Breadth First Search*/
 	public List<Vertex> getSynmsFor(String s, int max)
 	{
 		LinkedList<Vertex> workQueue = new LinkedList<Vertex>();
