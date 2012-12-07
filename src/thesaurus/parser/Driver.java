@@ -15,7 +15,7 @@ public class Driver
 {
 	public static void main(String args[]){
 		
-		Parser driver = new Parser("C:/Users/Craig/Desktop/data.xml");
+		Parser driver = new Parser("/resourcePackage/data.xml");
 		driver.getSynmsFor("Happy"); 
 		System.out.println(driver.getCurrentlyInUse());
 		System.out.println();

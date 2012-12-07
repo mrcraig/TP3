@@ -1,6 +1,7 @@
 package thesaurus.parser;
 
 import java.io.File;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,7 +20,9 @@ public class Parser {
 	
 	public Parser(String path)
 	{
-		this.path = path;
+		System.out.println(path);
+		System.out.println(getClass().getResource(path).getPath());
+		this.path = getClass().getResource(path).getPath();
 		try
 		{
 			 parser = factory.newSAXParser();
@@ -27,7 +30,7 @@ public class Parser {
 		catch(Exception s) {System.out.println("couldn't create a parser");};
 	}
 	
-	public Parser(File f)
+	public Parser(URL f)
 	{
 		this.path = f.getPath();
 		try
