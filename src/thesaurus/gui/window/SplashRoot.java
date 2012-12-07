@@ -20,7 +20,7 @@ public class SplashRoot extends AnchorPane {
 
 	public SplashRoot(MainWindow inputWindow) {
 
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("splashLayout.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resourcePackage/splashLayout.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
 		
@@ -29,6 +29,7 @@ public class SplashRoot extends AnchorPane {
 		} catch (IOException exception) {
 			throw new RuntimeException(exception);
 		}
+		
 		referenceWindow = inputWindow;
 		
 	}
@@ -44,7 +45,7 @@ public class SplashRoot extends AnchorPane {
 	}
 
 	@FXML
-	protected void doCreate() {
+	protected void doCreate() throws IOException {
 		
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter graphmlFilter = new FileChooser.ExtensionFilter("GraphML files (*.graphml)", "*.graphml");
@@ -61,7 +62,7 @@ public class SplashRoot extends AnchorPane {
 	}
 
 	@FXML
-	protected void doImport() {
+	protected void doImport() throws IOException {
 		
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter graphmlFilter = new FileChooser.ExtensionFilter("GraphML files (*.graphml)", "*.graphml");
