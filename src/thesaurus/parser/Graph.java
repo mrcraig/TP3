@@ -1,6 +1,8 @@
 package thesaurus.parser;
 
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 
 /*
  * parser has methods for retrieving data, and thats all
@@ -75,5 +77,46 @@ public class Graph
 		}
 		return null;
 	}
+	 
+	 
+	 /* Breadth First Search*/
+	    List<Vertex> getSynmsFor(String s, int max)
+		{
+			LinkedList<Vertex> workQueue = new LinkedList<Vertex>();
+			List<Vertex> results = new LinkedList<Vertex>();
+			Vertex start = this.getVertex(s);
+			workQueue.add(start);
+			
+			while(!workQueue.isEmpty() && results.size()<max)
+			{
+				Vertex current = workQueue.remove();
+				results.add(current);
+				for(AdjListNode n : current.getAdjList())
+				{
+					Vertex child = this.getVertex(n.getVertexNumber());
+					if(!workQueue.contains(child) && !results.contains(child))
+					{
+						workQueue.add(child);
+					}
+				}
+			}
+			return results;
+		}
+	 
+	 public HashMap<String, List<String>> getTableData()
+		{	
+			HashMap<String,List<String>> tableData = new HashMap<String, List<String>>();
+			for(Vertex v : this.getList())
+			{
+				String k = v.getWord();
+				LinkedList<String> synms = new LinkedList<String>();
+				for(AdjListNode n : v.getAdjList())
+				{
+					synms.add(this.getVertex(n.getVertexNumber()).word);
+				}
+				tableData.put(k,synms);
+			}	
+			return tableData;
+		}	
 	
 }
