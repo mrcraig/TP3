@@ -5,17 +5,29 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class AntonymNode extends SubNode {
+	int subX;
+	int subY;
+	int mainX;
+	int mainY;
 
 	public AntonymNode(String value, GraphicsContext gc, int x, int y) {
 		super(value, gc, x, y);
 	}
+	
+	public void moveConnector(int xOffset, int yOffset){
+		subX += xOffset;
+		subY += yOffset;
+		mainX += xOffset;
+		mainY += yOffset;
+	}
+	
+	public void redrawConnector(){
+		getGc().setFill(Color.RED);
+		getGc().strokeLine(mainX, mainY, subX, subY);
+	}
 
 	public void drawConnector(MainNode main) {
 		double gradient = (double) main.getWindowHeight() / (double) main.getWindowWidth();
-		int subX = 0;
-		int subY = 0;
-		int mainX = 0;
-		int mainY = 0;
 			
 		if(getY()<=(main.getWindowHeight()-(gradient*getX()))){
 			//top left triangle
