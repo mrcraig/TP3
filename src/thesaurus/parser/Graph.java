@@ -1,7 +1,6 @@
 package thesaurus.parser;
 
 import java.util.LinkedList;
-import java.util.List;
 
 /*
  * parser has methods for retrieving data, and thats all
