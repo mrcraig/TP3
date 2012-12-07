@@ -1,8 +1,8 @@
-package thesaurus.parsingTemp;
+package thesaurus.parser;
 
 
 
-import teamo.thesaurus.parsing.Parser;
+
 
 /*
  * getAll, getRange return a list of vertices

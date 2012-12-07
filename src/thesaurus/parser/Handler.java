@@ -1,4 +1,4 @@
-package thesaurus.parsingTemp;
+package thesaurus.parser;
 
 import java.util.LinkedList;
 import org.xml.sax.Attributes;

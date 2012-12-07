@@ -1,4 +1,4 @@
-package thesaurus.parsingTemp;
+package thesaurus.parser;
 
 import java.io.File;
 import java.util.HashMap;
