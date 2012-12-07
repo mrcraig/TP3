@@ -21,32 +21,32 @@ public class Graph
 {
 	private LinkedList<Vertex> nodes = new LinkedList<Vertex>();
 
-	public LinkedList<Vertex> getNodes() 
+	 LinkedList<Vertex> getNodes() 
 	{
 		return nodes;
 	}
 
-	public void setNodes(LinkedList<Vertex> nodes)
+	void setNodes(LinkedList<Vertex> nodes)
 	{
 		this.nodes = nodes;
 	}
 	
-	public void clear()
+	 void clear()
 	{
 		nodes.clear();
 	}
 	
-	public void add(Vertex v)
+	 void add(Vertex v)
 	{
 		nodes.add(v);
 	}
 	
-	public int size()
+	int size()
 	{
 		return nodes.size();
 	}
 	
-	public void setLastWord(String word)
+	void setLastWord(String word)
 	{
 		//copy from handler
 		//finish moving methods from handler to graph
@@ -55,7 +55,7 @@ public class Graph
 	
 	
 	/* if the xml is in the wrong order, this method will still work */
-	public Vertex getVertex(int index)
+	 Vertex getVertex(int index)
 	{
 		for(Vertex v : nodes)
 		{
@@ -64,11 +64,11 @@ public class Graph
 		return null;
 	}
 	
-	public LinkedList<Vertex> getList()
+	 LinkedList<Vertex> getList()
 	{
 		return nodes;
 	}
-	public Vertex getVertex(String word)
+	 Vertex getVertex(String word)
 	{
 		for(Vertex v : nodes)
 		{

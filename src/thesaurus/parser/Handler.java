@@ -9,15 +9,12 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class Handler extends DefaultHandler
 {
-	int noNodes=Integer.MAX_VALUE;
+	
 	int edges=0;
 	boolean getWord=false;
 	Graph nodes = new Graph();
 	
-	public Handler(int range)
-	{
-		noNodes=range++;
-	}
+
 	
 	public Handler(){}
 	
@@ -34,7 +31,7 @@ public class Handler extends DefaultHandler
 	
 	public void startElement(String uri, String localname, String qname, Attributes attributes) throws SAXException
 	{
-		if(qname.equalsIgnoreCase("node") && nodes.size()<noNodes)
+		if(qname.equalsIgnoreCase("node"))
 			{		
 				for(int i=0;i<attributes.getLength();i++)
 				{
