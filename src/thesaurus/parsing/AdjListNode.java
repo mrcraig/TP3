@@ -1,4 +1,4 @@
-package thesaurus.parsing;
+package thesaurus.parsingTemp;
 
 /**
  class to represent an entry in the adjacency list of a vertex
