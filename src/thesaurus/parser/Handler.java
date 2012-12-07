@@ -12,7 +12,7 @@ public class Handler extends DefaultHandler
 	int noNodes=Integer.MAX_VALUE;
 	int edges=0;
 	boolean getWord=false;
-	LinkedList<Vertex> nodes = new LinkedList<Vertex>();
+	Graph nodes = new Graph();
 	
 	public Handler(int range)
 	{
@@ -64,9 +64,9 @@ public class Handler extends DefaultHandler
 				}
 			}
 			//check to see vertexs exist
-			if (getVertex(source)!=null && getVertex(target)!=null)
+			if (nodes.getVertex(source)!=null && nodes.getVertex(target)!=null)
 			{
-				Vertex v = this.getVertex(source);
+				Vertex v = nodes.getVertex(source);
 				v.addToAdjList(target);
 			}
 		}
@@ -77,32 +77,20 @@ public class Handler extends DefaultHandler
 		//System.out.println("leaving"+qname);
 	}
 	
-	
-	/* if the xml is in the wrong order, this method will still work */
-	public Vertex getVertex(int index)
+	public LinkedList<Vertex> getNodes()
 	{
-		for(Vertex v : nodes)
-		{
-			if(v.getIndex()==index) return v;
-		}
-		return null;
+		return nodes.getNodes();
 	}
 	
-	public Vertex getVertex(String word)
-	{
-		for(Vertex v : nodes)
-		{
-			if(v.getWord().equalsIgnoreCase(word)) return v;
-		}
-		return null;
-	}
+
+
 	
 	public void characters(char ch[], int start, int length)
 	{
 		if(getWord)
 		{
 			String word = new String(ch,start,length);
-			nodes.getLast().setWord(word);
+			nodes.setLastWord(word);
 			getWord=false;
 		}
 	}

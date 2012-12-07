@@ -46,7 +46,7 @@ public class FrSpring {
 		mySpring();
 	}
 
-	public void mySpring() {
+	private void mySpring() {
 		for (int ite = 0; ite < 100; ite++) {
 			for (int i = 0; i < this.size; i++) {
 				dis[i][0]=0; dis[i][1]=0;
@@ -119,18 +119,30 @@ public class FrSpring {
 	}
 	
 	/* calculates repulsion force between non-adjacent vertices x is a distance calculated by pythagoras   */
-	public double repulsionF(double x) {
+	private double repulsionF(double x) {
 		
 		return ((k * k) / x);
 	}
 	
 	/* calculates attraction force between edges y is length of the edge*/
-	public double attractionF(double y) {
+	private double attractionF(double y) {
 		return ((y * y) / k);
 	}
 	
      /* create and returns coordinate points */
-	public Point2D create(double x, double y) {
+	private Point2D create(double x, double y) {
 		return new Point2D.Double(x, y);
 	}
+
+	public int getSize() {
+		return size;
+	}
+
+	
+
+	public ArrayList<Point2D> getPos() {
+		return pos;
+	}
+
+	
 }

@@ -16,16 +16,18 @@ public class Parser {
 	Handler handler;
 	SAXParserFactory factory = SAXParserFactory.newInstance();
 	SAXParser parser;
-	List<Vertex> currentlyInUse = new LinkedList<Vertex>();
+	//List<Vertex> currentlyInUse = new LinkedList<Vertex>();
+	Graph allNodes = new Graph();
 	
 	public Parser(String path)
 	{
-		System.out.println(path);
-		System.out.println(getClass().getResource(path).getPath());
+		//System.out.println(path);
+		//System.out.println(getClass().getResource(path).getPath());
 		this.path = getClass().getResource(path).getPath();
 		try
 		{
 			 parser = factory.newSAXParser();
+			 this.getAll(); //parse and save nodes
 		}
 		catch(Exception s) {System.out.println("couldn't create a parser");};
 	}
@@ -36,11 +38,12 @@ public class Parser {
 		try
 		{
 			 parser = factory.newSAXParser();
+			 this.getAll(); //save nodes
 		}
 		catch(Exception s) {System.out.println("couldn't create a parser");};
 	}
 	
-	public List<Vertex> getAll()
+	private void getAll()
 	{
 		handler = new Handler();
 		try 
@@ -49,28 +52,15 @@ public class Parser {
 		} catch (Exception e) 
 		{ System.out.println("parsing went wrong");
 		}
-		currentlyInUse.clear();
-		currentlyInUse.addAll(handler.nodes);
-		return handler.nodes;
+		allNodes.setNodes(handler.getNodes());
 	}
 	
-	public List<Vertex> getRange(int range)
+
+	public LinkedList<Vertex> getAllNodes()
 	{
-		handler = new Handler(range);	
-		try
-		{
-			parser.parse(path,handler);
-		}
-		catch(Exception e)
-		{
-			System.out.println("get range messed up");
-		}
-		currentlyInUse.clear();
-		currentlyInUse.addAll(handler.nodes);
-		return handler.nodes;
+		return allNodes.getList();
 	}
 	
-	public List<Vertex> getCurrentlyInUse(){return currentlyInUse;}	
 	
 	/* Breadth First Search */
 	public List<Vertex> getSynmsFor(String s, int max)
@@ -78,7 +68,7 @@ public class Parser {
 		LinkedList<Vertex> workQueue = new LinkedList<Vertex>();
 		List<Vertex> results = new LinkedList<Vertex>();
 		this.getAll();
-		Vertex start = handler.getVertex(s);
+		Vertex start = allNodes.getVertex(s);
 		workQueue.add(start);
 		
 		while(!workQueue.isEmpty() && results.size()<max)
@@ -87,15 +77,13 @@ public class Parser {
 			results.add(current);
 			for(AdjListNode n : current.getAdjList())
 			{
-				Vertex child = handler.getVertex(n.getVertexNumber());
+				Vertex child = allNodes.getVertex(n.getVertexNumber());
 				if(!workQueue.contains(child) && !results.contains(child))
 				{
 					workQueue.add(child);
 				}
 			}
 		}
-		currentlyInUse.clear();
-		currentlyInUse.addAll(results);
 		return results;
 	}
  	
@@ -105,13 +93,13 @@ public class Parser {
 	public HashMap<String, List<String>> getTableData()
 	{	
 		HashMap<String,List<String>> tableData = new HashMap<String, List<String>>();
-		for(Vertex v : currentlyInUse)
+		for(Vertex v : allNodes.getList())
 		{
 			String k = v.getWord();
 			LinkedList<String> synms = new LinkedList<String>();
 			for(AdjListNode n : v.getAdjList())
 			{
-				synms.add(handler.getVertex(n.getVertexNumber()).word);
+				synms.add(allNodes.getVertex(n.getVertexNumber()).word);
 			}
 			tableData.put(k,synms);
 		}	
