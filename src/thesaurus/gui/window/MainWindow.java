@@ -1,7 +1,4 @@
 package thesaurus.gui.window;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
 
 import javafx.scene.Scene;
 import javafx.stage.Stage;
