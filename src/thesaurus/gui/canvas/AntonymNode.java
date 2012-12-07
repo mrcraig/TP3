@@ -10,24 +10,24 @@ public class AntonymNode extends SubNode {
 	int mainX;
 	int mainY;
 
-	public AntonymNode(String value, GraphicsContext gc, int x, int y) {
+	protected AntonymNode(String value, GraphicsContext gc, int x, int y) {
 		super(value, gc, x, y);
 	}
 	
-	public void moveConnector(int xOffset, int yOffset){
+	protected void moveConnector(int xOffset, int yOffset){
 		subX -= xOffset;
 		subY -= yOffset;
 		mainX -= xOffset;
 		mainY -= yOffset;
 	}
 	
-	public void redrawConnector(){
+	protected void redrawConnector(){
 		getGc().setFill(Color.RED);
 		getGc().strokeLine(mainX, mainY, subX, subY);
 		getGc().setFill(Color.BLACK);
 	}
 
-	public void drawConnector(MainNode main) {
+	protected void drawConnector(MainNode main) {
 		double gradient = (double) main.getWindowHeight() / (double) main.getWindowWidth();
 			
 		if(getY()<=(main.getWindowHeight()-(gradient*getX()))){
@@ -67,7 +67,7 @@ public class AntonymNode extends SubNode {
 		
 	}
 
-	public void draw() {
+	protected void draw() {
 		getGc().setStroke(Color.RED);
 		getGc().strokeOval((getX()-37),(getY()-13), 74, 36);
 		getGc().setFont(new Font(14));

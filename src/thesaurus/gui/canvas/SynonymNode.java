@@ -10,24 +10,24 @@ public class SynonymNode extends SubNode {
 	private int mainX;
 	private int mainY;
 
-	public SynonymNode(String value, GraphicsContext gc, int x, int y) {
+	protected SynonymNode(String value, GraphicsContext gc, int x, int y) {
 		super(value, gc, x, y);
 	}
 	
-	public void moveConnector(int xOffset, int yOffset){
+	protected void moveConnector(int xOffset, int yOffset){
 		subX -= xOffset;
 		subY -= yOffset;
 		mainX -= xOffset;
 		mainY -= yOffset;
 	}
 	
-	public void redrawConnector(){
+	protected void redrawConnector(){
 		getGc().setFill(Color.GREEN);
 		getGc().strokeLine(mainX, mainY, subX, subY);
 		getGc().setFill(Color.BLACK);
 	}
 
-	public void drawConnector(MainNode main) {
+	protected void drawConnector(MainNode main) {
 		double gradient = (double) main.getWindowHeight() / (double) main.getWindowWidth();
 			
 		if(getY()<=(main.getWindowHeight()-(gradient*getX()))){
@@ -66,7 +66,7 @@ public class SynonymNode extends SubNode {
 			getGc().strokeLine(mainX, mainY, subX, subY);
 	}
 
-	public void draw() {
+	protected void draw() {
 		getGc().setStroke(Color.GREEN);
 		getGc().strokeOval((getX()-37),(getY()-13), 74, 36);
 		getGc().setFont(new Font(14));

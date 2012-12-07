@@ -17,40 +17,40 @@ public abstract class Node {
 	private int x;
 	private int y;
 	
-	public Node(String value, GraphicsContext gc, int x, int y){
+	protected Node(String value, GraphicsContext gc, int x, int y){
 		this.value = value;
 		this.gc = gc;
 		this.x = x;
 		this.y = y;
 	}
 	
-	public int getX(){
+	protected int getX(){
 		return this.x;
 	}
 	
-	public int getY(){
+	protected int getY(){
 		return this.y;
 	}
 	
-	public void setX(int x){
+	protected void setX(int x){
 		this.x = x;
 	}
 	
-	public void setY(int y){
+	protected void setY(int y){
 		this.y = y;
 	}
 	
-	public String getValue(){
+	protected String getValue(){
 		return this.value;
 	}
 	
-	public GraphicsContext getGc(){
+	protected GraphicsContext getGc(){
 		return this.gc;
 	}
 	
-	public void setValue(String value){
+	protected void setValue(String value){
 		this.value = value;
 	}
 	
-	public abstract void draw();
+	protected abstract void draw();
 }

@@ -31,7 +31,7 @@ public class ViewGraph {
 		start();
 	}
 
-	public void start() {
+	private void start() {
 		graph = new Canvas(windowWidth,windowHeight);
 		final GraphicsContext gc = graph.getGraphicsContext2D();
 		drawNodes(gc);
