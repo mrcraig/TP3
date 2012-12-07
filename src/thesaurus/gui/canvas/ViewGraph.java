@@ -78,6 +78,14 @@ public class ViewGraph {
 			}
 		});
 		
+		graph.addEventHandler(MouseEvent.MOUSE_RELEASED, 
+				new EventHandler<MouseEvent>(){
+			public void handle(MouseEvent e){
+				curX.clear();
+				curY.clear();
+			}
+		});
+		
 	}
 	
 	private void drawNodes(GraphicsContext gc){
@@ -85,7 +93,7 @@ public class ViewGraph {
 		gc.setLineWidth(3);
 		
 		/** Main Node Code */
-		main = new MainNode("Hot",gc,0,0,windowWidth,windowHeight);
+		main = new MainNode("Matthew",gc,0,0,windowWidth,windowHeight);
 		main.draw();
 		
 		syn[0] = new SynonymNode("Warm",gc,100,200);
