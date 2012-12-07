@@ -1,9 +1,19 @@
 package thesaurus.gui.window;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.application.Application;
 import javafx.scene.image.Image;
 
+/** 
+ * This main window class sets out what is displayed in the window.
+ * Initially it sets ups a Splash page to be displayed and
+ * send a reference of itself to the splash page so that
+ * the splash splash page can change the contents of the window.
+ */
 public class MainWindow extends Application {
 	
 	private Stage stageCurrent;
@@ -22,7 +32,7 @@ public class MainWindow extends Application {
 		stageCurrent.setTitle("The Graphical Thesaurus by Team O");
 		stageCurrent.setWidth(800);
 		stageCurrent.setHeight(600);
-		stageCurrent.getIcons().add(new Image("file:o.png"));
+		stageCurrent.getIcons().add(new Image("file:/resourcePackage/o.png"));
 		stageCurrent.show();
 
 	}	

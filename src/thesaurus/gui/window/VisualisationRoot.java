@@ -8,6 +8,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import thesaurus.gui.canvas.*;
 
+/** 
+ * This class is an extension of AnchorPane and defines
+ * how the visualisation pages looks and what the buttons
+ * do via mouse handlers.
+ */
 public class VisualisationRoot extends AnchorPane {
 
 	private MainWindow referenceWindow;

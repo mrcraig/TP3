@@ -14,6 +14,11 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 
+/** 
+ * This class is an extension of JavaFX2 node AnchorPane
+ * and literally defines what is shown on the screen.
+ * It also has mouseHandlers doCreate and doImport.
+ */
 public class SplashRoot extends AnchorPane {
 
 	private MainWindow referenceWindow;
