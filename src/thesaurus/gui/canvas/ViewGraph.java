@@ -78,6 +78,14 @@ public class ViewGraph {
 			}
 		});
 		
+		graph.addEventHandler(MouseEvent.MOUSE_RELEASED, 
+				new EventHandler<MouseEvent>(){
+			public void handle(MouseEvent e){
+				curX.clear();
+				curY.clear();
+			}
+		});
+		
 	}
 	
 	private void drawNodes(GraphicsContext gc){
