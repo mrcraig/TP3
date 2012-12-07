@@ -1,0 +1,78 @@
+
+
+<!--put in full header later -->
+<graphml>
+<key id="w" for="node" attr.name="word" attr.type="string" />
+
+
+<!-- could give data same id as node, to linke them -->
+<graph id="G">
+<node id="0" >
+	<data key="w">Happy</data>
+</node>
+<node id="1" >
+	<data key="w">Joyful</data>
+</node>
+<node id="2" >
+	<data key="w">Cheerful</data>
+</node>
+<node id="3" >
+	<data key="w">Jubliant</data>
+</node>
+<node id="4">
+	<data key="w">Merry</data>
+</node>
+<node id="5">
+	<data key="w">Upbeat</data>
+</node>
+<node id="6">
+	<data key="w">Peaceful</data>
+</node>
+<node id="7">
+	<data key="w">Freindly</data>
+</node>
+<!-- edges -->
+<edge source="0" target="1"/>
+<edge source="0" target="2"/>
+<edge source="0" target="5"/>
+<edge source="1" target="2"/>
+<edge source="0" target="6"/>
+<edge source="0" target="7"/>
+<edge source="2" target="1"/>
+
+<edge source="1" target="0"/>
+<edge source="1" target="3"/>
+<edge source="0" target="4"/>
+<edge source="1" target="4"/>
+<edge source="1" target="5"/>
+
+<edge source="2" target="0"/>
+<edge source="0" target="3"/>
+<edge source="0" target="3"/>
+<edge source="2" target="4"/>
+<edge source="2" target="5"/>
+
+<edge source="3" target="0"/>
+<edge source="3" target="1"/>
+
+<edge source="4" target="0"/>
+<edge source="4" target="1"/>
+<edge source="4" target="2"/>
+<edge source="0" target="3"/>
+<edge source="4" target="5"/>
+
+<edge source="5" target="0"/>
+<edge source="5" target="1"/>
+<edge source="5" target="2"/>
+<edge source="5" target="4"/>
+
+<edge source="6" target="0"/>
+<edge source="6" target="7"/>
+
+<edge source="7" target="0"/>
+<edge source="7" target="6"/>
+
+</graph>
+</graphml>
+
+
