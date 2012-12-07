@@ -1,17 +1,10 @@
 package thesaurus.gui.window;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
-import thesaurus.controller.*;
-import thesaurus.gui.window.VisualisationRoot;
-import javafx.fxml.FXML;
+
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.FileChooser;
+import thesaurus.controller.SystemController;
 
 /** 
  * This class is an extension of JavaFX2 node AnchorPane

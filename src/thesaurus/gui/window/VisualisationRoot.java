@@ -1,12 +1,11 @@
 package thesaurus.gui.window;
 
 import java.io.IOException;
-import javafx.fxml.FXML;
+
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import thesaurus.gui.canvas.*;
+import thesaurus.controller.SystemController;
+import thesaurus.gui.canvas.ViewGraph;
 
 /** 
  * This class is an extension of AnchorPane and defines
@@ -16,21 +15,18 @@ import thesaurus.gui.canvas.*;
 public class VisualisationRoot extends AnchorPane {
 
 	private MainWindow referenceWindow;
-	
-    @FXML
-    private Pane canvasFullGraph;
     
-    @FXML
-    private Pane canvasDualGraph;
-
-    @FXML
-    private TabPane mainTabWindow;
+    private SystemController currentController;
     
 	public VisualisationRoot(MainWindow inputWindow) throws IOException {
+		
+		referenceWindow = inputWindow;
+		
+		currentController = new SystemController(referenceWindow);
 
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resourcePackage/visualisationLayout.fxml"));
 		fxmlLoader.setRoot(this);
-		fxmlLoader.setController(this);
+		fxmlLoader.setController(currentController);
 
 		try {
 			fxmlLoader.load();
@@ -38,22 +34,15 @@ public class VisualisationRoot extends AnchorPane {
 			throw new RuntimeException(exception);
 		}
 		
-		referenceWindow = inputWindow;
-		
 		addCanvas();
 		
-	}
-	
-	@FXML
-	protected void doReturn() {
-		referenceWindow.getStage().setScene(referenceWindow.getSplashScene());
 	}
 	
 	private void addCanvas(){
 		ViewGraph displayGraphFull = new ViewGraph(699,316);
 		ViewGraph displayGraphDual = new ViewGraph(334, 290);
-		canvasFullGraph.getChildren().add(displayGraphFull.returnGraph());
-		canvasDualGraph.getChildren().add(displayGraphDual.returnGraph());
+		currentController.getCanvasFullGraph().getChildren().add(displayGraphFull.returnGraph());
+		currentController.getCanvasDualGraph().getChildren().add(displayGraphDual.returnGraph());
 	}
 
 }

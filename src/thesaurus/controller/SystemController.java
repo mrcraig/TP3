@@ -7,11 +7,22 @@ import java.io.IOException;
 import java.util.Scanner;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.TabPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import thesaurus.gui.window.MainWindow;
 import thesaurus.gui.window.VisualisationRoot;
 
 public class SystemController {
+	
+    @FXML
+    private Pane canvasFullGraph;
+    
+    @FXML
+    private Pane canvasDualGraph;
+    
+    @FXML
+    private TabPane mainTabWindow;
 	
 	MainWindow referenceWindow;
 	
@@ -64,6 +75,11 @@ public class SystemController {
 		referenceWindow.getStage().setScene(new Scene(visualisationRootCurrent, 800, 600));
 	}
 	
+	@FXML
+	protected void doReturn() {
+		referenceWindow.getStage().setScene(referenceWindow.getSplashScene());
+	}
+	
 	private void saveFile(String content, File file) {
 		try {
 			FileWriter fileWriter = null;
@@ -72,6 +88,14 @@ public class SystemController {
 			fileWriter.close();
 		} catch (IOException ex) {}
 
+	}
+
+	public Pane getCanvasFullGraph() {
+		return canvasFullGraph;
+	}
+	
+	public Pane getCanvasDualGraph() {
+		return canvasDualGraph;
 	}
 
 }
