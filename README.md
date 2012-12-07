@@ -1,2 +1,1 @@
-WOULD EVERYONE KINDLY STOP FUCKING UP GITHUB.
-THANKYOU
+Team O will be so fucking awesome
