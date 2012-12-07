@@ -16,13 +16,13 @@ import javafx.scene.paint.Color;
 
 
 public class ViewGraph {
-	int windowWidth = 700;
-	int windowHeight = 316;
+	private int windowWidth = 700;
+	private int windowHeight = 316;
 	
 	//Create 5 snyonym nodes for testing.
-	SynonymNode syn[] = new SynonymNode[3];
-	AntonymNode ant[] = new AntonymNode[2];
-	MainNode main;
+	private SynonymNode syn[] = new SynonymNode[3];
+	private AntonymNode ant[] = new AntonymNode[2];
+	private MainNode main;
 	private Canvas graph;
 	
 	public ViewGraph(int width, int height){
