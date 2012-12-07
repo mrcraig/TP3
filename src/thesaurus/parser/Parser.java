@@ -20,8 +20,6 @@ public class Parser {
 	
 	public Parser(String path)
 	{
-		//System.out.println(path);
-		//System.out.println(getClass().getResource(path).getPath());
 		this.path = getClass().getResource(path).getPath();
 		try
 		{
@@ -64,45 +62,15 @@ public class Parser {
 	/* Breadth First Search*/
 	public List<Vertex> getSynmsFor(String s, int max)
 	{
-		LinkedList<Vertex> workQueue = new LinkedList<Vertex>();
-		List<Vertex> results = new LinkedList<Vertex>();
-		this.getAll();
-		Vertex start = allNodes.getVertex(s);
-		workQueue.add(start);
-		
-		while(!workQueue.isEmpty() && results.size()<max)
-		{
-			Vertex current = workQueue.remove();
-			results.add(current);
-			for(AdjListNode n : current.getAdjList())
-			{
-				Vertex child = allNodes.getVertex(n.getVertexNumber());
-				if(!workQueue.contains(child) && !results.contains(child))
-				{
-					workQueue.add(child);
-				}
-			}
-		}
-		return results;
+		return allNodes.getSynmsFor(s, max);
 	}
  	
 	public List<Vertex> getSynmsFor(String s){return getSynmsFor(s, 100);}
 		
 	//dictionary key is word, value is linkedlist of synomns	
 	public HashMap<String, List<String>> getTableData()
-	{	
-		HashMap<String,List<String>> tableData = new HashMap<String, List<String>>();
-		for(Vertex v : allNodes.getList())
-		{
-			String k = v.getWord();
-			LinkedList<String> synms = new LinkedList<String>();
-			for(AdjListNode n : v.getAdjList())
-			{
-				synms.add(allNodes.getVertex(n.getVertexNumber()).word);
-			}
-			tableData.put(k,synms);
-		}	
-		return tableData;
-	}	
+	{
+		return allNodes.getTableData();
+	}
 	
 }

@@ -14,20 +14,7 @@ public class Handler extends DefaultHandler
 	boolean getWord=false;
 	Graph nodes = new Graph();
 	
-
-	
 	public Handler(){}
-	
-	public void startDocument ()
-	{
-		//System.out.println("Started parsing");
-		
-	}
-	
-	public void endDocument ()
-	{
-		//System.out.println("Finished parsing");
-	}
 	
 	public void startElement(String uri, String localname, String qname, Attributes attributes) throws SAXException
 	{
@@ -74,7 +61,7 @@ public class Handler extends DefaultHandler
 		//System.out.println("leaving"+qname);
 	}
 	
-	public LinkedList<Vertex> getNodes()
+	 LinkedList<Vertex> getNodes()
 	{
 		return nodes.getNodes();
 	}
