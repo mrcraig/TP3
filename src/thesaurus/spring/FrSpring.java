@@ -140,7 +140,7 @@ public class FrSpring {
 
 	
 
-	public ArrayList<Point2D> getcoordinate() {
+	public ArrayList<Point2D> getCoordinates() {
 		return pos;
 	}
 
