@@ -11,27 +11,20 @@ public class Vertex {
     private LinkedList<AdjListNode> adjList ; 
     private int index; 
     String word;
-
  
     public Vertex(String i)
     {
     	adjList = new LinkedList<AdjListNode>();
     	index = Integer.valueOf(i);
-    }
-    
-    
+    }    
     
     public String getWord() {
 		return word;
 	}
 
-
 	public void setWord(String word) {
 		this.word = word;
 	}
-
-
-
     
     public String toString()
     {
@@ -43,9 +36,7 @@ public class Vertex {
     		sb.append(n+",");
     	}
     	return sb.toString();
-    }
-     
-  
+    }     
     
     public LinkedList<AdjListNode> getAdjList(){
         return adjList;
@@ -57,10 +48,7 @@ public class Vertex {
     
     public void setIndex(int n){
     	index = n;
-    }
-    
-    
-   
+    }   
     
     public void addToAdjList(int n){
         adjList.addLast(new AdjListNode(n));
