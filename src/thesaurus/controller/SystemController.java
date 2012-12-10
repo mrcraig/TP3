@@ -50,7 +50,7 @@ public class SystemController {
 		fileChooser.getExtensionFilters().add(xmlFilter);
 		File file = fileChooser.showSaveDialog(referenceWindow.getStage());
 		if (file != null) {
-			saveFile("test", file);
+			saveFile("", file);
 		}
 		else{
 			return;
@@ -59,6 +59,8 @@ public class SystemController {
 		VisualisationRoot visualisationRootCurrent = new VisualisationRoot(referenceWindow);
 		referenceWindow.setVisualisationRoot(visualisationRootCurrent);
 		referenceWindow.getStage().setScene(new Scene(visualisationRootCurrent, 800, 600));
+		visualisationRootCurrent.setCurrentParser(file);
+		setVisualisationFileName();
 	}
 
 	@FXML
