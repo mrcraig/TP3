@@ -80,9 +80,8 @@ public class Graph
 			{
 				Vertex current = workQueue.remove();
 				results.add(current);
-				for(AdjListNode n : current.getAdjList())
+				for(Vertex child : current.getAdjList())
 				{
-					Vertex child = this.getVertex(n.getVertexNumber());
 					if(!workQueue.contains(child) && !results.contains(child))
 					{
 						workQueue.add(child);
@@ -99,9 +98,9 @@ public class Graph
 			{
 				String k = v.getWord();
 				LinkedList<String> synms = new LinkedList<String>();
-				for(AdjListNode n : v.getAdjList())
+				for(Vertex n : v.getAdjList())
 				{
-					synms.add(this.getVertex(n.getVertexNumber()).word);
+					synms.add(n.word);
 				}
 				tableData.put(k,synms);
 			}	

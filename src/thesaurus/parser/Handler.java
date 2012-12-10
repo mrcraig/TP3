@@ -51,7 +51,7 @@ public class Handler extends DefaultHandler
 			if (nodes.getVertex(source)!=null && nodes.getVertex(target)!=null)
 			{
 				Vertex v = nodes.getVertex(source);
-				v.addToAdjList(target);
+				v.addToAdjList(nodes.getVertex(target));
 			}
 		}
 		if(qname.equalsIgnoreCase("data")) getWord = true;

@@ -1,4 +1,5 @@
 package thesaurus.parser;
+import java.awt.geom.Point2D;
 import java.util.LinkedList;
 
 
@@ -8,13 +9,14 @@ import java.util.LinkedList;
 */
 public class Vertex {
    
-    private LinkedList<AdjListNode> adjList ; 
+    private LinkedList<Vertex> adjList ; 
     private int index; 
     String word;
- 
+    private Point2D pos;
+    
     public Vertex(String i)
     {
-    	adjList = new LinkedList<AdjListNode>();
+    	adjList = new LinkedList<Vertex>();
     	index = Integer.valueOf(i);
     }    
     
@@ -31,14 +33,14 @@ public class Vertex {
     	StringBuilder sb = new StringBuilder();
     	sb.append("Vertex "); sb.append(this.index+" ");
     	sb.append(this.word +": ");
-    	for(AdjListNode n : this.adjList)
+    	for(Vertex n : this.adjList)
     	{
     		sb.append(n+",");
     	}
     	return sb.toString();
     }     
     
-    public LinkedList<AdjListNode> getAdjList(){
+    public LinkedList<Vertex> getAdjList(){
         return adjList;
     }
     
@@ -50,8 +52,8 @@ public class Vertex {
     	index = n;
     }   
     
-    public void addToAdjList(int n){
-        adjList.addLast(new AdjListNode(n));
+    public void addToAdjList(Vertex n){
+        adjList.addLast(n);
     }
     
     public int vertexDegree(){

@@ -30,7 +30,7 @@ public class XmlFile {
 		NodeList n = this.xml.getElementsByTagName("data");
 		for(int i=0;i<n.getLength();i++)
 		{
-			System.out.println(n.item(i).getNodeValue());
+			System.out.println(n.item(i).getTextContent());
 			
 		}
 		return null;
