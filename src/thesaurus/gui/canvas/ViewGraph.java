@@ -19,10 +19,6 @@ public class ViewGraph {
 	private int windowWidth = 700;
 	private int windowHeight = 316;
 	
-	
-	private long time_start;
-	private long time_end;
-	
 	//Create 5 snyonym nodes for testing.
 	private SynonymNode syn[] = new SynonymNode[3];
 	private AntonymNode ant[] = new AntonymNode[2];
@@ -65,20 +61,18 @@ public class ViewGraph {
 						syn[i].setX(syn[i].getX()-xOffset);
 						syn[i].setY(syn[i].getY()-yOffset);
 						redrawSyn(i);
-						
-						syn[i].moveConnector(xOffset, yOffset);
 					}
 					
 					for(int i=0;i<2;i++){
 						ant[i].setX(ant[i].getX()-xOffset);
 						ant[i].setY(ant[i].getY()-yOffset);
 						redrawAnt(i);
-						
-						ant[i].moveConnector(xOffset, yOffset);
 					}
 					
 					main.setX(main.getX()-xOffset);
 					main.setY(main.getY()-yOffset);
+					
+					main.draw();
 
 					curX.remove();
 					curY.remove();
@@ -102,8 +96,7 @@ public class ViewGraph {
 		gc.setLineWidth(3);
 		
 		/** Main Node Code */
-		main = new MainNode("Matthew",gc,0,0,windowWidth,windowHeight);
-		main.draw();
+		main = new MainNode("Matthew",gc,(windowWidth/2),(windowHeight/2),windowWidth,windowHeight);
 		
 		syn[0] = new SynonymNode("Warm",gc,100,200);
 		syn[1] = new SynonymNode("Roasting",gc,300,100);
@@ -113,25 +106,26 @@ public class ViewGraph {
 		ant[1] = new AntonymNode("Freezing",gc,600,50);
 		
 		for(int i=0;i<3;i++){
-			syn[i].draw();
 			syn[i].drawConnector(main);
+			syn[i].draw();
 		}
 		
 		for(int i=0;i<2;i++){
-			ant[i].draw();
 			ant[i].drawConnector(main);
+			ant[i].draw();
 		}
+		
+		main.draw();
 	}
 	
 	private void redrawSyn(int index){
-		main.redraw();
+		syn[index].drawConnector(main);
 		syn[index].draw();
-		syn[index].redrawConnector();
 	}
 	
 	private void redrawAnt(int index){
+		ant[index].drawConnector(main);
 		ant[index].draw();
-		ant[index].redrawConnector();
 	}
 	
 	public Canvas returnGraph(){

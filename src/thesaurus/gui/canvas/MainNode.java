@@ -22,16 +22,13 @@ public class MainNode extends Node {
 		return this.windowHeight;
 	}
 	
-	protected void draw(){
-		setX(windowWidth/2);
-		setY(windowHeight/2);
-		
-		redraw();
-	}
 	
-	protected void redraw(){
+	protected void draw(){
 		getGc().setStroke(Color.BLACK);
+		getGc().setFill(Color.WHITE);
 		getGc().strokeOval((getX()-50),(getY()-25), 100, 50);
+		getGc().fillOval((getX()-49),(getY()-24),98,48);
+		getGc().setFill(Color.BLACK);
 		getGc().setFont(new Font(20));
 		getGc().fillText(getValue(), (getX()-34), (getY()+5));
 	}
