@@ -11,6 +11,7 @@ import java.util.LinkedList;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
@@ -86,6 +87,34 @@ public class ViewGraph {
 				/** Reset mouse storage */
 				curX.clear();
 				curY.clear();
+			}
+		});
+		
+		graph.addEventHandler(MouseEvent.MOUSE_CLICKED,
+				new EventHandler<MouseEvent>(){
+			public void handle(MouseEvent e){
+				if(e.getClickCount()>1){
+					//Something has been double clicked
+					//Check synonyms
+					for(int i=0;i<3;i++){
+						if((e.getX() > syn[i].getX()-37) && (e.getX() < syn[i].getX()+37)){
+							//Matches X
+							if((e.getY() > syn[i].getY()-13) && (e.getY() < syn[i].getY()+13)){
+								System.out.println(syn[i].getValue());
+							}
+						}
+					}
+					
+					//Check antonyms
+					for(int i=0;i<2;i++){
+						if((e.getX() > ant[i].getX()-37) && (e.getX() < ant[i].getX()+37)){
+							//Matches X
+							if((e.getY() > ant[i].getY()-13) && (e.getY() < ant[i].getY()+13)){
+								System.out.println(ant[i].getValue());
+							}
+						}
+					}
+				}
 			}
 		});
 		

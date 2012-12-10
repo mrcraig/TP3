@@ -8,7 +8,7 @@ public class Driver {
 	 * as a non-static object.
 	 */
 	public static void main(String[] args) {
-		
+
 		MainWindow currentWindow = new MainWindow();
 
 		currentWindow.launchProgram(args);

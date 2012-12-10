@@ -25,5 +25,10 @@ public class SynonymNode extends SubNode {
 		getGc().setFont(new Font(14));
 		getGc().fillText(getValue(), (getX()-25), (getY()+10));
 	}
+	
+	protected MainNode convertMain() {
+		MainNode newNode = new MainNode(getValue(),getGc(),getX(),getY());
+		return newNode;
+	}
 
 }

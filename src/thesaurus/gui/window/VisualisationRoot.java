@@ -27,7 +27,7 @@ public class VisualisationRoot extends AnchorPane {
 		
 		referenceWindow = inputWindow;
 		
-		currentController = new SystemController(referenceWindow);
+		currentController = referenceWindow.getCurrentController();
 
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resourcePackage/visualisationLayout.fxml"));
 		fxmlLoader.setRoot(this);
@@ -50,10 +50,9 @@ public class VisualisationRoot extends AnchorPane {
 		currentController.getCanvasDualGraph().getChildren().add(displayGraphDual.returnGraph());
 	}
 	
-	public void setParser(String inputString){
-		currentParser  = new Parser("/resourcePackage/data.xml");
-		setCurrentResults(currentParser.getSynmsFor(inputString));
-		System.out.println(currentParser.getSynmsFor(inputString));
+	public void setParser(File inputFile){
+		setCurrentFile(inputFile);
+		currentParser  = new Parser(inputFile);
 	}
 
 	public LinkedList<Vertex> getCurrentResults() {
@@ -62,6 +61,14 @@ public class VisualisationRoot extends AnchorPane {
 
 	public void setCurrentResults(LinkedList<Vertex> currentResultsInput) {
 		currentResults = currentResultsInput;
+	}
+
+	public File getCurrentFile() {
+		return currentFile;
+	}
+
+	public void setCurrentFile(File currentFileInput) {
+		currentFile = currentFileInput;
 	}
 
 }
