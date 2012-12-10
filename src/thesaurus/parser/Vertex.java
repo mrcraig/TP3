@@ -47,10 +47,15 @@ public class Vertex {
     	StringBuilder sb = new StringBuilder();
     	sb.append("Vertex "); sb.append(this.index+" ");
     	sb.append(this.word +": ");
+    	int i=0;
+    
     	for(Vertex n : this.adjList)
     	{
-    		sb.append(n+",");
+    		
+    		sb.append(n.getWord());
+    		sb.append(",");
     	}
+    	sb.append("\n");
     	return sb.toString();
     }     
     

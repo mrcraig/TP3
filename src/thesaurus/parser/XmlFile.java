@@ -3,6 +3,7 @@ package thesaurus.parser;
 import javax.xml.parsers.*;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -53,8 +54,10 @@ public class XmlFile {
 	public void addNode(String word)
 	{
 		Node graph = this.xml.getElementsByTagName("graph").item(0);
-		Node lastNode = graph.getLastChild();
-		System.out.println(lastNode.getLocalName());
+		Element node = this.xml.createElement("node");
+		Element data = this.xml.createElement("data");
+		
+		
 	}
 	
 	
