@@ -11,6 +11,7 @@ public class Vertex {
    
     private LinkedList<Vertex> adjList ; 
     private int index; 
+    private boolean visted;
     String word;
     private Point2D pos;
     
