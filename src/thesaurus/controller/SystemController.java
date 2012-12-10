@@ -50,7 +50,14 @@ public class SystemController {
 		fileChooser.getExtensionFilters().add(xmlFilter);
 		File file = fileChooser.showSaveDialog(referenceWindow.getStage());
 		if (file != null) {
-			saveFile("", file);
+			if(file.getName().endsWith(".graphml") || file.getName().endsWith(".xml")){
+				System.out.println("Correct!");
+				saveFile("", file);
+			}
+			else{
+				System.out.println("Incorrect!");
+				saveFile("", file);
+			}
 		}
 		else{
 			return;
