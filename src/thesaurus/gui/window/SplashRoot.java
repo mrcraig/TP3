@@ -14,25 +14,25 @@ import thesaurus.controller.SystemController;
 public class SplashRoot extends AnchorPane {
 
 	private MainWindow referenceWindow;
-	
+
 	private SystemController currentController;
 
 	public SplashRoot(MainWindow inputWindow) {
-		
+
 		referenceWindow = inputWindow;
-		
-		currentController = new SystemController(referenceWindow);
+
+		currentController = referenceWindow.getCurrentController();
 
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resourcePackage/splashLayout.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(currentController);
-		
+
 		try {
 			fxmlLoader.load();
 		} catch (IOException exception) {
 			throw new RuntimeException(exception);
 		}
-		
+
 	}
 
 }

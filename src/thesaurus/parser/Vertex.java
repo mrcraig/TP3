@@ -11,7 +11,21 @@ public class Vertex {
    
     private LinkedList<Vertex> adjList ; 
     private int index; 
-    String word;
+    private boolean visited = false;
+    
+    
+    
+    public boolean isVisited()
+    {
+		return visited;
+	}
+
+	public void setVisited(boolean visited) 
+	{
+		this.visited = visited;
+	}
+
+	String word;
     private Point2D pos;
     
     public Vertex(String i)
