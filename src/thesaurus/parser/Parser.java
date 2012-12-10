@@ -60,15 +60,15 @@ public class Parser {
 	
 	
 	/* Breadth First Search*/
-	public List<Vertex> getSynmsFor(String s, int max)
+	public LinkedList<Vertex> getSynmsFor(String s, int max)
 	{
 		return allNodes.getSynmsFor(s, max);
 	}
  	
-	public List<Vertex> getSynmsFor(String s){return getSynmsFor(s, 100);}
+	public LinkedList<Vertex> getSynmsFor(String s){return getSynmsFor(s, 100);}
 		
 	//dictionary key is word, value is linkedlist of synomns	
-	public HashMap<String, List<String>> getTableData()
+	public HashMap<String, LinkedList<String>> getTableData()
 	{
 		return allNodes.getTableData();
 	}

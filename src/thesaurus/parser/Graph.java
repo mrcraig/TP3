@@ -2,7 +2,7 @@ package thesaurus.parser;
 
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
+
 
 /*
  * 
@@ -91,9 +91,9 @@ public class Graph
 			return results;
 		}
 	 
-	 public HashMap<String, List<String>> getTableData()
+	 public HashMap<String, LinkedList<String>> getTableData()
 		{	
-			HashMap<String,List<String>> tableData = new HashMap<String, List<String>>();
+			HashMap<String,LinkedList<String>> tableData = new HashMap<String, LinkedList<String>>();
 			for(Vertex v : this.getList())
 			{
 				String k = v.getWord();
