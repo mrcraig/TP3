@@ -16,8 +16,8 @@ public class Driver
 	public static void main(String args[]){
 		
 		Parser driver = new Parser("/resourcePackage/data.xml");
-		//XmlFile x = new XmlFile("/resourcePackage/data.xml");
-		//x.toString();
+		XmlFile x = new XmlFile("/resourcePackage/data.xml");
+		x.toString();
 			
 			
 		}

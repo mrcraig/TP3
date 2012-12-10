@@ -1,5 +1,6 @@
 package thesaurus.parser;
 
+import java.io.File;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -29,7 +30,7 @@ public class Parser {
 		catch(Exception s) {System.out.println("couldn't create a parser");};
 	}
 	
-	public Parser(URL f)
+	public Parser(File f)
 	{
 		this.path = f.getPath();
 		try
