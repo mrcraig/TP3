@@ -15,6 +15,7 @@ public class MainWindow extends Application {
 	
 	private Stage stageCurrent;
 	private Scene splashSceneCurrent;
+	private VisualisationRoot visualisationRootCurrent;
 	
 	public void launchProgram(String[] args){
 		launch(args);
@@ -40,6 +41,14 @@ public class MainWindow extends Application {
 	
 	public Scene getSplashScene(){
 		return splashSceneCurrent;
+	}
+	
+	public void setVisualisationRoot(VisualisationRoot inputRoot){
+		visualisationRootCurrent = inputRoot;
+	}
+	
+	public VisualisationRoot getVisualisationRoot(){
+		return visualisationRootCurrent;
 	}
 
 }
