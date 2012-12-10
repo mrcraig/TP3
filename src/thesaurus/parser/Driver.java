@@ -16,9 +16,8 @@ public class Driver
 	public static void main(String args[]){
 		
 		Parser driver = new Parser("/resourcePackage/data.xml");
-		driver.getAllNodes();
-		System.out.println();
-		System.out.println(driver.getTableData());
+		XmlFile x = new XmlFile("/resourcePackage/data.xml");
+		x.toString();
 			
 			
 		}

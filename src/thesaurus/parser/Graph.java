@@ -5,16 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 /*
- * parser has methods for retrieving data, and thats all
- * user needs.
- * 
- * Parser calls handler and stores all of the information 
- * in graph
- * 
- * graph organizes and provides methods to to parser
- * 
- * most handler methods can be moved to graph
- * 
  * 
  */
 
@@ -49,8 +39,6 @@ public class Graph
 	
 	void setLastWord(String word)
 	{
-		//copy from handler
-		//finish moving methods from handler to graph
 		nodes.getLast().setWord(word);
 	}
 	
@@ -80,10 +68,10 @@ public class Graph
 	 
 	 
 	 /* Breadth First Search*/
-	    List<Vertex> getSynmsFor(String s, int max)
+	    LinkedList<Vertex> getSynmsFor(String s, int max)
 		{
 			LinkedList<Vertex> workQueue = new LinkedList<Vertex>();
-			List<Vertex> results = new LinkedList<Vertex>();
+			LinkedList<Vertex> results = new LinkedList<Vertex>();
 			Vertex start = this.getVertex(s);
 			workQueue.add(start);
 			
