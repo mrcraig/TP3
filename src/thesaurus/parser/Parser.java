@@ -65,6 +65,11 @@ public class Parser {
 	{
 		return allNodes.getSynmsFor(s, max);
 	}
+	
+	public Vertex getSynmsForOne(String s)
+	{
+		return allNodes.getSynmsFor(s, 1).getFirst();
+	}
  	
 	public LinkedList<Vertex> getSynmsFor(String s){return getSynmsFor(s, 100);}
 		
