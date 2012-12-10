@@ -19,6 +19,10 @@ public class ViewGraph {
 	private int windowWidth = 700;
 	private int windowHeight = 316;
 	
+	
+	private long time_start;
+	private long time_end;
+	
 	//Create 5 snyonym nodes for testing.
 	private SynonymNode syn[] = new SynonymNode[3];
 	private AntonymNode ant[] = new AntonymNode[2];
@@ -43,6 +47,7 @@ public class ViewGraph {
 		graph.addEventHandler(MouseEvent.MOUSE_DRAGGED,
 				new EventHandler<MouseEvent>(){
 			public void handle(MouseEvent e){
+				
 				curX.add((int)e.getX());
 				curY.add((int)e.getY());
 				
@@ -53,25 +58,28 @@ public class ViewGraph {
 					gc.fillRect(0, 0, windowWidth, windowHeight);
 					gc.setFill(Color.BLACK);
 					
+					int xOffset = curX.get(0)-curX.get(1);
+					int yOffset = curY.get(0)-curY.get(1);
+					
 					for(int i=0;i<3;i++){
-						syn[i].setX(syn[i].getX()-(curX.get(0)-curX.get(1)));
-						syn[i].setY(syn[i].getY()-(curY.get(0)-curY.get(1)));
+						syn[i].setX(syn[i].getX()-xOffset);
+						syn[i].setY(syn[i].getY()-yOffset);
 						redrawSyn(i);
 						
-						syn[i].moveConnector((curX.get(0)-curX.get(1)), (curY.get(0)-curY.get(1)));
+						syn[i].moveConnector(xOffset, yOffset);
 					}
 					
 					for(int i=0;i<2;i++){
-						ant[i].setX(ant[i].getX()-(curX.get(0)-curX.get(1)));
-						ant[i].setY(ant[i].getY()-(curY.get(0)-curY.get(1)));
+						ant[i].setX(ant[i].getX()-xOffset);
+						ant[i].setY(ant[i].getY()-yOffset);
 						redrawAnt(i);
 						
-						ant[i].moveConnector((curX.get(0)-curX.get(1)), (curY.get(0)-curY.get(1)));
+						ant[i].moveConnector(xOffset, yOffset);
 					}
 					
-					main.setX(main.getX()-(curX.get(0)-curX.get(1)));
-					main.setY(main.getY()-(curY.get(0)-curY.get(1)));
-					
+					main.setX(main.getX()-xOffset);
+					main.setY(main.getY()-yOffset);
+
 					curX.remove();
 					curY.remove();
 				}
@@ -81,6 +89,7 @@ public class ViewGraph {
 		graph.addEventHandler(MouseEvent.MOUSE_RELEASED, 
 				new EventHandler<MouseEvent>(){
 			public void handle(MouseEvent e){
+				/** Reset mouse storage */
 				curX.clear();
 				curY.clear();
 			}
