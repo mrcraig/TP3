@@ -40,7 +40,15 @@ public class Vertex {
     	return sb.toString();
     }     
     
-    public LinkedList<Vertex> getAdjList(){
+    public Point2D getPos() {
+		return pos;
+	}
+
+	public void setPos(Point2D pos) {
+		this.pos = pos;
+	}
+
+	public LinkedList<Vertex> getAdjList(){
         return adjList;
     }
     
