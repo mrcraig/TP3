@@ -1,6 +1,7 @@
 package thesaurus.gui.canvas;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class MainNode extends Node {
@@ -29,6 +30,7 @@ public class MainNode extends Node {
 	}
 	
 	protected void redraw(){
+		getGc().setStroke(Color.BLACK);
 		getGc().strokeOval((getX()-50),(getY()-25), 100, 50);
 		getGc().setFont(new Font(20));
 		getGc().fillText(getValue(), (getX()-34), (getY()+5));
