@@ -5,21 +5,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class MainNode extends Node {
-	private int windowWidth;
-	private int windowHeight;
 	
-	protected MainNode(String value, GraphicsContext gc, int x, int y, int ww, int wh){
+	protected MainNode(String value, GraphicsContext gc, int x, int y){
 		super(value,gc,x,y);
-		this.windowWidth = ww;
-		this.windowHeight = wh;
-	}
-	
-	protected int getWindowWidth(){
-		return this.windowWidth;
-	}
-	
-	protected int getWindowHeight(){
-		return this.windowHeight;
 	}
 	
 	

@@ -96,7 +96,7 @@ public class ViewGraph {
 		gc.setLineWidth(3);
 		
 		/** Main Node Code */
-		main = new MainNode("Matthew",gc,(windowWidth/2),(windowHeight/2),windowWidth,windowHeight);
+		main = new MainNode("Matthew",gc,(windowWidth/2),(windowHeight/2));
 		
 		syn[0] = new SynonymNode("Warm",gc,100,200);
 		syn[1] = new SynonymNode("Roasting",gc,300,100);
