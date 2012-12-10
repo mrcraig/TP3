@@ -44,8 +44,8 @@ public class VisualisationRoot extends AnchorPane {
 	}
 	
 	private void addCanvas(){
-		ViewGraph displayGraphFull = new ViewGraph(699,316);
-		ViewGraph displayGraphDual = new ViewGraph(334, 290);
+		ViewGraph displayGraphFull = new ViewGraph(750,376);
+		ViewGraph displayGraphDual = new ViewGraph(354, 362);
 		currentController.getCanvasFullGraph().getChildren().add(displayGraphFull.returnGraph());
 		currentController.getCanvasDualGraph().getChildren().add(displayGraphDual.returnGraph());
 	}
@@ -75,4 +75,5 @@ public class VisualisationRoot extends AnchorPane {
 		return currentParser;
 	}
 
+	
 }
