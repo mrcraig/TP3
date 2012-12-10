@@ -11,7 +11,7 @@
 
 <fx:root type="javafx.scene.layout.AnchorPane"  prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml" stylesheets="/resourcePackage/splashStyle.css">
   <children>
-    <Button id="createNewDictButton" onAction="#doCreate" layoutX="81.0" layoutY="254.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="178.0" text="Create New Dictionary">
+    <Button id="createNewButton" onAction="#doCreate" layoutX="81.0" layoutY="254.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="178.0" text="Create New Thesaurus">
       <font>
         <Font name="Georgia" size="12.0" fx:id="x1" />
       </font>
