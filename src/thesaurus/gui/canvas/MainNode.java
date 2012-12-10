@@ -6,11 +6,25 @@ import javafx.scene.text.Font;
 
 public class MainNode extends Node {
 	
+	/**
+	 * Constructor Method
+	 * 
+	 * Instantiates new instance of MainNode
+	 * 
+	 * @param value
+	 * @param gc
+	 * @param x
+	 * @param y
+	 */
 	protected MainNode(String value, GraphicsContext gc, int x, int y){
 		super(value,gc,x,y);
 	}
 	
-	
+	/**
+	 * void draw()
+	 * 
+	 * Draws MainNode to screen
+	 */
 	protected void draw(){
 		getGc().setStroke(Color.BLACK);
 		getGc().setFill(Color.WHITE);

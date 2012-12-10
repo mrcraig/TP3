@@ -17,7 +17,7 @@ public class Driver
 		
 		Parser driver = new Parser("/resourcePackage/data.xml");
 		XmlFile x = new XmlFile("/resourcePackage/data.xml");
-		x.toString();
+		x.addNode(null);
 		//driver.getAllNodes();
 		//System.out.println(driver.getTableData());
 			
