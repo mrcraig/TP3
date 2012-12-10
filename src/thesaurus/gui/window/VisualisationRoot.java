@@ -50,9 +50,9 @@ public class VisualisationRoot extends AnchorPane {
 		currentController.getCanvasDualGraph().getChildren().add(displayGraphDual.returnGraph());
 	}
 	
-	public void setParser(File inputFile){
+	public void setCurrentParser(File inputFile){
 		setCurrentFile(inputFile);
-		currentParser  = new Parser(inputFile);
+		currentParser = new Parser(inputFile);
 	}
 
 	public LinkedList<Vertex> getCurrentResults() {
@@ -69,6 +69,10 @@ public class VisualisationRoot extends AnchorPane {
 
 	public void setCurrentFile(File currentFileInput) {
 		currentFile = currentFileInput;
+	}
+
+	public Parser getCurrentParser() {
+		return currentParser;
 	}
 
 }
