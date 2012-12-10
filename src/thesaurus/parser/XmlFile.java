@@ -4,6 +4,7 @@ import javax.xml.parsers.*;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class XmlFile {
 	
@@ -16,7 +17,7 @@ public class XmlFile {
 		try 
 		{
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-			this.xml = docBuilder.parse(path);
+			this.xml = docBuilder.parse(getClass().getResource(path).getPath());
 		} catch (Exception e) 
 		{
 			e.printStackTrace();
@@ -25,8 +26,12 @@ public class XmlFile {
 	
 	public String toString()
 	{
-		Node graphML = this.xml.getFirstChild();
-		System.out.println(graphML.toString());
+		NodeList n = this.xml.getElementsByTagName("node");
+		for(int i=0;i<n.getLength();i++)
+		{
+			System.out.println(n.item(i).getNodeName());
+			System.out.println(n.item(i).getFirstChild().getNodeName());
+		}
 		return null;
 	}
 

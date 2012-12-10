@@ -73,6 +73,7 @@ public class Graph
 			LinkedList<Vertex> workQueue = new LinkedList<Vertex>();
 			LinkedList<Vertex> results = new LinkedList<Vertex>();
 			Vertex start = this.getVertex(s);
+			if(start==null) return null;
 			workQueue.add(start);
 			
 			while(!workQueue.isEmpty() && results.size()<max)
