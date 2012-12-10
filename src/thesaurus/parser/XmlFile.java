@@ -3,6 +3,7 @@ package thesaurus.parser;
 import javax.xml.parsers.*;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -26,11 +27,11 @@ public class XmlFile {
 	
 	public String toString()
 	{
-		NodeList n = this.xml.getElementsByTagName("node");
+		NodeList n = this.xml.getElementsByTagName("data");
 		for(int i=0;i<n.getLength();i++)
 		{
-			System.out.println(n.item(i).getNodeName());
-			System.out.println(n.item(i).getFirstChild().getNodeName());
+			System.out.println(n.item(i).getNodeValue());
+			
 		}
 		return null;
 	}
