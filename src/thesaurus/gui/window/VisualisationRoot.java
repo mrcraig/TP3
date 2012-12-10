@@ -1,7 +1,10 @@
 package thesaurus.gui.window;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.LinkedList;
 
+import thesaurus.parser.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import thesaurus.controller.SystemController;
@@ -15,8 +18,10 @@ import thesaurus.gui.canvas.ViewGraph;
 public class VisualisationRoot extends AnchorPane {
 
 	private MainWindow referenceWindow;
-    
     private SystemController currentController;
+    private Parser currentParser;
+    private LinkedList<Vertex> currentResults;
+    private File currentFile;
     
 	public VisualisationRoot(MainWindow inputWindow) throws IOException {
 		
@@ -43,6 +48,20 @@ public class VisualisationRoot extends AnchorPane {
 		ViewGraph displayGraphDual = new ViewGraph(334, 290);
 		currentController.getCanvasFullGraph().getChildren().add(displayGraphFull.returnGraph());
 		currentController.getCanvasDualGraph().getChildren().add(displayGraphDual.returnGraph());
+	}
+	
+	public void setParser(String inputString){
+		currentParser  = new Parser("/resourcePackage/data.xml");
+		setCurrentResults(currentParser.getSynmsFor(inputString));
+		System.out.println(currentParser.getSynmsFor(inputString));
+	}
+
+	public LinkedList<Vertex> getCurrentResults() {
+		return currentResults;
+	}
+
+	public void setCurrentResults(LinkedList<Vertex> currentResultsInput) {
+		currentResults = currentResultsInput;
 	}
 
 }
