@@ -128,32 +128,17 @@ public class SystemController {
 
 	@FXML
 	protected void doAddWord() {
-		System.out.println("woooooooooooooo");
-		final Popup popup = new Popup();
-		Pane canvas = new Pane();
-		canvas.setPrefSize(200, 200);
-		Text addWordLabel = new Text();
-		addWordLabel.relocate(70, 60);
-		addWordLabel.setText("Add Word");
-		addWordLabel.setScaleX(2);
-		addWordLabel.setScaleY(2);
-		TextField addWordInput = new TextField();
-		addWordInput.setPrefWidth(140);
-		addWordInput.relocate(30, 100);
-		Button addWordButton = new Button();
-		addWordButton.setText("Add to Thesaurus");
-		addWordButton.relocate(42, 140);
-		addWordButton.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				popup.hide();
-			}
-		});
-		canvas.getChildren().addAll(addWordInput, addWordLabel, addWordButton);
-		canvas.setStyle("	-fx-background-color: #dfdfdf;"
-				+ "-fx-border-color: black;" + "-fx-border-width: 1;");
-		popup.getContent().addAll(canvas);
-		popup.show(referenceWindow.getStage());
+		referenceWindow.getVisualisationRoot().showPopup("add");
+	}
+	
+	@FXML
+	protected void doEditWord() {
+		referenceWindow.getVisualisationRoot().showPopup("edit");
+	}
+	
+	@FXML
+	protected void doRemoveWord() {
+		referenceWindow.getVisualisationRoot().showPopup("remove");
 	}
 
 	private void saveFile(String content, File file) {
