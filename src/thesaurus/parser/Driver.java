@@ -17,8 +17,8 @@ public class Driver
 		
 		Parser driver = new Parser("/resourcePackage/data.xml");
 		XmlFile x = new XmlFile("/resourcePackage/data.xml");
-		x.addNode(null);
-		//driver.getAllNodes();
+		x.addNode("hello");
+		//System.out.println(driver.getSynmsForOne("Happy"));
 		//System.out.println(driver.getTableData());
 			
 			

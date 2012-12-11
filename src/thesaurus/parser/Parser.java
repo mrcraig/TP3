@@ -1,10 +1,9 @@
 package thesaurus.parser;
 
 import java.io.File;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
+
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
@@ -22,6 +21,7 @@ public class Parser {
 	public Parser(String path)
 	{
 		this.path = getClass().getResource(path).getPath();
+		//this.path = "/home/jamesGIT/myWorkspace/TP3/src/resourcePackage";
 		try
 		{
 			 parser = factory.newSAXParser();

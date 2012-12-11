@@ -32,9 +32,7 @@ public class MainWindow extends Application {
 		splashSceneCurrent = new Scene(splashRootCurrent);
 		stageCurrent.setScene(splashSceneCurrent);
 		stageCurrent.setTitle("The Graphical Thesaurus by Team O");
-		stageCurrent.setWidth(800);
-		stageCurrent.setHeight(600);
-		stageCurrent.getIcons().add(new Image("file:/resourcePackage/o.png"));
+		stageCurrent.getIcons().add(new Image("file:/../src/resourcePackage/o.png"));
 		stageCurrent.show();
 
 	}	

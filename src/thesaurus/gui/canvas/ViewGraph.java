@@ -11,7 +11,6 @@ import java.util.LinkedList;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
@@ -26,12 +25,23 @@ public class ViewGraph {
 	private MainNode main;
 	private Canvas graph;
 	
+	/** 
+	 * Instantiates new instance of Graph
+	 * 
+	 * @param width
+	 * @param height
+	 */
 	public ViewGraph(int width, int height){
 		windowWidth = width;
 		windowHeight = height;
 		start();
 	}
 
+	/**
+	 * void start()
+	 * 
+	 * Contains all methods and calls relating to graph drawing and control.
+	 */
 	private void start() {
 		graph = new Canvas(windowWidth,windowHeight);
 		final GraphicsContext gc = graph.getGraphicsContext2D();
@@ -40,7 +50,13 @@ public class ViewGraph {
 		final LinkedList<Integer> curX = new LinkedList<Integer>();
 		final LinkedList<Integer> curY = new LinkedList<Integer>();
 		
-		
+		/**
+		 * Action Method
+		 * 
+		 * Updates coordinates of every element in graph based on mouse displacement.
+		 * Calls redraw functions for all items in graph.
+		 * (NOTE: Connector must be redrawn before the node.)
+		 */
 		graph.addEventHandler(MouseEvent.MOUSE_DRAGGED,
 				new EventHandler<MouseEvent>(){
 			public void handle(MouseEvent e){
@@ -81,6 +97,11 @@ public class ViewGraph {
 			}
 		});
 		
+		/**
+		 * Action Method
+		 * 
+		 * Resets cursor position on mouse release to prevent graph snapping when graph is next clicked
+		 */
 		graph.addEventHandler(MouseEvent.MOUSE_RELEASED, 
 				new EventHandler<MouseEvent>(){
 			public void handle(MouseEvent e){
@@ -90,6 +111,11 @@ public class ViewGraph {
 			}
 		});
 		
+		/**
+		 * Action Method
+		 * 
+		 * Used to detect nodes that have been double clicked. Will output node to redrawGraph function.
+		 */
 		graph.addEventHandler(MouseEvent.MOUSE_CLICKED,
 				new EventHandler<MouseEvent>(){
 			public void handle(MouseEvent e){
@@ -100,6 +126,7 @@ public class ViewGraph {
 						if((e.getX() > syn[i].getX()-37) && (e.getX() < syn[i].getX()+37)){
 							//Matches X
 							if((e.getY() > syn[i].getY()-13) && (e.getY() < syn[i].getY()+13)){
+								//Matches Y
 								System.out.println(syn[i].getValue());
 							}
 						}
@@ -110,6 +137,7 @@ public class ViewGraph {
 						if((e.getX() > ant[i].getX()-37) && (e.getX() < ant[i].getX()+37)){
 							//Matches X
 							if((e.getY() > ant[i].getY()-13) && (e.getY() < ant[i].getY()+13)){
+								//Matches Y
 								System.out.println(ant[i].getValue());
 							}
 						}
@@ -120,6 +148,14 @@ public class ViewGraph {
 		
 	}
 	
+	/**
+	 * void drawNodes()
+	 * 
+	 * Initialises SynonymNode, AntonymNode and MainNode variables, and calls draw methods to display.
+	 * (NOTE: Connectors must be displayed before nodes are displayed.)
+	 * 
+	 * @param gc
+	 */
 	private void drawNodes(GraphicsContext gc){
 		gc.setStroke(Color.BLACK);
 		gc.setLineWidth(3);
@@ -147,16 +183,34 @@ public class ViewGraph {
 		main.draw();
 	}
 	
+	/**
+	 * void redrawSyn()
+	 * 
+	 * Draws SynonymNode with index 'index'
+	 * @param index
+	 */
 	private void redrawSyn(int index){
 		syn[index].drawConnector(main);
 		syn[index].draw();
 	}
 	
+	/**
+	 * void redrawAnt()
+	 * 
+	 * Draws AntonymNode with index 'index'
+	 * @param index
+	 */
 	private void redrawAnt(int index){
 		ant[index].drawConnector(main);
 		ant[index].draw();
 	}
 	
+	/**
+	 * Canvas returnGraph()
+	 * 
+	 * Returns Canvas object 'graph'
+	 * @return graph
+	 */
 	public Canvas returnGraph(){
 		return graph;
 	}
