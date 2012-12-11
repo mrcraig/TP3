@@ -22,6 +22,7 @@ public class Parser {
 	public Parser(String path)
 	{
 		this.path = getClass().getResource(path).getPath();
+		//this.path = "/home/jamesGIT/myWorkspace/TP3/src/resourcePackage";
 		try
 		{
 			 parser = factory.newSAXParser();
