@@ -3,7 +3,6 @@ package thesaurus.gui.window;
 import thesaurus.controller.SystemController;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import javafx.application.Application;
 import javafx.scene.image.Image;
 
