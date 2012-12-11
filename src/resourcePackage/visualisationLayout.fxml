@@ -45,7 +45,7 @@
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="430.0" prefWidth="710.0">
               <children>
                 <Pane fx:id="canvasFullGraph" prefHeight="375.0" prefWidth="750.0" />
-                <Button font="$x1" layoutX="415.0" layoutY="400.0" mnemonicParsing="false" prefWidth="100.0" text="Add" />
+                <Button font="$x1" layoutX="415.0" layoutY="400.0" mnemonicParsing="false" prefWidth="100.0" onAction="#doAddWord" text="Add" />
                 <Button font="$x1" layoutX="530.0" layoutY="400.0" mnemonicParsing="false" prefWidth="100.0" text="Edit" />
                 <Button font="$x1" layoutX="645.0" layoutY="400.0" mnemonicParsing="false" prefWidth="100.0" text="Remove" />
                 <Text font="$x1" layoutX="15.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search: " />
