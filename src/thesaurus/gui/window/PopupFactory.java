@@ -68,7 +68,7 @@ public class PopupFactory {
 				addWordInput, promptSynLabel, addSynInput, promptAntLabel,
 				addAntInput, confirmButton, cancelButton);
 		canvas.setStyle("	-fx-background-color: #dfdfdf;"
-				+ "-fx-border-color: black;" + "-fx-border-width: 1px;");
+				+ "-fx-border-color: black;" + "-fx-border-width: 1px;" + "-fx-font-family: 'Georgia';");
 		return canvas;
 	}
 	
@@ -114,7 +114,7 @@ public class PopupFactory {
 				addWordInput, promptSynLabel, addSynInput, promptAntLabel,
 				addAntInput, confirmButton, cancelButton);
 		canvas.setStyle("	-fx-background-color: #dfdfdf;"
-				+ "-fx-border-color: black;" + "-fx-border-width: 1px;");
+				+ "-fx-border-color: black;" + "-fx-border-width: 1px;" + "-fx-font-family: 'Georgia';");
 		return canvas;
 	}
 	
@@ -147,7 +147,7 @@ public class PopupFactory {
 		canvas.getChildren().addAll(addWordLabel, promptWordLabel,
 				addWordInput, confirmButton, cancelButton);
 		canvas.setStyle("	-fx-background-color: #dfdfdf;"
-				+ "-fx-border-color: black;" + "-fx-border-width: 1px;");
+				+ "-fx-border-color: black;" + "-fx-border-width: 1px;" + "-fx-font-family: 'Georgia';");
 		return canvas;
 	}
 

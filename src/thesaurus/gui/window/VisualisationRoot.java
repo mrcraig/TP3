@@ -22,6 +22,7 @@ public class VisualisationRoot extends AnchorPane {
 	private Parser currentParser;
 	private LinkedList<Vertex> currentResults;
 	private File currentFile;
+	private Popup currentPopup;
 
 	public VisualisationRoot(MainWindow inputWindow) throws IOException {
 
@@ -79,8 +80,12 @@ public class VisualisationRoot extends AnchorPane {
 	}
 
 	public void showPopup(String inputChoice) {
+		if(currentPopup != null){
+			currentPopup.hide();
+			currentPopup = null;
+		}
 		PopupFactory currentPopupFactory = new PopupFactory(inputChoice);
-		Popup currentPopup = currentPopupFactory.getPopup();
+		currentPopup = currentPopupFactory.getPopup();
 		currentPopup.show(referenceWindow.getStage());
 		currentPopup.setY(currentPopup.getY()+10);
 	}
