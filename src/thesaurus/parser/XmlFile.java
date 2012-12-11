@@ -17,14 +17,17 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import javax.xml.xpath.*;
 public class XmlFile {
 	
 	private Document xml;
 	private String path;
-	
+	private XPathFactory xfactory = XPathFactory.newInstance();
+	private XPath xpath = xfactory.newXPath();
 	
 	public XmlFile (String path)
 	{
@@ -64,34 +67,70 @@ public class XmlFile {
 	
 	
 	
-	//graph, then last child of graph should be last node
+	
+	public void addVertex(Vertex v)
+	{	
+		this.addNode(v.word);
+		String source = Integer.toString(v.getIndex());
+		String target = null;
+		for(Vertex j : v.getAdjList())
+		{
+			target = Integer.toString(j.getIndex());
+			this.addEdge(source, target);
+		}
+		saveFile();
+	}
+	
+	
+	
+	public void addEdge(String source, String target)
+	{
+		//work on ordering later...
+		Node lastEdge = null;
+		try
+		{
+			XPathExpression expr = xpath.compile("//graphml/graph/edge");
+			lastEdge = (Node) expr.evaluate(this.xml, XPathConstants.NODE);
+		}
+		catch(XPathExpressionException e) {e.printStackTrace();}
+		
+		Element edge = this.xml.createElement("edge");
+		edge.setAttribute("source",source);
+		edge.setAttribute("target", target);
+		lastEdge.appendChild(edge);
+		
+	}
+	
+	
+	public void cleanXml() {}
+	
+	
 	public void addNode(String word)
 	{
-		Node graph = this.xml.getElementsByTagName("graph").item(0);
+		String newID = null;
+		
+		try {
+			XPathExpression expr = xpath.compile("//graphml/graph/node[position()=last()]");
+		Node result = (Node) expr.evaluate(this.xml,XPathConstants.NODE);
+		String id = result.getAttributes().getNamedItem("id").getTextContent();
+		int tempID = Integer.parseInt(id);
+		tempID++;
+		newID = Integer.toString(tempID);
+		} catch (XPathExpressionException e) {
+			e.printStackTrace();
+		}
+	
 		Element node = this.xml.createElement("node");
 		Element data = this.xml.createElement("data");
-		
-	
-		
-		//get last child of graph, last node, grab id
-		Node lastNode = graph.getLastChild();
-		String id = lastNode.getAttributes().getNamedItem("id").getTextContent();
-		System.out.println(id);
-		
-		/*see if the last id is being properly printed
-		 * 
-		 * 
-		 * 
-		 * 
-		 */
-		
-		node.setAttribute("id", Integer.toString(20));
+		node.setAttribute("id", newID);
 		data.setAttribute("key","w");
 		data.setTextContent(word);
 		node.appendChild(data);
-		graph.appendChild(node);
-		saveFile();
+		this.xml.getElementsByTagName("graph").item(0).appendChild(node);
+		
 	}
+	
+	
 	
 	private void saveFile()
 	{
@@ -109,7 +148,7 @@ public class XmlFile {
 		try 
 		{
 			trans.transform(source, result);
-			System.out.println("file saved to "+this.path);
+			//System.out.println("file saved to "+this.path);
 		} catch (TransformerException e) 
 		{
 				e.printStackTrace();

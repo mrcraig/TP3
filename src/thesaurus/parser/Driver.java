@@ -15,9 +15,12 @@ public class Driver
 {
 	public static void main(String args[]){
 		
-		Parser driver = new Parser("/resourcePackage/data.xml");
-		XmlFile x = new XmlFile("/resourcePackage/data.xml");
-		x.addNode("hello");
+		DOMParser driver = new DOMParser("/resourcePackage/data.xml");
+		System.out.println(driver.getVertices());
+		//XmlFile x = new XmlFile("/resourcePackage/data.xml");
+		//Vertex test = driver.getSynmsForOne("Happy");
+		//x.addVertex(test);
+	
 		//System.out.println(driver.getSynmsForOne("Happy"));
 		//System.out.println(driver.getTableData());
 			

@@ -1,0 +1,11 @@
+
+
+stuff to do
+
+add remove delete etc
+
+at the moment all nodes being saved in memory -
+
+could also create methods to parse it everytime a method 
+is called, and then have the option of either, depending 
+on how big the xml file is
