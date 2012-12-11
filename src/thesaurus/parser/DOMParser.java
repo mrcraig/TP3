@@ -58,8 +58,16 @@ public class DOMParser
 			id = n.getAttributes().getNamedItem("id").getTextContent();
 			v = new Vertex(id);
 			
-			word = n.getFirstChild().getTextContent();
-			System.out.println(word);
+			Node d = n.getChildNodes().item(0);
+			
+			for(int x=0;x<n.getChildNodes().getLength();x++)
+			{
+				System.out.println(n.getChildNodes().item(x).getTextContent());
+			}
+		
+			//no child nodes....
+			
+			System.out.println("here");
 			//v.setWord(word);
 			//vertices.add(v);
 		}

@@ -16,7 +16,7 @@ public class Driver
 	public static void main(String args[]){
 		
 		DOMParser driver = new DOMParser("/resourcePackage/data.xml");
-		System.out.println(driver.getVertices());
+		driver.getVertices();
 		//XmlFile x = new XmlFile("/resourcePackage/data.xml");
 		//Vertex test = driver.getSynmsForOne("Happy");
 		//x.addVertex(test);
