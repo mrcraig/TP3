@@ -62,9 +62,9 @@
               <children>
                 <TextField layoutX="58.0" layoutY="400.0" prefWidth="200.0" />
                 <Button font="$x1" layoutX="265.0" layoutY="400.0" mnemonicParsing="false" text="Go" />
-                <Button font="$x1" layoutX="415.0" layoutY="400.0" mnemonicParsing="false" prefWidth="100.0" text="Add" />
-                <Button font="$x1" layoutX="530.0" layoutY="400.0" mnemonicParsing="false" prefWidth="100.0" text="Edit" />
-                <Button font="$x1" layoutX="645.0" layoutY="400.0" mnemonicParsing="false" prefWidth="100.0" text="Remove" />
+                <Button font="$x1" layoutX="415.0" layoutY="400.0" mnemonicParsing="false" prefWidth="100.0" onAction="#doAddWord" text="Add" />
+                <Button font="$x1" layoutX="530.0" layoutY="400.0" mnemonicParsing="false" prefWidth="100.0" onAction="#doEditWord" text="Edit" />
+                <Button font="$x1" layoutX="645.0" layoutY="400.0" mnemonicParsing="false" prefWidth="100.0" onAction="#doRemoveWord" text="Remove" />
                 <TableView id="synonymTable" layoutX="14.0" layoutY="14.0" prefHeight="362.0" prefWidth="717.0">
                   <columns>
                     <TableColumn id="tableTabWordCol" prefWidth="75.0" text="Word" />
@@ -82,9 +82,9 @@
               <children>
                 <TextField layoutX="58.0" layoutY="400.0" prefWidth="200.0" />
                 <Button font="$x1" layoutX="265.0" layoutY="400.0" mnemonicParsing="false" text="Go" />
-                <Button font="$x1" layoutX="415.0" layoutY="400.0" mnemonicParsing="false" prefWidth="100.0" text="Add" />
-                <Button font="$x1" layoutX="530.0" layoutY="400.0" mnemonicParsing="false" prefWidth="100.0" text="Edit" />
-                <Button font="$x1" layoutX="645.0" layoutY="400.0" mnemonicParsing="false" prefWidth="100.0" text="Remove" />
+                <Button font="$x1" layoutX="415.0" layoutY="400.0" mnemonicParsing="false" prefWidth="100.0" onAction="#doAddWord" text="Add" />
+                <Button font="$x1" layoutX="530.0" layoutY="400.0" mnemonicParsing="false" prefWidth="100.0" onAction="#doEditWord" text="Edit" />
+                <Button font="$x1" layoutX="645.0" layoutY="400.0" mnemonicParsing="false" prefWidth="100.0" onAction="#doRemoveWord" text="Remove" />
                 <TableView id="synonymTable" layoutX="383.0" layoutY="14.0" prefHeight="362.0" prefWidth="354.0">
                   <columns>
                     <TableColumn id="dualTabWordCol" prefWidth="75.0" text="Word" />
