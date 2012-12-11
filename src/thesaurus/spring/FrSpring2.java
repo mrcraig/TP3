@@ -2,8 +2,9 @@ package thesaurus.spring;
 import java.awt.geom.Point2D;
 //import java.util.LinkedList;
 //import java.util.List;
-import java.util.ArrayList;
-import thesaurus.parser.*;
+//import java.util.ArrayList;
+import java.util.LinkedList;
+//import thesaurus.parser.*;
 public class FrSpring2 {
 	private int length;
 	private int width;
@@ -11,12 +12,10 @@ public class FrSpring2 {
 	private int size;
 	private double k;
 	private double temprature;
-
-	private double[][] dis;
-	private ArrayList<Vertex> lstVertices;
-	private ArrayList<Point2D> pos;
+	private LinkedList<Vertex> lstVertices  ;
 	private double EPSILON = 0.000001D;
 	private Vertex myWord;
+	private int layerIndex = 1;
 
 
 	public FrSpring2(Vertex myVer) {
@@ -25,7 +24,8 @@ public class FrSpring2 {
 		this.temprature = ((double) this.width / 10);
 		this.area = (this.width) * (this.length);
 		this.myWord = myVer;
-		getVertex();				//add the vertices into arraylist
+		lstVertices = new LinkedList<Vertex>();
+		layerIndex = getVertex(this.myWord);			           	//add the vertices into arraylist
 		this.size =  this.lstVertices.size();
 
 
@@ -43,7 +43,7 @@ public class FrSpring2 {
 			lstVertices.get(i).setPos (create(myX, myY));    				//place vertices at random
 			lstVertices.get(i).setPDis(create(0, 0));						//initialize displacement of every vertex to 0
 
-			k = Math.sqrt(((double) this.area / (double) this.size)); k *= 10; // compute optimal pairwise distance
+			k = Math.sqrt(((double) this.area / (double) this.size));  // compute optimal pairwise distance
 		}
 		mySpring();
 	}
@@ -51,7 +51,7 @@ public class FrSpring2 {
 
 
 	private void mySpring() {
-		for (int ite = 0; ite < 100; ite++) {
+		for (int ite = 0; ite < 500000; ite++) {
 			for (Vertex v : this.lstVertices) {
 				v.getDis().setLocation(0, 0);
 				for (Vertex u : this.lstVertices) {
@@ -61,50 +61,65 @@ public class FrSpring2 {
 						double disY = v.getPos().getY() - u.getPos().getY();   // difference of y coordinate
 						double deltaLength = Math.max(EPSILON,  v.getPos()	   // if distance between vertices is zero, since  
 								.distanceSq(u.getPos()));				       // couldn't divided by zero use EPSILON  
-
 						double rforce = repulsionF(Math.abs(deltaLength));     // repulsion force (distance)
+						assert Double.isNaN(rforce) == false : "Unexpected mathematical result in FRSpring Layout:Spring [Repulsion force]";
 
-						disX = (v.getPos().getX() + (disX * rforce));             // displacement of x
-						disY = (v.getPos().getY() + (disY * rforce));			  //  displacement of y
+						disX = (v.getDis().getX() + (disX * rforce));             // displacement of x
+						disY = (v.getDis().getY() + (disY * rforce));			  //  displacement of y
 						v.getDis().setLocation(disX,disY);
 					}
 				}
-			} // this is the end of the first inner loop
-			for (int i = 1; i < this.size; i++) { // the edges of the graph
-				double disX = pos.get(0).getX() - pos.get(i).getX();
-				double disY = pos.get(0).getY() - pos.get(i).getY();
+			} // this is the end of the the loop that repulse every every vertex
+			for (int i = 0; i < this.layerIndex; i++) { // the edges of the graph
+				Vertex source = this.lstVertices.get(i);
+				for (Vertex target : source.getAdjList()){
+					if (target.equals(lstVertices.get(i)))continue;
+					double disX = source.getPos().getX() - target.getPos().getX();
+					double disY = source.getPos().getY() - target.getPos().getY();
+				//	if (i != 0) this.k= this.k*10;
+					double deltaLength = Math.max(EPSILON,
+							source.getPos().distanceSq(target.getPos()));
+					double aforce = attractionF(Math.abs(deltaLength));          //compute attraction force
+					assert Double.isNaN(aforce) == false : "Unexpected mathematical result in FRSpring Layout:Spring[Attraction force]";
 
-				double deltaLength = Math.max(EPSILON,
-						pos.get(0).distanceSq(pos.get(i)));
-				double aforce = attractionF(Math.abs(deltaLength));          //compute attraction force
 
-				dis[i][0] = (dis[i][0] + (disX * aforce));					// displacement  edge x coordinate
-				dis[i][1] = (dis[i][1] + (disY * aforce));					// displacement edge y coordinate
+				//if(!(source.equals(lstVertices.get(0)))){
+						double sdisX = (source.getDis().getX() + (disX * aforce));					// displacement  edge x coordinate
+						double sdisY = (source.getDis().getY() + (disY * aforce));					// displacement edge y coordinate
+						source.getDis().setLocation(sdisX, sdisY);//}
+
+					double tdisX = (target.getDis().getX() + (disX * aforce));					// displacement  edge x coordinate
+					double tdisY = (target.getDis().getY() + (disY * aforce));	
+					target.getDis().setLocation(tdisX, tdisY);
+				}
 			}
 
 			for (int j = 1; j < this.size; j++) {
-				double newXDisp = dis[j][0] / Math.abs(dis[j][0])           //use temperature to scale x
-				* Math.min(Math.abs(dis[j][0]), temprature);
 
-				double newYDisp = dis[j][1] / Math.abs(dis[j][1])							// use temperature to scale y
-				* Math.min(Math.abs(dis[j][1]), temprature);
+				double newXDisp = (this.lstVertices.get(j).getDis().getX() / Math.max(Math.abs(this.lstVertices.get(j).getDis().getX()),EPSILON )  )        //use temperature to scale x
+				* Math.min(Math.abs(this.lstVertices.get(j).getDis().getX()), temprature);
 
-				double newX = pos.get(j).getX() + newXDisp;					// adjust position  using displacement scaled by temperature
-				double newY = pos.get(j).getY() + newYDisp;
+				double newYDisp = (this.lstVertices.get(j).getDis().getY() /Math.max(Math.abs(this.lstVertices.get(j).getDis().getY()),EPSILON))          //use temperature to scale x
+				* Math.min(Math.abs(this.lstVertices.get(j).getDis().getY()), temprature);
+
+				
+				
+				double newX = this.lstVertices.get(j).getPos().getX() + Math.max(-5, Math.min(5,newXDisp));				// adjust position  using displacement scaled by temperature
+				double newY = this.lstVertices.get(j).getPos().getY() + Math.max(-5, Math.min(5,newYDisp));
 
 				newX = Math.max(0, Math.min(newX, width));					// limit max displacement to frame
 				newY = Math.max(0, Math.min(newY, length));
-				pos.get(j).setLocation(newX, newY); 
+				this.lstVertices.get(j).getPos().setLocation(newX, newY); 
 
 			}
-			temprature *= (1.0 - ite / (double) 100); // reduce temperature
+			temprature *= (1.0 - ite / (double) 500000); // reduce temperature
 		}
 		/* the is for test only, Begin testing */
 		double[][] tmp = new double[size][2];
 		for (int i = 0; i < this.size; i++) {
-			tmp[i][0]= pos.get(i).getX();
-			tmp[i][1] = pos.get(i).getY();
-
+			tmp[i][0]= this.lstVertices.get(i).getPos().getX();
+			tmp[i][1] = this.lstVertices.get(i).getPos().getY();
+			System.out.println(tmp[i][0]+ "   "+tmp[i][1]);
 		}
 		int count = 0;
 		for (int i = 0; i < this.size; i++) {
@@ -125,12 +140,12 @@ public class FrSpring2 {
 	/* calculates repulsion force between non-adjacent vertices x is a distance calculated by pythagoras   */
 	private double repulsionF(double x) {
 
-		return ((k * k) / x);
+		return (((k * k) / x)*5000);
 	}
 
 	/* calculates attraction force between edges y is length of the edge*/
 	private double attractionF(double y) {
-		return ((y * y) / k);
+		return ((y * y) / (k*50));
 	}
 
 	/* create and returns coordinate points */
@@ -140,57 +155,29 @@ public class FrSpring2 {
 
 	/* this method adds all vertices into lsVisited which is used for repulsion of vertices 
 	 * and also helps to identify the actual number of vertices (size)*/
-	private void getVertex() {
-		this.lstVertices.add(myWord);
-		for (Vertex ver : this.myWord.getAdjList()){
+	private int getVertex(Vertex word) {
+		int count = 1;
+		this.lstVertices.addFirst(word);
+		for (Vertex ver : word.getAdjList()){
 			if (ver.isVisited())continue;
-			this.lstVertices.add(ver);
+			this.lstVertices.add(ver); ver.setVisited(true);count++;
 			for (Vertex inVer : ver.getAdjList()){
 				if (inVer.isVisited()) continue;
-				this.lstVertices.add(inVer);
+				this.lstVertices.add(inVer);inVer.setVisited(true);
 			}
 		}
-
+		return count;
 	}
 
-	/*	private void setUPMian(){
 
-		disVetexMap.add(myWord);
-		DisEdgeMap myEdgeList = new DisEdgeMap(indexDisp);      // add source edge
-		for (Vertex ver : this.myWord.getAdjList()){
-			indexDisp++;									//Increment index
-			myEdgeList.addEdge(indexDisp);					//add to end edge as target
-			disVetexMap.add(ver);					// add to displacement vertex mapping
 
+	public Vertex getCoordinates() {
+		return myWord;
 	}
-		myLimite = indexDisp;							// this is the limit of layering
-		myEdge.add(myEdgeList);                        //add list of edges to a list
-		for (Vertex ver : this.myWord.getAdjList()){
-
-		}
-	}
-	private void setUSecondary(Vertex ver){
-			DisEdgeMap myList = new DisEdgeMap(0);
-			for (Vertex innerVer : ver.getAdjList()){
-				if (isNewVertex(innerVer)){
-					index++;
-				}
-			}
-		}*/
-
-
-
-
-	private boolean isNewVertex(Vertex ver){
-		for (Vertex myV : lstVertices){
-			if (myV.equals(ver)) return false;
-		}
-		return true;
-	}
-
-	public ArrayList<Point2D> getCoordinates() {
-		return pos;
-	}
-
+public LinkedList<Vertex> getVertices(){
+	return this.lstVertices;
+}
 
 }
+
+
