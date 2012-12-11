@@ -30,12 +30,40 @@ public class DOMParser
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			this.path = getClass().getResource(path).getPath();
 			this.xml = docBuilder.parse(getClass().getResource(path).getPath());
+		
 		} catch (Exception e) 
 		{
 			e.printStackTrace();
 		}
-		getVertices();
-		getEdges();
+		if(!checkEmpty())
+		{
+			getVertices();
+			getEdges();
+		}
+		
+	}
+	
+	
+	private boolean checkEmpty()
+	{
+		try 
+		{
+			XPathExpression ml = xpath.compile("//graphml");
+			XPathExpression graph = xpath.compile("//graphml/graph");
+			XPathExpression nodes = xpath.compile("//graphml/graph/nodes");
+			
+		  NodeList listML  = (NodeList) ml.evaluate(this.xml, XPathConstants.NODESET);
+		  NodeList  listGraph = (NodeList) graph.evaluate(this.xml, XPathConstants.NODESET);
+		  NodeList  listNodes = (NodeList) nodes.evaluate(this.xml, XPathConstants.NODESET);
+		
+		  System.out.println(listNodes);
+		  if(listML==null || listGraph==null || listNodes==null ) return true;
+		}
+		catch (XPathExpressionException e) 
+		{
+			e.printStackTrace();
+		}
+	 return false;
 	}
 	
 	public LinkedList<Vertex> getAllNodes()
@@ -65,17 +93,16 @@ public class DOMParser
 			n = nodes.item(i);
 			id = n.getAttributes().getNamedItem("id").getTextContent();
 			v = new Vertex(id);
-			Node d = n.getChildNodes().item(1);
-			word = d.getTextContent();
-			/*
-			for(int x=0;x<n.getChildNodes().getLength();x++)
+			for(int j=0;j<n.getChildNodes().getLength();j++)
 			{
-				//System.out.println(x);
-				//System.out.println(n.getChildNodes().item(x).getTextContent());
+				Node d = n.getChildNodes().item(j);
+				if(d.getNodeName().equals("data"))
+				{
+					word = d.getTextContent();
+					v.setWord(word);
+				}
 			}
-			*/
-			v.setWord(word);
-			vertices.add(v);
+			if(!this.nodes.contains(v)) vertices.add(v);
 		}
 		this.nodes.setNodes(vertices);
 	}

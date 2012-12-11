@@ -15,15 +15,19 @@ public class Driver
 {
 	public static void main(String args[]){
 		
-		DOMParser read = new DOMParser("/resourcePackage/data.xml");
-		XmlFile add = new XmlFile("/resourcePackage/data.xml");
-		//Vertex test = driver.getSynmsForOne("Happy");
+		DOMParser read = new DOMParser("/resourcePackage/testAgain.xml");
+		XmlFile add = new XmlFile("/resourcePackage/testAgain.xml");
+		
+		System.out.println(read.getAllNodes());
+
+		
+		/*
 		Vertex one = new Vertex("101");
 		Vertex two = new Vertex("102");
 		Vertex three = new Vertex("103");
 		System.out.println(read.getAllNodes());
 		
-		/*
+		
 		one.setWord("hot");
 		two.setWord("cold");
 		three.setWord("warm");
@@ -38,8 +42,8 @@ public class Driver
 		add.addVertex(three);
 		
 		*/
-		//System.out.println(driver.getSynmsForOne("Happy"));
-		//System.out.println(driver.getTableData());
+		
+		
 			
 			
 		}

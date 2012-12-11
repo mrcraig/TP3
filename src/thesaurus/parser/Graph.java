@@ -42,6 +42,18 @@ public class Graph
 		nodes.getLast().setWord(word);
 	}
 	
+	boolean contains(Vertex v)
+	{
+		for(Vertex x : nodes)
+		{
+			if(v.getIndex()==x.getIndex())
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	
 	/* if the xml is in the wrong order, this method will still work */
 	 Vertex getVertex(int index)

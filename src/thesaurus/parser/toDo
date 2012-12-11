@@ -1,8 +1,6 @@
 
 
-stuff to do
 
-add remove delete etc
 
 at the moment all nodes being saved in memory -
 
@@ -12,8 +10,8 @@ on how big the xml file is
 
 
 
------
-can read, write, but then can't read again
-find out exactly why I can't read my written xml
+if xml file is empty, put in tags
+
+
 
 do remove, edit
