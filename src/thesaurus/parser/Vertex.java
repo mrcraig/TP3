@@ -27,6 +27,7 @@ public class Vertex {
 
 	String word;
     private Point2D pos;
+    private Point2D dis;
     
     public Vertex(String i)
     {
@@ -56,6 +57,12 @@ public class Vertex {
     
     public Point2D getPos() {
 		return pos;
+	}
+    public Point2D getDis() {
+		return dis;
+	}
+    public void setPDis(Point2D dis) {
+		this.dis = dis;
 	}
 
 	public void setPos(Point2D pos) {
