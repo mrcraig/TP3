@@ -1,6 +1,6 @@
 package thesaurus.parser;
 
-<<<<<<< HEAD
+
 import java.io.File;
 
 import javax.xml.parsers.*;
@@ -10,10 +10,10 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-=======
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
->>>>>>> 81fb39b51356ec6bf9830831699f5638d69e70db
+
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
