@@ -70,7 +70,7 @@ public class XmlFile {
 	
 	public void addVertex(Vertex v)
 	{	
-		this.addNode(v.word);
+		this.addNode(v.word, v.getIndex());
 		String source = Integer.toString(v.getIndex());
 		String target = null;
 		for(Vertex j : v.getAdjList())
@@ -83,7 +83,7 @@ public class XmlFile {
 	
 	
 	
-	public void addEdge(String source, String target)
+   private void addEdge(String source, String target)
 	{
 		//work on ordering later...
 		Node lastEdge = null;
@@ -97,29 +97,32 @@ public class XmlFile {
 		Element edge = this.xml.createElement("edge");
 		edge.setAttribute("source",source);
 		edge.setAttribute("target", target);
-		lastEdge.appendChild(edge);
-		
+		//try and keep order smooth
+		if(lastEdge!=null)lastEdge.appendChild(edge);
+		else
+			this.xml.getElementsByTagName("graph").item(0).appendChild(edge);
 	}
 	
 	
 	public void cleanXml() {}
 	
 	
-	public void addNode(String word)
+	private void addNode(String word, int index)
 	{
 		String newID = null;
 		
 		try {
 			XPathExpression expr = xpath.compile("//graphml/graph/node[position()=last()]");
 		Node result = (Node) expr.evaluate(this.xml,XPathConstants.NODE);
-		String id = result.getAttributes().getNamedItem("id").getTextContent();
-		int tempID = Integer.parseInt(id);
-		tempID++;
-		newID = Integer.toString(tempID);
+		//String id = result.getAttributes().getNamedItem("id").getTextContent();
+		//int tempID = Integer.parseInt(id);
+		//tempID++;
+		//newID = Integer.toString(tempID);
 		} catch (XPathExpressionException e) {
 			e.printStackTrace();
 		}
 	
+	    newID = Integer.toString(index);
 		Element node = this.xml.createElement("node");
 		Element data = this.xml.createElement("data");
 		node.setAttribute("id", newID);

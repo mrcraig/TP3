@@ -20,6 +20,7 @@ public class DOMParser
 	private String path;
 	private XPathFactory xfactory = XPathFactory.newInstance();
 	private XPath xpath = xfactory.newXPath();
+	private Graph nodes = new Graph();
 	
 	public DOMParser(String path)
 	{
@@ -33,9 +34,17 @@ public class DOMParser
 		{
 			e.printStackTrace();
 		}
+		getVertices();
+		getEdges();
 	}
 	
-	public LinkedList<Vertex> getVertices()
+	public LinkedList<Vertex> getAllNodes()
+	{
+		return nodes.getNodes();
+	}
+	
+	
+	private void getVertices()
 	{
 		NodeList nodes = null;
 		LinkedList<Vertex> vertices = new LinkedList<Vertex>();
@@ -53,25 +62,45 @@ public class DOMParser
 		Vertex v=null;
 		for(int i=0;i<nodes.getLength();i++)
 		{
-			
 			n = nodes.item(i);
 			id = n.getAttributes().getNamedItem("id").getTextContent();
 			v = new Vertex(id);
-			
-			Node d = n.getChildNodes().item(0);
-			
+			Node d = n.getChildNodes().item(1);
+			word = d.getTextContent();
+			/*
 			for(int x=0;x<n.getChildNodes().getLength();x++)
 			{
-				System.out.println(n.getChildNodes().item(x).getTextContent());
+				//System.out.println(x);
+				//System.out.println(n.getChildNodes().item(x).getTextContent());
 			}
-		
-			//no child nodes....
-			
-			System.out.println("here");
-			//v.setWord(word);
-			//vertices.add(v);
+			*/
+			v.setWord(word);
+			vertices.add(v);
 		}
-		return vertices;
+		this.nodes.setNodes(vertices);
+	}
+	
+	
+	private void getEdges()
+	{
+		NodeList edges = null;
+		try 
+		{
+			XPathExpression expr = xpath.compile("//graphml/graph/edge");
+		    edges = (NodeList) expr.evaluate(this.xml, XPathConstants.NODESET);
+		} catch (XPathExpressionException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		for(int i=0;i<edges.getLength();i++)
+		{
+			Node e = edges.item(i);
+			int source = Integer.parseInt(e.getAttributes().getNamedItem("source").getTextContent());
+			int target = Integer.parseInt(e.getAttributes().getNamedItem("target").getTextContent());
+			Vertex v = nodes.getVertex(source);
+			v.addToAdjList(nodes.getVertex(target));
+		}
 	}
 	
 	
