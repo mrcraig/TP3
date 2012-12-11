@@ -3,22 +3,15 @@ package thesaurus.controller;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
-import javafx.stage.Popup;
-import javafx.scene.control.Button;
 import thesaurus.gui.window.MainWindow;
-import thesaurus.gui.window.PopupRoot;
 import thesaurus.gui.window.VisualisationRoot;
 
 public class SystemController {
