@@ -13,6 +13,7 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import thesaurus.gui.window.MainWindow;
 import thesaurus.gui.window.VisualisationRoot;
+import thesaurus.parser.Vertex;
 
 public class SystemController {
 
@@ -74,6 +75,7 @@ public class SystemController {
 		 Scene(visualisationRootCurrent, 800, 600));
 		 visualisationRootCurrent.setCurrentParser(file);
 		 setVisualisationFileName();
+		
 	}
 
 	@FXML
@@ -115,8 +117,9 @@ public class SystemController {
 	@FXML
 	protected void doSearchGraph() {
 		String searchText = searchBoxGraph.getText();
-		System.out.println(referenceWindow.getVisualisationRoot()
-				.getCurrentParser().getSynmsFor(searchText));
+		Vertex currentVertex = referenceWindow.getVisualisationRoot().getCurrentParser().getSynmsForOne(searchText);
+		referenceWindow.getVisualisationRoot().setCurrentVertex(referenceWindow.getVisualisationRoot().runSpringOnVertex(currentVertex));
+		referenceWindow.getVisualisationRoot().addCanvas();
 	}
 
 	@FXML
