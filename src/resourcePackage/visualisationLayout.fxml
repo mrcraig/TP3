@@ -45,9 +45,9 @@
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="430.0" prefWidth="710.0">
               <children>
                 <Pane fx:id="canvasFullGraph" prefHeight="375.0" prefWidth="750.0" />
-                <Button font="$x1" layoutX="415.0" layoutY="400.0" mnemonicParsing="false" prefWidth="100.0" onAction="#doAddWord" text="Add" />
-                <Button font="$x1" layoutX="530.0" layoutY="400.0" mnemonicParsing="false" prefWidth="100.0" onAction="#doEditWord" text="Edit" />
-                <Button font="$x1" layoutX="645.0" layoutY="400.0" mnemonicParsing="false" prefWidth="100.0" onAction="#doRemoveWord" text="Remove" />
+                <Button font="$x1" layoutX="415.0" layoutY="400.0" mnemonicParsing="false" onAction="#doAddWord" prefWidth="100.0" text="Add" />
+                <Button font="$x1" layoutX="530.0" layoutY="400.0" mnemonicParsing="false" onAction="#doEditWord" prefWidth="100.0" text="Edit" />
+                <Button font="$x1" layoutX="645.0" layoutY="400.0" mnemonicParsing="false" onAction="#doRemoveWord" prefWidth="100.0" text="Remove" />
                 <Text font="$x1" layoutX="15.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search: " />
                 <TextField fx:id="searchBoxGraph" layoutX="58.0" layoutY="400.0" prefWidth="200.0" />
                 <Button font="$x1" layoutX="265.0" layoutY="400.0" mnemonicParsing="false" onAction="#doSearchGraph" text="Go" />
@@ -62,9 +62,9 @@
               <children>
                 <TextField layoutX="58.0" layoutY="400.0" prefWidth="200.0" />
                 <Button font="$x1" layoutX="265.0" layoutY="400.0" mnemonicParsing="false" text="Go" />
-                <Button font="$x1" layoutX="415.0" layoutY="400.0" mnemonicParsing="false" prefWidth="100.0" onAction="#doAddWord" text="Add" />
-                <Button font="$x1" layoutX="530.0" layoutY="400.0" mnemonicParsing="false" prefWidth="100.0" onAction="#doEditWord" text="Edit" />
-                <Button font="$x1" layoutX="645.0" layoutY="400.0" mnemonicParsing="false" prefWidth="100.0" onAction="#doRemoveWord" text="Remove" />
+                <Button font="$x1" layoutX="415.0" layoutY="400.0" mnemonicParsing="false" onAction="#doAddWord" prefWidth="100.0" text="Add" />
+                <Button font="$x1" layoutX="530.0" layoutY="400.0" mnemonicParsing="false" onAction="#doEditWord" prefWidth="100.0" text="Edit" />
+                <Button font="$x1" layoutX="645.0" layoutY="400.0" mnemonicParsing="false" onAction="#doRemoveWord" prefWidth="100.0" text="Remove" />
                 <TableView id="synonymTable" layoutX="14.0" layoutY="14.0" prefHeight="362.0" prefWidth="717.0">
                   <columns>
                     <TableColumn id="tableTabWordCol" prefWidth="75.0" text="Word" />
@@ -82,9 +82,9 @@
               <children>
                 <TextField layoutX="58.0" layoutY="400.0" prefWidth="200.0" />
                 <Button font="$x1" layoutX="265.0" layoutY="400.0" mnemonicParsing="false" text="Go" />
-                <Button font="$x1" layoutX="415.0" layoutY="400.0" mnemonicParsing="false" prefWidth="100.0" onAction="#doAddWord" text="Add" />
-                <Button font="$x1" layoutX="530.0" layoutY="400.0" mnemonicParsing="false" prefWidth="100.0" onAction="#doEditWord" text="Edit" />
-                <Button font="$x1" layoutX="645.0" layoutY="400.0" mnemonicParsing="false" prefWidth="100.0" onAction="#doRemoveWord" text="Remove" />
+                <Button font="$x1" layoutX="415.0" layoutY="400.0" mnemonicParsing="false" onAction="#doAddWord" prefWidth="100.0" text="Add" />
+                <Button font="$x1" layoutX="530.0" layoutY="400.0" mnemonicParsing="false" onAction="#doEditWord" prefWidth="100.0" text="Edit" />
+                <Button font="$x1" layoutX="645.0" layoutY="400.0" mnemonicParsing="false" onAction="#doRemoveWord" prefWidth="100.0" text="Remove" />
                 <TableView id="synonymTable" layoutX="383.0" layoutY="14.0" prefHeight="362.0" prefWidth="354.0">
                   <columns>
                     <TableColumn id="dualTabWordCol" prefWidth="75.0" text="Word" />
@@ -100,6 +100,6 @@
       </tabs>
     </TabPane>
     <Button id="returnMainButton" font="$x1" layoutX="625.0" layoutY="52.0" mnemonicParsing="false" onAction="#doReturn" text="Return to Main Menu" />
-    <Text fx:id="currentFileLabel" font="$x2" layoutX="212.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hold" />
+    <Text fx:id="currentFileLabel" font="$x2" layoutX="234.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hold" />
   </children>
 </fx:root>

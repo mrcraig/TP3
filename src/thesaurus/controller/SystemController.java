@@ -118,8 +118,7 @@ public class SystemController {
 	@FXML
 	protected void doSearchGraph() {
 		String searchText = searchBoxGraph.getText();
-		Vertex currentVertex = referenceWindow.getVisualisationRoot()
-				.getCurrentParser().getSynmsForOne(searchText);
+		Vertex currentVertex = referenceWindow.getVisualisationRoot().getCurrentParser().getSynmsForOne(searchText);
 		if (currentVertex == null){searchStatusLabel.setText("bleh");return;}
 		referenceWindow.getVisualisationRoot().setCurrentVertex(
 				referenceWindow.getVisualisationRoot().runSpringOnVertex(
