@@ -5,9 +5,7 @@ package thesaurus.parser;
 
 
 /*
- * getAll, getRange return a list of vertices
- * getTableData returns a dictionary of strings of the vertices
- * currently in use
+ * need to parse vertices first before edge
  */
 
 
@@ -15,37 +13,33 @@ public class Driver
 {
 	public static void main(String args[]){
 		
-		DOMParser read = new DOMParser("/resourcePackage/data.xml");
+		XmlRead read = new XmlRead("/resourcePackage/testAgain.xml");
 		//Parser read = new Parser("/resourcePackage/data.xml");
-		XmlFile add = new XmlFile("/resourcePackage/data.xml");
+		XmlWrite add = new XmlWrite("/resourcePackage/testAgain.xml");
 		
-		//System.out.println(read.getAllNodes());
-
+		//System.out.println(read.getSynmsForOne("Happy"));
+		
 		
 		/*
-		Vertex one = new Vertex("101");
-		Vertex two = new Vertex("102");
-		Vertex three = new Vertex("103");
-		//System.out.println(read.getAllNodes());
+		Vertex blue = new Vertex("0");
+		Vertex red = new Vertex("1");
+		Vertex green = new Vertex("2");
+		
+		blue.setWord("blue");
+		red.setWord("red");
+		green.setWord("green");
+		
+		blue.addToAdjList(blue);
+		red.addToAdjList(blue); red.addToAdjList(green);
+		green.addToAdjList(green); green.addToAdjList(blue); green.addToAdjList(red);
+		
+		add.addVertex(blue);
+		add.addVertex(red);
+		add.addVertex(green);  */
 		
 		
-		one.setWord("hot");
-		two.setWord("cold");
-		three.setWord("warm");
-		
-		one.addToAdjList(two);
-		one.addToAdjList(three);
-		
-		two.addToAdjList(one);
-	
-		add.addVertex(one);
-		add.addVertex(two);
-		add.addVertex(three);
-		*/
-		
-		
-		
-			
+		//need to get all vertices before edges?
+		System.out.println(read.getAllNodes());	
 			
 		}
 }

@@ -1,5 +1,6 @@
 package thesaurus.parser;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -14,14 +15,14 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class DOMParser
+public class XmlRead
 {
 	private Document xml;
 	private XPathFactory xfactory = XPathFactory.newInstance();
 	private XPath xpath = xfactory.newXPath();
 	private Graph nodes = new Graph();
 	
-	public DOMParser(String path)
+	public XmlRead(String path)
 	{
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		try 
@@ -105,6 +106,26 @@ public class DOMParser
 		}
 		this.nodes.setNodes(vertices);
 	}
+	
+	public LinkedList<Vertex> getSynmsFor(String s, int max)
+	{
+		return nodes.getSynmsFor(s, max);
+	}
+	
+	public Vertex getSynmsForOne(String s)
+	{
+		return nodes.getSynmsFor(s, 1).getFirst();
+	}
+ 	
+	public LinkedList<Vertex> getSynmsFor(String s){return getSynmsFor(s, 100);}
+		
+	//dictionary key is word, value is linkedlist of synomns	
+	public HashMap<String, LinkedList<String>> getTableData()
+	{
+		return nodes.getTableData();
+	}
+	
+	
 	
 	
 	private void getEdges()
