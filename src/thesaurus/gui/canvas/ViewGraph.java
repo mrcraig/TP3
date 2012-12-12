@@ -40,16 +40,30 @@ public class ViewGraph {
 		start();
 	}
 	
+	private void refresh(GraphicsContext gc){
+		gc.setFill(Color.WHITE);
+		gc.fillRect(0, 0, windowWidth, windowHeight);
+		gc.setFill(Color.BLACK);
+	}
+	
 	private void initialiseObjects(GraphicsContext gc){
+		main = null;
+		syn.clear();
+		refresh(gc);
 		
 		//Create main Node
 		main = new MainNode(vertex.getWord(),gc,(int) vertex.getPos().getX(),(int) vertex.getPos().getY());
 		
 		//Create Synonyms
-		for(int i=0;i<vertex.getAdjList().size();i++){
+		/*for(int i=0;i<vertex.getAdjList().size();i++){
 			syn.add(new SynonymNode(vertex.getAdjList().get(i).getWord(),gc,(int) vertex.getAdjList().get(i).getPos().getX(),(int) vertex.getAdjList().get(i).getPos().getY()));
 			syn.get(i).drawConnector(main);
 			syn.get(i).draw();
+		}*/
+		for(Vertex x:vertex.getAdjList()){
+			syn.add(new SynonymNode(x.getWord(),gc,(int) x.getPos().getX(), (int) x.getPos().getY()));
+			syn.getLast().drawConnector(main);
+			syn.getLast().draw();
 		}
 		main.draw();
 	}
@@ -91,18 +105,23 @@ public class ViewGraph {
 					
 					int xOffset = curX.get(0)-curX.get(1);
 					int yOffset = curY.get(0)-curY.get(1);
-					
-					for(int i=0;i<3;i++){
+					/*
+					for(SynonymNode s:syn){
+						s.setX(s.getX()-xOffset);
+						s.setY(s.getY()-yOffset);
+					}
+					*/
+					for(int i=0;i<syn.size();i++){
 						syn.get(i).setX(syn.get(i).getX()-xOffset);
 						syn.get(i).setY(syn.get(i).getY()-yOffset);
 						redrawSyn(i);
 					}
 					
-					for(int i=0;i<2;i++){
+					/*for(int i=0;i<;i++){
 						ant.get(i).setX(ant.get(i).getX()-xOffset);
 						ant.get(i).setY(ant.get(i).getY()-yOffset);
 						redrawAnt(i);
-					}
+					}*/
 					
 					main.setX(main.getX()-xOffset);
 					main.setY(main.getY()-yOffset);
