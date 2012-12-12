@@ -21,9 +21,9 @@ public class ViewGraph {
 	private int windowHeight = 316;
 	Vertex vertex;
 	
-	//Create 5 snyonym nodes for testing.
-	private SynonymNode syn[] = new SynonymNode[3];
-	private AntonymNode ant[] = new AntonymNode[2];
+	//Declare synonyms and antonym storage
+	private LinkedList<SynonymNode> syn = new LinkedList<SynonymNode>();
+	private LinkedList<AntonymNode> ant = new LinkedList<AntonymNode>();
 	private MainNode main;
 	private Canvas graph;
 	
@@ -39,6 +39,20 @@ public class ViewGraph {
 		this.vertex = vertex;
 		start();
 	}
+	
+	private void initialiseObjects(GraphicsContext gc){
+		
+		//Create main Node
+		main = new MainNode(vertex.getWord(),gc,(int) vertex.getPos().getX(),(int) vertex.getPos().getY());
+		
+		//Create Synonyms
+		for(int i=0;i<vertex.getAdjList().size();i++){
+			syn.add(new SynonymNode(vertex.getAdjList().get(i).getWord(),gc,(int) vertex.getAdjList().get(i).getPos().getX(),(int) vertex.getAdjList().get(i).getPos().getY()));
+			syn.get(i).drawConnector(main);
+			syn.get(i).draw();
+		}
+		main.draw();
+	}
 
 	/**
 	 * void start()
@@ -48,7 +62,8 @@ public class ViewGraph {
 	private void start() {
 		graph = new Canvas(windowWidth,windowHeight);
 		final GraphicsContext gc = graph.getGraphicsContext2D();
-		drawNodes(gc);
+		initialiseObjects(gc);
+		//drawNodes(gc);
 	
 		final LinkedList<Integer> curX = new LinkedList<Integer>();
 		final LinkedList<Integer> curY = new LinkedList<Integer>();
@@ -78,14 +93,14 @@ public class ViewGraph {
 					int yOffset = curY.get(0)-curY.get(1);
 					
 					for(int i=0;i<3;i++){
-						syn[i].setX(syn[i].getX()-xOffset);
-						syn[i].setY(syn[i].getY()-yOffset);
+						syn.get(i).setX(syn.get(i).getX()-xOffset);
+						syn.get(i).setY(syn.get(i).getY()-yOffset);
 						redrawSyn(i);
 					}
 					
 					for(int i=0;i<2;i++){
-						ant[i].setX(ant[i].getX()-xOffset);
-						ant[i].setY(ant[i].getY()-yOffset);
+						ant.get(i).setX(ant.get(i).getX()-xOffset);
+						ant.get(i).setY(ant.get(i).getY()-yOffset);
 						redrawAnt(i);
 					}
 					
@@ -126,22 +141,22 @@ public class ViewGraph {
 					//Something has been double clicked
 					//Check synonyms
 					for(int i=0;i<3;i++){
-						if((e.getX() > syn[i].getX()-37) && (e.getX() < syn[i].getX()+37)){
+						if((e.getX() > syn.get(i).getX()-37) && (e.getX() < syn.get(i).getX()+37)){
 							//Matches X
-							if((e.getY() > syn[i].getY()-13) && (e.getY() < syn[i].getY()+13)){
+							if((e.getY() > syn.get(i).getY()-13) && (e.getY() < syn.get(i).getY()+13)){
 								//Matches Y
-								System.out.println(syn[i].getValue());
+								System.out.println(syn.get(i).getValue());
 							}
 						}
 					}
 					
 					//Check antonyms
 					for(int i=0;i<2;i++){
-						if((e.getX() > ant[i].getX()-37) && (e.getX() < ant[i].getX()+37)){
+						if((e.getX() > ant.get(i).getX()-37) && (e.getX() < ant.get(i).getX()+37)){
 							//Matches X
-							if((e.getY() > ant[i].getY()-13) && (e.getY() < ant[i].getY()+13)){
+							if((e.getY() > ant.get(i).getY()-13) && (e.getY() < ant.get(i).getY()+13)){
 								//Matches Y
-								System.out.println(ant[i].getValue());
+								System.out.println(ant.get(i).getValue());
 							}
 						}
 					}
@@ -163,24 +178,14 @@ public class ViewGraph {
 		gc.setStroke(Color.BLACK);
 		gc.setLineWidth(3);
 		
-		/** Main Node Code */
-		main = new MainNode("Matthew",gc,(windowWidth/2),(windowHeight/2));
-		
-		syn[0] = new SynonymNode("Warm",gc,100,200);
-		syn[1] = new SynonymNode("Roasting",gc,300,100);
-		syn[2] = new SynonymNode("Boiling",gc,50,50);
-		
-		ant[0] = new AntonymNode("Cold",gc,500,150);
-		ant[1] = new AntonymNode("Freezing",gc,600,50);
-		
 		for(int i=0;i<3;i++){
-			syn[i].drawConnector(main);
-			syn[i].draw();
+			syn.get(i).drawConnector(main);
+			syn.get(i).draw();
 		}
 		
 		for(int i=0;i<2;i++){
-			ant[i].drawConnector(main);
-			ant[i].draw();
+			ant.get(i).drawConnector(main);
+			ant.get(i).draw();
 		}
 		
 		main.draw();
@@ -193,8 +198,8 @@ public class ViewGraph {
 	 * @param index
 	 */
 	private void redrawSyn(int index){
-		syn[index].drawConnector(main);
-		syn[index].draw();
+		syn.get(index).drawConnector(main);
+		syn.get(index).draw();
 	}
 	
 	/**
@@ -204,8 +209,8 @@ public class ViewGraph {
 	 * @param index
 	 */
 	private void redrawAnt(int index){
-		ant[index].drawConnector(main);
-		ant[index].draw();
+		ant.get(index).drawConnector(main);
+		ant.get(index).draw();
 	}
 	
 	/**

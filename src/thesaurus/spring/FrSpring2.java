@@ -19,8 +19,8 @@ public class FrSpring2 {
 
 
 	public FrSpring2(Vertex myVer) {
-		this.length = 900;
-		this.width = 1200;
+		this.length = 300;
+		this.width = 690;
 		this.temprature = ((double) this.width / 10);
 		this.area = (this.width) * (this.length);
 		this.myWord = myVer;
@@ -32,7 +32,7 @@ public class FrSpring2 {
 		for (int i = 0; i < this.size; i++) {
 			if (i == 0) {
 
-				lstVertices.get(i).setPos(create((double) (this.width / 3.0),((double) this.length / 3.0)));
+				lstVertices.get(i).setPos(create((double) (this.width / 2.0),((double) this.length / 2.0)));
 				lstVertices.get(i).setPDis(create(0, 0));
 				continue;													                 	// this is the center of the canvas
 			}
