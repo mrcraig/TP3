@@ -14,8 +14,8 @@ import javafx.stage.Stage;
 public class myMian extends Application {
 
 	Canvas graph;
-	int wid = 10000;
-	int len = 10000;
+	int wid = 1000;
+	int len = 1000;
 	static Vertex myW;
 
 	FrSpring2 fr;
@@ -52,7 +52,7 @@ public class myMian extends Application {
 
 		v1.addToAdjList(v2);
 		v1.addToAdjList(v3);
-		//v1.addToAdjList(v4);
+		// v1.addToAdjList(v4);
 		v1.addToAdjList(v5);
 		v1.addToAdjList(v6);
 		v1.addToAdjList(v7);
@@ -64,12 +64,12 @@ public class myMian extends Application {
 		v2.addToAdjList(v13);
 		v2.addToAdjList(v14);
 		v2.addToAdjList(v14);
-//
-//		v3.addToAdjList(v5);
-//		v3.addToAdjList(v11);
-//		v3.addToAdjList(v12);
-//		v3.addToAdjList(v13);
-//		v3.addToAdjList(v14);
+		//
+		// v3.addToAdjList(v5);
+		// v3.addToAdjList(v11);
+		// v3.addToAdjList(v12);
+		// v3.addToAdjList(v13);
+		// v3.addToAdjList(v14);
 		v3.addToAdjList(v6);
 		v3.addToAdjList(v15);
 		v3.addToAdjList(v17);
@@ -80,10 +80,10 @@ public class myMian extends Application {
 		v4.addToAdjList(v8);
 		v4.addToAdjList(v10);
 		v4.addToAdjList(v11);
-		
+
 		v5.addToAdjList(v2);
 		v5.addToAdjList(v4);
-		
+
 		v6.addToAdjList(v8);
 		v6.addToAdjList(v10);
 		v6.addToAdjList(v16);
@@ -100,23 +100,24 @@ public class myMian extends Application {
 		Group root = new Group();
 		graph = new Canvas(wid, len);
 		final GraphicsContext gc = graph.getGraphicsContext2D();
-		//drawShapes(gc, myW);
-		
-			for (Vertex x : fr.getVertices()) {
-				double sX =x.getPos().getX();
-				double sY =x.getPos().getY();
-				for (Vertex y : x.getAdjList()){
-					if (y.getPos() != null){
-					 double tX =y.getPos().getX();
-					 double tY =y.getPos().getY();
-				
-				gc.strokeLine(sX, sY, tX, tY);
-					}
+		// drawShapes(gc, myW);
+
+		for (Vertex x : fr.getVertices()) {
+			double sX = x.getPos().getX();
+			double sY = x.getPos().getY();
+			for (Vertex y : x.getAdjList()) {
+				if (y.getPos() != null) {
+					double tX = y.getPos().getX();
+					double tY = y.getPos().getY();
+
+					gc.strokeLine(sX, sY, tX, tY);
+				}
 			}
 		}
-			for (Vertex v : fr.getVertices()) {
-				drawShapes(gc, v);
-			}
+
+		for (Vertex v : fr.getVertices()) {
+			drawShapes(gc, v);
+		}
 		// for (Vertex v : fr.getVertices() ){
 		// for (Vertex x: v.getAdjList()){
 		// if (gc == null)System.out.println("I am null");
@@ -134,16 +135,24 @@ public class myMian extends Application {
 	private static void drawShapes(GraphicsContext gc, Vertex v) {
 		gc.setStroke(Color.RED);
 		gc.setFill(Color.WHITE);
-		gc.strokeOval((v.getPos().getX()-37),(v.getPos().getY()-13), 74, 36);
-		gc.fillOval((v.getPos().getX()-36),(v.getPos().getY()-12),72,34);	//Draw white oval overlapping to hide connector
+		gc.strokeOval((v.getPos().getX() - 37), (v.getPos().getY() - 13), 74,
+				36);
+		gc.fillOval((v.getPos().getX() - 36), (v.getPos().getY() - 12), 72, 34); // Draw
+																					// white
+																					// oval
+																					// overlapping
+																					// to
+																					// hide
+																					// connector
 		gc.setFill(Color.BLACK);
 		gc.setFont(new Font(14));
-		gc.fillText(v.getIndex(), (v.getPos().getX()-25), (v.getPos().getY()+10));
-//		if (v.equals(myW)) {
-//			gc.fillRect(v.getPos().getX(), v.getPos().getY(), 20, 20);
-//		} else {
-//			gc.fillOval(v.getPos().getX(), v.getPos().getY(), 20, 20);
-//		}
+		gc.fillText(v.getIndex(), (v.getPos().getX() - 25),
+				(v.getPos().getY() + 10));
+		// if (v.equals(myW)) {
+		// gc.fillRect(v.getPos().getX(), v.getPos().getY(), 20, 20);
+		// } else {
+		// gc.fillOval(v.getPos().getX(), v.getPos().getY(), 20, 20);
+		// }
 
 	}
 
