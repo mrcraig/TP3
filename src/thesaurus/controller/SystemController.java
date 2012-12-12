@@ -12,6 +12,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import thesaurus.gui.window.MainWindow;
+import thesaurus.gui.window.TutorialRoot;
 import thesaurus.gui.window.VisualisationRoot;
 import thesaurus.parser.Vertex;
 
@@ -43,39 +44,36 @@ public class SystemController {
 
 	@FXML
 	protected void doCreate() throws IOException {
-		
-		 FileChooser fileChooser = new FileChooser();
-		 FileChooser.ExtensionFilter graphmlFilter = new
-		 FileChooser.ExtensionFilter("GraphML files (*.graphml)",
-		 "*.graphml");
-		 FileChooser.ExtensionFilter xmlFilter = new
-		 FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
-		 fileChooser.getExtensionFilters().add(graphmlFilter);
-		 fileChooser.getExtensionFilters().add(xmlFilter);
-		 File file = fileChooser.showSaveDialog(referenceWindow.getStage());
-		
-		 if (file != null) {
-		 if(file.getName().endsWith(".graphml") ||
-		 file.getName().endsWith(".xml")){
-		 saveFile("", file);
-		 }
-		 else{
-		 System.out.println("Incorrect! ");
-		 saveFile("", file);
-		 }
-		 }
-		 else{
-		 return;
-		 }
-		
-		 VisualisationRoot visualisationRootCurrent = new
-		 VisualisationRoot(referenceWindow);
-		 referenceWindow.setVisualisationRoot(visualisationRootCurrent);
-		 referenceWindow.getStage().setScene(new
-		 Scene(visualisationRootCurrent, 800, 600));
-		 visualisationRootCurrent.setCurrentParser(file);
-		 setVisualisationFileName();
-		
+
+		FileChooser fileChooser = new FileChooser();
+		FileChooser.ExtensionFilter graphmlFilter = new FileChooser.ExtensionFilter(
+				"GraphML files (*.graphml)", "*.graphml");
+		FileChooser.ExtensionFilter xmlFilter = new FileChooser.ExtensionFilter(
+				"XML files (*.xml)", "*.xml");
+		fileChooser.getExtensionFilters().add(graphmlFilter);
+		fileChooser.getExtensionFilters().add(xmlFilter);
+		File file = fileChooser.showSaveDialog(referenceWindow.getStage());
+
+		if (file != null) {
+			if (file.getName().endsWith(".graphml")
+					|| file.getName().endsWith(".xml")) {
+				saveFile("", file);
+			} else {
+				System.out.println("Incorrect! ");
+				saveFile("", file);
+			}
+		} else {
+			return;
+		}
+
+		VisualisationRoot visualisationRootCurrent = new VisualisationRoot(
+				referenceWindow);
+		referenceWindow.setVisualisationRoot(visualisationRootCurrent);
+		referenceWindow.getStage().setScene(
+				new Scene(visualisationRootCurrent, 800, 600));
+		visualisationRootCurrent.setCurrentParser(file);
+		setVisualisationFileName();
+
 	}
 
 	@FXML
@@ -117,21 +115,33 @@ public class SystemController {
 	@FXML
 	protected void doSearchGraph() {
 		String searchText = searchBoxGraph.getText();
-		Vertex currentVertex = referenceWindow.getVisualisationRoot().getCurrentParser().getSynmsForOne(searchText);
-		referenceWindow.getVisualisationRoot().setCurrentVertex(referenceWindow.getVisualisationRoot().runSpringOnVertex(currentVertex));
+		Vertex currentVertex = referenceWindow.getVisualisationRoot()
+				.getCurrentParser().getSynmsForOne(searchText);
+		referenceWindow.getVisualisationRoot().setCurrentVertex(
+				referenceWindow.getVisualisationRoot().runSpringOnVertex(
+						currentVertex));
 		referenceWindow.getVisualisationRoot().addCanvas();
+	}
+
+	@FXML
+	protected void runTutorial() {
+		TutorialRoot tutorialRootCurrent = new TutorialRoot(
+				referenceWindow);
+		referenceWindow.setTutorialRootCurrent(tutorialRootCurrent);
+		referenceWindow.getStage().setScene(
+				new Scene(tutorialRootCurrent, 800, 600));
 	}
 
 	@FXML
 	protected void doAddWord() {
 		referenceWindow.getVisualisationRoot().showPopup("add");
 	}
-	
+
 	@FXML
 	protected void doEditWord() {
 		referenceWindow.getVisualisationRoot().showPopup("edit");
 	}
-	
+
 	@FXML
 	protected void doRemoveWord() {
 		referenceWindow.getVisualisationRoot().showPopup("remove");

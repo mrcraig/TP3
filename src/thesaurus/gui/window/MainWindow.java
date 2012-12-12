@@ -17,6 +17,7 @@ public class MainWindow extends Application {
 	private Stage stageCurrent;
 	private Scene splashSceneCurrent;
 	private VisualisationRoot visualisationRootCurrent;
+	private TutorialRoot tutorialRootCurrent;
 	private SystemController currentController;
 
 	public void launchProgram(String[] args){
@@ -59,6 +60,14 @@ public class MainWindow extends Application {
 
 	public void setCurrentController(SystemController currentControllerInput) {
 		currentController = currentControllerInput;
+	}
+
+	public TutorialRoot getTutorialRootCurrent() {
+		return tutorialRootCurrent;
+	}
+
+	public void setTutorialRootCurrent(TutorialRoot tutorialRootCurrent) {
+		this.tutorialRootCurrent = tutorialRootCurrent;
 	}
 
 }
