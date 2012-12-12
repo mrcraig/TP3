@@ -51,6 +51,7 @@ class SynonymNode extends SubNode {
 	protected void draw() {
 		getGc().setStroke(Color.GREEN);
 		getGc().setFill(Color.WHITE);
+		getGc().setLineWidth(3);
 		getGc().strokeOval((getX()-37),(getY()-13), 74, 36);
 		getGc().fillOval((getX()-36),(getY()-12),72,34);	//Draw white oval overlapping to hide connector
 		getGc().setFill(Color.BLACK);

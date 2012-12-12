@@ -28,6 +28,7 @@ public class MainNode extends Node {
 	protected void draw(){
 		getGc().setStroke(Color.BLACK);
 		getGc().setFill(Color.WHITE);
+		getGc().setLineWidth(3);
 		getGc().strokeOval((getX()-50),(getY()-25), 100, 50);
 		getGc().fillOval((getX()-49),(getY()-24),98,48);
 		getGc().setFill(Color.BLACK);
