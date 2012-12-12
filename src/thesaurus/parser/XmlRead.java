@@ -108,7 +108,8 @@ public class XmlRead
 	
 	public Vertex getSynmsForOne(String s)
 	{
-		return nodes.getSynmsFor(s, 1).getFirst();
+		if(nodes.getSynmsFor(s,1)!=null) return nodes.getSynmsFor(s, 1).getFirst();
+		return null;
 	}
  	
 	public LinkedList<Vertex> getSynmsFor(String s){return getSynmsFor(s, 100);}

@@ -54,8 +54,6 @@ public class Graph
 		return false;
 	}
 	
-	
-	/* if the xml is in the wrong order, this method will still work */
 	 Vertex getVertexFromIndex(String index)
 	{
 		for(Vertex v : nodes)
@@ -87,7 +85,6 @@ public class Graph
 			Vertex start = this.getVertexFromWord(s);
 			if(start==null) return null;
 			workQueue.add(start);
-			
 			while(!workQueue.isEmpty() && results.size()<max)
 			{
 				Vertex current = workQueue.remove();
