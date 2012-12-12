@@ -6,6 +6,7 @@
 
 package thesaurus.gui.canvas;
 
+import java.awt.geom.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -27,6 +28,10 @@ class SynonymNode extends SubNode {
 		super(value, gc, x, y);
 	}
 	
+	protected void drawConnector(Point2D point2d){
+		getGc().setStroke(Color.GREEN);
+		getGc().strokeLine(point2d.getX(), point2d.getY(), getX(), getY());
+	}
 
 	/**
 	 * void drawConnector()

@@ -60,10 +60,19 @@ public class ViewGraph {
 			syn.get(i).drawConnector(main);
 			syn.get(i).draw();
 		}*/
+		
+
+		
 		for(Vertex x:vertex.getAdjList()){
 			syn.add(new SynonymNode(x.getWord(),gc,(int) x.getPos().getX(), (int) x.getPos().getY()));
 			syn.getLast().drawConnector(main);
 			syn.getLast().draw();
+			
+			for(Vertex w:x.getAdjList()){
+				syn.add(new SynonymNode(w.getWord(),gc,(int) w.getPos().getX(), (int) w.getPos().getY()));
+				syn.getLast().drawConnector(x.getPos());
+				syn.getLast().draw();
+			}
 		}
 		main.draw();
 	}
@@ -105,12 +114,7 @@ public class ViewGraph {
 					
 					int xOffset = curX.get(0)-curX.get(1);
 					int yOffset = curY.get(0)-curY.get(1);
-					/*
-					for(SynonymNode s:syn){
-						s.setX(s.getX()-xOffset);
-						s.setY(s.getY()-yOffset);
-					}
-					*/
+
 					for(int i=0;i<syn.size();i++){
 						syn.get(i).setX(syn.get(i).getX()-xOffset);
 						syn.get(i).setY(syn.get(i).getY()-yOffset);
