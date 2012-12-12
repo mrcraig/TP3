@@ -26,8 +26,6 @@ public class XmlWrite {
 	
 	private Document xml;
 	private String path;
-	private XPathFactory xfactory = XPathFactory.newInstance();
-	private XPath xpath = xfactory.newXPath();
 	
 	public XmlWrite (String path)
 	{
@@ -44,31 +42,16 @@ public class XmlWrite {
 		}
 	}
 	
-	public String toString()
+	public void print()
 	{
 		NodeList n = this.xml.getElementsByTagName("data");
-		
 		for(int i=0;i<n.getLength();i++)
 		{
 			System.out.println(n.item(i).getTextContent());
 			
 		}
-		return null;
 	}
-	
-	/*
-	 * for adding, ndoe needs word and id.
-	 * id can get from number of nodes, and increment
-	 * go to last child
-	 * 
-	 * 
-	 * add node, add edge method
-	 * add vertex method
-	 */
-	
-	
-	
-	
+
 	public void addVertex(Vertex v)
 	{	
 		this.addNode(v.word, v.getIndex());
@@ -83,55 +66,27 @@ public class XmlWrite {
 	}
 	
 	
-	
    private void addEdge(String source, String target)
 	{
-	
-		
 		Element edge = this.xml.createElement("edge");
 		edge.setAttribute("source",source);
 		edge.setAttribute("target", target);
-		/*
-		//try and keep order smooth
-		if(lastEdge!=null)lastEdge.appendChild(edge);
-		else
-			this.xml.getElementsByTagName("graph").item(0).appendChild(edge);
-		*/
 		this.xml.getElementsByTagName("graph").item(0).appendChild(edge);
 	}
 	
-	
 	public void cleanXml() {}
 	
-	
-	private void addNode(String word, String index)
+	private void addNode(String word, String ID)
 	{
-		String newID = null;
-		
-		try {
-			XPathExpression expr = xpath.compile("//graphml/graph/node[position()=last()]");
-		Node result = (Node) expr.evaluate(this.xml,XPathConstants.NODE);
-		//String id = result.getAttributes().getNamedItem("id").getTextContent();
-		//int tempID = Integer.parseInt(id);
-		//tempID++;
-		//newID = Integer.toString(tempID);
-		} catch (XPathExpressionException e) {
-			e.printStackTrace();
-		}
-	
-	    newID = index;
 		Element node = this.xml.createElement("node");
 		Element data = this.xml.createElement("data");
-		node.setAttribute("id", newID);
+		node.setAttribute("id", ID);
 		data.setAttribute("key","w");
 		data.setTextContent(word);
 		node.appendChild(data);
 		this.xml.getElementsByTagName("graph").item(0).appendChild(node);
-		
 	}
-	
-	
-	//doesnt account for wrong order
+
 	private void checkNew()
 	{
 		if(this.xml.getElementsByTagName("graphml").getLength()==0)
@@ -162,30 +117,12 @@ public class XmlWrite {
 		try 
 		{
 			trans.transform(source, result);
-			//System.out.println("file saved to "+this.path);
 		} catch (TransformerException e) 
 		{
 				e.printStackTrace();
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 
 }

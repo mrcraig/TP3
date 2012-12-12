@@ -4,9 +4,6 @@ import java.util.LinkedList;
 
 
 
-/**
- class to represent a vertex in a graph
-*/
 public class Vertex {
    
     private LinkedList<Vertex> adjList ; 
@@ -15,7 +12,6 @@ public class Vertex {
     String word;
     private Point2D pos;
     private Point2D dis;
-    
     
     
     public boolean isVisited()
@@ -28,8 +24,6 @@ public class Vertex {
 		this.visited = visited;
 	}
 
-	
-    
     public Vertex(String i)
     {
     	adjList = new LinkedList<Vertex>();
@@ -49,9 +43,7 @@ public class Vertex {
     	StringBuilder sb = new StringBuilder();
     	sb.append("Vertex "); sb.append(this.index+" ");
     	sb.append(this.word +": ");
-    	int i=0;
-    
-    	for(Vertex n : this.adjList)
+     	for(Vertex n : this.adjList)
     	{
     		
     		sb.append(n.getWord());

@@ -1,5 +1,6 @@
 package thesaurus.parser;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -22,14 +23,14 @@ public class XmlRead
 	private XPath xpath = xfactory.newXPath();
 	private Graph nodes = new Graph();
 	
-	public XmlRead(String path)
+	public XmlRead(File f)
 	{
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		try 
 		{
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-			//this.xml = docBuilder.parse("/home/james/testml.xml");
-			this.xml = docBuilder.parse(getClass().getResource(path).getPath());
+			this.xml = docBuilder.parse("/home/james/GIT/myWorkspace/TP3/data.xml");
+			//this.xml = docBuilder.parse(getClass().getResource(f.getPath()).getPath());
 		
 		} catch (Exception e) 
 		{
@@ -40,9 +41,7 @@ public class XmlRead
 			getVertices();
 			getEdges();
 		}
-		
 	}
-	
 	
 	private boolean checkEmpty()
 	{
@@ -51,11 +50,9 @@ public class XmlRead
 			XPathExpression ml = xpath.compile("//graphml");
 			XPathExpression graph = xpath.compile("//graphml/graph");
 			XPathExpression nodes = xpath.compile("//graphml/graph/nodes");
-			
 		  NodeList listML  = (NodeList) ml.evaluate(this.xml, XPathConstants.NODESET);
 		  NodeList  listGraph = (NodeList) graph.evaluate(this.xml, XPathConstants.NODESET);
 		  NodeList  listNodes = (NodeList) nodes.evaluate(this.xml, XPathConstants.NODESET);
-		
 		  
 		  if(listML==null || listGraph==null || listNodes==null ) return true;
 		}
@@ -76,36 +73,33 @@ public class XmlRead
 	{
 		NodeList nodes = null;
 		LinkedList<Vertex> vertices = new LinkedList<Vertex>();
-		try {
+		try
+		{
 			XPathExpression expr = xpath.compile("//graphml/graph/node");
 		    nodes = (NodeList) expr.evaluate(this.xml, XPathConstants.NODESET);
-		} catch (XPathExpressionException e) {
+		} catch (XPathExpressionException e)
+		{
 			e.printStackTrace();
 		}
 		
-		//its looping through them all
-		Node n = null;
-		String id=null;
-		String word=null;
-		Vertex v=null;
 		for(int i=0;i<nodes.getLength();i++)
 		{
-			n = nodes.item(i);
-			id = n.getAttributes().getNamedItem("id").getTextContent();
-			v = new Vertex(id);
+			Node n = nodes.item(i);
+			String id = n.getAttributes().getNamedItem("id").getTextContent();
+			Vertex v = new Vertex(id);
 			for(int j=0;j<n.getChildNodes().getLength();j++)
 			{
 				Node d = n.getChildNodes().item(j);
 				if(d.getNodeName().equals("data"))
 				{
-					word = d.getTextContent();
+					String word = d.getTextContent();
 					v.setWord(word);
 				}
 			}
 			if(!this.nodes.contains(v)) vertices.add(v);
 		}
 		this.nodes.setNodes(vertices);
-	}
+	}	
 	
 	public LinkedList<Vertex> getSynmsFor(String s, int max)
 	{
@@ -118,8 +112,7 @@ public class XmlRead
 	}
  	
 	public LinkedList<Vertex> getSynmsFor(String s){return getSynmsFor(s, 100);}
-		
-	//dictionary key is word, value is linkedlist of synomns	
+	
 	public HashMap<String, LinkedList<String>> getTableData()
 	{
 		return nodes.getTableData();
@@ -146,8 +139,6 @@ public class XmlRead
 			String source = e.getAttributes().getNamedItem("source").getTextContent();
 			String target = e.getAttributes().getNamedItem("target").getTextContent();
 			Vertex v = nodes.getVertexFromIndex(source);
-			
-			//System.out.println("edge: "+v.getWord());
 			v.addToAdjList(nodes.getVertexFromIndex(target));
 		}
 	}
