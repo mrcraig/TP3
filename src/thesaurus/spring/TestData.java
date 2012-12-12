@@ -1,6 +1,6 @@
 package thesaurus.spring;
 
-//import thesaurus.parser.Vertex;
+import thesaurus.parser.Vertex;
 
 public class TestData {
 

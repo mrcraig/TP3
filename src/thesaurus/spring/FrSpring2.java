@@ -4,7 +4,7 @@ import java.awt.geom.Point2D;
 //import java.util.List;
 //import java.util.ArrayList;
 import java.util.LinkedList;
-//import thesaurus.parser.*;
+import thesaurus.parser.*;
 public class FrSpring2 {
 	private int length;
 	private int width;

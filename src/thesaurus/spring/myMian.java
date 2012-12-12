@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-
+import thesaurus.parser.*;
 public class myMian extends Application {
 
 	Canvas graph;
@@ -65,11 +65,11 @@ public class myMian extends Application {
 		v2.addToAdjList(v14);
 		v2.addToAdjList(v14);
 		//
-		// v3.addToAdjList(v5);
-		// v3.addToAdjList(v11);
-		// v3.addToAdjList(v12);
-		// v3.addToAdjList(v13);
-		// v3.addToAdjList(v14);
+//		v3.addToAdjList(v5);
+		 //v3.addToAdjList(v11);
+		 v3.addToAdjList(v12);
+		 v3.addToAdjList(v13);
+		 v3.addToAdjList(v14);
 		v3.addToAdjList(v6);
 		v3.addToAdjList(v15);
 		v3.addToAdjList(v17);
@@ -146,7 +146,7 @@ public class myMian extends Application {
 																					// connector
 		gc.setFill(Color.BLACK);
 		gc.setFont(new Font(14));
-		gc.fillText(v.getIndex(), (v.getPos().getX() - 25),
+		gc.fillText(v.getWord(), (v.getPos().getX() - 25),
 				(v.getPos().getY() + 10));
 		// if (v.equals(myW)) {
 		// gc.fillRect(v.getPos().getX(), v.getPos().getY(), 20, 20);
