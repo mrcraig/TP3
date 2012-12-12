@@ -13,11 +13,13 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import thesaurus.spring.Vertex;
 
 
 public class ViewGraph {
 	private int windowWidth = 700;
 	private int windowHeight = 316;
+	Vertex vertex;
 	
 	//Create 5 snyonym nodes for testing.
 	private SynonymNode syn[] = new SynonymNode[3];
@@ -31,9 +33,10 @@ public class ViewGraph {
 	 * @param width
 	 * @param height
 	 */
-	public ViewGraph(int width, int height){
+	public ViewGraph(int width, int height, Vertex vertex){
 		windowWidth = width;
 		windowHeight = height;
+		this.vertex = vertex;
 		start();
 	}
 
