@@ -37,6 +37,7 @@ public class XmlFile {
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			this.path = getClass().getResource(path).getPath();
 			this.xml = docBuilder.parse(getClass().getResource(path).getPath());
+			checkNew();
 		} catch (Exception e) 
 		{
 			e.printStackTrace();
@@ -134,6 +135,20 @@ public class XmlFile {
 	}
 	
 	
+	//doesnt account for wrong order
+	private void checkNew()
+	{
+		if(this.xml.getElementsByTagName("graphml").getLength()==0)
+		{
+			Element node = this.xml.createElement("graphml");
+			this.xml.appendChild(node);
+		}
+		if(this.xml.getElementsByTagName("graph").getLength()==0)
+		{
+			Element node = this.xml.createElement("graph");
+			xml.getElementsByTagName("graphml").item(0).appendChild(node);
+		}
+}
 	
 	private void saveFile()
 	{
