@@ -17,7 +17,6 @@ import org.w3c.dom.NodeList;
 public class DOMParser
 {
 	private Document xml;
-	private String path;
 	private XPathFactory xfactory = XPathFactory.newInstance();
 	private XPath xpath = xfactory.newXPath();
 	private Graph nodes = new Graph();
@@ -28,7 +27,7 @@ public class DOMParser
 		try 
 		{
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-			this.path = getClass().getResource(path).getPath();
+			//this.xml = docBuilder.parse("/home/james/testml.xml");
 			this.xml = docBuilder.parse(getClass().getResource(path).getPath());
 		
 		} catch (Exception e) 
@@ -56,7 +55,7 @@ public class DOMParser
 		  NodeList  listGraph = (NodeList) graph.evaluate(this.xml, XPathConstants.NODESET);
 		  NodeList  listNodes = (NodeList) nodes.evaluate(this.xml, XPathConstants.NODESET);
 		
-		  System.out.println(listNodes);
+		  
 		  if(listML==null || listGraph==null || listNodes==null ) return true;
 		}
 		catch (XPathExpressionException e) 
