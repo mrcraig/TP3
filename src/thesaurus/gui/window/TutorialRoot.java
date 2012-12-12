@@ -23,7 +23,7 @@ public class TutorialRoot extends AnchorPane {
 
 		currentController = referenceWindow.getCurrentController();
 
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resourcePackage/splashLayout.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resourcePackage/tutorialLayout.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(currentController);
 
