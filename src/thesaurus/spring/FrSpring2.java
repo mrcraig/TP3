@@ -19,21 +19,20 @@ public class FrSpring2 {
 
 
 	public FrSpring2(Vertex myVer) {
-		this.length = 800;
-		this.width = 800;
+		this.length = 900;
+		this.width = 1200;
 		this.temprature = ((double) this.width / 10);
 		this.area = (this.width) * (this.length);
 		this.myWord = myVer;
 		lstVertices = new LinkedList<Vertex>();
 		layerIndex = getVertex(this.myWord);			           	//add the vertices into arraylist
 		this.size =  this.lstVertices.size();
-
+		
 
 		for (int i = 0; i < this.size; i++) {
 			if (i == 0) {
 
-				lstVertices.get(i).setPos(create((double) this.length / 2.0,
-						((double) this.width) / 2.0));
+				lstVertices.get(i).setPos(create((double) (this.width / 2.0),((double) this.length / 3.0)));
 				lstVertices.get(i).setPDis(create(0, 0));
 				continue;													                 	// this is the center of the canvas
 			}
@@ -43,7 +42,7 @@ public class FrSpring2 {
 			lstVertices.get(i).setPos (create(myX, myY));    				//place vertices at random
 			lstVertices.get(i).setPDis(create(0, 0));						//initialize displacement of every vertex to 0
 
-			k = Math.sqrt(((double) this.area / (double) this.size));  // compute optimal pairwise distance
+			k = Math.sqrt(((double) this.area / (double) this.size)); k*=200; // compute optimal pairwise distance
 		}
 		mySpring();
 	}
@@ -51,7 +50,7 @@ public class FrSpring2 {
 
 
 	private void mySpring() {
-		for (int ite = 0; ite < 500000; ite++) {
+		for (int ite = 0; ite < 10000; ite++) {
 			for (Vertex v : this.lstVertices) {
 				v.getDis().setLocation(0, 0);
 				for (Vertex u : this.lstVertices) {
@@ -63,56 +62,68 @@ public class FrSpring2 {
 								.distanceSq(u.getPos()));				       // couldn't divided by zero use EPSILON  
 						double rforce = repulsionF(Math.abs(deltaLength));     // repulsion force (distance)
 						assert Double.isNaN(rforce) == false : "Unexpected mathematical result in FRSpring Layout:Spring [Repulsion force]";
-
+						
 						disX = (v.getDis().getX() + (disX * rforce));             // displacement of x
 						disY = (v.getDis().getY() + (disY * rforce));			  //  displacement of y
 						v.getDis().setLocation(disX,disY);
 					}
 				}
 			} // this is the end of the the loop that repulse every every vertex
-			for (int i = 0; i < this.layerIndex; i++) { // the edges of the graph
+			for (int i = 0; i < this.size; i++) { // the edges of the graph
 				Vertex source = this.lstVertices.get(i);
+				if (source.getPos() == null) continue;
 				for (Vertex target : source.getAdjList()){
 					if (target.equals(lstVertices.get(i)))continue;
+					if (target.getPos() == null) continue;
 					double disX = source.getPos().getX() - target.getPos().getX();
 					double disY = source.getPos().getY() - target.getPos().getY();
-				//	if (i != 0) this.k= this.k*10;
+									
 					double deltaLength = Math.max(EPSILON,
 							source.getPos().distanceSq(target.getPos()));
+					
 					double aforce = attractionF(Math.abs(deltaLength));          //compute attraction force
 					assert Double.isNaN(aforce) == false : "Unexpected mathematical result in FRSpring Layout:Spring[Attraction force]";
-
-
+					
+					double myAForce = 1;
+					if (i==0)  myAForce = aforce*50000;
+					if (i != 0) myAForce = aforce *25000;
 				//if(!(source.equals(lstVertices.get(0)))){
-						double sdisX = (source.getDis().getX() + (disX * aforce));					// displacement  edge x coordinate
-						double sdisY = (source.getDis().getY() + (disY * aforce));					// displacement edge y coordinate
+						double sdisX = (source.getDis().getX() - (disX * myAForce));					// displacement  edge x coordinate
+						double sdisY = (source.getDis().getY() - (disY * myAForce));					// displacement edge y coordinate
 						source.getDis().setLocation(sdisX, sdisY);//}
 
-					double tdisX = (target.getDis().getX() + (disX * aforce));					// displacement  edge x coordinate
-					double tdisY = (target.getDis().getY() + (disY * aforce));	
+					double tdisX = (target.getDis().getX() + (disX * myAForce));					// displacement  edge x coordinate
+					double tdisY = (target.getDis().getY() + (disY * myAForce));	
 					target.getDis().setLocation(tdisX, tdisY);
 				}
 			}
 
 			for (int j = 1; j < this.size; j++) {
 
-				double newXDisp = (this.lstVertices.get(j).getDis().getX() / Math.max(Math.abs(this.lstVertices.get(j).getDis().getX()),EPSILON )  )        //use temperature to scale x
-				* Math.min(Math.abs(this.lstVertices.get(j).getDis().getX()), temprature);
-
-				double newYDisp = (this.lstVertices.get(j).getDis().getY() /Math.max(Math.abs(this.lstVertices.get(j).getDis().getY()),EPSILON))          //use temperature to scale x
-				* Math.min(Math.abs(this.lstVertices.get(j).getDis().getY()), temprature);
-
+//				double newXDisp = (this.lstVertices.get(j).getDis().getX() / Math.max(Math.abs(this.lstVertices.get(j).getDis().getX()),EPSILON )  )        //use temperature to scale x
+//				* Math.min(Math.abs(this.lstVertices.get(j).getDis().getX()), temprature);
+//
+//				double newYDisp = (this.lstVertices.get(j).getDis().getY() /Math.max(Math.abs(this.lstVertices.get(j).getDis().getY()),EPSILON))          //use temperature to scale x
+//				* Math.min(Math.abs(this.lstVertices.get(j).getDis().getY()), temprature);
+				double deltaforce = Math.sqrt((this.lstVertices.get(j).getDis().getX()*this.lstVertices.get(j).getDis().getX())
+									+(this.lstVertices.get(j).getDis().getY()*this.lstVertices.get(j).getDis().getY()));
 				
 				
-				double newX = this.lstVertices.get(j).getPos().getX() + Math.max(-5, Math.min(5,newXDisp));				// adjust position  using displacement scaled by temperature
-				double newY = this.lstVertices.get(j).getPos().getY() + Math.max(-5, Math.min(5,newYDisp));
+				double newXDisp = (this.lstVertices.get(j).getDis().getX() / deltaforce)          //use temperature to scale x
+									* Math.min(deltaforce, temprature);
+				double newYDisp = (this.lstVertices.get(j).getDis().getY() / deltaforce)          //use temperature to scale x
+				* Math.min(deltaforce, temprature);
+				
+				
+				double newX = this.lstVertices.get(j).getPos().getX() + Math.max(-100, Math.min(100,newXDisp));				// adjust position  using displacement scaled by temperature
+				double newY = this.lstVertices.get(j).getPos().getY() + Math.max(-100, Math.min(100,newYDisp));
 
 				newX = Math.max(0, Math.min(newX, width));					// limit max displacement to frame
 				newY = Math.max(0, Math.min(newY, length));
 				this.lstVertices.get(j).getPos().setLocation(newX, newY); 
 
 			}
-			temprature *= (1.0 - ite / (double) 500000); // reduce temperature
+			temprature *= (1.0 - ite / (double) 10000); // reduce temperature
 		}
 		/* the is for test only, Begin testing */
 		double[][] tmp = new double[size][2];
@@ -140,12 +151,12 @@ public class FrSpring2 {
 	/* calculates repulsion force between non-adjacent vertices x is a distance calculated by pythagoras   */
 	private double repulsionF(double x) {
 
-		return (((k * k) / x)*5000);
+		return (((k * k) / x)*1000);
 	}
 
 	/* calculates attraction force between edges y is length of the edge*/
 	private double attractionF(double y) {
-		return ((y * y) / (k*50));
+		return (((y * y) / (k)));
 	}
 
 	/* create and returns coordinate points */
