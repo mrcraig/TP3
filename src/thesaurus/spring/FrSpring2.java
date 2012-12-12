@@ -32,7 +32,7 @@ public class FrSpring2 {
 		for (int i = 0; i < this.size; i++) {
 			if (i == 0) {
 
-				lstVertices.get(i).setPos(create((double) (this.width / 2.0),((double) this.length / 3.0)));
+				lstVertices.get(i).setPos(create((double) (this.width / 3.0),((double) this.length / 3.0)));
 				lstVertices.get(i).setPDis(create(0, 0));
 				continue;													                 	// this is the center of the canvas
 			}
@@ -52,29 +52,43 @@ public class FrSpring2 {
 	private void mySpring() {
 		for (int ite = 0; ite < 10000; ite++) {
 			for (Vertex v : this.lstVertices) {
-				v.getDis().setLocation(0, 0);
+				v.getDis().setLocation(0, 0); 
+				boolean v1_OnBorder = isOnBorder(v.getDis());
 				for (Vertex u : this.lstVertices) {
+					boolean u_OnBorder = isOnBorder(u.getDis());
+					if (v1_OnBorder & u_OnBorder)continue;
 					if (!(u.equals(v))) {
-
+						//boolean u_OnBorder = isOnBorder(u.getDis());
+						if (v1_OnBorder & u_OnBorder)continue;
 						double disX = v.getPos().getX() - u.getPos().getX();   // difference of x coordinate
 						double disY = v.getPos().getY() - u.getPos().getY();   // difference of y coordinate
 						double deltaLength = Math.max(EPSILON,  v.getPos()	   // if distance between vertices is zero, since  
 								.distanceSq(u.getPos()));				       // couldn't divided by zero use EPSILON  
 						double rforce = repulsionF(Math.abs(deltaLength));     // repulsion force (distance)
 						assert Double.isNaN(rforce) == false : "Unexpected mathematical result in FRSpring Layout:Spring [Repulsion force]";
-						
-						disX = (v.getDis().getX() + (disX * rforce));             // displacement of x
-						disY = (v.getDis().getY() + (disY * rforce));			  //  displacement of y
+						if ( u_OnBorder){
+							
+						disX = (v.getDis().getX() + (disX * 1000* rforce));             // displacement of x
+						disY = (v.getDis().getY() + (disY * 1000*rforce));			  //  displacement of y
 						v.getDis().setLocation(disX,disY);
+						}
+						else{
+							disX = (v.getDis().getX() + (disX * rforce));             // displacement of x
+							disY = (v.getDis().getY() + (disY *rforce));			  //  displacement of y
+							v.getDis().setLocation(disX,disY);
+						}
 					}
 				}
 			} // this is the end of the the loop that repulse every every vertex
 			for (int i = 0; i < this.size; i++) { // the edges of the graph
 				Vertex source = this.lstVertices.get(i);
+				
 				if (source.getPos() == null) continue;
+				boolean v_OnBorder = isOnBorder(source.getDis());
 				for (Vertex target : source.getAdjList()){
 					if (target.equals(lstVertices.get(i)))continue;
 					if (target.getPos() == null) continue;
+					boolean u_OnBorder = isOnBorder(target.getDis());
 					double disX = source.getPos().getX() - target.getPos().getX();
 					double disY = source.getPos().getY() - target.getPos().getY();
 									
@@ -85,17 +99,32 @@ public class FrSpring2 {
 					assert Double.isNaN(aforce) == false : "Unexpected mathematical result in FRSpring Layout:Spring[Attraction force]";
 					
 					double myAForce = 1;
-					if (i==0)  myAForce = aforce*50000;
-					if (i != 0) myAForce = aforce *25000;
+					if (i==0)  myAForce = aforce*53000;
+					if (i != 0) myAForce = aforce *23000;
 				//if(!(source.equals(lstVertices.get(0)))){
+					if (u_OnBorder){
+						double sdisX = (source.getDis().getX() - (disX *100* myAForce));					// displacement  edge x coordinate
+						double sdisY = (source.getDis().getY() - (disY*100 * myAForce));					// displacement edge y coordinate
+						source.getDis().setLocation(sdisX, sdisY);}
+					else
+					{
 						double sdisX = (source.getDis().getX() - (disX * myAForce));					// displacement  edge x coordinate
 						double sdisY = (source.getDis().getY() - (disY * myAForce));					// displacement edge y coordinate
-						source.getDis().setLocation(sdisX, sdisY);//}
-
+						source.getDis().setLocation(sdisX, sdisY);
+					}
+					
+					if (v_OnBorder){
+						double tdisX = (target.getDis().getX() + (disX *100* myAForce));					// displacement  edge x coordinate
+						double tdisY = (target.getDis().getY() + (disY *100* myAForce));	
+						target.getDis().setLocation(tdisX, tdisY);
+					}
+					else
+					{
 					double tdisX = (target.getDis().getX() + (disX * myAForce));					// displacement  edge x coordinate
 					double tdisY = (target.getDis().getY() + (disY * myAForce));	
 					target.getDis().setLocation(tdisX, tdisY);
 				}
+			}
 			}
 
 			for (int j = 1; j < this.size; j++) {
@@ -150,7 +179,7 @@ public class FrSpring2 {
 	/* calculates repulsion force between non-adjacent vertices x is a distance calculated by pythagoras   */
 	private double repulsionF(double x) {
 
-		return (((k * k) / x)*1000);
+		return (((k * k) / x)*1500);
 	}
 
 	/* calculates attraction force between edges y is length of the edge*/
@@ -186,6 +215,9 @@ public class FrSpring2 {
 	}
 public LinkedList<Vertex> getVertices(){
 	return this.lstVertices;
+}
+public boolean isOnBorder(Point2D x ){
+	return (x.getX()==0.0 || x.getY()==0.0||x.getX()==(double)this.width|| x.getY() == (double)this.length);
 }
 
 }
