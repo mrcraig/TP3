@@ -6,6 +6,8 @@ public class Driver
 	public static void main(String[] args)
 	{
 		XmlRead read = new XmlRead(null);
-		System.out.println(read.getSynmsForOne("hhkhk"));
+		System.out.println(read.getSynmsForOne("Peaceful"));
+		
+		
 	}
 }

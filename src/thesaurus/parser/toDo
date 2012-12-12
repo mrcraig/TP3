@@ -13,5 +13,8 @@ on how big the xml file is
 if xml file is empty, put in tags
 
 
+equals to ignoreEquals
+make sure all methods return null, not break
+
 
 do remove, edit
