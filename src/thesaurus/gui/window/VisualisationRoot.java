@@ -19,7 +19,7 @@ public class VisualisationRoot extends AnchorPane {
 
 	private MainWindow referenceWindow;
 	private SystemController currentController;
-	private Parser currentParser;
+	private XmlRead currentParser;
 	private LinkedList<Vertex> currentResults;
 	private File currentFile;
 	private Popup currentPopup;
@@ -55,7 +55,7 @@ public class VisualisationRoot extends AnchorPane {
 
 	public void setCurrentParser(File inputFile) {
 		setCurrentFile(inputFile);
-		currentParser = new Parser(inputFile);
+		currentParser = new XmlRead(inputFile);
 		System.out.println(inputFile.getAbsolutePath());
 	}
 
@@ -83,7 +83,7 @@ public class VisualisationRoot extends AnchorPane {
 		currentVertex = currentVertexInput;
 	}
 
-	public Parser getCurrentParser() {
+	public XmlRead getCurrentParser() {
 		return currentParser;
 	}
 

@@ -119,7 +119,7 @@ public class SystemController {
 	protected void doSearchGraph() {
 		String searchText = searchBoxGraph.getText();
 		Vertex currentVertex = referenceWindow.getVisualisationRoot().getCurrentParser().getSynmsForOne(searchText);
-		if (currentVertex == null){searchStatusLabel.setText("bleh");return;}
+		if (currentVertex == null){System.out.println("bleh");return;}
 		referenceWindow.getVisualisationRoot().setCurrentVertex(
 				referenceWindow.getVisualisationRoot().runSpringOnVertex(
 						currentVertex));
