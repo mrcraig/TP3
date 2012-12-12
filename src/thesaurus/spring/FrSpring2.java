@@ -100,20 +100,19 @@ public class FrSpring2 {
 
 			for (int j = 1; j < this.size; j++) {
 
-//				double newXDisp = (this.lstVertices.get(j).getDis().getX() / Math.max(Math.abs(this.lstVertices.get(j).getDis().getX()),EPSILON )  )        //use temperature to scale x
-//				* Math.min(Math.abs(this.lstVertices.get(j).getDis().getX()), temprature);
-//
-//				double newYDisp = (this.lstVertices.get(j).getDis().getY() /Math.max(Math.abs(this.lstVertices.get(j).getDis().getY()),EPSILON))          //use temperature to scale x
-//				* Math.min(Math.abs(this.lstVertices.get(j).getDis().getY()), temprature);
+
 				double deltaforce = Math.sqrt((this.lstVertices.get(j).getDis().getX()*this.lstVertices.get(j).getDis().getX())
 									+(this.lstVertices.get(j).getDis().getY()*this.lstVertices.get(j).getDis().getY()));
 				
-				
-				double newXDisp = (this.lstVertices.get(j).getDis().getX() / deltaforce)          //use temperature to scale x
+				double myDelta = Math.max(deltaforce, EPSILON);
+				double newXDisp = (this.lstVertices.get(j).getDis().getX() / myDelta)          //use temperature to scale x
 									* Math.min(deltaforce, temprature);
-				double newYDisp = (this.lstVertices.get(j).getDis().getY() / deltaforce)          //use temperature to scale x
-				* Math.min(deltaforce, temprature);
+				assert Double.isNaN(newXDisp) == false : "Unexpected mathematical result in FRSpring Layout:Spring [newXDisp]";
 				
+				
+				double newYDisp = (this.lstVertices.get(j).getDis().getY() / myDelta)          //use temperature to scale x
+				* Math.min(deltaforce, temprature);
+				assert Double.isNaN(newYDisp) == false : "Unexpected mathematical result in FRSpring Layout:Spring [newYDisp]";
 				
 				double newX = this.lstVertices.get(j).getPos().getX() + Math.max(-100, Math.min(100,newXDisp));				// adjust position  using displacement scaled by temperature
 				double newY = this.lstVertices.get(j).getPos().getY() + Math.max(-100, Math.min(100,newYDisp));
