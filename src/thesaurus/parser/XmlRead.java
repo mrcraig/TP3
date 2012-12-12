@@ -29,9 +29,9 @@ public class XmlRead
 		try 
 		{
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-			this.xml = docBuilder.parse("/home/james/GIT/myWorkspace/TP3/data.xml");
+			//this.xml = docBuilder.parse("/home/james/GIT/myWorkspace/TP3/data.xml");
 			//this.xml = docBuilder.parse(getClass().getResource(f.getPath()).getPath());
-		
+			this.xml = docBuilder.parse(f.getPath());
 		} catch (Exception e) 
 		{
 			e.printStackTrace();
