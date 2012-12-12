@@ -95,7 +95,7 @@ public class VisualisationRoot extends AnchorPane {
 		PopupFactory currentPopupFactory = new PopupFactory(inputChoice);
 		currentPopup = currentPopupFactory.getPopup();
 		currentPopup.show(referenceWindow.getStage());
-		currentPopup.setY(currentPopup.getY()+10);
+		currentPopup.setY(currentPopup.getY()+15);
 	}
 
 	public FrSpring2 getCurrentSpring() {
