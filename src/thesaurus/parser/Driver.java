@@ -13,7 +13,7 @@ public class Driver
 {
 	public static void main(String args[]){
 		
-		DOMParser read = new DOMParser("/resourcePackage/testAgain.xml");
+		XmlRead read = new XmlRead("/resourcePackage/testAgain.xml");
 		//Parser read = new Parser("/resourcePackage/data.xml");
 		XmlWrite add = new XmlWrite("/resourcePackage/testAgain.xml");
 		
