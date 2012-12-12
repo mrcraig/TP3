@@ -123,10 +123,12 @@ public class DOMParser
 		for(int i=0;i<edges.getLength();i++)
 		{
 			Node e = edges.item(i);
-			int source = Integer.parseInt(e.getAttributes().getNamedItem("source").getTextContent());
-			int target = Integer.parseInt(e.getAttributes().getNamedItem("target").getTextContent());
-			Vertex v = nodes.getVertex(source);
-			v.addToAdjList(nodes.getVertex(target));
+			String source = e.getAttributes().getNamedItem("source").getTextContent();
+			String target = e.getAttributes().getNamedItem("target").getTextContent();
+			Vertex v = nodes.getVertexFromIndex(source);
+			
+			//System.out.println("edge: "+v.getWord());
+			v.addToAdjList(nodes.getVertexFromIndex(target));
 		}
 	}
 	

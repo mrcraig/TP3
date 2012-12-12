@@ -34,24 +34,24 @@ public class Handler extends DefaultHandler
 		//need the nodes check to stop it trying to add to vertexs that don't exist
 		if(qname.equalsIgnoreCase("edge"))
 		{
-			int source = 0;
-			int target = 0;
+			String source = null;
+			String target = null;
 			for(int i=0;i<attributes.getLength();i++)
 			{
 				if(attributes.getQName(i).equalsIgnoreCase("source"))
 				{
-					source = Integer.parseInt(attributes.getValue(i));
+					source = attributes.getValue(i);
 				}
 				if(attributes.getQName(i).equalsIgnoreCase("target"))
 				{
-					target = Integer.parseInt(attributes.getValue(i));
+					target = attributes.getValue(i);
 				}
 			}
 			//check to see vertexs exist
-			if (nodes.getVertex(source)!=null && nodes.getVertex(target)!=null)
+			if (nodes.getVertexFromIndex(source)!=null && nodes.getVertexFromIndex(target)!=null)
 			{
-				Vertex v = nodes.getVertex(source);
-				v.addToAdjList(nodes.getVertex(target));
+				Vertex v = nodes.getVertexFromIndex(source);
+				v.addToAdjList(nodes.getVertexFromIndex(target));
 			}
 		}
 		if(qname.equalsIgnoreCase("data")) getWord = true;

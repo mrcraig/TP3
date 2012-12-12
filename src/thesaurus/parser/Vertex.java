@@ -10,7 +10,7 @@ import java.util.LinkedList;
 public class Vertex {
    
     private LinkedList<Vertex> adjList ; 
-    private int index; 
+    private String index; 
     private boolean visited = false;
     String word;
     private Point2D pos;
@@ -33,7 +33,7 @@ public class Vertex {
     public Vertex(String i)
     {
     	adjList = new LinkedList<Vertex>();
-    	index = Integer.valueOf(i);
+    	index = i;
     }    
     
     public String getWord() {
@@ -79,11 +79,11 @@ public class Vertex {
         return adjList;
     }
     
-    public int getIndex(){
+    public String getIndex(){
     	return index;
     }
     
-    public void setIndex(int n){
+    public void setIndex(String n){
     	index = n;
     }   
     

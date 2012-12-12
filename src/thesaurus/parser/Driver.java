@@ -15,17 +15,18 @@ public class Driver
 {
 	public static void main(String args[]){
 		
-		DOMParser read = new DOMParser("/resourcePackage/testAgain.xml");
-		XmlFile add = new XmlFile("/resourcePackage/testAgain.xml");
+		DOMParser read = new DOMParser("/resourcePackage/data.xml");
+		//Parser read = new Parser("/resourcePackage/data.xml");
+		XmlFile add = new XmlFile("/resourcePackage/data.xml");
 		
-		System.out.println(read.getAllNodes());
+		//System.out.println(read.getAllNodes());
 
 		
 		/*
 		Vertex one = new Vertex("101");
 		Vertex two = new Vertex("102");
 		Vertex three = new Vertex("103");
-		System.out.println(read.getAllNodes());
+		//System.out.println(read.getAllNodes());
 		
 		
 		one.setWord("hot");
@@ -40,8 +41,8 @@ public class Driver
 		add.addVertex(one);
 		add.addVertex(two);
 		add.addVertex(three);
-		
 		*/
+		
 		
 		
 			
