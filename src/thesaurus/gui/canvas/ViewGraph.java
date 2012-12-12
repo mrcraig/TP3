@@ -13,7 +13,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import thesaurus.spring.Vertex;
+import thesaurus.parser.Vertex;
 
 
 public class ViewGraph {
