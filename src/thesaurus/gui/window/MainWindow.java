@@ -30,6 +30,7 @@ public class MainWindow extends Application {
 
 		SplashRoot splashRootCurrent = new SplashRoot(this);
 		stageCurrent = stage;
+		stageCurrent.setResizable(false);
 		splashSceneCurrent = new Scene(splashRootCurrent);
 		stageCurrent.setScene(splashSceneCurrent);
 		stageCurrent.setTitle("The Graphical Thesaurus by Team O");
