@@ -35,6 +35,9 @@ public class SystemController {
 
 	@FXML
 	private Text currentFileLabel;
+	
+	@FXML
+	private Text searchStatusLabel;
 
 	MainWindow referenceWindow;
 
@@ -117,6 +120,7 @@ public class SystemController {
 		String searchText = searchBoxGraph.getText();
 		Vertex currentVertex = referenceWindow.getVisualisationRoot()
 				.getCurrentParser().getSynmsForOne(searchText);
+		if (currentVertex == null){searchStatusLabel.setText("bleh");return;}
 		referenceWindow.getVisualisationRoot().setCurrentVertex(
 				referenceWindow.getVisualisationRoot().runSpringOnVertex(
 						currentVertex));
