@@ -46,7 +46,7 @@ public class Graph
 	{
 		for(Vertex x : nodes)
 		{
-			if(v.getIndex()==x.getIndex())
+			if(v.getIndex().equals(x.getIndex()))
 			{
 				return true;
 			}
@@ -56,11 +56,11 @@ public class Graph
 	
 	
 	/* if the xml is in the wrong order, this method will still work */
-	 Vertex getVertex(int index)
+	 Vertex getVertexFromIndex(String index)
 	{
 		for(Vertex v : nodes)
 		{
-			if(v.getIndex()==index) return v;
+			if(v.getIndex().equals(index)) return v;
 		}
 		return null;
 	}
@@ -69,7 +69,7 @@ public class Graph
 	{
 		return nodes;
 	}
-	 Vertex getVertex(String word)
+	 Vertex getVertexFromWord(String word)
 	{
 		for(Vertex v : nodes)
 		{
@@ -84,7 +84,7 @@ public class Graph
 		{
 			LinkedList<Vertex> workQueue = new LinkedList<Vertex>();
 			LinkedList<Vertex> results = new LinkedList<Vertex>();
-			Vertex start = this.getVertex(s);
+			Vertex start = this.getVertexFromWord(s);
 			if(start==null) return null;
 			workQueue.add(start);
 			

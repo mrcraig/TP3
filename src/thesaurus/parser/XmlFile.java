@@ -72,11 +72,11 @@ public class XmlFile {
 	public void addVertex(Vertex v)
 	{	
 		this.addNode(v.word, v.getIndex());
-		String source = Integer.toString(v.getIndex());
+		String source = v.getIndex();
 		String target = null;
 		for(Vertex j : v.getAdjList())
 		{
-			target = Integer.toString(j.getIndex());
+			target = j.getIndex();
 			this.addEdge(source, target);
 		}
 		saveFile();
@@ -108,7 +108,7 @@ public class XmlFile {
 	public void cleanXml() {}
 	
 	
-	private void addNode(String word, int index)
+	private void addNode(String word, String index)
 	{
 		String newID = null;
 		
@@ -123,7 +123,7 @@ public class XmlFile {
 			e.printStackTrace();
 		}
 	
-	    newID = Integer.toString(index);
+	    newID = index;
 		Element node = this.xml.createElement("node");
 		Element data = this.xml.createElement("data");
 		node.setAttribute("id", newID);
