@@ -1,8 +1,11 @@
 package thesaurus.controller;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -152,8 +155,8 @@ public class SystemController {
 
 	private void saveFile(String content, File file) {
 		try {
-			FileWriter fileWriter = null;
-			fileWriter = new FileWriter(file);
+			OutputStreamWriter fileWriter;
+			fileWriter = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
 			fileWriter.write(content);
 			fileWriter.close();
 		} catch (IOException ex) {
