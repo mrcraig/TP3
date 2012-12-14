@@ -27,31 +27,14 @@ public class PopupFactory {
 	}
 	
 	private Pane makeCanvasAdd() {
-		Pane canvas = new Pane();
-		canvas.setPrefSize(200, 200);
-		Text addWordLabel = new Text();
-		addWordLabel.relocate(35, 10);
-		addWordLabel.setText("Add Word");
-		addWordLabel.setScaleX(2);
-		addWordLabel.setScaleY(2);
-		Text promptWordLabel = new Text();
-		promptWordLabel.relocate(10, 52);
-		promptWordLabel.setText("Word: ");
-		TextField addWordInput = new TextField();
-		addWordInput.setPrefWidth(120);
-		addWordInput.relocate(70, 50);
-		Text promptSynLabel = new Text();
-		promptSynLabel.relocate(10, 82);
-		promptSynLabel.setText("Synonyms: ");
-		TextField addSynInput = new TextField();
-		addSynInput.setPrefWidth(120);
-		addSynInput.relocate(70, 80);
-		Text promptAntLabel = new Text();
-		promptAntLabel.relocate(10, 112);
-		promptAntLabel.setText("Antonyms: ");
-		TextField addAntInput = new TextField();
-		addAntInput.setPrefWidth(120);
-		addAntInput.relocate(70, 110);
+		Pane canvas = getPane(200,200);
+		Text addWordLabel = getText(35,10,"Add Word",2);
+		Text promptWordLabel = getText(10,52,"Word: ",1);
+		TextField addWordInput = getTextField(70, 50, 120);
+		Text promptSynLabel = getText(10,82,"Synonyms: ",1);
+		TextField addSynInput = getTextField(70, 80, 120);
+		Text promptAntLabel = getText(10,112,"Antonyms: ",1);
+		TextField addAntInput = getTextField(70, 110, 120);
 		Button confirmButton = new Button();
 		confirmButton.setText("Confirm");
 		confirmButton.relocate(30, 160);
@@ -62,6 +45,7 @@ public class PopupFactory {
 			@Override
 			public void handle(ActionEvent event) {
 				currentPopup.hide();
+				currentPopup = null;
 			}
 		});
 		canvas.getChildren().addAll(addWordLabel, promptWordLabel,
@@ -73,31 +57,14 @@ public class PopupFactory {
 	}
 	
 	private Pane makeCanvasEdit() {
-		Pane canvas = new Pane();
-		canvas.setPrefSize(200, 200);
-		Text addWordLabel = new Text();
-		addWordLabel.relocate(35, 10);
-		addWordLabel.setText("Edit Word");
-		addWordLabel.setScaleX(2);
-		addWordLabel.setScaleY(2);
-		Text promptWordLabel = new Text();
-		promptWordLabel.relocate(10, 52);
-		promptWordLabel.setText("Word: ");
-		TextField addWordInput = new TextField();
-		addWordInput.setPrefWidth(120);
-		addWordInput.relocate(70, 50);
-		Text promptSynLabel = new Text();
-		promptSynLabel.relocate(10, 82);
-		promptSynLabel.setText("Synonyms: ");
-		TextField addSynInput = new TextField();
-		addSynInput.setPrefWidth(120);
-		addSynInput.relocate(70, 80);
-		Text promptAntLabel = new Text();
-		promptAntLabel.relocate(10, 112);
-		promptAntLabel.setText("Antonyms: ");
-		TextField addAntInput = new TextField();
-		addAntInput.setPrefWidth(120);
-		addAntInput.relocate(70, 110);
+		Pane canvas = getPane(200,200);
+		Text addWordLabel = getText(35,10,"Edit Word",2);
+		Text promptWordLabel = getText(10,52,"Word: ",1);
+		TextField addWordInput = getTextField(70, 50, 120);
+		Text promptSynLabel = getText(10,82,"Synonyms: ",1);
+		TextField addSynInput = getTextField(70, 80, 120);
+		Text promptAntLabel = getText(10,112,"Antonyms: ",1);
+		TextField addAntInput = getTextField(70, 110, 120);
 		Button confirmButton = new Button();
 		confirmButton.setText("Confirm");
 		confirmButton.relocate(30, 160);
@@ -108,6 +75,7 @@ public class PopupFactory {
 			@Override
 			public void handle(ActionEvent event) {
 				currentPopup.hide();
+				currentPopup = null;
 			}
 		});
 		canvas.getChildren().addAll(addWordLabel, promptWordLabel,
@@ -119,19 +87,10 @@ public class PopupFactory {
 	}
 	
 	private Pane makeCanvasRemove() {
-		Pane canvas = new Pane();
-		canvas.setPrefSize(200, 200);
-		Text addWordLabel = new Text();
-		addWordLabel.relocate(45, 10);
-		addWordLabel.setText("Remove Word");
-		addWordLabel.setScaleX(2);
-		addWordLabel.setScaleY(2);
-		Text promptWordLabel = new Text();
-		promptWordLabel.relocate(10, 52);
-		promptWordLabel.setText("Word: ");
-		TextField addWordInput = new TextField();
-		addWordInput.setPrefWidth(120);
-		addWordInput.relocate(70, 50);
+		Pane canvas = getPane(200,200);
+		Text addWordLabel = getText(45,10,"Remove Word",2);
+		Text promptWordLabel = getText(10,52,"Word: ",1);
+		TextField addWordInput = getTextField(70, 50, 120);
 		Button confirmButton = new Button();
 		confirmButton.setText("Confirm");
 		confirmButton.relocate(30, 160);
@@ -142,6 +101,7 @@ public class PopupFactory {
 			@Override
 			public void handle(ActionEvent event) {
 				currentPopup.hide();
+				currentPopup = null;
 			}
 		});
 		canvas.getChildren().addAll(addWordLabel, promptWordLabel,
@@ -153,6 +113,28 @@ public class PopupFactory {
 
 	public Popup getPopup() {
 		return currentPopup;
+	}
+	
+	private Pane getPane(int x, int y){
+		Pane currentCanvas = new Pane();
+		currentCanvas.setPrefSize(x, y);
+		return currentCanvas;
+	}
+	
+	private Text getText(int x, int y, String inputString, int scale){
+		Text currentWordLabel = new Text();
+		currentWordLabel.relocate(x, y);
+		currentWordLabel.setText(inputString);
+		currentWordLabel.setScaleX(scale);
+		currentWordLabel.setScaleY(scale);
+		return currentWordLabel;
+	}
+	
+	private TextField getTextField(int x, int y, int width){
+		TextField currentWordInput = new TextField();
+		currentWordInput.setPrefWidth(width);
+		currentWordInput.relocate(x, y);
+		return currentWordInput;
 	}
 
 }

@@ -2,10 +2,8 @@ package thesaurus.controller;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -51,22 +49,22 @@ public class SystemController {
 	@FXML
 	protected void doCreate() throws IOException {
 
-		FileChooser fileChooser = new FileChooser();
+		FileChooser currentFileChooser = new FileChooser();
 		FileChooser.ExtensionFilter graphmlFilter = new FileChooser.ExtensionFilter(
 				"GraphML files (*.graphml)", "*.graphml");
 		FileChooser.ExtensionFilter xmlFilter = new FileChooser.ExtensionFilter(
 				"XML files (*.xml)", "*.xml");
-		fileChooser.getExtensionFilters().add(graphmlFilter);
-		fileChooser.getExtensionFilters().add(xmlFilter);
-		File file = fileChooser.showSaveDialog(referenceWindow.getStage());
+		currentFileChooser.getExtensionFilters().add(graphmlFilter);
+		currentFileChooser.getExtensionFilters().add(xmlFilter);
+		File currentFile = currentFileChooser.showSaveDialog(referenceWindow.getStage());
 
-		if (file != null) {
-			if (file.getName().endsWith(".graphml")
-					|| file.getName().endsWith(".xml")) {
-				saveFile("", file);
+		if (currentFile != null) {
+			if (currentFile.getName().endsWith(".graphml")
+					|| currentFile.getName().endsWith(".xml")) {
+				saveFile("", currentFile);
 			} else {
 				System.out.println("Incorrect! ");
-				saveFile("", file);
+				saveFile("Woot", currentFile);
 			}
 		} else {
 			return;
@@ -77,7 +75,7 @@ public class SystemController {
 		referenceWindow.setVisualisationRoot(visualisationRootCurrent);
 		referenceWindow.getStage().setScene(
 				new Scene(visualisationRootCurrent, 800, 600));
-		visualisationRootCurrent.setCurrentParser(file);
+		visualisationRootCurrent.setCurrentParser(currentFile);
 		setVisualisationFileName();
 
 	}
