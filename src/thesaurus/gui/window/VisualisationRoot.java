@@ -22,7 +22,6 @@ public class VisualisationRoot extends AnchorPane {
 	private File currentFile;
 	private Popup currentPopup;
 	private Vertex currentVertex;
-	private FrSpring2 currentSpring;
 
 	public VisualisationRoot(MainWindow inputWindow) throws IOException {
 
@@ -43,6 +42,8 @@ public class VisualisationRoot extends AnchorPane {
 	}
 
 	public void addCanvas() {
+		currentController.getCanvasFullGraph().getChildren().removeAll(currentController.getCanvasFullGraph().getChildren());
+		currentController.getCanvasDualGraph().getChildren().removeAll(currentController.getCanvasDualGraph().getChildren());
 		ViewGraph displayGraphFull = new ViewGraph(750, 376,currentVertex);
 		ViewGraph displayGraphDual = new ViewGraph(354, 362,currentVertex);
 		currentController.getCanvasFullGraph().getChildren().add(displayGraphFull.returnGraph());
@@ -85,17 +86,9 @@ public class VisualisationRoot extends AnchorPane {
 		currentPopup.show(referenceWindow.getStage());
 		currentPopup.setY(currentPopup.getY()+15);
 	}
-
-	public FrSpring2 getCurrentSpring() {
-		return currentSpring;
-	}
-
-	public void setCurrentSpring(FrSpring2 currentSpringInput) {
-		currentSpring = currentSpringInput;
-	}
 	
 	public Vertex runSpringOnVertex(Vertex inputVertex){
-		currentSpring = new FrSpring2(inputVertex);
+		FrSpring2 currentSpring = new FrSpring2(inputVertex);
 		return currentSpring.getCoordinates();
 	}
 
