@@ -24,7 +24,7 @@ public class Driver
 		
 		//driver.removeVertex("happy");
 		
-		System.out.println(driver.getOneSynomyn("peaceful"));
+		System.out.println(driver.getOneSynomyn(""));
 		
 	}
 }
