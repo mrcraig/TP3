@@ -48,7 +48,7 @@ public class FrSpring2 {
 			lstVertices.get(i).setPDis(create(0, 0));
 								//initialize displacement of every vertex to 0
 
-			k = Math.sqrt(((double) this.area / (double) this.size)); k*=getCons(k)*10; // compute optimal pairwise distance
+			k = Math.sqrt(((double) this.area / (double) this.size)); k*=getCons(k); // compute optimal pairwise distance
 			//System.out.println(k);
 		}
 		//k=20576.906738115205;
@@ -62,7 +62,7 @@ public class FrSpring2 {
 
 
 	private void mySpring() {
-		for (int ite = 0; ite < (5000*size); ite++) {
+		for (int ite = 0; ite < (7000*size); ite++) {
 			for (Vertex v : this.lstVertices) {
 				v.getDis().setLocation(0, 0); 
 				//boolean v1_OnBorder = isOnBorder(v.getDis());
@@ -116,12 +116,15 @@ public class FrSpring2 {
 					
 					
 					for (Vertex myS : lstVertices.get(0).getAdjList()){
-						if (source.equals(myS)) myAForce = aforce*15000;
-						 else{ myAForce = aforce*5000;}
+						if (source.equals(myS)&& (!target.equals(myS))) myAForce = aforce*30;
+						
+						if (!source.equals(myS)) {myAForce = aforce*15;}
+						if (source.equals(myS) && target.equals(myS)) myAForce = aforce*60;break;
 					}
 					     
-					if (source.equals(lstVertices.get(0))){  myAForce = aforce*30000;}
-					//myAForce = aforce*52000;
+					if (source.equals(lstVertices.get(0))){  myAForce = aforce*150;}
+					
+					
 					
 				
 				if ((u_OnBorder) && (!(source.equals(lstVertices.get(0))))){
@@ -179,7 +182,7 @@ public class FrSpring2 {
 			}
 			
 			
-			temprature *= (1.0 - (ite / (double) (5000*size))); // reduce temperature
+			temprature *= (1.0 - (ite / (double) (7000*size))); // reduce temperature
 		}
 		/* the is for test only, Begin testing */
 		Point2D[] tmp = new Point2D[size];
@@ -225,7 +228,7 @@ public class FrSpring2 {
 	/* calculates repulsion force between non-adjacent vertices x is a distance calculated by pythagoras   */
 	private double repulsionF(double x) {
 
-		return (((k * k)/ x)*(size*500));
+		return (((k * k)/ x)*(size*0.5));
 	}
 
 	/* calculates attraction force between edges y is length of the edge*/
