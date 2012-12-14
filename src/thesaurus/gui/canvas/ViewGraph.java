@@ -123,7 +123,6 @@ public class ViewGraph {
 	private void start() {
 		graph = new Canvas(windowWidth,windowHeight);
 		gc = graph.getGraphicsContext2D();
-		System.out.println(vertex);
 		resetGraph();
 		drawGraph();
 		
