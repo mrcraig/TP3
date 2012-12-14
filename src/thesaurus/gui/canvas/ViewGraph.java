@@ -1,38 +1,23 @@
-/**
- * @author Team O
- * @title Graphical Thesaurus
- * @date 3/12/12
- */
-
 package thesaurus.gui.canvas;
 
-import java.util.LinkedList;
-
-import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import thesaurus.parser.Vertex;
 
-
 public class ViewGraph {
-	private int windowWidth = 700;
-	private int windowHeight = 316;
-	Vertex vertex;
+	private static final int SYNONYM = 1;
+	private static final int ANTONYM = 0;
 	
-	//Declare synonyms and antonym storage
-	private LinkedList<SynonymNode> syn = new LinkedList<SynonymNode>();
-	private LinkedList<AntonymNode> ant = new LinkedList<AntonymNode>();
-	private MainNode main;
+	private int windowWidth;
+	private int windowHeight;
+	private Vertex vertex;
 	private Canvas graph;
+	private GraphicsContext gc;
+	private int xOffset = 0;
+	private int yOffset = 0;
 	
-	/** 
-	 * Instantiates new instance of Graph
-	 * 
-	 * @param width
-	 * @param height
-	 */
 	public ViewGraph(int width, int height, Vertex vertex){
 		windowWidth = width;
 		windowHeight = height;
@@ -40,210 +25,94 @@ public class ViewGraph {
 		start();
 	}
 	
-	private void refresh(GraphicsContext gc){
-		gc.setFill(Color.WHITE);
-		gc.fillRect(0, 0, windowWidth, windowHeight);
-		gc.setFill(Color.BLACK);
-	}
-	
-	private void initialiseObjects(GraphicsContext gc){
-		main = null;
-		syn.clear();
-		refresh(gc);
-		
-		//Create main Node
-		main = new MainNode(vertex.getWord(),gc,(int) vertex.getPos().getX(),(int) vertex.getPos().getY());
-		
-		//Create Synonyms
-		/*for(int i=0;i<vertex.getAdjList().size();i++){
-			syn.add(new SynonymNode(vertex.getAdjList().get(i).getWord(),gc,(int) vertex.getAdjList().get(i).getPos().getX(),(int) vertex.getAdjList().get(i).getPos().getY()));
-			syn.get(i).drawConnector(main);
-			syn.get(i).draw();
-		}*/
-		
-
-		
-		for(Vertex x:vertex.getAdjList()){
-			syn.add(new SynonymNode(x.getWord(),gc,(int) x.getPos().getX(), (int) x.getPos().getY()));
-			syn.getLast().drawConnector(main);
-			syn.getLast().draw();
-			
-			for(Vertex w:x.getAdjList()){
-				syn.add(new SynonymNode(w.getWord(),gc,(int) w.getPos().getX(), (int) w.getPos().getY()));
-				syn.getLast().drawConnector(x.getPos());
-				syn.getLast().draw();
-			}
-		}
-		main.draw();
-	}
-
-	/**
-	 * void start()
-	 * 
-	 * Contains all methods and calls relating to graph drawing and control.
-	 */
-	private void start() {
-		graph = new Canvas(windowWidth,windowHeight);
-		final GraphicsContext gc = graph.getGraphicsContext2D();
-		initialiseObjects(gc);
-		//drawNodes(gc);
-	
-		final LinkedList<Integer> curX = new LinkedList<Integer>();
-		final LinkedList<Integer> curY = new LinkedList<Integer>();
-		
-		/**
-		 * Action Method
-		 * 
-		 * Updates coordinates of every element in graph based on mouse displacement.
-		 * Calls redraw functions for all items in graph.
-		 * (NOTE: Connector must be redrawn before the node.)
-		 */
-		graph.addEventHandler(MouseEvent.MOUSE_DRAGGED,
-				new EventHandler<MouseEvent>(){
-			public void handle(MouseEvent e){
-				
-				curX.add((int)e.getX());
-				curY.add((int)e.getY());
-				
-				
-				if(curX.size()>1){
-					//two positions added, move nodes.
-					gc.setFill(Color.WHITE);
-					gc.fillRect(0, 0, windowWidth, windowHeight);
-					gc.setFill(Color.BLACK);
-					
-					int xOffset = curX.get(0)-curX.get(1);
-					int yOffset = curY.get(0)-curY.get(1);
-
-					for(int i=0;i<syn.size();i++){
-						syn.get(i).setX(syn.get(i).getX()-xOffset);
-						syn.get(i).setY(syn.get(i).getY()-yOffset);
-						redrawSyn(i);
-					}
-					
-					/*for(int i=0;i<;i++){
-						ant.get(i).setX(ant.get(i).getX()-xOffset);
-						ant.get(i).setY(ant.get(i).getY()-yOffset);
-						redrawAnt(i);
-					}*/
-					
-					main.setX(main.getX()-xOffset);
-					main.setY(main.getY()-yOffset);
-					
-					main.draw();
-
-					curX.remove();
-					curY.remove();
-				}
-			}
-		});
-		
-		/**
-		 * Action Method
-		 * 
-		 * Resets cursor position on mouse release to prevent graph snapping when graph is next clicked
-		 */
-		graph.addEventHandler(MouseEvent.MOUSE_RELEASED, 
-				new EventHandler<MouseEvent>(){
-			public void handle(MouseEvent e){
-				/** Reset mouse storage */
-				curX.clear();
-				curY.clear();
-			}
-		});
-		
-		/**
-		 * Action Method
-		 * 
-		 * Used to detect nodes that have been double clicked. Will output node to redrawGraph function.
-		 */
-		graph.addEventHandler(MouseEvent.MOUSE_CLICKED,
-				new EventHandler<MouseEvent>(){
-			public void handle(MouseEvent e){
-				if(e.getClickCount()>1){
-					//Something has been double clicked
-					//Check synonyms
-					for(int i=0;i<3;i++){
-						if((e.getX() > syn.get(i).getX()-37) && (e.getX() < syn.get(i).getX()+37)){
-							//Matches X
-							if((e.getY() > syn.get(i).getY()-13) && (e.getY() < syn.get(i).getY()+13)){
-								//Matches Y
-								System.out.println(syn.get(i).getValue());
-							}
-						}
-					}
-					
-					//Check antonyms
-					for(int i=0;i<2;i++){
-						if((e.getX() > ant.get(i).getX()-37) && (e.getX() < ant.get(i).getX()+37)){
-							//Matches X
-							if((e.getY() > ant.get(i).getY()-13) && (e.getY() < ant.get(i).getY()+13)){
-								//Matches Y
-								System.out.println(ant.get(i).getValue());
-							}
-						}
-					}
-				}
-			}
-		});
-		
-	}
-	
-	/**
-	 * void drawNodes()
-	 * 
-	 * Initialises SynonymNode, AntonymNode and MainNode variables, and calls draw methods to display.
-	 * (NOTE: Connectors must be displayed before nodes are displayed.)
-	 * 
-	 * @param gc
-	 */
-	private void drawNodes(GraphicsContext gc){
-		gc.setStroke(Color.BLACK);
-		gc.setLineWidth(3);
-		
-		for(int i=0;i<3;i++){
-			syn.get(i).drawConnector(main);
-			syn.get(i).draw();
-		}
-		
-		for(int i=0;i<2;i++){
-			ant.get(i).drawConnector(main);
-			ant.get(i).draw();
-		}
-		
-		main.draw();
-	}
-	
-	/**
-	 * void redrawSyn()
-	 * 
-	 * Draws SynonymNode with index 'index'
-	 * @param index
-	 */
-	private void redrawSyn(int index){
-		syn.get(index).drawConnector(main);
-		syn.get(index).draw();
-	}
-	
-	/**
-	 * void redrawAnt()
-	 * 
-	 * Draws AntonymNode with index 'index'
-	 * @param index
-	 */
-	private void redrawAnt(int index){
-		ant.get(index).drawConnector(main);
-		ant.get(index).draw();
-	}
-	
-	/**
-	 * Canvas returnGraph()
-	 * 
-	 * Returns Canvas object 'graph'
-	 * @return graph
-	 */
 	public Canvas returnGraph(){
 		return graph;
 	}
 	
+	private void drawMainNode(Vertex v){
+		gc.setStroke(Color.BLACK);
+		gc.setFill(Color.WHITE);
+		gc.setLineWidth(3);
+		gc.strokeOval((v.getPos().getX()-50+xOffset),(v.getPos().getY()-25+yOffset), 100+xOffset, 50+yOffset);
+		gc.fillOval((v.getPos().getX()-49+xOffset),(v.getPos().getY()-24+yOffset),98+xOffset,48+yOffset);
+		gc.setFill(Color.BLACK);
+		gc.setFont(new Font(20));
+		gc.fillText(v.getWord(), (v.getPos().getX()-34+xOffset), (v.getPos().getY()+5+yOffset));
+	}
+	
+	private void drawSynNode(Vertex v){
+		gc.setStroke(Color.GREEN);
+		gc.setFill(Color.WHITE);
+		gc.setLineWidth(3);
+		gc.strokeOval((v.getPos().getX()-37+xOffset),(v.getPos().getY()-13+yOffset), 74+xOffset, 36+yOffset);
+		gc.fillOval((v.getPos().getX()-36+xOffset),(v.getPos().getY()-12+yOffset),72+xOffset,34+yOffset);
+		gc.setFill(Color.BLACK);
+		gc.setFont(new Font(14));
+		gc.fillText(v.getWord(), (v.getPos().getX()-25+xOffset), (v.getPos().getY()+10+yOffset));
+	}
+	
+	private void drawAntNode(Vertex v){
+		gc.setStroke(Color.RED);
+		gc.setFill(Color.WHITE);
+		gc.setLineWidth(3);
+		gc.strokeOval((v.getPos().getX()-37+xOffset),(v.getPos().getX()-13+yOffset), 74+xOffset, 36+yOffset);
+		gc.fillOval((v.getPos().getX()-36+xOffset),(v.getPos().getY()-12+yOffset),72+xOffset,34+yOffset);	
+		gc.setFill(Color.BLACK);
+		gc.setFont(new Font(14));
+		gc.fillText(v.getWord(), (v.getPos().getX()-25+xOffset), (v.getPos().getY()+10+yOffset));
+	}
+	
+	private void drawConnector(double x1, double y1, double x2, double y2, int type){
+		if(type==1){
+			//Synonym
+			gc.setStroke(Color.GREEN);
+		} else {
+			//Antonym
+			gc.setStroke(Color.RED);
+		}
+		
+		gc.setLineWidth(3);
+		gc.strokeLine(x1, y1, x2, y2);
+	}
+	
+	private void drawGraph(){
+		
+		//Draw connectors
+			//Synonyms
+			double mainX = vertex.getPos().getX();
+			double mainY = vertex.getPos().getY();
+			
+			for(Vertex v:vertex.getAdjList()){
+				//Draw connector main node to synonym
+				double childX = v.getPos().getX();
+				double childY = v.getPos().getY();
+				drawConnector(childX,childY,mainX,mainY,SYNONYM);
+				//Draw connector synonym to its synonyms
+				if(v.getAdjList().size()!=0){
+					for(Vertex c:v.getAdjList()){
+						drawConnector(childX,childY,c.getPos().getX(),c.getPos().getY(),SYNONYM);
+					}
+				}
+			}
+			
+			//Draw synonym nodes
+			for(Vertex v:vertex.getAdjList()){
+				drawSynNode(v);
+				if(v.getAdjList().size()!=0){
+					for(Vertex c:v.getAdjList()){
+						drawSynNode(c);
+					}
+				}
+			}
+		
+		//Draw main node
+		drawMainNode(vertex);
+		
+	}
+	
+	private void start() {
+		graph = new Canvas(windowWidth,windowHeight);
+		gc = graph.getGraphicsContext2D();
+		drawGraph();
+	}
 }
