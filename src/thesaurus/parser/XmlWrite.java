@@ -3,7 +3,7 @@ package thesaurus.parser;
 
 import java.io.File;
 
-import javax.xml.parsers.*;
+
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -17,11 +17,9 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import javax.xml.xpath.*;
 public class XmlWrite {
 	
 	private Document xml;
@@ -37,7 +35,7 @@ public class XmlWrite {
 			path = f.getPath();
 			this.nodes = nodes;
 			this.xml = docBuilder.parse(path);
-			System.out.println(f.getPath());	
+			checkNew();
 		} 
 		catch (Exception e) 
 		{

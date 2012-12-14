@@ -18,7 +18,13 @@ public class InternalRepresentation
 		write = new XmlWrite(f, nodes);
 		
 	}
-	
+	/**
+	 * Adds a vertex to the xml file. The synomyns
+	 * must be valid vertices in the xml, too.
+	 * 
+	 * @param w			The word belonging to the vertex
+	 * @param synomyns	The synonyms for the vertex 
+	 */
 	public void addVertex(String w, String[] synomyns)
 	{
 		String index = read.getLastVertexIndex();
@@ -34,11 +40,26 @@ public class InternalRepresentation
 		write.addVertex(n);
 	}
 	
+	/**
+	 * Edits the word of a vertex. This method
+	 * edits the word directly, it doesn't create a new vertex
+	 * and delete the old one.
+	 * 
+	 * @param oldWord The current word of the vertex to be edited
+	 * @param newWord The new word you wish the vertex to contain
+	 */
+	
 	public void editVertex(String oldWord, String newWord)
 	{
 		write.editVertex(oldWord, newWord);
 	}
 	
+	/**
+	 * Removes a vertex from the xml file, including
+	 * all the relevant edges.
+	 * 
+	 * @param w the word belonging to the vertex to be deleted.
+	 */
 	public void removeVertex(String w)
 	{
 		write.removeVertex(w);

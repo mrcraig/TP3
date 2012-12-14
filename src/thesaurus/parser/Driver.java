@@ -1,7 +1,7 @@
 package thesaurus.parser;
 
 import java.io.File;
-import java.util.LinkedList;
+
 
 public class Driver 
 {

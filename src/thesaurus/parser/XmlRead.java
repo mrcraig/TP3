@@ -1,7 +1,6 @@
 package thesaurus.parser;
 
 import java.io.File;
-import java.util.HashMap;
 import java.util.LinkedList;
 
 import javax.xml.parsers.DocumentBuilder;
