@@ -34,6 +34,11 @@ public class InternalRepresentation
 		write.addVertex(n);
 	}
 	
+	public void editVertex(String oldWord, String newWord)
+	{
+		write.editVertex(oldWord, newWord);
+	}
+	
 	public void removeVertex(String w)
 	{
 		write.removeVertex(w);
