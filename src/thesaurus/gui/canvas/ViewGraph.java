@@ -1,7 +1,9 @@
 package thesaurus.gui.canvas;
 
+import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import thesaurus.parser.Vertex;
@@ -110,9 +112,26 @@ public class ViewGraph {
 		
 	}
 	
+	private void resetGraph(){
+		gc.setFill(Color.WHITE);
+		gc.fillRect(0, 0, windowWidth, windowHeight);
+		gc.setFill(Color.BLACK);
+	}
+	
 	private void start() {
 		graph = new Canvas(windowWidth,windowHeight);
 		gc = graph.getGraphicsContext2D();
+		resetGraph();
 		drawGraph();
+		
+		/**
+		 * Action Methods
+		 
+		graph.addEventHandler(MouseEvent.MOUSE_DRAGGED,
+				new EventHandler<MouseEvent>(){
+			public void handle(MouseEvent e){
+				
+			}
+		});*/
 	}
 }
