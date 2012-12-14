@@ -8,6 +8,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import thesaurus.gui.window.VisualisationRoot;
 import thesaurus.parser.Vertex;
 
 public class ViewGraph {
@@ -17,15 +18,17 @@ public class ViewGraph {
 	private int windowWidth;
 	private int windowHeight;
 	private Vertex vertex;
+	private VisualisationRoot vr;
 	private Canvas graph;
 	private GraphicsContext gc;
 	private int xOffset = 0;
 	private int yOffset = 0;
 	
-	public ViewGraph(int width, int height, Vertex vertex){
+	public ViewGraph(int width, int height, Vertex vertex, VisualisationRoot vr){
 		windowWidth = width;
 		windowHeight = height;
 		this.vertex = vertex;
+		this.vr = vr;
 		start();
 	}
 	
@@ -157,6 +160,35 @@ public class ViewGraph {
 			public void handle(MouseEvent e){
 				curX.clear();
 				curY.clear();
+			}
+		});
+		
+		graph.addEventHandler(MouseEvent.MOUSE_CLICKED, 
+				new EventHandler<MouseEvent>(){
+			public void handle(MouseEvent e){
+				if(e.getClickCount()==2){
+					//On double click, search for clicked node
+					double clickX = e.getX() + xOffset;
+					double clickY = e.getY() + yOffset;
+					
+					for(Vertex v:vertex.getAdjList()){
+						if((clickX > v.getPos().getX()-37) && clickX < (v.getPos().getX() + 37)){
+							if((clickY > v.getPos().getY()-13) && clickY < (v.getPos().getY()+13)){
+								//found.
+								System.out.println(v.getWord());
+							}
+						}
+						//child nodes to go here.
+						for(Vertex c:v.getAdjList()){
+							if((clickX > c.getPos().getX()-37) && clickX < (c.getPos().getX() + 37)){
+								if((clickY > c.getPos().getY()-13) && clickY < (c.getPos().getY()+13)){
+									//found.
+									System.out.println(c.getWord());
+								}
+							}
+						}
+					}
+				}
 			}
 		});
 	}
