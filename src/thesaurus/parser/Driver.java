@@ -8,7 +8,7 @@ public class Driver
 
 	public static void main(String[] args)
 	{
-		File test = new File("/home/james/GIT/myWorkspace/TP3/data.xml");
+		File test = new File("/home/james/GIT/myWorkspace/TP3/data.graphml");
 		System.out.println(test.getAbsolutePath());
 		InternalRepresentation driver = new InternalRepresentation(test);
 		

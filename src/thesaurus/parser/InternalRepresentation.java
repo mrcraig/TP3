@@ -9,7 +9,7 @@ public class InternalRepresentation
 	private Graph nodes = new Graph();
 	private XmlRead read;
 	private XmlWrite write;
-	private String path;
+
 	
 	public InternalRepresentation(File f)
 	{
@@ -34,7 +34,7 @@ public class InternalRepresentation
 		write.addVertex(n);
 	}
 	
-	
+	/* facade pattern */
 	public LinkedList<Vertex> getSynmsFor(String s, int max)
 	{
 		return nodes.getSynmsFor(s, max);
