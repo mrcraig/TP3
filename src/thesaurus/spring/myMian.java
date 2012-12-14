@@ -101,7 +101,7 @@ public class myMian extends Application {
 		v12.addToAdjList(v15);
 		//v5.addToAdjList(v6);
 		
-		fr = new FrSpring2(v2);
+		fr = new FrSpring2(v1);
 		// fr.getPositions();
 		// fr.test();
 
