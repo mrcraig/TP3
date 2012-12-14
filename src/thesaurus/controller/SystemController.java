@@ -89,7 +89,7 @@ public class SystemController {
 		FileChooser currentFileChooser = getFileChooser();
 		File file = currentFileChooser.showOpenDialog(referenceWindow.getStage());
 		if (file != null) {
-			System.out.println(file.getAbsolutePath());
+			//System.out.println(file.getAbsolutePath());
 		} else {
 			return;
 		}
@@ -108,8 +108,8 @@ public class SystemController {
 
 		searchBoxGraph.setOnKeyReleased(new EventHandler<KeyEvent>() {
 			@Override
-			public void handle(KeyEvent ke) {
-				if (ke.getCode().equals(KeyCode.ENTER)) {
+			public void handle(KeyEvent keyInput) {
+				if (keyInput.getCode().equals(KeyCode.ENTER)) {
 					doSearchGraph("graph");
 				}
 			}
@@ -117,8 +117,8 @@ public class SystemController {
 		
 		searchBoxTable.setOnKeyReleased(new EventHandler<KeyEvent>() {
 			@Override
-			public void handle(KeyEvent ke) {
-				if (ke.getCode().equals(KeyCode.ENTER)) {
+			public void handle(KeyEvent keyInput) {
+				if (keyInput.getCode().equals(KeyCode.ENTER)) {
 					doSearchGraph("table");
 				}
 			}
@@ -126,8 +126,8 @@ public class SystemController {
 		
 		searchBoxDual.setOnKeyReleased(new EventHandler<KeyEvent>() {
 			@Override
-			public void handle(KeyEvent ke) {
-				if (ke.getCode().equals(KeyCode.ENTER)) {
+			public void handle(KeyEvent keyInput) {
+				if (keyInput.getCode().equals(KeyCode.ENTER)) {
 					doSearchGraph("dual");
 				}
 			}
@@ -161,9 +161,7 @@ public class SystemController {
 		else if(choiceString.equals("dual")){
 			searchText = searchBoxDual.getText();
 		}
-		System.out.println(searchText);
 		Vertex currentVertex = referenceWindow.getVisualisationRoot().getCurrentParser().getOneSynomyn(searchText);
-		System.out.println(currentVertex);
 		if (currentVertex == null) {
 			return;
 		}
@@ -177,7 +175,7 @@ public class SystemController {
 	}
 
 	@FXML
-	protected void runTutorial() {
+	protected void doRunTutorial() {
 		TutorialRoot tutorialRootCurrent = new TutorialRoot(referenceWindow);
 		referenceWindow.setTutorialRootCurrent(tutorialRootCurrent);
 		referenceWindow.getStage().setScene(new Scene(tutorialRootCurrent, 800, 600));
@@ -217,7 +215,7 @@ public class SystemController {
 		return canvasDualGraph;
 	}
 
-	public void setVisualisationFileName() {
+	private void setVisualisationFileName() {
 		currentFileLabel.setText(referenceWindow.getVisualisationRoot().getCurrentFile().getName());
 	}
 	

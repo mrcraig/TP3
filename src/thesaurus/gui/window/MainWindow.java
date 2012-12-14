@@ -15,7 +15,8 @@ import javafx.scene.image.Image;
 public class MainWindow extends Application {
 
 	private Stage stageCurrent;
-	private Scene splashSceneCurrent;
+	private Scene splashRootScene;
+	private SplashRoot splashRootCurrent;
 	private VisualisationRoot visualisationRootCurrent;
 	private TutorialRoot tutorialRootCurrent;
 	private SystemController currentController;
@@ -28,11 +29,11 @@ public class MainWindow extends Application {
 
 		setCurrentController(new SystemController(this));
 
-		SplashRoot splashRootCurrent = new SplashRoot(this);
+		splashRootCurrent = new SplashRoot(this);
 		stageCurrent = stage;
 		stageCurrent.setResizable(false);
-		splashSceneCurrent = new Scene(splashRootCurrent);
-		stageCurrent.setScene(splashSceneCurrent);
+		splashRootScene = new Scene(splashRootCurrent);
+		stageCurrent.setScene(splashRootScene);
 		stageCurrent.setTitle("The Graphical Thesaurus by Team O");
 		stageCurrent.getIcons().add(new Image("file:/../src/resourcePackage/o.png"));
 		stageCurrent.show();
@@ -43,8 +44,12 @@ public class MainWindow extends Application {
 		return stageCurrent;
 	}
 
+	public SplashRoot getSplashRoot(){
+		return splashRootCurrent;
+	}
+	
 	public Scene getSplashScene(){
-		return splashSceneCurrent;
+		return splashRootScene;
 	}
 
 	public void setVisualisationRoot(VisualisationRoot inputRoot){

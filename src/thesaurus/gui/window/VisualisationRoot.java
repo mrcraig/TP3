@@ -53,7 +53,6 @@ public class VisualisationRoot extends AnchorPane {
 	public void setCurrentParser(File inputFile) {
 		setCurrentFile(inputFile);
 		currentParser = new InternalRepresentation(inputFile);
-		System.out.println(inputFile.getAbsolutePath());
 	}
 
 	public File getCurrentFile() {
@@ -62,10 +61,6 @@ public class VisualisationRoot extends AnchorPane {
 
 	public void setCurrentFile(File currentFileInput) {
 		currentFile = currentFileInput;
-	}
-	
-	public Vertex getCurrentVertex() {
-		return currentVertex;
 	}
 
 	public void setCurrentVertex(Vertex currentVertexInput) {
@@ -94,7 +89,6 @@ public class VisualisationRoot extends AnchorPane {
 	
 	public void doClickSearchGraph(String inputString) {
 		Vertex currentVertex = referenceWindow.getVisualisationRoot().getCurrentParser().getOneSynomyn(inputString);
-		System.out.println(currentVertex);
 		if (currentVertex == null) {
 			return;
 		}
