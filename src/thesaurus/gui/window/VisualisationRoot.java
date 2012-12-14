@@ -44,8 +44,8 @@ public class VisualisationRoot extends AnchorPane {
 	public void addCanvas() {
 		currentController.getCanvasFullGraph().getChildren().removeAll(currentController.getCanvasFullGraph().getChildren());
 		currentController.getCanvasDualGraph().getChildren().removeAll(currentController.getCanvasDualGraph().getChildren());
-		ViewGraph displayGraphFull = new ViewGraph(750, 376,currentVertex);
-		ViewGraph displayGraphDual = new ViewGraph(354, 362,currentVertex);
+		ViewGraph displayGraphFull = new ViewGraph(750, 376,currentVertex, referenceWindow.getVisualisationRoot());
+		ViewGraph displayGraphDual = new ViewGraph(354, 362,currentVertex, referenceWindow.getVisualisationRoot());
 		currentController.getCanvasFullGraph().getChildren().add(displayGraphFull.returnGraph());
 		currentController.getCanvasDualGraph().getChildren().add(displayGraphDual.returnGraph());
 	}
@@ -90,6 +90,16 @@ public class VisualisationRoot extends AnchorPane {
 	public Vertex runSpringOnVertex(Vertex inputVertex){
 		FrSpring2 currentSpring = new FrSpring2(inputVertex);
 		return currentSpring.getCoordinates();
+	}
+	
+	public void doClickSearchGraph(String inputString) {
+		Vertex currentVertex = referenceWindow.getVisualisationRoot().getCurrentParser().getOneSynomyn(inputString);
+		System.out.println(currentVertex);
+		if (currentVertex == null) {
+			return;
+		}
+		referenceWindow.getVisualisationRoot().setCurrentVertex(referenceWindow.getVisualisationRoot().runSpringOnVertex(currentVertex));
+		referenceWindow.getVisualisationRoot().addCanvas();
 	}
 
 }
