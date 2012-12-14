@@ -8,6 +8,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import thesaurus.gui.window.VisualisationRoot;
 import thesaurus.parser.Vertex;
 
@@ -44,7 +45,8 @@ public class ViewGraph {
 		gc.fillOval((v.getPos().getX()-49-xOffset),(v.getPos().getY()-24-yOffset),98,48);
 		gc.setFill(Color.BLACK);
 		gc.setFont(new Font(20));
-		gc.fillText(v.getWord(), (v.getPos().getX()-34-xOffset), (v.getPos().getY()+5-yOffset));
+		gc.setTextAlign(TextAlignment.CENTER);
+		gc.fillText(v.getWord(), (v.getPos().getX()-xOffset), (v.getPos().getY()+5-yOffset));
 	}
 	
 	private void drawSynNode(Vertex v){
@@ -57,7 +59,8 @@ public class ViewGraph {
 		gc.fillOval((v.getPos().getX()+1-(nodeWidth/2)-xOffset),(v.getPos().getY()-12-yOffset),nodeWidth-2,34);
 		gc.setFill(Color.BLACK);
 		gc.setFont(new Font(14));
-		gc.fillText(v.getWord(), (v.getPos().getX()-22-(nodeWidth/20)-xOffset), (v.getPos().getY()+10-yOffset));
+		gc.setTextAlign(TextAlignment.CENTER);
+		gc.fillText(v.getWord(), (v.getPos().getX()-xOffset), (v.getPos().getY()+10-yOffset));
 	}
 	
 	/*private void drawAntNode(Vertex v){
@@ -179,6 +182,7 @@ public class ViewGraph {
 						if((clickX > v.getPos().getX()-nodeWidth) && clickX < (v.getPos().getX() + nodeWidth)){
 							if((clickY > v.getPos().getY()-13) && clickY < (v.getPos().getY()+13)){
 								//found.
+								System.out.println(v.getWord());
 								vr.doClickSearchGraph(v.getWord());
 							}
 						}
@@ -188,6 +192,7 @@ public class ViewGraph {
 							if((clickX > c.getPos().getX()-nodeWidth) && clickX < (c.getPos().getX() + nodeWidth)){
 								if((clickY > c.getPos().getY()-13) && clickY < (c.getPos().getY()+13)){
 									//found.
+									System.out.println(c.getWord());
 									vr.doClickSearchGraph(c.getWord());
 								}
 							}
