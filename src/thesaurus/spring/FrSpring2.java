@@ -41,8 +41,8 @@ public class FrSpring2 {
 																	                 	// this is the center of the canvas
 			}
 			
-			 myX = Math.random() * this.width/2;    
-			 myY = Math.random() * this.length/2;	
+			 myX = Math.random() * this.width;    
+			 myY = Math.random() * this.length;	
 			// System.out.println(myX/width+ " "+myY/length);
 			lstVertices.get(i).setPos (create(myX, myY));    				//place vertices at random
 			lstVertices.get(i).setPDis(create(0, 0));
@@ -116,13 +116,13 @@ public class FrSpring2 {
 					
 					
 					for (Vertex myS : lstVertices.get(0).getAdjList()){
-						if (source.equals(myS)&& (!target.equals(myS))) myAForce = aforce*30;
+						if (source.equals(myS)&& (!target.equals(myS))) myAForce = aforce*0;
 						
-						if (!source.equals(myS)) {myAForce = aforce*15;}
-						if (source.equals(myS) && target.equals(myS)) myAForce = aforce*60;break;
+						if (!source.equals(myS)) {myAForce = aforce*20;}
+						if (source.equals(myS) && target.equals(myS)) myAForce = aforce*800;break;
 					}
 					     
-					if (source.equals(lstVertices.get(0))){  myAForce = aforce*150;}
+					if (source.equals(lstVertices.get(0))){  myAForce = aforce*400;}
 					
 					
 					
@@ -172,11 +172,11 @@ public class FrSpring2 {
 				* Math.min(deltaforce, temprature);
 				assert Double.isNaN(newYDisp) == false : "Unexpected mathematical result in FRSpring Layout:Spring [newYDisp]";
 				
-				double newX = this.lstVertices.get(j).getPos().getX() +Math.max(-100, Math.min(100,newXDisp));				// adjust position  using displacement scaled by temperature
-				double newY = this.lstVertices.get(j).getPos().getY() +Math.max(-100, Math.min(100,newYDisp));
+				double newX = this.lstVertices.get(j).getPos().getX() +newXDisp;				// adjust position  using displacement scaled by temperature
+				double newY = this.lstVertices.get(j).getPos().getY() +newYDisp;
 
-				newX = Math.max(j+27, Math.min(newX, width));					// limit max displacement to frame
-				newY = Math.max(j+27, Math.min(newY, length));
+				newX = Math.max(30, Math.min(newX, width));					// limit max displacement to frame
+				newY = Math.max(30, Math.min(newY, length));
 				this.lstVertices.get(j).getPos().setLocation(newX, newY); 
 
 			}
@@ -209,6 +209,9 @@ public class FrSpring2 {
 				}
 			}
 
+		}
+		for(Vertex ve: this.lstVertices){
+			ve.setVisited(false);
 		}
 		System.out.println("Replicated coordinates =" +count);
 		if (count != 0)	mySpring();
@@ -251,9 +254,10 @@ public class FrSpring2 {
 			this.lstVertices.addLast(ver); ver.setVisited(true);count++;}
 			for (Vertex inVer : ver.getAdjList()){
 				if (!(inVer.isVisited())){
-				this.lstVertices.addLast(inVer);inVer.setVisited(true);count++;}
+				this.lstVertices.addLast(inVer);inVer.setVisited(true);count++;;}
 			}
 		}
+			
 		return count;
 	}
 
