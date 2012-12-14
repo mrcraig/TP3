@@ -42,7 +42,7 @@
       <tabs>
         <Tab id="graphicalTab" text="Graphical">
           <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="430.0" prefWidth="710.0">
+            <AnchorPane id="graphicalTabContent" minHeight="0.0" minWidth="0.0" prefHeight="430.0" prefWidth="710.0" style="fx-background-color: #F2F2F2;">
               <children>
                 <Pane fx:id="canvasFullGraph" prefHeight="375.0" prefWidth="750.0" />
                 <Button font="$x1" layoutX="415.0" layoutY="400.0" mnemonicParsing="false" onAction="#doAddWord" prefWidth="100.0" text="Add" />
@@ -58,7 +58,7 @@
         </Tab>
         <Tab id="tableTab" text="Table">
           <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="538.0">
+            <AnchorPane id="tableTabContent" minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="538.0">
               <children>
                 <TextField fx:id="searchBoxTable" layoutX="58.0" layoutY="400.0" prefWidth="200.0" />
                 <Button font="$x1" layoutX="265.0" layoutY="400.0" mnemonicParsing="false" text="Go" />
@@ -78,7 +78,7 @@
         </Tab>
         <Tab id="tableTab" text="Dual-View">
           <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="538.0">
+            <AnchorPane id="dualTabContent" minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="538.0">
               <children>
                 <TextField fx:id="searchBoxDual" layoutX="58.0" layoutY="400.0" prefWidth="200.0" />
                 <Button font="$x1" layoutX="265.0" layoutY="400.0" mnemonicParsing="false" text="Go" />

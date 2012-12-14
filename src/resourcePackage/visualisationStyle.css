@@ -6,6 +6,17 @@
 	-fx-font-family: "Georgia";
 }
 
+#graphicalTabContent {
+	-fx-background-color: #f2f2f2;
+}
+
+#tableTabContent {
+	-fx-background-color: #f2f2f2;
+}
+
+#dualTabContent {
+	-fx-background-color: #f2f2f2;
+}
 
 #tableTab {
 	-fx-font-family: "Georgia";
