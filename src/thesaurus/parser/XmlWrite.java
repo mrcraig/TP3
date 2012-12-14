@@ -27,7 +27,7 @@ public class XmlWrite {
 	private Document xml;
 	private String path;
 	
-	public XmlWrite (File f)
+	public XmlWrite (File f, Graph nodes)
 	{
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		try 
@@ -54,9 +54,9 @@ public class XmlWrite {
 		}
 	}
 
-	public void addVertexToXml(Vertex v)
+	public void addVertex(Vertex v)
 	{	
-		this.addNode(v.word, v.getIndex());
+		this.addNode(v.getWord(), v.getIndex());
 		String source = v.getIndex();
 		String target = null;
 		for(Vertex j : v.getAdjList())
@@ -66,6 +66,8 @@ public class XmlWrite {
 		}
 		saveFile();
 	}
+	
+
 	
 	
    private void addEdge(String source, String target)

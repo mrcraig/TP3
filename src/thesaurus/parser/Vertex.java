@@ -9,7 +9,7 @@ public class Vertex {
     private LinkedList<Vertex> adjList ; 
     private String index; 
     private boolean visited = false;
-    String word;
+    private String word;
     private Point2D pos;
     private Point2D dis;
     
@@ -28,7 +28,8 @@ public class Vertex {
     {
     	adjList = new LinkedList<Vertex>();
     	index = i;
-    }    
+    }  
+    
     
     public String getWord() {
 		return word;

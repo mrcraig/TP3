@@ -43,6 +43,25 @@ public class XmlRead
 		}
 	}
 	
+	String getLastVertexIndex()
+	{
+		String newID = null;
+		try
+		{
+			XPathExpression expr = xpath.compile("//graphml/graph/node[position()=last()]");
+			Node result = (Node) expr.evaluate(this.xml,XPathConstants.NODE);
+			String id = result.getAttributes().getNamedItem("id").getTextContent();
+			int tempID = Integer.parseInt(id);
+			tempID++;
+			newID = Integer.toString(tempID);
+		} 
+		catch (XPathExpressionException e)
+		{
+			e.printStackTrace();
+		}
+		return newID;
+	}
+	
 	private boolean checkEmpty()
 	{
 		try 
@@ -101,23 +120,7 @@ public class XmlRead
 		this.nodes.setNodes(vertices);
 	}	
 	
-	public LinkedList<Vertex> getSynmsFor(String s, int max)
-	{
-		return nodes.getSynmsFor(s, max);
-	}
-	
-	public Vertex getSynmsForOne(String s)
-	{
-		if(nodes.getSynmsFor(s,1)!=null) return nodes.getSynmsFor(s, 1).getFirst();
-		return null;
-	}
- 	
-	public LinkedList<Vertex> getSynmsFor(String s){return getSynmsFor(s, 100);}
-	
-	public HashMap<String, LinkedList<String>> getTableData()
-	{
-		return nodes.getTableData();
-	}
+
 	
 	
 	

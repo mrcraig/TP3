@@ -10,25 +10,17 @@ public class Driver
 	{
 		File test = new File("/home/james/GIT/myWorkspace/TP3/data.xml");
 		System.out.println(test.getAbsolutePath());
-		XmlRead read = new XmlRead(test);
-		XmlWrite write = new XmlWrite(test);
-		System.out.println(read.getSynmsForOne("content"));
+		InternalRepresentation driver = new InternalRepresentation(test);
+		
+		String[] synomyns = new String[3];
+		synomyns[0] = "happy";
+		synomyns[1] = "content";
+		synomyns[2] = "joyful";
+		
+		//driver.addVertex("friday", synomyns);
 		
 		
-		Vertex v = new Vertex("8");
-		v.setWord("Content");
-		
-		Graph nodes = new Graph();
-		nodes.setNodes(read.getAllNodes());
-		Vertex p = nodes.getVertexFromWord("Peaceful");
-		Vertex h = nodes.getVertexFromWord("happy");
-		v.addToAdjList(p);
-		v.addToAdjList(h);
-		
-		//write.addVertex(v);
-		
-		
-		
+		System.out.println(driver.getSynmsForOne("friday"));
 		
 	}
 }
