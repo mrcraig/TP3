@@ -33,7 +33,7 @@ public class FrSpring2 {
 		double myY=0.0;
 		for (int i = 0; i < this.size; i++) {
 			if (i == 0) {
-				 myX = ((double) (this.width) / 1.5);    
+				 myX = ((double) (this.width) / 2.0);    
 				 myY = (((double) this.length) / 2.0);	
 				lstVertices.get(i).setPos(create(myX,myY));
 				lstVertices.get(i).setPDis(create(0, 0));
@@ -48,7 +48,7 @@ public class FrSpring2 {
 			lstVertices.get(i).setPDis(create(0, 0));
 								//initialize displacement of every vertex to 0
 
-			k = Math.sqrt(((double) this.area / (double) this.size)); k*=getCons(k); // compute optimal pairwise distance
+			k = Math.sqrt(((double) this.area / (double) this.size)); k*=getCons(k)*2; // compute optimal pairwise distance
 			//System.out.println(k);
 		}
 		//k=20576.906738115205;
@@ -154,7 +154,7 @@ public class FrSpring2 {
 			}
 			}
 
-			for (int j = 0; j < this.size; j++) {
+			for (int j = 1; j < this.size; j++) {
                 
 				if (this.lstVertices.get(j).equals(myWord))continue;
 				
