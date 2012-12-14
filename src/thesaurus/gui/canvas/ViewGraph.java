@@ -48,14 +48,16 @@ public class ViewGraph {
 	}
 	
 	private void drawSynNode(Vertex v){
+		int nodeWidth = v.getWord().length() * 10;
+		
 		gc.setStroke(Color.BLACK);
 		gc.setFill(Color.rgb(191, 247, 176));
 		gc.setLineWidth(3);
-		gc.strokeOval((v.getPos().getX()-37-xOffset),(v.getPos().getY()-13-yOffset), 74, 36);
-		gc.fillOval((v.getPos().getX()-36-xOffset),(v.getPos().getY()-12-yOffset),72,34);
+		gc.strokeOval((v.getPos().getX()-(nodeWidth/2)-xOffset),(v.getPos().getY()-13-yOffset), nodeWidth, 36);
+		gc.fillOval((v.getPos().getX()+1-(nodeWidth/2)-xOffset),(v.getPos().getY()-12-yOffset),nodeWidth-2,34);
 		gc.setFill(Color.BLACK);
 		gc.setFont(new Font(14));
-		gc.fillText(v.getWord(), (v.getPos().getX()-25-xOffset), (v.getPos().getY()+10-yOffset));
+		gc.fillText(v.getWord(), (v.getPos().getX()-22-(nodeWidth/20)-xOffset), (v.getPos().getY()+10-yOffset));
 	}
 	
 	/*private void drawAntNode(Vertex v){
@@ -172,7 +174,9 @@ public class ViewGraph {
 					double clickY = e.getY() + yOffset;
 					
 					for(Vertex v:vertex.getAdjList()){
-						if((clickX > v.getPos().getX()-37) && clickX < (v.getPos().getX() + 37)){
+						double nodeWidth = v.getWord().length() * 5;
+						
+						if((clickX > v.getPos().getX()-nodeWidth) && clickX < (v.getPos().getX() + nodeWidth)){
 							if((clickY > v.getPos().getY()-13) && clickY < (v.getPos().getY()+13)){
 								//found.
 								vr.doClickSearchGraph(v.getWord());
@@ -180,7 +184,8 @@ public class ViewGraph {
 						}
 						//child nodes to go here.
 						for(Vertex c:v.getAdjList()){
-							if((clickX > c.getPos().getX()-37) && clickX < (c.getPos().getX() + 37)){
+							double nodewidth = c.getWord().length() * 5;
+							if((clickX > c.getPos().getX()-nodeWidth) && clickX < (c.getPos().getX() + nodeWidth)){
 								if((clickY > c.getPos().getY()-13) && clickY < (c.getPos().getY()+13)){
 									//found.
 									vr.doClickSearchGraph(c.getWord());
