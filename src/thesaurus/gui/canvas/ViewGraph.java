@@ -175,7 +175,7 @@ public class ViewGraph {
 						if((clickX > v.getPos().getX()-37) && clickX < (v.getPos().getX() + 37)){
 							if((clickY > v.getPos().getY()-13) && clickY < (v.getPos().getY()+13)){
 								//found.
-								System.out.println(v.getWord());
+								vr.doClickSearchGraph(v.getWord());
 							}
 						}
 						//child nodes to go here.
@@ -183,7 +183,7 @@ public class ViewGraph {
 							if((clickX > c.getPos().getX()-37) && clickX < (c.getPos().getX() + 37)){
 								if((clickY > c.getPos().getY()-13) && clickY < (c.getPos().getY()+13)){
 									//found.
-									System.out.println(c.getWord());
+									vr.doClickSearchGraph(c.getWord());
 								}
 							}
 						}
