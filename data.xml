@@ -1,22 +1,19 @@
-
-
-<!--put in full header later -->
-<graphml>
-<key id="w" for="node" attr.name="word" attr.type="string" />
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--put in full header later --><graphml>
+<key attr.name="word" attr.type="string" for="node" id="w"/>
 
 
 <!-- could give data same id as node, to linke them -->
 <graph id="G">
-<node id="0" >
+<node id="0">
 	<data key="w">Happy</data>
 </node>
-<node id="1" >
+<node id="1">
 	<data key="w">Joyful</data>
 </node>
-<node id="2" >
+<node id="2">
 	<data key="w">Cheerful</data>
 </node>
-<node id="3" >
+<node id="3">
 	<data key="w">Jubilant</data>
 </node>
 <node id="4">
@@ -66,7 +63,5 @@
 <edge source="7" target="0"/>
 <edge source="7" target="6"/>
 
-</graph>
+<node id="8"><data key="w">Content</data></node><edge source="8" target="6"/><edge source="8" target="0"/><node id="9"><data key="w"/></node><edge source="9" target="0"/><node id="10"><data key="w">nice</data></node><edge source="10" target="0"/><node id="11"><data key="w">friday</data></node><edge source="11" target="0"/><edge source="11" target="8"/><edge source="11" target="1"/></graph>
 </graphml>
-
-

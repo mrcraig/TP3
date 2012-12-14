@@ -109,7 +109,7 @@ public class Graph
 				LinkedList<String> synms = new LinkedList<String>();
 				for(Vertex n : v.getAdjList())
 				{
-					synms.add(n.word);
+					synms.add(n.getWord());
 				}
 				tableData.put(k,synms);
 			}	
