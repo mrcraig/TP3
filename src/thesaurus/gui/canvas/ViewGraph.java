@@ -1,5 +1,7 @@
 package thesaurus.gui.canvas;
 
+import java.util.LinkedList;
+
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -35,25 +37,25 @@ public class ViewGraph {
 		gc.setStroke(Color.BLACK);
 		gc.setFill(Color.WHITE);
 		gc.setLineWidth(3);
-		gc.strokeOval((v.getPos().getX()-50+xOffset),(v.getPos().getY()-25+yOffset), 100+xOffset, 50+yOffset);
-		gc.fillOval((v.getPos().getX()-49+xOffset),(v.getPos().getY()-24+yOffset),98+xOffset,48+yOffset);
+		gc.strokeOval((v.getPos().getX()-50-xOffset),(v.getPos().getY()-25-yOffset), 100, 50);
+		gc.fillOval((v.getPos().getX()-49-xOffset),(v.getPos().getY()-24-yOffset),98,48);
 		gc.setFill(Color.BLACK);
 		gc.setFont(new Font(20));
-		gc.fillText(v.getWord(), (v.getPos().getX()-34+xOffset), (v.getPos().getY()+5+yOffset));
+		gc.fillText(v.getWord(), (v.getPos().getX()-34-xOffset), (v.getPos().getY()+5-yOffset));
 	}
 	
 	private void drawSynNode(Vertex v){
 		gc.setStroke(Color.GREEN);
 		gc.setFill(Color.WHITE);
 		gc.setLineWidth(3);
-		gc.strokeOval((v.getPos().getX()-37+xOffset),(v.getPos().getY()-13+yOffset), 74+xOffset, 36+yOffset);
-		gc.fillOval((v.getPos().getX()-36+xOffset),(v.getPos().getY()-12+yOffset),72+xOffset,34+yOffset);
+		gc.strokeOval((v.getPos().getX()-37-xOffset),(v.getPos().getY()-13-yOffset), 74, 36);
+		gc.fillOval((v.getPos().getX()-36-xOffset),(v.getPos().getY()-12-yOffset),72,34);
 		gc.setFill(Color.BLACK);
 		gc.setFont(new Font(14));
-		gc.fillText(v.getWord(), (v.getPos().getX()-25+xOffset), (v.getPos().getY()+10+yOffset));
+		gc.fillText(v.getWord(), (v.getPos().getX()-25-xOffset), (v.getPos().getY()+10-yOffset));
 	}
 	
-	private void drawAntNode(Vertex v){
+	/*private void drawAntNode(Vertex v){
 		gc.setStroke(Color.RED);
 		gc.setFill(Color.WHITE);
 		gc.setLineWidth(3);
@@ -62,7 +64,7 @@ public class ViewGraph {
 		gc.setFill(Color.BLACK);
 		gc.setFont(new Font(14));
 		gc.fillText(v.getWord(), (v.getPos().getX()-25+xOffset), (v.getPos().getY()+10+yOffset));
-	}
+	}*/
 	
 	private void drawConnector(double x1, double y1, double x2, double y2, int type){
 		if(type==1){
@@ -74,7 +76,7 @@ public class ViewGraph {
 		}
 		
 		gc.setLineWidth(3);
-		gc.strokeLine(x1, y1, x2, y2);
+		gc.strokeLine(x1-xOffset, y1-yOffset, x2-xOffset, y2-yOffset);
 	}
 	
 	private void drawGraph(){
@@ -121,17 +123,42 @@ public class ViewGraph {
 	private void start() {
 		graph = new Canvas(windowWidth,windowHeight);
 		gc = graph.getGraphicsContext2D();
+		System.out.println(vertex);
 		resetGraph();
 		drawGraph();
 		
 		/**
 		 * Action Methods
+		 */
 		 
+		final LinkedList<Double> curX = new LinkedList<Double>();
+		final LinkedList<Double> curY = new LinkedList<Double>();
+		
 		graph.addEventHandler(MouseEvent.MOUSE_DRAGGED,
 				new EventHandler<MouseEvent>(){
 			public void handle(MouseEvent e){
+				curX.add(e.getX());
+				curY.add(e.getY());
 				
+				if(curX.size()>1){
+					xOffset += curX.get(0)-curX.get(1);
+					yOffset += curY.get(0)-curY.get(1);
+
+					resetGraph();
+					drawGraph();
+					
+					curX.removeFirst();
+					curY.removeFirst();
+				}
 			}
-		});*/
+		});
+		
+		graph.addEventHandler(MouseEvent.MOUSE_RELEASED,
+				new EventHandler<MouseEvent>(){
+			public void handle(MouseEvent e){
+				curX.clear();
+				curY.clear();
+			}
+		});
 	}
 }
