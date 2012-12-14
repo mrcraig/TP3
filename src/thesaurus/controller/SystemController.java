@@ -93,7 +93,7 @@ public class SystemController {
 	@FXML
 	protected void doSearchGraph() {
 		String searchText = searchBoxGraph.getText();
-		Vertex currentVertex = referenceWindow.getVisualisationRoot().getCurrentParser().getSynmsForOne(searchText);
+		Vertex currentVertex = referenceWindow.getVisualisationRoot().getCurrentParser().getOneSynomyn(searchText);
 		System.out.println(currentVertex);
 		if (currentVertex == null) {
 			return;

@@ -63,12 +63,12 @@ public class Parser {
 	/* Breadth First Search*/
 	public LinkedList<Vertex> getSynmsFor(String s, int max)
 	{
-		return allNodes.getSynmsFor(s, max);
+		return allNodes.getListOfSynomyns(s, max);
 	}
 	
 	public Vertex getSynmsForOne(String s)
 	{
-		return allNodes.getSynmsFor(s, 1).getFirst();
+		return allNodes.getListOfSynomyns(s, 1).getFirst();
 	}
  	
 	public LinkedList<Vertex> getSynmsFor(String s){return getSynmsFor(s, 100);}

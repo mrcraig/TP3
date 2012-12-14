@@ -20,7 +20,11 @@ public class Driver
 		//driver.addVertex("friday", synomyns);
 		
 		
-		System.out.println(driver.getSynmsForOne("friday"));
+	
+		
+		//driver.removeVertex("happy");
+		
+		System.out.println(driver.getOneSynomyn("peaceful"));
 		
 	}
 }

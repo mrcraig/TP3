@@ -34,19 +34,25 @@ public class InternalRepresentation
 		write.addVertex(n);
 	}
 	
-	/* facade pattern */
-	public LinkedList<Vertex> getSynmsFor(String s, int max)
+	public void removeVertex(String w)
 	{
-		return nodes.getSynmsFor(s, max);
+		write.removeVertex(w);
 	}
 	
-	public Vertex getSynmsForOne(String s)
+	
+	/* facade pattern */
+	public LinkedList<Vertex> getListOfSynomyns(String s, int max)
 	{
-		if(nodes.getSynmsFor(s,1)!=null) return nodes.getSynmsFor(s, 1).getFirst();
+		return nodes.getListOfSynomyns(s, max);
+	}
+	
+	public Vertex getOneSynomyn(String s)
+	{
+		if(nodes.getListOfSynomyns(s,1)!=null) return nodes.getListOfSynomyns(s, 1).getFirst();
 		return null;
 	}
  	
-	public LinkedList<Vertex> getSynmsFor(String s){return getSynmsFor(s, 100);}
+	public LinkedList<Vertex> getListOfSynomyns(String s){return getListOfSynomyns(s, 100);}
 	
 	public HashMap<String, LinkedList<String>> getTableData()
 	{

@@ -26,6 +26,7 @@ public class XmlWrite {
 	
 	private Document xml;
 	private String path;
+	private Graph nodes;
 	
 	public XmlWrite (File f, Graph nodes)
 	{
@@ -33,12 +34,12 @@ public class XmlWrite {
 		try 
 		{
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-			//this.xml = docBuilder.parse(getClass().getResource(path).getPath());
 			path = f.getPath();
+			this.nodes = nodes;
 			this.xml = docBuilder.parse(path);
-			System.out.println(f.getPath());
-			checkNew();
-		} catch (Exception e) 
+			System.out.println(f.getPath());	
+		} 
+		catch (Exception e) 
 		{
 			e.printStackTrace();
 		}
@@ -103,7 +104,56 @@ public class XmlWrite {
 			Element node = this.xml.createElement("graph");
 			xml.getElementsByTagName("graphml").item(0).appendChild(node);
 		}
-}
+	}
+	
+	public void removeVertex(String w)
+	{
+		
+		//find right vertex from id
+		//remove that node
+		//go through all edges with source=id
+		//remove edges that match
+		Vertex v = nodes.getVertexFromWord(w);
+		removeNode(v.getIndex());
+		removeEdge(v.getIndex());
+		saveFile();
+	}
+	
+	private void removeNode(String id)
+	{
+		NodeList allNodes = xml.getElementsByTagName("node");
+		Node graph = xml.getElementsByTagName("graph").item(0);
+		for(int i=0;i<allNodes.getLength();i++)
+		{
+			Node cursor = allNodes.item(i);
+			if(cursor.getAttributes().getNamedItem("id").getTextContent().equals(id))
+			{
+				System.out.println("removing node");
+				System.out.println(graph.removeChild(cursor).getTextContent());
+			}
+		}
+	}
+	
+	private void removeEdge(String id)
+	{
+		//get all edges, and delete ones that source match id
+		NodeList allEdges = xml.getElementsByTagName("edge");
+		Node graph = xml.getElementsByTagName("graph").item(0);
+		//iterate backwards to avoid order being affected
+		for(int i=allEdges.getLength()-1;i>-1;i--)
+		{
+			Node edge = allEdges.item(i);
+			String source = edge.getAttributes().getNamedItem("source").getTextContent();
+			String target = edge.getAttributes().getNamedItem("target").getTextContent();
+			System.out.println(source);
+			System.out.println(target);
+			if(source.equalsIgnoreCase(id) || target.equalsIgnoreCase(id))
+			{
+				System.out.println("removing edge");
+				graph.removeChild(edge);
+			}
+		}
+	}
 	
 	private void saveFile()
 	{

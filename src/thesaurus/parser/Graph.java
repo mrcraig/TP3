@@ -78,7 +78,7 @@ public class Graph
 	 
 	 
 	 /* Breadth First Search*/
-	    LinkedList<Vertex> getSynmsFor(String s, int max)
+	    LinkedList<Vertex> getListOfSynomyns(String s, int max)
 		{
 			LinkedList<Vertex> workQueue = new LinkedList<Vertex>();
 			LinkedList<Vertex> results = new LinkedList<Vertex>();

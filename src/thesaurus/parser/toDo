@@ -13,11 +13,10 @@ on how big the xml file is
 if xml file is empty, put in tags
 
 
-equals to ignoreEquals
-make sure all methods return null, not break
+
 
 
 do remove, edit
 put in a data node for each edge, indicating what type it is
 
-pass graph class 
+javadoc comments
