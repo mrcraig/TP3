@@ -27,14 +27,16 @@ public class XmlWrite {
 	private Document xml;
 	private String path;
 	
-	public XmlWrite (String path)
+	public XmlWrite (File f)
 	{
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		try 
 		{
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-			this.path = getClass().getResource(path).getPath();
-			this.xml = docBuilder.parse(getClass().getResource(path).getPath());
+			//this.xml = docBuilder.parse(getClass().getResource(path).getPath());
+			path = f.getPath();
+			this.xml = docBuilder.parse(path);
+			System.out.println(f.getPath());
 			checkNew();
 		} catch (Exception e) 
 		{
@@ -52,7 +54,7 @@ public class XmlWrite {
 		}
 	}
 
-	public void addVertex(Vertex v)
+	public void addVertexToXml(Vertex v)
 	{	
 		this.addNode(v.word, v.getIndex());
 		String source = v.getIndex();

@@ -18,3 +18,4 @@ make sure all methods return null, not break
 
 
 do remove, edit
+put in a data node for each edge, indicating what type it is
