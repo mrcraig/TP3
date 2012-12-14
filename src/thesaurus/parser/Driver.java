@@ -22,8 +22,8 @@ public class Driver
 		
 	
 		
-		driver.editVertex("Joyful", "sad");
-		//System.out.println(driver.getOneSynomyn(""));
+		//driver.editVertex("Joyful", "sad");
+		System.out.println(driver.getOneSynomyn(""));
 		
 	}
 }

@@ -81,10 +81,10 @@ public class XmlWrite {
 			Node cursor = allNodes.item(i);
 			if (cursor.getAttributes().getNamedItem("id").getTextContent().equalsIgnoreCase(id))
 			{
-				//System.out.println(cursor.hasChildNodes());
-				//System.out.println(cursor.getChildNodes().item(0).hasAttributes());
+				cursor.getChildNodes().item(1).setTextContent(newWord);
 			}
 		}
+		saveFile();
 	}
 	
 
