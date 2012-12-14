@@ -104,10 +104,8 @@ public class PopupFactory {
 				currentPopup = null;
 			}
 		});
-		canvas.getChildren().addAll(addWordLabel, promptWordLabel,
-				addWordInput, confirmButton, cancelButton);
-		canvas.setStyle("	-fx-background-color: #dfdfdf;"
-				+ "-fx-border-color: black;" + "-fx-border-width: 1px;" + "-fx-font-family: 'Georgia';");
+		canvas.getChildren().addAll(addWordLabel, promptWordLabel,addWordInput, confirmButton, cancelButton);
+		canvas.setStyle("	-fx-background-color: #dfdfdf;"+ "-fx-border-color: black;" + "-fx-border-width: 1px;" + "-fx-font-family: 'Georgia';");
 		return canvas;
 	}
 

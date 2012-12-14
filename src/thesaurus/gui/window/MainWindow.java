@@ -54,21 +54,21 @@ public class MainWindow extends Application {
 	public VisualisationRoot getVisualisationRoot(){
 		return visualisationRootCurrent;
 	}
+	
+	public void setCurrentController(SystemController currentControllerInput) {
+		currentController = currentControllerInput;
+	}
 
 	public SystemController getCurrentController() {
 		return currentController;
-	}
-
-	public void setCurrentController(SystemController currentControllerInput) {
-		currentController = currentControllerInput;
 	}
 
 	public TutorialRoot getTutorialRootCurrent() {
 		return tutorialRootCurrent;
 	}
 
-	public void setTutorialRootCurrent(TutorialRoot tutorialRootCurrent) {
-		this.tutorialRootCurrent = tutorialRootCurrent;
+	public void setTutorialRootCurrent(TutorialRoot tutorialRootInput) {
+		tutorialRootCurrent = tutorialRootInput;
 	}
 
 }

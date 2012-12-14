@@ -2,7 +2,6 @@ package thesaurus.gui.window;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.LinkedList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Popup;
@@ -19,8 +18,7 @@ public class VisualisationRoot extends AnchorPane {
 
 	private MainWindow referenceWindow;
 	private SystemController currentController;
-	private XmlRead currentParser;
-	private LinkedList<Vertex> currentResults;
+	private InternalRepresentation currentParser;
 	private File currentFile;
 	private Popup currentPopup;
 	private Vertex currentVertex;
@@ -47,24 +45,14 @@ public class VisualisationRoot extends AnchorPane {
 	public void addCanvas() {
 		ViewGraph displayGraphFull = new ViewGraph(750, 376,currentVertex);
 		ViewGraph displayGraphDual = new ViewGraph(354, 362,currentVertex);
-		currentController.getCanvasFullGraph().getChildren()
-				.add(displayGraphFull.returnGraph());
-		currentController.getCanvasDualGraph().getChildren()
-				.add(displayGraphDual.returnGraph());
+		currentController.getCanvasFullGraph().getChildren().add(displayGraphFull.returnGraph());
+		currentController.getCanvasDualGraph().getChildren().add(displayGraphDual.returnGraph());
 	}
 
 	public void setCurrentParser(File inputFile) {
 		setCurrentFile(inputFile);
-		currentParser = new XmlRead(inputFile);
+		currentParser = new InternalRepresentation(inputFile);
 		System.out.println(inputFile.getAbsolutePath());
-	}
-
-	public LinkedList<Vertex> getCurrentResults() {
-		return currentResults;
-	}
-
-	public void setCurrentResults(LinkedList<Vertex> currentResultsInput) {
-		currentResults = currentResultsInput;
 	}
 
 	public File getCurrentFile() {
@@ -83,7 +71,7 @@ public class VisualisationRoot extends AnchorPane {
 		currentVertex = currentVertexInput;
 	}
 
-	public XmlRead getCurrentParser() {
+	public InternalRepresentation getCurrentParser() {
 		return currentParser;
 	}
 
