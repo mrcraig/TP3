@@ -38,7 +38,7 @@ public class ViewGraph {
 	
 	private void drawMainNode(Vertex v){
 		gc.setStroke(Color.BLACK);
-		gc.setFill(Color.WHITE);
+		gc.setFill(Color.rgb(176,220,247));
 		gc.setLineWidth(3);
 		gc.strokeOval((v.getPos().getX()-50-xOffset),(v.getPos().getY()-25-yOffset), 100, 50);
 		gc.fillOval((v.getPos().getX()-49-xOffset),(v.getPos().getY()-24-yOffset),98,48);
@@ -48,8 +48,8 @@ public class ViewGraph {
 	}
 	
 	private void drawSynNode(Vertex v){
-		gc.setStroke(Color.GREEN);
-		gc.setFill(Color.WHITE);
+		gc.setStroke(Color.BLACK);
+		gc.setFill(Color.rgb(191, 247, 176));
 		gc.setLineWidth(3);
 		gc.strokeOval((v.getPos().getX()-37-xOffset),(v.getPos().getY()-13-yOffset), 74, 36);
 		gc.fillOval((v.getPos().getX()-36-xOffset),(v.getPos().getY()-12-yOffset),72,34);
@@ -118,7 +118,7 @@ public class ViewGraph {
 	}
 	
 	private void resetGraph(){
-		gc.setFill(Color.WHITE);
+		gc.setFill(Color.rgb(242,242,242));
 		gc.fillRect(0, 0, windowWidth, windowHeight);
 		gc.setFill(Color.BLACK);
 	}
