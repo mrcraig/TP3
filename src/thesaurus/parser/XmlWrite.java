@@ -68,6 +68,25 @@ public class XmlWrite {
 		saveFile();
 	}
 	
+	
+ void editVertex(String oldWord, String newWord)
+	{
+		//go through all Nodes, find one that matches.
+		//go to data, set text content
+		
+		String id = nodes.getVertexFromWord(oldWord).getIndex();
+		NodeList allNodes = this.xml.getElementsByTagName("node");
+		for(int i=0;i<allNodes.getLength();i++)
+		{
+			Node cursor = allNodes.item(i);
+			if (cursor.getAttributes().getNamedItem("id").getTextContent().equalsIgnoreCase(id))
+			{
+				//System.out.println(cursor.hasChildNodes());
+				//System.out.println(cursor.getChildNodes().item(0).hasAttributes());
+			}
+		}
+	}
+	
 
 	
 	
@@ -136,7 +155,6 @@ public class XmlWrite {
 	
 	private void removeEdge(String id)
 	{
-		//get all edges, and delete ones that source match id
 		NodeList allEdges = xml.getElementsByTagName("edge");
 		Node graph = xml.getElementsByTagName("graph").item(0);
 		//iterate backwards to avoid order being affected
