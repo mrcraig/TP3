@@ -60,7 +60,7 @@
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="538.0">
               <children>
-                <TextField layoutX="58.0" layoutY="400.0" prefWidth="200.0" />
+                <TextField fx:id="searchBoxTable" layoutX="58.0" layoutY="400.0" prefWidth="200.0" />
                 <Button font="$x1" layoutX="265.0" layoutY="400.0" mnemonicParsing="false" text="Go" />
                 <Button font="$x1" layoutX="415.0" layoutY="400.0" mnemonicParsing="false" onAction="#doAddWord" prefWidth="100.0" text="Add" />
                 <Button font="$x1" layoutX="530.0" layoutY="400.0" mnemonicParsing="false" onAction="#doEditWord" prefWidth="100.0" text="Edit" />
@@ -80,7 +80,7 @@
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="538.0">
               <children>
-                <TextField layoutX="58.0" layoutY="400.0" prefWidth="200.0" />
+                <TextField fx:id="searchBoxGraph" layoutX="58.0" layoutY="400.0" prefWidth="200.0" />
                 <Button font="$x1" layoutX="265.0" layoutY="400.0" mnemonicParsing="false" text="Go" />
                 <Button font="$x1" layoutX="415.0" layoutY="400.0" mnemonicParsing="false" onAction="#doAddWord" prefWidth="100.0" text="Add" />
                 <Button font="$x1" layoutX="530.0" layoutY="400.0" mnemonicParsing="false" onAction="#doEditWord" prefWidth="100.0" text="Edit" />
