@@ -37,6 +37,12 @@ public class SystemController {
 
 	@FXML
 	private TextField searchBoxGraph;
+	
+	@FXML
+	private TextField searchBoxTable;
+	
+	@FXML
+	private TextField searchBoxDual;
 
 	@FXML
 	private Text currentFileLabel;
@@ -104,16 +110,57 @@ public class SystemController {
 			@Override
 			public void handle(KeyEvent ke) {
 				if (ke.getCode().equals(KeyCode.ENTER)) {
-					doSearchGraph();
+					doSearchGraph("graph");
+				}
+			}
+		});
+		
+		searchBoxTable.setOnKeyReleased(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent ke) {
+				if (ke.getCode().equals(KeyCode.ENTER)) {
+					doSearchGraph("table");
+				}
+			}
+		});
+		
+		searchBoxDual.setOnKeyReleased(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent ke) {
+				if (ke.getCode().equals(KeyCode.ENTER)) {
+					doSearchGraph("dual");
 				}
 			}
 		});
 		
 	}
-
+	
 	@FXML
-	protected void doSearchGraph() {
-		String searchText = searchBoxGraph.getText();
+	protected void doSearchGraphG() {
+		doSearchGraph("graph");
+	}
+	
+	@FXML
+	protected void doSearchGraphT() {
+		doSearchGraph("table");
+	}
+	
+	@FXML
+	protected void doSearchGraphD() {
+		doSearchGraph("dual");
+	}
+
+	private void doSearchGraph(String choiceString) {
+		String searchText = null;
+		if(choiceString.equals("graph")){
+			searchText = searchBoxGraph.getText();
+		}
+		else if(choiceString.equals("table")){
+			searchText = searchBoxTable.getText();
+		}
+		else if(choiceString.equals("dual")){
+			searchText = searchBoxDual.getText();
+		}
 		System.out.println(searchText);
 		Vertex currentVertex = referenceWindow.getVisualisationRoot().getCurrentParser().getOneSynomyn(searchText);
 		System.out.println(currentVertex);

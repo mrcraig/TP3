@@ -50,7 +50,7 @@
                 <Button font="$x1" layoutX="645.0" layoutY="400.0" mnemonicParsing="false" onAction="#doRemoveWord" prefWidth="100.0" text="Remove" />
                 <Text font="$x1" layoutX="15.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search: " />
                 <TextField fx:id="searchBoxGraph" layoutX="58.0" layoutY="400.0" prefWidth="200.0" />
-                <Button font="$x1" layoutX="265.0" layoutY="400.0" mnemonicParsing="false" onAction="#doSearchGraph" text="Go" />
+                <Button font="$x1" layoutX="265.0" layoutY="400.0" mnemonicParsing="false" onAction="#doSearchGraphG" text="Go" />
                 <Text fx:id="searchStatusLabel" layoutX="57.0" layoutY="360.0" scaleX="1.0000163787583833" strokeType="OUTSIDE" strokeWidth="0.0" />
               </children>
             </AnchorPane>
@@ -61,7 +61,7 @@
             <AnchorPane id="tableTabContent" minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="538.0">
               <children>
                 <TextField fx:id="searchBoxTable" layoutX="58.0" layoutY="400.0" prefWidth="200.0" />
-                <Button font="$x1" layoutX="265.0" layoutY="400.0" mnemonicParsing="false" text="Go" />
+                <Button font="$x1" layoutX="265.0" layoutY="400.0" mnemonicParsing="false" onAction="#doSearchGraphT" text="Go" />
                 <Button font="$x1" layoutX="415.0" layoutY="400.0" mnemonicParsing="false" onAction="#doAddWord" prefWidth="100.0" text="Add" />
                 <Button font="$x1" layoutX="530.0" layoutY="400.0" mnemonicParsing="false" onAction="#doEditWord" prefWidth="100.0" text="Edit" />
                 <Button font="$x1" layoutX="645.0" layoutY="400.0" mnemonicParsing="false" onAction="#doRemoveWord" prefWidth="100.0" text="Remove" />
@@ -81,7 +81,7 @@
             <AnchorPane id="dualTabContent" minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="538.0">
               <children>
                 <TextField fx:id="searchBoxDual" layoutX="58.0" layoutY="400.0" prefWidth="200.0" />
-                <Button font="$x1" layoutX="265.0" layoutY="400.0" mnemonicParsing="false" text="Go" />
+                <Button font="$x1" layoutX="265.0" layoutY="400.0" mnemonicParsing="false" onAction="#doSearchGraphD" text="Go" />
                 <Button font="$x1" layoutX="415.0" layoutY="400.0" mnemonicParsing="false" onAction="#doAddWord" prefWidth="100.0" text="Add" />
                 <Button font="$x1" layoutX="530.0" layoutY="400.0" mnemonicParsing="false" onAction="#doEditWord" prefWidth="100.0" text="Edit" />
                 <Button font="$x1" layoutX="645.0" layoutY="400.0" mnemonicParsing="false" onAction="#doRemoveWord" prefWidth="100.0" text="Remove" />
