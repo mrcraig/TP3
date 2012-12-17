@@ -28,6 +28,7 @@ public class Vertex {
     public Vertex(String i)
     {
     	synomyns = new LinkedList<Vertex>();
+    	antonyms = new LinkedList<Vertex>();
     	index = i;
     }  
     
@@ -44,13 +45,20 @@ public class Vertex {
     {
     	StringBuilder sb = new StringBuilder();
     	sb.append("Vertex "); sb.append(this.index+" ");
-    	sb.append(this.word +": ");
+    	sb.append(this.word +"\nSynonyms\n ");
      	for(Vertex n : this.synomyns)
     	{
-    		
+    		if(n==null)continue;
     		sb.append(n.getWord());
     		sb.append(",");
     	}
+     	sb.append("\nAntonyms\n");
+     	for(Vertex a : this.antonyms)
+     	{
+     		if(a==null)continue; //a shouldnt be null
+     		sb.append(a.getWord());
+     		sb.append(",");
+     	}
     	sb.append("\n");
     	return sb.toString();
     }     
@@ -69,15 +77,23 @@ public class Vertex {
 		this.pos = pos;
 	}
 
-	public LinkedList<Vertex> getAdjList(){
+	public LinkedList<Vertex> getSynomyns()
+	{
         return synomyns;
     }
-    
-    public String getIndex(){
+	
+	public LinkedList<Vertex> getAntonyms()
+	{
+		return antonyms;
+	}
+     
+    public String getIndex()
+    {
     	return index;
     }
     
-    public void setIndex(String n){
+    public void setIndex(String n)
+    {
     	index = n;
     }   
     

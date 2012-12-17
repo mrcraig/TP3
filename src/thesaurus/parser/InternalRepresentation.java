@@ -24,7 +24,7 @@ public class InternalRepresentation
 	 * @param w			The word belonging to the vertex
 	 * @param synomyns	The synonyms for the vertex 
 	 */
-	public void addVertex(String w, String synomyns)
+	public void addVertex(String w, String synomyns, String antonyms)
 	{
 		String index = read.getLastVertexIndex();
 		Vertex n = new Vertex(index);
@@ -34,8 +34,15 @@ public class InternalRepresentation
 			Vertex syn = nodes.getVertexFromWord(s);
 			n.addSynomyn(syn);
 		}
+		for(String a : parseCsvToArray(antonyms))
+		{
+			Vertex ant = nodes.getVertexFromWord(a);
+			n.addAntonym(ant);
+		}
 		System.out.println(n.getWord());
 		System.out.println("Vertex to be added" + n);
+		//put in memory so can see affect straight away
+		nodes.add(n);
 		write.addVertex(n);
 	}
 	
@@ -50,6 +57,8 @@ public class InternalRepresentation
 	
 	public void editVertex(String oldWord, String newWord)
 	{
+		Vertex old = nodes.getVertexFromWord(oldWord);
+		old.setWord(newWord);
 		write.editVertex(oldWord, newWord);
 	}
 	
@@ -74,6 +83,7 @@ public class InternalRepresentation
 	public Vertex getOneSynomyn(String s)
 	{
 		if(s.equalsIgnoreCase("")) return null;
+		System.out.println(nodes.getListOfSynomyns(s, 1).getFirst());
 		if(nodes.getListOfSynomyns(s,1)!=null) return nodes.getListOfSynomyns(s, 1).getFirst();
 		return null;
 	}

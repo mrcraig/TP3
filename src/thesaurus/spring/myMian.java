@@ -44,25 +44,25 @@ public class myMian extends Application {
 		Vertex v14 = new Vertex("full grown");
 		Vertex v15 = new Vertex("settle");
 		
-		v1.addToAdjList(v2);
-		v1.addToAdjList(v3);
-	    v1.addToAdjList(v6);
-    	v1.addToAdjList(v7);
-		v1.addToAdjList(v8);
+		v1.addSynomyn(v2);
+		v1.addSynomyn(v3);
+	    v1.addSynomyn(v6);
+    	v1.addSynomyn(v7);
+		v1.addSynomyn(v8);
      	
 
 		
-		v2.addToAdjList(v1);
-		v2.addToAdjList(v4);
-		v2.addToAdjList(v5);
-		v2.addToAdjList(v6);
+		v2.addSynomyn(v1);
+		v2.addSynomyn(v4);
+		v2.addSynomyn(v5);
+		v2.addSynomyn(v6);
 //		v2.addToAdjList(v14);
 		//
-         v3.addToAdjList(v5);
+         v3.addSynomyn(v5);
 		 //v3.addToAdjList(v11);
 		
-		 v3.addToAdjList(v1);
-		 v3.addToAdjList(v6);
+		 v3.addSynomyn(v1);
+		 v3.addSynomyn(v6);
 //		v3.addToAdjList(v6);
 //		v3.addToAdjList(v15);
 //		v3.addToAdjList(v17);
@@ -70,35 +70,35 @@ public class myMian extends Application {
 //		v3.addToAdjList(v19);
 //		v3.addToAdjList(v20);
 
-		v4.addToAdjList(v1);
-		v4.addToAdjList(v2);
+		v4.addSynomyn(v1);
+		v4.addSynomyn(v2);
 		
 
-		v5.addToAdjList(v1);
-		v5.addToAdjList(v2);
-		v5.addToAdjList(v3);
+		v5.addSynomyn(v1);
+		v5.addSynomyn(v2);
+		v5.addSynomyn(v3);
 		//v5.addToAdjList(v6);
 		
-		v6.addToAdjList(v1);
-		v6.addToAdjList(v2);
-		v6.addToAdjList(v3);
+		v6.addSynomyn(v1);
+		v6.addSynomyn(v2);
+		v6.addSynomyn(v3);
 		//v6.addToAdjList(v5);
 		
-		v7.addToAdjList(v1);
-		v7.addToAdjList(v8);
+		v7.addSynomyn(v1);
+		v7.addSynomyn(v8);
 		
-		v8.addToAdjList(v1);
-		v8.addToAdjList(v7);
-		v8.addToAdjList(v9);
-		v8.addToAdjList(v10);
-		v8.addToAdjList(v11);
+		v8.addSynomyn(v1);
+		v8.addSynomyn(v7);
+		v8.addSynomyn(v9);
+		v8.addSynomyn(v10);
+		v8.addSynomyn(v11);
 		
-		v9.addToAdjList(v10);
-		v9.addToAdjList(v11);
+		v9.addSynomyn(v10);
+		v9.addSynomyn(v11);
 		
-		v12.addToAdjList(v13);
-		v12.addToAdjList(v14);
-		v12.addToAdjList(v15);
+		v12.addSynomyn(v13);
+		v12.addSynomyn(v14);
+		v12.addSynomyn(v15);
 		//v5.addToAdjList(v6);
 		
 		fr = new WalshawSpring(v2);
@@ -124,7 +124,7 @@ public class myMian extends Application {
 		for (Vertex x : fr.getVertices()) {
 			double sX = x.getPos().getX();
 			double sY = x.getPos().getY();
-			for (Vertex y : x.getAdjList()) {
+			for (Vertex y : x.getSynomyns()) {
 				if (y.getPos() != null) {
 					double tX = y.getPos().getX();
 					double tY = y.getPos().getY();
