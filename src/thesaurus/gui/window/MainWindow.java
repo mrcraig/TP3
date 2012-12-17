@@ -1,6 +1,8 @@
 package thesaurus.gui.window;
 
 import java.io.File;
+import java.util.ArrayList;
+
 import thesaurus.controller.SystemController;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -23,7 +25,8 @@ public class MainWindow extends Application {
 	private TutorialRoot tutorialRootCurrent;
 	private SystemController currentController;
 	private File currentRecentFile;
-	private ObservableList<String> currentRecentArray;
+	private ArrayList<String> currentRecentArray;
+	private ObservableList<String> currentRecentList;
 
 	public void launchProgram(String[] args){
 		launch(args);
@@ -90,12 +93,20 @@ public class MainWindow extends Application {
 		currentRecentFile = currentRecentFileInput;
 	}
 
-	public ObservableList<String> getCurrentRecentArray() {
+	public ArrayList<String> getCurrentRecentArray() {
 		return currentRecentArray;
 	}
 
-	public void setCurrentRecentArray(ObservableList<String> currentRecentArray) {
-		this.currentRecentArray = currentRecentArray;
+	public void setCurrentRecentArray(ArrayList<String> currentRecentArrayInput) {
+		currentRecentArray = currentRecentArrayInput;
+	}
+
+	public ObservableList<String> getCurrentRecentList() {
+		return currentRecentList;
+	}
+
+	public void setCurrentRecentList(ObservableList<String> currentRecentListInput) {
+		currentRecentList = currentRecentListInput;
 	}
 
 }

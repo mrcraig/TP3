@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -57,8 +60,6 @@ public class SystemController {
 	private ListView<String> currentListView;
 
 	MainWindow referenceWindow;
-	
-	public static final ObservableList<String> data = FXCollections.observableArrayList();
 
 	public SystemController(MainWindow inputWindow) {
 		referenceWindow = inputWindow;
@@ -100,6 +101,9 @@ public class SystemController {
 			//System.out.println(file.getAbsolutePath());
 		} else {
 			return;
+		}
+		if(!referenceWindow.getCurrentRecentArray().contains(file.getAbsolutePath())){
+			referenceWindow.getCurrentRecentArray().add(file.getAbsolutePath());
 		}
 
 		VisualisationRoot visualisationRootCurrent = new VisualisationRoot(referenceWindow);
@@ -180,6 +184,7 @@ public class SystemController {
 	@FXML
 	protected void doReturn() {
 		referenceWindow.getStage().setScene(referenceWindow.getSplashScene());
+		populateList();
 	}
 
 	@FXML
@@ -237,8 +242,18 @@ public class SystemController {
 	}
 	
 	public void populateList(){
+		Collections.reverse(referenceWindow.getCurrentRecentArray());
+		ArrayList<String> parsedArray = new ArrayList<String>();
+		for(String s: referenceWindow.getCurrentRecentArray()){
+			File temp = new File(s);
+			parsedArray.add(temp.getName());
+		}
+		ObservableList<String> parsedList = FXCollections.observableList(parsedArray);
 		currentListView.setEditable(true);
-		currentListView.setItems(referenceWindow.getCurrentRecentArray());
+		currentListView.setItems(parsedList);
+		Collections.reverse(referenceWindow.getCurrentRecentArray());
+		Collections.reverse(parsedList);
+		referenceWindow.setCurrentRecentList(parsedList);
 	}
 
 }
