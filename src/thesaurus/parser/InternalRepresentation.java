@@ -32,7 +32,7 @@ public class InternalRepresentation
 		for(String s : parseCsvToArray(synomyns))
 		{
 			Vertex syn = nodes.getVertexFromWord(s);
-			n.addSynomyn(syn);
+			n.addSynonym(syn);
 		}
 		for(String a : parseCsvToArray(antonyms))
 		{
