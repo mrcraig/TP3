@@ -18,6 +18,8 @@ public class TutorialRoot extends AnchorPane {
 	private SystemController currentController;
 
 	public TutorialRoot(MainWindow inputWindow) {
+		
+		System.out.println("");
 
 		referenceWindow = inputWindow;
 

@@ -15,6 +15,8 @@ public class PopupFactory {
 	MainWindow referenceWindow;
 	
 	public PopupFactory(String inputChoice, MainWindow inputWindow){
+		System.out.println("");
+		
 		referenceWindow = inputWindow;
 		if (inputChoice.equals("add")) {
 			currentPopup = new Popup();

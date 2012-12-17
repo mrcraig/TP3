@@ -91,6 +91,8 @@ public class SystemController {
 		setVisualisationFileName();
 		
 		setSearchBoxEvents();
+		
+		System.out.println("");
 
 	}
 
