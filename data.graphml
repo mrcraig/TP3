@@ -1,24 +1,22 @@
-
-
-<graphml>
-<key id="w" for="node" attr.name="word" attr.type="string" />
-<key id="s" for="edge" attr.name="semantic" attr.type="string" />
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><graphml>
+<key attr.name="word" attr.type="string" for="node" id="w"/>
+<key attr.name="semantic" attr.type="string" for="edge" id="s"/>
 
 <!-- s or a -->
 
 
 <graph id="G">
 
-<node id="0" >
+<node id="0">
 	<data key="w">Happy</data>
 </node>
-<node id="1" >
+<node id="1">
 	<data key="w">Joyful</data>
 </node>
-<node id="2" >
+<node id="2">
 	<data key="w">Cheerful</data>
 </node>
-<node id="3" >
+<node id="3">
 	<data key="w">Jubilant</data>
 </node>
 <node id="4">
@@ -170,8 +168,19 @@
 <data key="s">s</data>
 </edge>
 
+<edge source="8" target="4">
+<data key="s">a</data>
+</edge>
 
-</graph>
+<edge source="8" target="5">
+<data key="s">a</data>
+</edge>
+
+<edge source="8" target="6">
+<data key="s">a</data>
+</edge>
+
+
+
+<node id="8"><data key="w">overjoyed</data></node><edge source="8" target="1"/><edge source="8" target="2"/><node id="9"><data key="w">monday</data></node><edge source="9" target="0"/><edge source="9" target="1"/><node id="11"><data key="w">hate</data></node><edge source="11" target="6"/><edge source="11" target="4"/><edge source="11" target="0"/><node id="12"><data key="w">mathew</data></node><edge source="12" target="6"><data key="s">s</data></edge><edge source="12" target="4"><data key="s">s</data></edge><edge source="12" target="0"><data key="s">a</data></edge></graph>
 </graphml>
-
-

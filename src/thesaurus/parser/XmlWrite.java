@@ -103,6 +103,7 @@ public class XmlWrite {
 		edge.setAttribute("target", target);
 		data.setAttribute("key", "s");
 		data.setTextContent(type);
+		edge.appendChild(data);
 		this.xml.getElementsByTagName("graph").item(0).appendChild(edge);
 	}
 	
