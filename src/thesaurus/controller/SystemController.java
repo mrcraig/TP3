@@ -19,6 +19,8 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -102,9 +104,10 @@ public class SystemController {
 		} else {
 			return;
 		}
-		if(!referenceWindow.getCurrentRecentArray().contains(file.getAbsolutePath())){
-			referenceWindow.getCurrentRecentArray().add(file.getAbsolutePath());
+		if(referenceWindow.getCurrentRecentArray().contains(file.getAbsolutePath())){
+			referenceWindow.getCurrentRecentArray().remove(file.getAbsolutePath());
 		}
+		referenceWindow.getCurrentRecentArray().add(file.getAbsolutePath());
 
 		VisualisationRoot visualisationRootCurrent = new VisualisationRoot(referenceWindow);
 		referenceWindow.setVisualisationRoot(visualisationRootCurrent);
@@ -114,6 +117,28 @@ public class SystemController {
 		
 		setSearchBoxEvents();
 
+	}
+	
+	private void doOpenRecent(int index) throws IOException {
+
+		File file = new File(referenceWindow.getCurrentRecentArray().get(reverseIndex(index+1)-1));
+		if(referenceWindow.getCurrentRecentArray().contains(file.getAbsolutePath())){
+			referenceWindow.getCurrentRecentArray().remove(file.getAbsolutePath());
+		}
+		referenceWindow.getCurrentRecentArray().add(file.getAbsolutePath());
+
+		VisualisationRoot visualisationRootCurrent = new VisualisationRoot(referenceWindow);
+		referenceWindow.setVisualisationRoot(visualisationRootCurrent);
+		referenceWindow.getStage().setScene(new Scene(visualisationRootCurrent, 800, 600));
+		visualisationRootCurrent.setCurrentParser(file);
+		setVisualisationFileName();
+		
+		setSearchBoxEvents();
+
+	}
+	
+	private int reverseIndex(int currentIndex){
+		return (referenceWindow.getCurrentRecentArray().size()+1)-currentIndex;
 	}
 
 	private void setSearchBoxEvents() {
@@ -253,8 +278,22 @@ public class SystemController {
 		currentListView.setEditable(true);
 		currentListView.setItems(parsedList);
 		Collections.reverse(referenceWindow.getCurrentRecentArray());
-		Collections.reverse(parsedList);
 		referenceWindow.setCurrentRecentList(parsedList);
+	}
+	
+	public void addListenerListView(){
+		
+		currentListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+		    @Override
+		    public void handle(MouseEvent mouseEvent) {
+		        if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+		            if(mouseEvent.getClickCount() == 2){
+		            	try {doOpenRecent(currentListView.getSelectionModel().getSelectedIndex());} catch (IOException e) {}
+		            }
+		        }
+		    }
+		});
+		
 	}
 
 }

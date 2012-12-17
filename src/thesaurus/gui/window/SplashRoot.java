@@ -45,6 +45,9 @@ public class SplashRoot extends AnchorPane {
 		referenceWindow.setCurrentRecentArray(createRecentListArray());
 		currentController.populateList();
 		writeToRecentFile();
+		
+		currentController.addListenerListView();
+		
 
 	}
 	
