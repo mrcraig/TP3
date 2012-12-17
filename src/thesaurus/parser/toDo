@@ -14,14 +14,12 @@ if xml file is empty, put in tags
 
 
 
-addVertex edited, add node okay I think, alter add edges
 
-add edge
-
-
+after adding vertex, cannot show it straight from memory
+works if you reload the xml
 
 
-add vertex box - need to do synomyns for other way round
+
 
 change graph to a map not linkedlist
 

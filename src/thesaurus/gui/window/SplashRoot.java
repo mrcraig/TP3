@@ -1,6 +1,7 @@
 package thesaurus.gui.window;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import javafx.collections.FXCollections;
@@ -41,8 +42,8 @@ public class SplashRoot extends AnchorPane {
 
 	}
 	
-	private ObservableList<String> createRecentListArray() throws IOException {
-		ObservableList<String> toReturn = FXCollections.observableArrayList();
+	private ArrayList<String> createRecentListArray() throws IOException {
+		ArrayList<String> toReturn = new ArrayList<String>();
 		Scanner fileScanner = new Scanner(referenceWindow.getCurrentRecentFile(), "UTF-8");
 		while(fileScanner.hasNextLine()){
 			toReturn.add(fileScanner.nextLine());

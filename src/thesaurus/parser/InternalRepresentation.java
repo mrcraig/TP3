@@ -41,6 +41,7 @@ public class InternalRepresentation
 		}
 		System.out.println(n.getWord());
 		System.out.println("Vertex to be added" + n);
+		
 		nodes.add(n);
 		write.addVertex(n);
 	}

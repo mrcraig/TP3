@@ -1,10 +1,12 @@
 package thesaurus.parser;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.LinkedList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
@@ -14,6 +16,7 @@ import javax.xml.xpath.XPathFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 public class XmlRead
 {
@@ -31,9 +34,22 @@ public class XmlRead
 			//this.xml = docBuilder.parse("/home/james/GIT/myWorkspace/TP3/data.xml");
 			//this.xml = docBuilder.parse(getClass().getResource(f.getPath()).getPath());
 			this.xml = docBuilder.parse(f.getPath());
-		} catch (Exception e) 
+			if(checkEmpty()) System.out.println("empty document");
+		} catch (IOException e) 
 		{
-			e.printStackTrace();
+			System.out.println("bad file");
+		}
+		catch(SAXException s)
+		{
+			System.out.println("Invalid file");
+		}
+		catch(IllegalArgumentException a)
+		{
+			System.out.println("illegal Argument");
+		}
+		catch(ParserConfigurationException p)
+		{
+			p.printStackTrace();
 		}
 		if(!checkEmpty())
 		{
