@@ -12,8 +12,10 @@ import javafx.stage.Popup;
 public class PopupFactory {
 	
 	Popup currentPopup = null;
+	MainWindow referenceWindow;
 	
-	public PopupFactory(String inputChoice){
+	public PopupFactory(String inputChoice, MainWindow inputWindow){
+		referenceWindow = inputWindow;
 		if (inputChoice.equals("add")) {
 			currentPopup = new Popup();
 			currentPopup.getContent().add(makeCanvasAdd());
@@ -30,14 +32,22 @@ public class PopupFactory {
 		Pane canvas = getPane(200,200);
 		Text addWordLabel = getText(35,10,"Add Word",2);
 		Text promptWordLabel = getText(10,52,"Word: ",1);
-		TextField addWordInput = getTextField(70, 50, 120);
+		final TextField addWordInput = getTextField(70, 50, 120);
 		Text promptSynLabel = getText(10,82,"Synonyms: ",1);
-		TextField addSynInput = getTextField(70, 80, 120);
+		final TextField addSynInput = getTextField(70, 80, 120);
 		Text promptAntLabel = getText(10,112,"Antonyms: ",1);
 		TextField addAntInput = getTextField(70, 110, 120);
 		Button confirmButton = new Button();
 		confirmButton.setText("Confirm");
 		confirmButton.relocate(30, 160);
+		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				referenceWindow.getVisualisationRoot().getCurrentParser().addVertex(addWordInput.getText(), addSynInput.getText());
+				currentPopup.hide();
+				currentPopup = null;
+			}
+		});
 		Button cancelButton = new Button();
 		cancelButton.setText("Cancel");
 		cancelButton.relocate(100, 160);
@@ -60,14 +70,24 @@ public class PopupFactory {
 		Pane canvas = getPane(200,200);
 		Text addWordLabel = getText(35,10,"Edit Word",2);
 		Text promptWordLabel = getText(10,52,"Word: ",1);
-		TextField addWordInput = getTextField(70, 50, 120);
+		final TextField addWordInput = getTextField(70, 50, 120);
 		Text promptSynLabel = getText(10,82,"Synonyms: ",1);
-		TextField addSynInput = getTextField(70, 80, 120);
+		final TextField addSynInput = getTextField(70, 80, 120);
 		Text promptAntLabel = getText(10,112,"Antonyms: ",1);
 		TextField addAntInput = getTextField(70, 110, 120);
 		Button confirmButton = new Button();
 		confirmButton.setText("Confirm");
 		confirmButton.relocate(30, 160);
+		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				System.out.println(addWordInput.getText());
+				System.out.println(addSynInput.getText());
+				referenceWindow.getVisualisationRoot().getCurrentParser();
+				currentPopup.hide();
+				currentPopup = null;
+			}
+		});
 		Button cancelButton = new Button();
 		cancelButton.setText("Cancel");
 		cancelButton.relocate(100, 160);
@@ -90,10 +110,19 @@ public class PopupFactory {
 		Pane canvas = getPane(200,200);
 		Text addWordLabel = getText(45,10,"Remove Word",2);
 		Text promptWordLabel = getText(10,52,"Word: ",1);
-		TextField addWordInput = getTextField(70, 50, 120);
+		final TextField addWordInput = getTextField(70, 50, 120);
 		Button confirmButton = new Button();
 		confirmButton.setText("Confirm");
 		confirmButton.relocate(30, 160);
+		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				System.out.println(addWordInput.getText());
+				referenceWindow.getVisualisationRoot().getCurrentParser();
+				currentPopup.hide();
+				currentPopup = null;
+			}
+		});
 		Button cancelButton = new Button();
 		cancelButton.setText("Cancel");
 		cancelButton.relocate(100, 160);

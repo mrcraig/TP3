@@ -125,11 +125,6 @@ public class XmlWrite {
 	
 	public void removeVertex(String w)
 	{
-		
-		//find right vertex from id
-		//remove that node
-		//go through all edges with source=id
-		//remove edges that match
 		Vertex v = nodes.getVertexFromWord(w);
 		removeNode(v.getIndex());
 		removeEdge(v.getIndex());
