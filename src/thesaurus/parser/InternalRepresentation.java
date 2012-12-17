@@ -88,7 +88,7 @@ public class InternalRepresentation
  	
 	public LinkedList<Vertex> getListOfSynomyns(String s){return getListOfSynomyns(s, 100);}
 	
-	public HashMap<String, LinkedList<String>> getTableData()
+	public HashMap<String, HashMap<String, LinkedList<String>>> getTableData()
 	{
 		return nodes.getTableData();
 	}

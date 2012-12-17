@@ -102,17 +102,25 @@ public class Graph
 	 
 	 public HashMap<String,HashMap<String, LinkedList<String>>> getTableData()
 		{	
-			HashMap<String,LinkedList<String>> tableData = new HashMap<String, LinkedList<String>>();
-			for(Vertex v : this.getList())
-			{
-				String k = v.getWord();
-				LinkedList<String> synms = new LinkedList<String>();
-				for(Vertex n : v.getSynomyns())
-				{
-					synms.add(n.getWord());
-				}
-				tableData.put(k,synms);
-			}	
+		 HashMap<String, HashMap<String, LinkedList<String>>> tableData = new HashMap<String, HashMap<String, LinkedList<String>>>();
+		 	for(Vertex v : this.getList())
+		 	{
+		 		HashMap<String,LinkedList<String>> words = new HashMap<String, LinkedList<String>>();	
+		 		LinkedList<String> syns = new LinkedList<String>();
+		 		LinkedList<String> ants = new LinkedList<String>();
+ 		 		for(Vertex s : v.getSynomyns())
+		 		{
+		 			syns.add(s.getWord());
+		 		}
+		 		words.put("synomyns", syns);
+			
+		 		for(Vertex a : v.getAntonyms())
+		 		{
+		 			ants.add(a.getWord());
+		 		}
+		 		words.put("antonyms", ants);
+		 	tableData.put(v.getWord(), words);
+		 	}
 			return tableData;
 		}	
 	
