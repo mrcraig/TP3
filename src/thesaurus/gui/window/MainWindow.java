@@ -1,5 +1,6 @@
 package thesaurus.gui.window;
 
+import java.io.File;
 import thesaurus.controller.SystemController;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -20,6 +21,7 @@ public class MainWindow extends Application {
 	private VisualisationRoot visualisationRootCurrent;
 	private TutorialRoot tutorialRootCurrent;
 	private SystemController currentController;
+	private File currentRecentFile;
 
 	public void launchProgram(String[] args){
 		launch(args);
@@ -29,6 +31,8 @@ public class MainWindow extends Application {
 
 		setCurrentController(new SystemController(this));
 
+		setCurrentRecentFile(new File("./src/resourcePackage/recentfiles.dat"));
+		
 		splashRootCurrent = new SplashRoot(this);
 		stageCurrent = stage;
 		stageCurrent.setResizable(false);
@@ -74,6 +78,14 @@ public class MainWindow extends Application {
 
 	public void setTutorialRootCurrent(TutorialRoot tutorialRootInput) {
 		tutorialRootCurrent = tutorialRootInput;
+	}
+
+	public File getCurrentRecentFile() {
+		return currentRecentFile;
+	}
+
+	public void setCurrentRecentFile(File currentRecentFileInput) {
+		currentRecentFile = currentRecentFileInput;
 	}
 
 }

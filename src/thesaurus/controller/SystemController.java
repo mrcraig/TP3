@@ -5,10 +5,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -49,8 +52,13 @@ public class SystemController {
 
 	@FXML
 	private Text searchStatusLabel;
+	
+	@FXML
+	private ListView<String> currentListView;
 
 	MainWindow referenceWindow;
+	
+	public static final ObservableList<String> data = FXCollections.observableArrayList();
 
 	public SystemController(MainWindow inputWindow) {
 		referenceWindow = inputWindow;
@@ -226,6 +234,11 @@ public class SystemController {
 		myFileChooser.getExtensionFilters().add(graphmlFilter);
 		myFileChooser.getExtensionFilters().add(xmlFilter);
 		return myFileChooser;
+	}
+	
+	public void populateList(ObservableList<String> inputArray){
+		currentListView.setEditable(true);
+		currentListView.setItems(inputArray);
 	}
 
 }
