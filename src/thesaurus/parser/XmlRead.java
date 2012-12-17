@@ -183,6 +183,7 @@ public class XmlRead
 			Vertex v = nodes.getVertexFromIndex(source);
 			if(isSynomyn)
 			{
+				//if(v.getSynomyns().contains(o))
 				v.addSynonym(nodes.getVertexFromIndex(target));
 			}
 			else
