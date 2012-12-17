@@ -101,7 +101,7 @@ public class myMian extends Application {
 		v12.addSynomyn(v15);
 		//v5.addToAdjList(v6);
 		
-		fr = new WalshawSpring(v2);
+		fr = new WalshawSpring(v1);
 		// fr.getPositions();
 		// fr.test();
 
