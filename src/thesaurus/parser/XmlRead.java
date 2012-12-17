@@ -142,17 +142,25 @@ public class XmlRead
 		{
 			Node e = edges.item(i);
 			//loop in case e has several child nodes
-			for(int j=0;i<e.getChildNodes().getLength();j++)
+			for(int j=0;j<e.getChildNodes().getLength();j++)
 			{
 				Node d = e.getChildNodes().item(j);
+				if(d==null)
+				{
+					System.out.println("skipping dodgy edge");
+					continue;
+				}
 				if(d.getNodeName().equals("data"))
 						{
 							if(d.getTextContent().equals("s"))
 							{
 								isSynomyn = true;
 							}
+							else if(d.getTextContent().equals("a"))
+							{
+								isSynomyn = false;
+							}
 						}
-	
 			}
 			String source = e.getAttributes().getNamedItem("source").getTextContent();
 			String target = e.getAttributes().getNamedItem("target").getTextContent();

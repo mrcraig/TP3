@@ -94,24 +94,24 @@ public class ViewGraph {
 			double mainX = vertex.getPos().getX();
 			double mainY = vertex.getPos().getY();
 			
-			for(Vertex v:vertex.getAdjList()){
+			for(Vertex v:vertex.getSynomyns()){
 				//Draw connector main node to synonym
 				double childX = v.getPos().getX();
 				double childY = v.getPos().getY();
 				drawConnector(childX,childY,mainX,mainY,SYNONYM);
 				//Draw connector synonym to its synonyms
-				if(v.getAdjList().size()!=0){
-					for(Vertex c:v.getAdjList()){
+				if(v.getSynomyns().size()!=0){
+					for(Vertex c:v.getSynomyns()){
 						drawConnector(childX,childY,c.getPos().getX(),c.getPos().getY(),SYNONYM);
 					}
 				}
 			}
 			
 			//Draw synonym nodes
-			for(Vertex v:vertex.getAdjList()){
+			for(Vertex v:vertex.getSynomyns()){
 				drawSynNode(v);
-				if(v.getAdjList().size()!=0){
-					for(Vertex c:v.getAdjList()){
+				if(v.getSynomyns().size()!=0){
+					for(Vertex c:v.getSynomyns()){
 						drawSynNode(c);
 					}
 				}
@@ -176,7 +176,7 @@ public class ViewGraph {
 					double clickX = e.getX() + xOffset;
 					double clickY = e.getY() + yOffset;
 					
-					for(Vertex v:vertex.getAdjList()){
+					for(Vertex v:vertex.getSynomyns()){
 						double nodeWidth = v.getWord().length() * 5;
 						
 						if((clickX > v.getPos().getX()-nodeWidth) && clickX < (v.getPos().getX() + nodeWidth)){
@@ -187,7 +187,7 @@ public class ViewGraph {
 							}
 						}
 						//child nodes to go here.
-						for(Vertex c:v.getAdjList()){
+						for(Vertex c:v.getSynomyns()){
 							double nodewidth = c.getWord().length() * 5;
 							if((clickX > c.getPos().getX()-nodeWidth) && clickX < (c.getPos().getX() + nodeWidth)){
 								if((clickY > c.getPos().getY()-13) && clickY < (c.getPos().getY()+13)){
