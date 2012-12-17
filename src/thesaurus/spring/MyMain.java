@@ -18,7 +18,7 @@ public class MyMain extends Application {
 	int len = 1000;
 	static Vertex myW;
 
-	static WalshawSpring fr;
+	static FrSpring fr;
 
 	public static void main(String[] args) {
 		mystart();
@@ -101,7 +101,7 @@ public class MyMain extends Application {
 		v12.addSynonym(v15);
 		//v5.addToAdjList(v6);
 		
-		fr = new WalshawSpring(v12);
+		fr = new FrSpring(v1);
 		// fr.getPositions();
 		// fr.test();
 

@@ -107,6 +107,7 @@ public class ViewGraph {
 				}
 			}
 			
+			
 			//Draw synonym nodes
 			for(Vertex v:vertex.getSynomyns()){
 				drawSynNode(v);
@@ -182,8 +183,9 @@ public class ViewGraph {
 						if((clickX > v.getPos().getX()-nodeWidth) && clickX < (v.getPos().getX() + nodeWidth)){
 							if((clickY > v.getPos().getY()-13) && clickY < (v.getPos().getY()+13)){
 								//found.
-								System.out.println(v.getWord());
+								System.out.println("//" + vertex.getSynomyns());
 								vr.doClickSearchGraph(v.getWord());
+								break;
 							}
 						}
 						//child nodes to go here.
@@ -192,7 +194,7 @@ public class ViewGraph {
 							if((clickX > c.getPos().getX()-nodeWidth) && clickX < (c.getPos().getX() + nodeWidth)){
 								if((clickY > c.getPos().getY()-13) && clickY < (c.getPos().getY()+13)){
 									//found.
-									System.out.println(c.getWord());
+									System.out.println(c.getPos());
 									vr.doClickSearchGraph(c.getWord());
 								}
 							}
