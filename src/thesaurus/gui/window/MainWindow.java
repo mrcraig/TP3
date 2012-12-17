@@ -5,6 +5,7 @@ import thesaurus.controller.SystemController;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 
 /** 
@@ -22,6 +23,7 @@ public class MainWindow extends Application {
 	private TutorialRoot tutorialRootCurrent;
 	private SystemController currentController;
 	private File currentRecentFile;
+	private ObservableList<String> currentRecentArray;
 
 	public void launchProgram(String[] args){
 		launch(args);
@@ -86,6 +88,14 @@ public class MainWindow extends Application {
 
 	public void setCurrentRecentFile(File currentRecentFileInput) {
 		currentRecentFile = currentRecentFileInput;
+	}
+
+	public ObservableList<String> getCurrentRecentArray() {
+		return currentRecentArray;
+	}
+
+	public void setCurrentRecentArray(ObservableList<String> currentRecentArray) {
+		this.currentRecentArray = currentRecentArray;
 	}
 
 }

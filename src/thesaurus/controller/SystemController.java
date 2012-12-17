@@ -236,9 +236,9 @@ public class SystemController {
 		return myFileChooser;
 	}
 	
-	public void populateList(ObservableList<String> inputArray){
+	public void populateList(){
 		currentListView.setEditable(true);
-		currentListView.setItems(inputArray);
+		currentListView.setItems(referenceWindow.getCurrentRecentArray());
 	}
 
 }

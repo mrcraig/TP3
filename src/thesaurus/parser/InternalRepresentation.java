@@ -83,7 +83,6 @@ public class InternalRepresentation
 	public Vertex getOneSynomyn(String s)
 	{
 		if(s.equalsIgnoreCase("")) return null;
-		System.out.println(nodes.getListOfSynomyns(s, 1).getFirst());
 		if(nodes.getListOfSynomyns(s,1)!=null) return nodes.getListOfSynomyns(s, 1).getFirst();
 		return null;
 	}
