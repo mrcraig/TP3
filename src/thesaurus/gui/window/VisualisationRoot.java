@@ -76,7 +76,7 @@ public class VisualisationRoot extends AnchorPane {
 			currentPopup.hide();
 			currentPopup = null;
 		}
-		PopupFactory currentPopupFactory = new PopupFactory(inputChoice);
+		PopupFactory currentPopupFactory = new PopupFactory(inputChoice, referenceWindow);
 		currentPopup = currentPopupFactory.getPopup();
 		currentPopup.show(referenceWindow.getStage());
 		currentPopup.setY(currentPopup.getY()+15);
