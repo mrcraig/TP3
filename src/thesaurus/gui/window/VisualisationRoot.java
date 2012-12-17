@@ -24,6 +24,8 @@ public class VisualisationRoot extends AnchorPane {
 	private Vertex currentVertex;
 
 	public VisualisationRoot(MainWindow inputWindow) throws IOException {
+		
+		System.out.println("");
 
 		referenceWindow = inputWindow;
 

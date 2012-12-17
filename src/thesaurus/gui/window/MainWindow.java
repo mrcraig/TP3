@@ -46,6 +46,8 @@ public class MainWindow extends Application {
 		stageCurrent.setTitle("The Graphical Thesaurus by Team O");
 		stageCurrent.getIcons().add(new Image("file:/../src/resourcePackage/o.png"));
 		stageCurrent.show();
+		
+		System.out.println("");
 
 	}	
 

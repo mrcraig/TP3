@@ -48,6 +48,8 @@ public class SplashRoot extends AnchorPane {
 		
 		currentController.addListenerListView();
 		
+		System.out.println("");
+		
 
 	}
 	

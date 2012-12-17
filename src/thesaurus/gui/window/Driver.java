@@ -12,6 +12,8 @@ public class Driver {
 		MainWindow currentWindow = new MainWindow();
 
 		currentWindow.launchProgram(args);
+		
+		System.out.println("");
 
 	}
 
