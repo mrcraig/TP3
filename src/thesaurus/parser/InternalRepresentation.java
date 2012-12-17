@@ -41,7 +41,6 @@ public class InternalRepresentation
 		}
 		System.out.println(n.getWord());
 		System.out.println("Vertex to be added" + n);
-		//put in memory so can see affect straight away
 		nodes.add(n);
 		write.addVertex(n);
 	}
@@ -89,7 +88,7 @@ public class InternalRepresentation
  	
 	public LinkedList<Vertex> getListOfSynomyns(String s){return getListOfSynomyns(s, 100);}
 	
-	public HashMap<String, LinkedList<String>> getTableData()
+	public HashMap<String, HashMap<String, LinkedList<String>>> getTableData()
 	{
 		return nodes.getTableData();
 	}

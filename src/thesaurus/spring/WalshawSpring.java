@@ -97,8 +97,12 @@ public class WalshawSpring {
 			
 				
 				
+<<<<<<< HEAD
 				
 				for (Vertex u : v.getAntonyms()){
+=======
+				for (Vertex target : source.getSynomyns()){
+>>>>>>> 2c85f18125ef6e48083eadd091a436d7d1239057
 					
 					if (u.getPos() == null) continue;
 					
@@ -200,10 +204,17 @@ public class WalshawSpring {
 	private int getVertex(thesaurus.parser.Vertex word) {
 		int count = 1;
 		this.lstVertices.addFirst(word);word.setVisited(true);
+<<<<<<< HEAD
 		for (Vertex ver : word.getAntonyms()){
 			if (!(ver.isVisited())){
 			this.lstVertices.addLast(ver); ver.setVisited(true);count++;}
 			for (Vertex inVer : ver.getAntonyms()){
+=======
+		for (Vertex ver : word.getSynomyns()){
+			if (!(ver.isVisited())){
+			this.lstVertices.addLast(ver); ver.setVisited(true);count++;}
+			for (Vertex inVer : ver.getSynomyns()){
+>>>>>>> 2c85f18125ef6e48083eadd091a436d7d1239057
 				if (!(inVer.isVisited())){
 				this.lstVertices.addLast(inVer);inVer.setVisited(true);count++;;}
 			}

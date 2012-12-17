@@ -74,7 +74,7 @@ public class Parser {
 	public LinkedList<Vertex> getSynmsFor(String s){return getSynmsFor(s, 100);}
 		
 	//dictionary key is word, value is linkedlist of synomns	
-	public HashMap<String, LinkedList<String>> getTableData()
+	public HashMap<String, HashMap<String, LinkedList<String>>> getTableData()
 	{
 		return allNodes.getTableData();
 	}
