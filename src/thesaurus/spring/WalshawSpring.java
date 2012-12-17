@@ -62,14 +62,15 @@ public class WalshawSpring {
 	}
 
 
-
 	private void mySpring() {
 		int converged = 0;
-		
+		int count1 = 0;
 		while (converged != 1) {
 			converged = 1;
 			for (Vertex v : this.lstVertices) {
 				if (v == null) continue;
+				Point2D oldPosistion = new Point2D.Double(v.getPos().getX(), v.getPos().getY());
+				
 				v.getDis().setLocation(0, 0); 
 				//boolean v1_OnBorder = isOnBorder(v.getDis());
 				for (Vertex u : this.lstVertices) {
@@ -82,7 +83,7 @@ public class WalshawSpring {
 								.distanceSq(v.getPos()));				       // couldn't divided by zero use EPSILON
 						
 						
-					//	System.out.println(delta);
+						System.out.println(deltaLength +"repulstion delta");
 						disX = (v.getDis().getX() + (deltaLength/Math.abs(deltaLength))
 									*repulsionF(Math.abs(deltaLength), u.getPos().getX()));             // displacement of x
 						disY = (v.getDis().getY() + (deltaLength/Math.abs(deltaLength)) 
@@ -95,37 +96,40 @@ public class WalshawSpring {
 			
 			
 				
-				Vertex source = v;
 				
-				for (Vertex target : source.getAdjList()){
+				
+				for (Vertex u : v.getAntonyms()){
 					
-					if (target.getPos() == null) continue;
+					if (u.getPos() == null) continue;
 					
 					//boolean u_OnBorder = isOnBorder(target.getDis());
-					double disX = target.getPos().getX() - source.getPos().getX();
-					double disY = target.getPos().getY() - source.getPos().getY();
+					double disX = u.getPos().getX() - v.getPos().getX();
+					double disY = u.getPos().getY() - v.getPos().getY();
 									
 					double deltaLength = Math.max(EPSILON,
-							target.getPos().distanceSq(source.getPos()));
+							u.getPos().distanceSq(v.getPos()));
+					System.out.println("is deltalength ok? "+deltaLength );
 					
-					
-					disX = (target.getDis().getX() + (deltaLength/Math.abs(deltaLength))
-							*attractionF(Math.abs(deltaLength),Math.abs(source.getPos().getX()), Math.abs(target.getPos().getX())));             // displacement of x
-					disY = (target.getDis().getX() + (deltaLength/Math.abs(deltaLength))
-							*attractionF(Math.abs(deltaLength),Math.abs(source.getPos().getY()), Math.abs(target.getPos().getY())));		  //  displacement of y
-					      target.getDis().setLocation(disX,disY);
-					      v.getDis().setLocation(disX,disY);
-					      System.out.println(disY);
+					disX = (u.getDis().getX() + (deltaLength/Math.abs(deltaLength))
+							*attractionF(Math.abs(deltaLength),Math.abs(v.getPos().getX()), Math.abs(u.getPos().getX())));             // displacement of x
+					disY = (u.getDis().getX() + (deltaLength/Math.abs(deltaLength))
+							*attractionF(Math.abs(deltaLength),Math.abs(v.getPos().getY()), Math.abs(u.getPos().getY())));		  //  displacement of y
+					     // u.getDis().setLocation(disX,disY);
+					      v.getDis().setLocation(Math.max(disX,EPSILON),Math.max(disY, EPSILON));
+					      System.out.println(Math.min(disX,EPSILON)+"what is goin on");
 		
 			}
 			
-			Point2D oldPosistion = new Point2D.Double(v.getPos().getX(), v.getPos().getY());
-			
-			double newPosX = v.getPos().getX() +( v.getDis().getX()/Math.abs(v.getDis().getX()))* Math.min(Math.abs(v.getDis().getX()), temprature); 
-			double newPosY = v.getPos().getY() + (v.getDis().getY()/Math.abs(v.getDis().getY()))* Math.min(Math.abs(v.getDis().getY()), temprature); 
+				System.out.println("this is my change "+ v.getDis().getX());
+			double newPosX = v.getPos().getX() +( v.getDis().getX()/Math.abs(v.getDis().getX()))* Math.min(temprature ,Math.abs(v.getDis().getX())); 
+			double newPosY = v.getPos().getY() + (v.getDis().getY()/Math.abs(v.getDis().getY()))* Math.min(temprature, Math.abs(v.getDis().getY())); 
 			v.getPos().setLocation( new Point2D.Double(newPosX, newPosY));
-			double change = v.getPos().distance(v.getPos()) - oldPosistion.distance(oldPosistion);
-			if (Math.abs(change)> k*size) converged=0;
+			double changeX = v.getPos().getX() - oldPosistion.getX();
+			double changeY = v.getPos().getY() - oldPosistion.getY();
+			double change = Math.sqrt((changeX * changeX)+(changeY *changeY));
+			count1++;
+			//System.out.println("this is my change "+newPosX + "  "+newPosY);
+			if (Math.abs(change)> k*0.01) converged=0;
 			}//end of the first loop that sets displacement to zero.
 			temprature = cool(temprature);
 		   }
@@ -178,7 +182,7 @@ public class WalshawSpring {
 	/* calculates repulsion force between non-adjacent vertices x is a distance calculated by pythagoras   */
 	private double repulsionF(double x, double w) {
 
-		return (((-1000*w*(k * k))/ x));
+		return (((-10*w*(k * k))/ x));
 	}
 
 	/* calculates attraction force between edges y is length of the edge*/
@@ -196,10 +200,10 @@ public class WalshawSpring {
 	private int getVertex(thesaurus.parser.Vertex word) {
 		int count = 1;
 		this.lstVertices.addFirst(word);word.setVisited(true);
-		for (Vertex ver : word.getAdjList()){
+		for (Vertex ver : word.getAntonyms()){
 			if (!(ver.isVisited())){
 			this.lstVertices.addLast(ver); ver.setVisited(true);count++;}
-			for (Vertex inVer : ver.getAdjList()){
+			for (Vertex inVer : ver.getAntonyms()){
 				if (!(inVer.isVisited())){
 				this.lstVertices.addLast(inVer);inVer.setVisited(true);count++;;}
 			}
