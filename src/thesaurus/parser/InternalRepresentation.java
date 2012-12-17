@@ -16,7 +16,6 @@ public class InternalRepresentation
 		read = new XmlRead(f);
 		nodes.setNodes(read.getAllNodes());
 		write = new XmlWrite(f, nodes);
-		
 	}
 	/**
 	 * Adds a vertex to the xml file. The synomyns

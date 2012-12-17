@@ -6,7 +6,8 @@ import java.util.LinkedList;
 
 public class Vertex {
    
-    private LinkedList<Vertex> adjList ; 
+    private LinkedList<Vertex> synomyns; 
+    private LinkedList<Vertex> antonym;
     private String index; 
     private boolean visited = false;
     private String word;
@@ -26,7 +27,7 @@ public class Vertex {
 
     public Vertex(String i)
     {
-    	adjList = new LinkedList<Vertex>();
+    	synomyns = new LinkedList<Vertex>();
     	index = i;
     }  
     
@@ -44,7 +45,7 @@ public class Vertex {
     	StringBuilder sb = new StringBuilder();
     	sb.append("Vertex "); sb.append(this.index+" ");
     	sb.append(this.word +": ");
-     	for(Vertex n : this.adjList)
+     	for(Vertex n : this.synomyns)
     	{
     		
     		sb.append(n.getWord());
@@ -69,7 +70,7 @@ public class Vertex {
 	}
 
 	public LinkedList<Vertex> getAdjList(){
-        return adjList;
+        return synomyns;
     }
     
     public String getIndex(){
@@ -81,10 +82,10 @@ public class Vertex {
     }   
     
     public void addToAdjList(Vertex n){
-        adjList.addLast(n);
+        synomyns.addLast(n);
     }
     
     public int vertexDegree(){
-        return adjList.size();
+        return synomyns.size();
     }
 }
