@@ -21,12 +21,13 @@ public class Driver
 		
 		//driver.removeVertex("hate");
 		
-	
-		driver.addVertex("helen", "thumb, bitch, supervisor", "fun, peaceful");
+		
+		//driver.addVertex("helen", "thumb, happy, supervisor", "fun, peaceful");
 		
 	
 		
 		//driver.editVertex("Joyful", "sad");
+		System.out.println(driver.getListOfSynomyns("Jubilant"));
 		System.out.println(driver.getTableData());
 		
 	}
