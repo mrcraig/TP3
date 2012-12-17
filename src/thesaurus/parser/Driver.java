@@ -21,6 +21,8 @@ public class Driver
 		
 		//driver.removeVertex("hate");
 		
+	
+		driver.addVertex("helen", "thumb, bitch, supervisor", "fun, peaceful");
 		
 	
 		
