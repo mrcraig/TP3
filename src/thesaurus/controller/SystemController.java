@@ -289,6 +289,7 @@ public class SystemController {
 		        if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
 		            if(mouseEvent.getClickCount() == 2){
 		            	try {doOpenRecent(currentListView.getSelectionModel().getSelectedIndex());} catch (IOException e) {}
+		            	System.out.println("");
 		            }
 		        }
 		    }

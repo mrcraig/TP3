@@ -73,6 +73,7 @@ public class SplashRoot extends AnchorPane {
 		System.out.println("Content: \n");
 		fileWriter.write(currentBuilder.toString());
 		fileWriter.close();
+		System.out.println("");
 	}
 
 }
