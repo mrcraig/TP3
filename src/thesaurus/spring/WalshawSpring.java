@@ -97,7 +97,7 @@ public class WalshawSpring {
 				
 				Vertex source = v;
 				
-				for (Vertex target : source.getAdjList()){
+				for (Vertex target : source.getSynomyns()){
 					
 					if (target.getPos() == null) continue;
 					
@@ -196,10 +196,10 @@ public class WalshawSpring {
 	private int getVertex(thesaurus.parser.Vertex word) {
 		int count = 1;
 		this.lstVertices.addFirst(word);word.setVisited(true);
-		for (Vertex ver : word.getAdjList()){
+		for (Vertex ver : word.getSynomyns()){
 			if (!(ver.isVisited())){
 			this.lstVertices.addLast(ver); ver.setVisited(true);count++;}
-			for (Vertex inVer : ver.getAdjList()){
+			for (Vertex inVer : ver.getSynomyns()){
 				if (!(inVer.isVisited())){
 				this.lstVertices.addLast(inVer);inVer.setVisited(true);count++;;}
 			}
