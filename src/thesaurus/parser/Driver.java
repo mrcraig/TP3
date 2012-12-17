@@ -12,18 +12,20 @@ public class Driver
 		System.out.println(test.getAbsolutePath());
 		InternalRepresentation driver = new InternalRepresentation(test);
 		
-		String[] synomyns = new String[3];
-		synomyns[0] = "happy";
-		synomyns[1] = "content";
-		synomyns[2] = "joyful";
+		String[] antonym = new String[3];
+		antonym[0] = "happy";
+		antonym[1] = "content";
+		antonym[2] = "joyful";
 		
-		//driver.addVertex("friday", synomyns);
+		driver.addVertex("hate","Peaceful, Merry", "happy, content");
+		
+		//driver.removeVertex("hate");
 		
 		
 	
 		
 		//driver.editVertex("Joyful", "sad");
-		System.out.println(driver.getOneSynomyn(""));
+		System.out.println(driver.getListOfSynomyns("hate"));
 		
 	}
 }

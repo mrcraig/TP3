@@ -14,12 +14,14 @@ if xml file is empty, put in tags
 
 
 
+addVertex edited, add node okay I think, alter add edges
+
+add edge
 
 
 
-put in a data node for each edge, 
-indicating what type it is
 
+add vertex box - need to do synomyns for other way round
 
-read and write 
+change graph to a map not linkedlist
 

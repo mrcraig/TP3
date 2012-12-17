@@ -58,10 +58,17 @@ public class XmlWrite {
 		this.addNode(v.getWord(), v.getIndex());
 		String source = v.getIndex();
 		String target = null;
-		for(Vertex j : v.getAdjList())
+		for(Vertex j : v.getSynomyns())
 		{
+			if(j==null) continue;
 			target = j.getIndex();
-			this.addEdge(source, target);
+			this.addEdge(source, target, "s");
+		}
+		for(Vertex i : v.getAntonyms())
+		{
+			if(i==null) continue;
+			target = i.getIndex();
+			this.addEdge(source, target, "a");
 		}
 		saveFile();
 	}
@@ -88,11 +95,14 @@ public class XmlWrite {
 
 	
 	
-   private void addEdge(String source, String target)
+   private void addEdge(String source, String target, String type)
 	{
 		Element edge = this.xml.createElement("edge");
+		Element data = this.xml.createElement("data");
 		edge.setAttribute("source",source);
 		edge.setAttribute("target", target);
+		data.setAttribute("key", "s");
+		data.setTextContent(type);
 		this.xml.getElementsByTagName("graph").item(0).appendChild(edge);
 	}
 	

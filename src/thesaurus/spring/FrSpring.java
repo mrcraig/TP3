@@ -97,7 +97,7 @@ public class FrSpring {
 				
 				if (source.getPos() == null) continue;
 				boolean v_OnBorder = isOnBorder(source.getDis());
-				for (Vertex target : source.getAdjList()){
+				for (Vertex target : source.getSynomyns()){
 					if(target.equals(lstVertices.get(0))) continue;
 					if (target.equals(lstVertices.get(i)))continue;
 					if (target.getPos() == null) continue;
@@ -116,7 +116,7 @@ public class FrSpring {
 					double myAForce = aforce;
 					
 					
-					for (Vertex myS : lstVertices.get(0).getAdjList()){
+					for (Vertex myS : lstVertices.get(0).getSynomyns()){
 						if (source.equals(myS)&& (!target.equals(myS))&& (!target.equals(lstVertices.get(0)))) myAForce = aforce*50000;
 						if ((source.equals(myS))&& target.equals(lstVertices.get(0))) {myAForce = 2000;}
 						if ((source.equals(lstVertices.get(0)))&&(target.equals(myS))&& getCons(myS,target))myAForce = aforce*200000;
@@ -254,10 +254,10 @@ public class FrSpring {
 	private int getVertex(thesaurus.parser.Vertex word) {
 		int count = 1;
 		this.lstVertices.addFirst(word);word.setVisited(true);
-		for (Vertex ver : word.getAdjList()){
+		for (Vertex ver : word.getSynomyns()){
 			if (!(ver.isVisited())){
 			this.lstVertices.addLast(ver); ver.setVisited(true);count++;}
-			for (Vertex inVer : ver.getAdjList()){
+			for (Vertex inVer : ver.getSynomyns()){
 				if (!(inVer.isVisited())){
 				this.lstVertices.addLast(inVer);inVer.setVisited(true);count++;;}
 			}
@@ -279,7 +279,7 @@ public boolean isOnBorder(Point2D x ){
 }
 private boolean getCons(Vertex sor, Vertex tar){
 	if (sor.equals(tar)) return false;
-	for (Vertex b:sor.getAdjList()){
+	for (Vertex b:sor.getSynomyns()){
 	if(	b.equals(tar)) return true;
 		
 	}

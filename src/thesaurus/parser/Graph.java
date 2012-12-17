@@ -89,7 +89,7 @@ public class Graph
 			{
 				Vertex current = workQueue.remove();
 				results.add(current);
-				for(Vertex child : current.getAdjList())
+				for(Vertex child : current.getSynomyns())
 				{
 					if(!workQueue.contains(child) && !results.contains(child))
 					{
@@ -107,7 +107,7 @@ public class Graph
 			{
 				String k = v.getWord();
 				LinkedList<String> synms = new LinkedList<String>();
-				for(Vertex n : v.getAdjList())
+				for(Vertex n : v.getSynomyns())
 				{
 					synms.add(n.getWord());
 				}
