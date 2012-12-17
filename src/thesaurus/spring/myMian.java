@@ -44,25 +44,25 @@ public class myMian extends Application {
 		Vertex v14 = new Vertex("full grown");
 		Vertex v15 = new Vertex("settle");
 		
-		v1.addSynomyn(v2);
-		v1.addSynomyn(v3);
-	    v1.addSynomyn(v6);
-    	v1.addSynomyn(v7);
-		v1.addSynomyn(v8);
+		v1.addSynonym(v2);
+		v1.addSynonym(v3);
+	    v1.addSynonym(v6);
+    	v1.addSynonym(v7);
+		v1.addSynonym(v8);
      	
 
 		
-		v2.addSynomyn(v1);
-		v2.addSynomyn(v4);
-		v2.addSynomyn(v5);
-		v2.addSynomyn(v6);
-//		v2.addToAdjList(v14);
+		v2.addSynonym(v1);
+		v2.addSynonym(v4);
+		v2.addSynonym(v5);
+		v2.addSynonym(v6);
+//		v2.addSynomyn(v14);
 		//
-         v3.addSynomyn(v5);
+         v3.addSynonym(v5);
 		 //v3.addToAdjList(v11);
 		
-		 v3.addSynomyn(v1);
-		 v3.addSynomyn(v6);
+		 v3.addSynonym(v1);
+		 v3.addSynonym(v6);
 //		v3.addToAdjList(v6);
 //		v3.addToAdjList(v15);
 //		v3.addToAdjList(v17);
@@ -70,38 +70,38 @@ public class myMian extends Application {
 //		v3.addToAdjList(v19);
 //		v3.addToAdjList(v20);
 
-		v4.addSynomyn(v1);
-		v4.addSynomyn(v2);
+		v4.addSynonym(v1);
+		v4.addSynonym(v2);
 		
 
-		v5.addSynomyn(v1);
-		v5.addSynomyn(v2);
-		v5.addSynomyn(v3);
+		v5.addSynonym(v1);
+		v5.addSynonym(v2);
+		v5.addSynonym(v3);
 		//v5.addToAdjList(v6);
 		
-		v6.addSynomyn(v1);
-		v6.addSynomyn(v2);
-		v6.addSynomyn(v3);
+		v6.addSynonym(v1);
+		v6.addSynonym(v2);
+		v6.addSynonym(v3);
 		//v6.addToAdjList(v5);
 		
-		v7.addSynomyn(v1);
-		v7.addSynomyn(v8);
+		v7.addSynonym(v1);
+		v7.addSynonym(v8);
 		
-		v8.addSynomyn(v1);
-		v8.addSynomyn(v7);
-		v8.addSynomyn(v9);
-		v8.addSynomyn(v10);
-		v8.addSynomyn(v11);
+		v8.addSynonym(v1);
+		v8.addSynonym(v7);
+		v8.addSynonym(v9);
+		v8.addSynonym(v10);
+		v8.addSynonym(v11);
 		
-		v9.addSynomyn(v10);
-		v9.addSynomyn(v11);
+		v9.addSynonym(v10);
+		v9.addSynonym(v11);
 		
-		v12.addSynomyn(v13);
-		v12.addSynomyn(v14);
-		v12.addSynomyn(v15);
+		v12.addSynonym(v13);
+		v12.addSynonym(v14);
+		v12.addSynonym(v15);
 		//v5.addToAdjList(v6);
 		
-		fr = new WalshawSpring(v1);
+		fr = new WalshawSpring(v12);
 		// fr.getPositions();
 		// fr.test();
 
@@ -135,7 +135,7 @@ public class myMian extends Application {
 		}
 
 		for (Vertex v : fr.getVertices()) {
-			mywait (1);
+			
 			drawShapes(gc, v);
 		}
 		
@@ -166,22 +166,6 @@ public class myMian extends Application {
 		// }
 
 	}
-	public static void mywait (int k){
-		long time0, time1;
-		time0 = System.currentTimeMillis();
-		do{
-		time1 = System.currentTimeMillis();
-		}
-		while ((time1 - time0) < k * 100);
-		}
-	private static void drawShapes1(GraphicsContext gc, Vertex so, Vertex ta) {
-
-		gc.setStroke(Color.BLUE);
-		gc.setLineWidth(5);
-
-		gc.strokeLine(so.getPos().getX(), so.getPos().getY(), ta.getPos()
-				.getX(), ta.getPos().getY());
-
-	}
+	
 
 }

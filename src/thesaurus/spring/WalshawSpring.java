@@ -41,10 +41,10 @@ public class WalshawSpring {
 																	                 	// this is the center of the canvas
 			}
 			
-			 myX =i*50;    
-			myY =i*50;	
-		//	myX =  Math.random()* this.width*1;    
-			//myY =  Math.random()* this.length*1;
+			// myX =i*50;    
+			//myY =i*50;	
+			myX =  Math.random()* this.width*1;    
+		myY =  Math.random()* this.length*1;
 			System.out.println(myX+ " "+myY);
 			lstVertices.get(i).setPos (create(myX, myY));    				//place vertices at random
 			lstVertices.get(i).setPDis(create(0, 0));
@@ -186,7 +186,7 @@ public class WalshawSpring {
 	/* calculates repulsion force between non-adjacent vertices x is a distance calculated by pythagoras   */
 	private double repulsionF(double x, double w) {
 
-		return (((-0.000008*w*(k * k))/ x));
+		return (((-0.000000000000000000000000001*w*(k * k))/ x));
 	}
 
 	/* calculates attraction force between edges y is length of the edge*/

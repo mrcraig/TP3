@@ -41,8 +41,8 @@ public class FrSpring {
 																	                 	// this is the center of the canvas
 			}
 			
-			 myX =-size-(i*i);    
-			myY =-size-(i*i) ;	
+			 myX =-(i*i);    
+			myY =-(i*i) ;	
 			//myX = -i* Math.random() * this.width*10;    
 			//myY = -i* Math.random() * this.length*10;
 			System.out.println(myX+ " "+myY);
@@ -64,17 +64,12 @@ public class FrSpring {
 
 
 	private void mySpring() {
-		for (int ite = 0; ite < (700); ite++) {
+		for (int ite = 0; ite < (7000); ite++) {
 			for (Vertex v : this.lstVertices) {
 				v.getDis().setLocation(0, 0); 
-				//boolean v1_OnBorder = isOnBorder(v.getDis());
 				for (Vertex u : this.lstVertices) {
-					//boolean u_OnBorder = isOnBorder(u.getDis());
-					//if (v1_OnBorder & u_OnBorder)continue;
 					if(u.equals(lstVertices.get(0)))continue;
 					if (!(u.equals(v))) {
-						//boolean u_OnBorder = isOnBorder(u.getDis());
-					//	if (v1_OnBorder & u_OnBorder)continue;
 						double disX = v.getPos().getX() - u.getPos().getX();   // difference of x coordinate
 						double disY = v.getPos().getY() - u.getPos().getY();   // difference of y coordinate
 						double deltaLength = Math.max(EPSILON,  v.getPos()	   // if distance between vertices is zero, since  
@@ -186,7 +181,7 @@ public class FrSpring {
 			}
 			
 			
-			temprature *= (1.0 - (ite / (double) (700))); // reduce temperature
+			temprature *= (1.0 - (ite / (double) (7000))); // reduce temperature
 		}
 		/* the is for test only, Begin testing */
 		Point2D[] tmp = new Point2D[size];
@@ -287,5 +282,4 @@ private boolean getCons(Vertex sor, Vertex tar){
 }
 
 }
-
 
