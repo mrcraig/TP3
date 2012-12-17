@@ -86,13 +86,7 @@
 <data key="s">s</data>
 </edge>
 
-<edge source="0" target="3">
-<data key="s">s</data>
-</edge>
 
-<edge source="0" target="3">
-<data key="s">s</data>
-</edge>
 
 <edge source="2" target="4">
 <data key="s">s</data>
