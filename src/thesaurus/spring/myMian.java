@@ -18,7 +18,7 @@ public class myMian extends Application {
 	int len = 1000;
 	static Vertex myW;
 
-	static FrSpring2 fr;
+	static FrSpring fr;
 
 	public static void main(String[] args) {
 		mystart();
@@ -101,7 +101,7 @@ public class myMian extends Application {
 		v12.addToAdjList(v15);
 		//v5.addToAdjList(v6);
 		
-		fr = new FrSpring2(v1);
+		fr = new FrSpring(v1);
 		// fr.getPositions();
 		// fr.test();
 

@@ -8,7 +8,7 @@ import javafx.stage.Popup;
 import thesaurus.controller.SystemController;
 import thesaurus.gui.canvas.ViewGraph;
 import thesaurus.parser.*;
-import thesaurus.spring.FrSpring2;
+import thesaurus.spring.FrSpring;
 
 /**
  * This class is an extension of AnchorPane and defines how the visualisation
@@ -83,7 +83,7 @@ public class VisualisationRoot extends AnchorPane {
 	}
 	
 	public Vertex runSpringOnVertex(Vertex inputVertex){
-		FrSpring2 currentSpring = new FrSpring2(inputVertex);
+		FrSpring currentSpring = new FrSpring(inputVertex);
 		return currentSpring.getCoordinates();
 	}
 	
