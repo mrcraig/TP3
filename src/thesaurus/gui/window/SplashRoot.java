@@ -1,6 +1,11 @@
 package thesaurus.gui.window;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -39,6 +44,7 @@ public class SplashRoot extends AnchorPane {
 		
 		referenceWindow.setCurrentRecentArray(createRecentListArray());
 		currentController.populateList();
+		writeToRecentFile();
 
 	}
 	
@@ -50,6 +56,20 @@ public class SplashRoot extends AnchorPane {
 		}
 		fileScanner.close();
 		return toReturn;		
+	}
+	
+	public void writeToRecentFile() throws IOException{
+		File toWrite = referenceWindow.getCurrentRecentFile();
+		OutputStreamWriter fileWriter;
+		fileWriter = new OutputStreamWriter(new FileOutputStream(toWrite),"UTF-8");
+		StringBuilder currentBuilder = new StringBuilder();
+		for(String s: referenceWindow.getCurrentRecentArray()){
+			System.out.println(s);
+			currentBuilder.append(s+"\n");
+		}
+		System.out.println("Content: \n");
+		fileWriter.write(currentBuilder.toString());
+		fileWriter.close();
 	}
 
 }

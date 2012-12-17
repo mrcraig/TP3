@@ -182,9 +182,10 @@ public class SystemController {
 	}
 	
 	@FXML
-	protected void doReturn() {
+	protected void doReturn() throws IOException {
 		referenceWindow.getStage().setScene(referenceWindow.getSplashScene());
 		populateList();
+		referenceWindow.getSplashRoot().writeToRecentFile();
 	}
 
 	@FXML
