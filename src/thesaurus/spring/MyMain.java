@@ -101,7 +101,7 @@ public class MyMain extends Application {
 		v12.addSynonym(v15);
 		//v5.addToAdjList(v6);
 		
-		fr = new FrSpring(v1);
+		fr = new FrSpring(v7);
 		// fr.getPositions();
 		// fr.test();
 

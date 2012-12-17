@@ -41,10 +41,10 @@ public class FrSpring {
 																	                 	// this is the center of the canvas
 			}
 			
-			 myX =-(i*i);    
-			myY =-(i*i) ;	
-			//myX = -i* Math.random() * this.width*10;    
-			//myY = -i* Math.random() * this.length*10;
+			 //myX =-(i*i);    
+			//myY =-(i*i) ;	
+			myX = -i* Math.random() * this.width;    
+			myY = -i* Math.random() * this.length;
 			System.out.println(myX+ " "+myY);
 			lstVertices.get(i).setPos (create(myX, myY));    				//place vertices at random
 			lstVertices.get(i).setPDis(create(0, 0));
