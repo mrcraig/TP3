@@ -36,7 +36,8 @@ public class SplashRoot extends AnchorPane {
 			throw new RuntimeException(exception);
 		}
 		
-		populateRecentList(createRecentListArray());
+		referenceWindow.setCurrentRecentArray(createRecentListArray());
+		currentController.populateList();
 
 	}
 	
@@ -48,10 +49,6 @@ public class SplashRoot extends AnchorPane {
 		}
 		fileScanner.close();
 		return toReturn;		
-	}
-
-	private void populateRecentList(ObservableList<String> inputArray){
-		currentController.populateList(inputArray);
 	}
 
 }
