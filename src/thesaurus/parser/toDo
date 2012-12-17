@@ -17,6 +17,9 @@ if xml file is empty, put in tags
 
 
 
-put in a data node for each edge, indicating what type it is
+put in a data node for each edge, 
+indicating what type it is
 
-javadoc comments - format, use html!
+
+read and write 
+

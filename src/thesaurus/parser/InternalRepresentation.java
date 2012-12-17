@@ -24,15 +24,15 @@ public class InternalRepresentation
 	 * @param w			The word belonging to the vertex
 	 * @param synomyns	The synonyms for the vertex 
 	 */
-	public void addVertex(String w, String[] synomyns)
+	public void addVertex(String w, String synomyns)
 	{
 		String index = read.getLastVertexIndex();
 		Vertex n = new Vertex(index);
 		n.setWord(w);
-		for(String s : synomyns)
+		for(String s : parseCsvToArray(synomyns))
 		{
 			Vertex syn = nodes.getVertexFromWord(s);
-			n.addToAdjList(syn);
+			n.addSynomyn(syn);
 		}
 		System.out.println(n.getWord());
 		System.out.println("Vertex to be added" + n);
@@ -85,4 +85,13 @@ public class InternalRepresentation
 		return nodes.getTableData();
 	}
 	
+	 private String[] parseCsvToArray(String inputCsvString){
+         String[] hold = inputCsvString.split(",");
+         String[] toReturn = new String[hold.length];
+         int i = 0;
+         for(String s:hold){
+                 toReturn[i++] = s.replaceAll("\\s","");
+         }
+         return toReturn;
+	 }
 }

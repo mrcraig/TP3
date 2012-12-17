@@ -127,11 +127,13 @@ public class XmlRead
 	private void getEdges()
 	{
 		NodeList edges = null;
+		boolean isSynomyn = false;
 		try 
 		{
 			XPathExpression expr = xpath.compile("//graphml/graph/edge");
 		    edges = (NodeList) expr.evaluate(this.xml, XPathConstants.NODESET);
-		} catch (XPathExpressionException e) 
+		} 
+		catch (XPathExpressionException e) 
 		{
 			e.printStackTrace();
 		}
@@ -139,10 +141,30 @@ public class XmlRead
 		for(int i=0;i<edges.getLength();i++)
 		{
 			Node e = edges.item(i);
+			//loop in case e has several child nodes
+			for(int j=0;i<e.getChildNodes().getLength();j++)
+			{
+				Node d = e.getChildNodes().item(j);
+				if(d.getNodeName().equals("data"))
+						{
+							if(d.getTextContent().equals("s"))
+							{
+								isSynomyn = true;
+							}
+						}
+	
+			}
 			String source = e.getAttributes().getNamedItem("source").getTextContent();
 			String target = e.getAttributes().getNamedItem("target").getTextContent();
 			Vertex v = nodes.getVertexFromIndex(source);
-			v.addToAdjList(nodes.getVertexFromIndex(target));
+			if(isSynomyn)
+			{
+				v.addSynomyn(nodes.getVertexFromIndex(target));
+			}
+			else
+			{
+				v.addAntonym(nodes.getVertexFromIndex(target));
+			}
 		}
 	}
 	
