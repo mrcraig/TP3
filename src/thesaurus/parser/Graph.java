@@ -100,7 +100,7 @@ public class Graph
 			return results;
 		}
 	 
-	 public HashMap<String, LinkedList<String>> getTableData()
+	 public HashMap<String,HashMap<String, LinkedList<String>>> getTableData()
 		{	
 			HashMap<String,LinkedList<String>> tableData = new HashMap<String, LinkedList<String>>();
 			for(Vertex v : this.getList())

@@ -41,7 +41,6 @@ public class InternalRepresentation
 		}
 		System.out.println(n.getWord());
 		System.out.println("Vertex to be added" + n);
-		//put in memory so can see affect straight away
 		nodes.add(n);
 		write.addVertex(n);
 	}
@@ -83,7 +82,6 @@ public class InternalRepresentation
 	public Vertex getOneSynomyn(String s)
 	{
 		if(s.equalsIgnoreCase("")) return null;
-		System.out.println(nodes.getListOfSynomyns(s, 1).getFirst());
 		if(nodes.getListOfSynomyns(s,1)!=null) return nodes.getListOfSynomyns(s, 1).getFirst();
 		return null;
 	}

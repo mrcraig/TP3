@@ -25,7 +25,7 @@ public class Driver
 	
 		
 		//driver.editVertex("Joyful", "sad");
-		System.out.println(driver.getListOfSynomyns("mathew"));
+		System.out.println(driver.getTableData());
 		
 	}
 }
