@@ -1,7 +1,10 @@
 package thesaurus.gui.window;
 
 import java.io.IOException;
+import java.util.Scanner;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import thesaurus.controller.SystemController;
@@ -17,7 +20,7 @@ public class SplashRoot extends AnchorPane {
 
 	private SystemController currentController;
 
-	public SplashRoot(MainWindow inputWindow) {
+	public SplashRoot(MainWindow inputWindow) throws IOException {
 
 		referenceWindow = inputWindow;
 
@@ -32,7 +35,23 @@ public class SplashRoot extends AnchorPane {
 		} catch (IOException exception) {
 			throw new RuntimeException(exception);
 		}
+		
+		populateRecentList(createRecentListArray());
 
+	}
+	
+	private ObservableList<String> createRecentListArray() throws IOException {
+		ObservableList<String> toReturn = FXCollections.observableArrayList();
+		Scanner fileScanner = new Scanner(referenceWindow.getCurrentRecentFile(), "UTF-8");
+		while(fileScanner.hasNextLine()){
+			toReturn.add(fileScanner.nextLine());
+		}
+		fileScanner.close();
+		return toReturn;		
+	}
+
+	private void populateRecentList(ObservableList<String> inputArray){
+		currentController.populateList(inputArray);
 	}
 
 }

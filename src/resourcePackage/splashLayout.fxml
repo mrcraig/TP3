@@ -17,7 +17,7 @@
       </font>
     </Button>
     <Button id="importFileButton" onAction="#doImport" font="$x1" layoutX="81.0" layoutY="375.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="178.0" text="Import From File" />
-    <ListView layoutX="400.0" layoutY="278.0" prefHeight="231.5" prefWidth="320.0" />
+    <ListView fx:id="currentListView" layoutX="400.0" layoutY="278.0" prefHeight="231.5" prefWidth="320.0" />
     <Line endY="325.0" layoutX="358.0" layoutY="198.0" startY="9.0" />
     <Text font="$x1" layoutX="347.0" layoutY="103.0" scaleX="6.0" scaleY="6.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Graphical Thesaurus" />
     <Text font="$x1" layoutX="522.0" layoutY="248.0" scaleX="3.0" scaleY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Import Recent..." />
