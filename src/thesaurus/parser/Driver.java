@@ -17,7 +17,7 @@ public class Driver
 		antonym[1] = "content";
 		antonym[2] = "joyful";
 		
-		driver.addVertex("hate","Peaceful, Merry", "happy, content");
+		//driver.addVertex("mathew","Peaceful, Merry", "happy, content");
 		
 		//driver.removeVertex("hate");
 		
@@ -25,7 +25,7 @@ public class Driver
 	
 		
 		//driver.editVertex("Joyful", "sad");
-		System.out.println(driver.getListOfSynomyns("hate"));
+		System.out.println(driver.getListOfSynomyns("mathew"));
 		
 	}
 }
