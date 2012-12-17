@@ -11,7 +11,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import thesaurus.parser.*;
-public class myMian extends Application {
+public class MyMain extends Application {
 
 	Canvas graph;
 	int wid = 1000;
