@@ -11,14 +11,14 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import thesaurus.parser.*;
-public class myMian extends Application {
+public class MyMain extends Application {
 
 	Canvas graph;
 	int wid = 1000;
 	int len = 1000;
 	static Vertex myW;
 
-	static WalshawSpring fr;
+	static FrSpring fr;
 
 	public static void main(String[] args) {
 		mystart();
@@ -101,7 +101,7 @@ public class myMian extends Application {
 		v12.addSynonym(v15);
 		//v5.addToAdjList(v6);
 		
-		fr = new WalshawSpring(v12);
+		fr = new FrSpring(v1);
 		// fr.getPositions();
 		// fr.test();
 

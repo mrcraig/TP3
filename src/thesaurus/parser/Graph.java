@@ -110,12 +110,13 @@ public class Graph
 		 		LinkedList<String> ants = new LinkedList<String>();
  		 		for(Vertex s : v.getSynomyns())
 		 		{
+ 		 			if (s==null) continue;
 		 			syns.add(s.getWord());
 		 		}
 		 		words.put("synomyns", syns);
-			
 		 		for(Vertex a : v.getAntonyms())
 		 		{
+		 			if(a==null) continue;
 		 			ants.add(a.getWord());
 		 		}
 		 		words.put("antonyms", ants);

@@ -41,10 +41,10 @@ public class WalshawSpring {
 																	                 	// this is the center of the canvas
 			}
 			
-			// myX =i*50;    
-			//myY =i*50;	
-			myX =  Math.random()* this.width*1;    
-		myY =  Math.random()* this.length*1;
+			myX =i;    
+			myY =i;	
+			//myX =  Math.random()* this.width*1;    
+		//myY =  Math.random()* this.length*1;
 			System.out.println(myX+ " "+myY);
 			lstVertices.get(i).setPos (create(myX, myY));    				//place vertices at random
 			lstVertices.get(i).setPDis(create(0, 0));
@@ -125,15 +125,15 @@ public class WalshawSpring {
 			}
 			
 				
-			double newPosX = v.getPos().getX() +( v.getDis().getX()/Math.abs(v.getDis().getX()))* Math.min(temperature ,Math.abs(v.getDis().getX())); 
-			double newPosY = v.getPos().getY() + (v.getDis().getY()/Math.abs(v.getDis().getY()))* Math.min(temperature, Math.abs(v.getDis().getY())); 
+			double newPosX = v.getPos().getX() +( v.getDis().getX()/Math.max(Math.abs(v.getDis().getX()),EPSILON)* Math.min(temperature ,Math.abs(v.getDis().getX()))); 
+			double newPosY = v.getPos().getY() + (v.getDis().getY()/Math.max(Math.abs(v.getDis().getY()),EPSILON)* Math.min(temperature, Math.abs(v.getDis().getY()))); 
 			v.getPos().setLocation( new Point2D.Double(newPosX, newPosY));
 			double changeX = v.getPos().getX() - oldPosistion.getX();
 			double changeY = v.getPos().getY() - oldPosistion.getY();
 			double change = Math.sqrt((changeX * changeX)+(changeY *changeY));
 			count1++;
 			System.out.println(change);
-			if (Math.abs(change)> k*0.01) converged=0;
+			if (Math.abs(change)> k*0.1) converged=0;
 			}//end of the first loop that sets displacement to zero.
 			temperature = cool(temperature);
 		   }
@@ -186,12 +186,12 @@ public class WalshawSpring {
 	/* calculates repulsion force between non-adjacent vertices x is a distance calculated by pythagoras   */
 	private double repulsionF(double x, double w) {
 
-		return (((-0.000000000000000000000000001*w*(k * k))/ x));
+		return (((-10*w*(k * k))/ x));
 	}
 
 	/* calculates attraction force between edges y is length of the edge*/
 	private double attractionF(double x, double d, double w) {
-		return ((x-k)/d)-repulsionF(x,w);
+		return (((x-k)/d)-repulsionF(x,w));
 	}
 
 	/* create and returns coordinate points */
