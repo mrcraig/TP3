@@ -98,11 +98,18 @@ public class VisualisationRoot extends AnchorPane {
 	}
 	
 	public void doClickSearchGraph(String inputString) {
-		currentVertex = referenceWindow.getVisualisationRoot().getCurrentParser().getOneSynomyn(inputString);
+		setCurrentVertex(getCurrentParser().getOneSynomyn(inputString));
 		if (currentVertex == null) {
 			return;
 		}
-		referenceWindow.getVisualisationRoot().setCurrentVertex(referenceWindow.getVisualisationRoot().runSpringOnVertex(currentVertex));
+		setCurrentVertex(referenceWindow.getVisualisationRoot().runSpringOnVertex(currentVertex));
+		referenceWindow.getVisualisationRoot().addCanvas();
+		referenceWindow.getVisualisationRoot().addTable();
+	}
+	
+	public void doSearchRefresh(){
+		Vertex replacementVertex = getCurrentParser().getOneSynomyn(currentVertex.getWord());
+		setCurrentVertex(referenceWindow.getVisualisationRoot().runSpringOnVertex(replacementVertex));
 		referenceWindow.getVisualisationRoot().addCanvas();
 		referenceWindow.getVisualisationRoot().addTable();
 	}
