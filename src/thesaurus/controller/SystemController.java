@@ -72,6 +72,12 @@ public class SystemController {
 	private ChoiceBox<String> selectionBoxGraph;
 	
 	@FXML
+	private ChoiceBox<String> selectionBoxTable;
+	
+	@FXML
+	private ChoiceBox<String> selectionBoxDual;
+	
+	@FXML
 	private Label statusLabelGraph;
 	
 	@FXML
@@ -113,7 +119,9 @@ public class SystemController {
 		
 		setSearchBoxEvents();
 		
-		selectionBoxGraph.getSelectionModel().select(1);
+		setSelectionBoxDefault();
+		
+		setUserFeedbackEvents();
 
 	}
 
@@ -140,7 +148,7 @@ public class SystemController {
 		
 		setSearchBoxEvents();
 		
-		selectionBoxGraph.getSelectionModel().select(1);
+		setSelectionBoxDefault();
 		
 		setUserFeedbackEvents();
 
@@ -162,7 +170,7 @@ public class SystemController {
 		
 		setSearchBoxEvents();
 		
-		selectionBoxGraph.getSelectionModel().select(1);
+		setSelectionBoxDefault();
 		
 		setUserFeedbackEvents();
 
@@ -173,6 +181,12 @@ public class SystemController {
 		lookupHashMap.put("graph", statusLabelGraph);
 		lookupHashMap.put("table", statusLabelTable);
 		lookupHashMap.put("dual", statusLabelDual);		
+	}
+	
+	private void setSelectionBoxDefault(){
+		selectionBoxGraph.getSelectionModel().select(1);
+		selectionBoxTable.getSelectionModel().select(1);
+		selectionBoxDual.getSelectionModel().select(1);
 	}
 	
 	private int reverseIndex(int currentIndex){
