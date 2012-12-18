@@ -51,7 +51,8 @@ public class InternalRepresentation
 	public String createNew()
 	{
 		StringBuilder x = new StringBuilder();
-		x.append("<graphml><graph>)
+		x.append("<graphml><graph></graph></graphml>");
+		return x.toString();
 	}
 	
 	/**
