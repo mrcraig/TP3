@@ -35,8 +35,9 @@ public class ViewTable {
  
     public void start() {
  
-        table.setEditable(true);
+        table.setEditable(false);
         table.setMaxSize(windowWidth, windowHeight);
+        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
  
         TableColumn firstNameCol = new TableColumn("Word");
         firstNameCol.setMinWidth(windowWidth/3);
@@ -55,6 +56,7 @@ public class ViewTable {
  
         table.setItems(data);
         table.getColumns().addAll(firstNameCol, lastNameCol, emailCol);
+        
         
         importData();
  
@@ -111,12 +113,27 @@ public class ViewTable {
     		synList += vertex.getSynomyns().get(i).getWord();
     	}
     	
+//    	for(int i=0;i<vertex.getAntonyms().size();i++){
+//    		if(windowWidth>400){
+//	    		if(i%4==0 && i>0){
+//	    			antList += "\n";
+//	    		} else if(i>0){
+//	    			antList += ", ";
+//	    		}
+//    		} else {
+//    			if(i>0){
+//    				antList += "\n";
+//    			}
+//    		}
+//    		antList += vertex.getAntonyms().get(i).getWord();
+//    	}
     	//Add data to table
     	data.add(new TabData(vertex.getWord(),synList,antList));
     	
     	//Add synonyms
     	for(Vertex v:vertex.getSynomyns()){
     		synList = "";
+    		antList = "";
     		
     		for(int i=0;i<v.getSynomyns().size();i++){
     			if(windowWidth>400){
@@ -131,6 +148,21 @@ public class ViewTable {
     				}
     			}
         		synList += v.getSynomyns().get(i).getWord();
+        		
+//        		for(i=0;i<vertex.getAntonyms().size();i++){
+//            		if(windowWidth>400){
+//        	    		if(i%4==0 && i>0){
+//        	    			antList += "\n";
+//        	    		} else if(i>0){
+//        	    			antList += ", ";
+//        	    		}
+//            		} else {
+//            			if(i>0){
+//            				antList += "\n";
+//            			}
+//            		}
+//            		antList += vertex.getAntonyms().get(i).getWord();
+//            	}
         	}
     		
     		//Add to table

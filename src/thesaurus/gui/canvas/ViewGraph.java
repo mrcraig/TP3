@@ -35,6 +35,12 @@ public class ViewGraph {
 		this.vr = vr;
 		this.displaySynonyms = displaySynonyms;
 		this.displayAntonyms = displayAntonyms;
+		
+		//Move window to right to support dual view better
+		if(windowWidth<500){
+			this.xOffset=windowWidth/2;
+		}
+		
 		start();
 	}
 	
