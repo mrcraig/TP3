@@ -49,6 +49,7 @@ public class PopupFactory {
 				currentPopup = null;
 				referenceWindow.getVisualisationRoot().doClickSearchGraph(referenceWindow.getVisualisationRoot().getCurrentVertex().getWord());
 				referenceWindow.getVisualisationRoot().addCanvas();
+				referenceWindow.getVisualisationRoot().addTable();
 			}
 		});
 		Button cancelButton = new Button();
@@ -125,6 +126,7 @@ public class PopupFactory {
 				currentPopup = null;
 				referenceWindow.getVisualisationRoot().doClickSearchGraph(referenceWindow.getVisualisationRoot().getCurrentVertex().getWord());
 				referenceWindow.getVisualisationRoot().addCanvas();
+				referenceWindow.getVisualisationRoot().addTable();
 			}
 		});
 		Button cancelButton = new Button();

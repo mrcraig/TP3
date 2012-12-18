@@ -28,11 +28,13 @@ public class ViewGraph {
 	private int displaySynonyms = 1;
 	private int displayAntonyms = 1;
 	
-	public ViewGraph(int width, int height, Vertex vertex, VisualisationRoot vr){
+	public ViewGraph(int width, int height, Vertex vertex, VisualisationRoot vr, int displaySynonyms, int displayAntonyms){
 		windowWidth = width;
 		windowHeight = height;
 		this.vertex = vertex;
 		this.vr = vr;
+		this.displaySynonyms = displaySynonyms;
+		this.displayAntonyms = displayAntonyms;
 		start();
 	}
 	

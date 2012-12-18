@@ -7,6 +7,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Popup;
 import thesaurus.controller.SystemController;
 import thesaurus.gui.canvas.ViewGraph;
+import thesaurus.gui.table.ViewTable;
 import thesaurus.parser.*;
 import thesaurus.spring.FrSpring;
 
@@ -44,10 +45,19 @@ public class VisualisationRoot extends AnchorPane {
 	public void addCanvas() {
 		currentController.getCanvasFullGraph().getChildren().removeAll(currentController.getCanvasFullGraph().getChildren());
 		currentController.getCanvasDualGraph().getChildren().removeAll(currentController.getCanvasDualGraph().getChildren());
-		ViewGraph displayGraphFull = new ViewGraph(750, 376,currentVertex, referenceWindow.getVisualisationRoot());
-		ViewGraph displayGraphDual = new ViewGraph(354, 362,currentVertex, referenceWindow.getVisualisationRoot());
+		ViewGraph displayGraphFull = new ViewGraph(750, 376,currentVertex, referenceWindow.getVisualisationRoot(),1,1);
+		ViewGraph displayGraphDual = new ViewGraph(354, 362,currentVertex, referenceWindow.getVisualisationRoot(),1,1);
 		currentController.getCanvasFullGraph().getChildren().add(displayGraphFull.returnGraph());
 		currentController.getCanvasDualGraph().getChildren().add(displayGraphDual.returnGraph());
+	}
+	
+	public void addTable() {
+//		currentController.getTableFullGraph().getChildren().removeAll(currentController.getTableFullGraph().getChildren());
+//		currentController.getTableDualGraph().getChildren().removeAll(currentController.getTableDualGraph().getChildren());
+//		ViewTable displayGraphFull = new ViewTable(728, 366,currentVertex, referenceWindow.getVisualisationRoot());
+//		ViewTable displayGraphDual = new ViewTable(354, 362,currentVertex, referenceWindow.getVisualisationRoot());
+//		currentController.getTableFullGraph().getChildren().add(displayGraphFull.getTable());
+//		currentController.getTableDualGraph().getChildren().add(displayGraphDual.getTable());
 	}
 
 	public void setCurrentParser(File inputFile) {
@@ -94,6 +104,7 @@ public class VisualisationRoot extends AnchorPane {
 		}
 		referenceWindow.getVisualisationRoot().setCurrentVertex(referenceWindow.getVisualisationRoot().runSpringOnVertex(currentVertex));
 		referenceWindow.getVisualisationRoot().addCanvas();
+		referenceWindow.getVisualisationRoot().addTable();
 	}
 	
 	public Vertex getCurrentVertex(){

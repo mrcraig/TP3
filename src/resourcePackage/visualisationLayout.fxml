@@ -39,13 +39,13 @@
         <Font name="Georgia" size="12.0" fx:id="x1" />
       </font>
     </Text>
-    <TabPane id="mainTable" fx:id="mainTabWindow" layoutY="83.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.99609375" prefWidth="752.51" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="27.49">
+    <TabPane id="mainTable" fx:id="mainTabWindow" layoutY="83.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="489.0" prefWidth="758.51" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="21.49">
       <tabs>
         <Tab id="graphicalTab" text="Graphical">
           <content>
             <AnchorPane id="graphicalTabContent" minHeight="0.0" minWidth="0.0" prefHeight="457.99609375" prefWidth="753.0" style="fx-background-color: #F2F2F2;">
               <children>
-                <Pane fx:id="canvasFullGraph" prefHeight="375.0" prefWidth="750.0" />
+                <Pane fx:id="canvasFullGraph" prefHeight="375.0" prefWidth="757.0" />
                 <Button font="$x1" layoutX="415.0" layoutY="400.0" mnemonicParsing="false" onAction="#doAddWord" prefWidth="100.0" text="Add" />
                 <Button font="$x1" layoutX="530.0" layoutY="400.0" mnemonicParsing="false" onAction="#doEditWord" prefWidth="100.0" text="Edit" />
                 <Button font="$x1" layoutX="645.0" layoutY="400.0" mnemonicParsing="false" onAction="#doRemoveWord" prefWidth="100.0" text="Remove" />
@@ -53,7 +53,7 @@
                 <TextField fx:id="searchBoxGraph" layoutX="58.0" layoutY="400.0" prefWidth="200.0" />
                 <Button font="$x1" layoutX="265.0" layoutY="400.0" mnemonicParsing="false" onAction="#doSearchGraphG" text="Go" />
                 <Text fx:id="searchStatusLabel" layoutX="57.0" layoutY="360.0" scaleX="1.0000163787583833" strokeType="OUTSIDE" strokeWidth="0.0" />
-                <ChoiceBox fx:id="selectionBoxGraph" layoutX="645.0" layoutY="427.0" prefWidth="100.0">
+                <ChoiceBox fx:id="selectionBoxGraph" layoutX="559.0" layoutY="427.0" prefWidth="186.0">
                   <items>
                     <FXCollections fx:factory="observableArrayList">
                       <String fx:value="Synonyms and Antonyms" />
@@ -62,7 +62,7 @@
                     </FXCollections>
                   </items>
                 </ChoiceBox>
-                <Label font="$x1" layoutX="540.0" layoutY="431.0" prefWidth="81.0" text="Viewing Mode:" />
+                <Label font="$x1" layoutX="469.0" layoutY="431.0" prefWidth="81.0" text="Viewing Mode:" />
                 <Label fx:id="statusLabelGraph" layoutX="62.0" layoutY="424.0" text="Please enter a search term" textFill="#606060">
                   <font>
                     <Font name="Georgia" size="11.0" fx:id="x4" />
@@ -81,18 +81,13 @@
                 <Button font="$x1" layoutX="415.0" layoutY="400.0" mnemonicParsing="false" onAction="#doAddWord" prefWidth="100.0" text="Add" />
                 <Button font="$x1" layoutX="530.0" layoutY="400.0" mnemonicParsing="false" onAction="#doEditWord" prefWidth="100.0" text="Edit" />
                 <Button font="$x1" layoutX="645.0" layoutY="400.0" mnemonicParsing="false" onAction="#doRemoveWord" prefWidth="100.0" text="Remove" />
-                <TableView id="synonymTable" layoutX="14.0" layoutY="14.0" prefHeight="362.0" prefWidth="717.0">
-                  <columns>
-                    <TableColumn id="tableTabWordCol" prefWidth="75.0" text="Word" />
-                    <TableColumn id="tableTabSynCol" prefWidth="75.0" text="Synonym" />
-                  </columns>
-                </TableView>
                 <Text font="$x1" layoutX="15.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search: " />
                 <Label id="statusLabelGraph" fx:id="statusLabelTable" font="$x4" layoutX="62.0" layoutY="424.0" text="Please enter a search term">
                   <textFill>
                     <Color blue="0.376" green="0.376" red="0.376" fx:id="x3" />
                   </textFill>
                 </Label>
+                <Pane layoutX="15.0" layoutY="14.0" prefHeight="366.0" prefWidth="728.0" />
               </children>
             </AnchorPane>
           </content>
@@ -106,15 +101,10 @@
                 <Button font="$x1" layoutX="415.0" layoutY="400.0" mnemonicParsing="false" onAction="#doAddWord" prefWidth="100.0" text="Add" />
                 <Button font="$x1" layoutX="530.0" layoutY="400.0" mnemonicParsing="false" onAction="#doEditWord" prefWidth="100.0" text="Edit" />
                 <Button font="$x1" layoutX="645.0" layoutY="400.0" mnemonicParsing="false" onAction="#doRemoveWord" prefWidth="100.0" text="Remove" />
-                <TableView id="synonymTable" layoutX="383.0" layoutY="14.0" prefHeight="362.0" prefWidth="354.0">
-                  <columns>
-                    <TableColumn id="dualTabWordCol" prefWidth="75.0" text="Word" />
-                    <TableColumn id="dualTabSynCol" prefWidth="75.0" text="Synonym" />
-                  </columns>
-                </TableView>
                 <Pane fx:id="canvasDualGraph" layoutX="16.0" layoutY="14.0" prefHeight="362.0" prefWidth="353.9998779296875" />
                 <Text font="$x1" layoutX="15.0" layoutY="415.0" scaleY="0.9999910471279186" strokeType="OUTSIDE" strokeWidth="0.0" text="Search: " />
                 <Label id="statusLabelGraph" fx:id="statusLabelDual" font="$x4" layoutX="62.0" layoutY="424.0" text="Please enter a search term" textFill="$x3" />
+                <Pane id="" fx:id="tableDualGraph" layoutX="389.0" layoutY="14.0" prefHeight="362.0" prefWidth="353.9998779296875" />
               </children>
             </AnchorPane>
           </content>
