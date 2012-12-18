@@ -212,9 +212,10 @@ public class SystemController {
 		}
 		Vertex currentVertex = referenceWindow.getVisualisationRoot().getCurrentParser().getOneSynomyn(searchText);
 		if (currentVertex == null) {
-			statusLabelGraph.setText(String.format("The word \"%s\" is not contained", searchText));
+			statusLabelGraph.setText(String.format("Can't find \"%s\"", searchText));
 			return;
 		}
+		statusLabelGraph.setText(String.format("The word \"%s\" has been found", searchText));
 		referenceWindow.getVisualisationRoot().setCurrentVertex(referenceWindow.getVisualisationRoot().runSpringOnVertex(currentVertex));
 		referenceWindow.getVisualisationRoot().addCanvas();
 	}

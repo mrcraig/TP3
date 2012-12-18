@@ -63,7 +63,11 @@
                   </items>
                 </ChoiceBox>
                 <Label font="$x1" layoutX="540.0" layoutY="431.0" prefWidth="81.0" text="Viewing Mode:" />
-                <Label fx:id="statusLabelGraph" font="$x1" layoutX="62.0" layoutY="422.0" text="Please enter a search term" textFill="#606060" />
+                <Label fx:id="statusLabelGraph" layoutX="62.0" layoutY="424.0" text="Please enter a search term" textFill="#606060">
+                  <font>
+                    <Font name="Georgia" size="11.0" fx:id="x4" />
+                  </font>
+                </Label>
               </children>
             </AnchorPane>
           </content>
@@ -84,7 +88,7 @@
                   </columns>
                 </TableView>
                 <Text font="$x1" layoutX="15.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search: " />
-                <Label id="statusLabelGraph" fx:id="statusLabelTable" font="$x1" layoutX="62.0" layoutY="422.0" text="Please enter a search term">
+                <Label id="statusLabelGraph" fx:id="statusLabelTable" font="$x4" layoutX="62.0" layoutY="424.0" text="Please enter a search term">
                   <textFill>
                     <Color blue="0.376" green="0.376" red="0.376" fx:id="x3" />
                   </textFill>
@@ -110,7 +114,7 @@
                 </TableView>
                 <Pane fx:id="canvasDualGraph" layoutX="16.0" layoutY="14.0" prefHeight="362.0" prefWidth="353.9998779296875" />
                 <Text font="$x1" layoutX="15.0" layoutY="415.0" scaleY="0.9999910471279186" strokeType="OUTSIDE" strokeWidth="0.0" text="Search: " />
-                <Label id="statusLabelGraph" fx:id="statusLabelDual" font="$x1" layoutX="62.0" layoutY="422.0" text="Please enter a search term" textFill="$x3" />
+                <Label id="statusLabelGraph" fx:id="statusLabelDual" font="$x4" layoutX="62.0" layoutY="424.0" text="Please enter a search term" textFill="$x3" />
               </children>
             </AnchorPane>
           </content>
