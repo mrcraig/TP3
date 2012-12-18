@@ -131,7 +131,7 @@
         </Tab>
       </tabs>
     </TabPane>
-    <Button id="returnMainButton" font="$x1" layoutX="625.0" layoutY="52.0" mnemonicParsing="false" onAction="#doReturn" text="Return to Main Menu" />
+    <Button id="returnMainButton" font="$x1" layoutX="634.0" layoutY="55.0" mnemonicParsing="false" onAction="#doReturn" text="Return to Main Menu" />
     <Text fx:id="currentFileLabel" font="$x2" layoutX="234.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hold" />
   </children>
 </fx:root>
