@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -36,6 +37,12 @@ public class SystemController {
 
 	@FXML
 	private Pane canvasDualGraph;
+	
+	@FXML
+	private Pane tableFullGraph;
+
+	@FXML
+	private Pane tableDualGraph;
 
 	@FXML
 	private TabPane mainTabWindow;
@@ -66,8 +73,16 @@ public class SystemController {
 	
 	@FXML
 	private Label statusLabelGraph;
+	
+	@FXML
+	private Label statusLabelTable;
+	
+	@FXML
+	private Label statusLabelDual;
 
 	MainWindow referenceWindow;
+	
+	HashMap<String, Label> lookupHashMap;
 
 	public SystemController(MainWindow inputWindow) {
 		referenceWindow = inputWindow;
@@ -92,7 +107,7 @@ public class SystemController {
 
 		VisualisationRoot visualisationRootCurrent = new VisualisationRoot(referenceWindow);
 		referenceWindow.setVisualisationRoot(visualisationRootCurrent);
-		referenceWindow.getStage().setScene(new Scene(visualisationRootCurrent, 800, 600));
+		referenceWindow.getStage().setScene(new Scene(visualisationRootCurrent));
 		visualisationRootCurrent.setCurrentParser(currentFile);
 		setVisualisationFileName();
 		
@@ -119,13 +134,15 @@ public class SystemController {
 
 		VisualisationRoot visualisationRootCurrent = new VisualisationRoot(referenceWindow);
 		referenceWindow.setVisualisationRoot(visualisationRootCurrent);
-		referenceWindow.getStage().setScene(new Scene(visualisationRootCurrent, 800, 600));
+		referenceWindow.getStage().setScene(new Scene(visualisationRootCurrent));
 		visualisationRootCurrent.setCurrentParser(file);
 		setVisualisationFileName();
 		
 		setSearchBoxEvents();
 		
 		selectionBoxGraph.getSelectionModel().select(1);
+		
+		setUserFeedbackEvents();
 
 	}
 	
@@ -139,14 +156,23 @@ public class SystemController {
 
 		VisualisationRoot visualisationRootCurrent = new VisualisationRoot(referenceWindow);
 		referenceWindow.setVisualisationRoot(visualisationRootCurrent);
-		referenceWindow.getStage().setScene(new Scene(visualisationRootCurrent, 800, 600));
+		referenceWindow.getStage().setScene(new Scene(visualisationRootCurrent));
 		visualisationRootCurrent.setCurrentParser(file);
 		setVisualisationFileName();
 		
 		setSearchBoxEvents();
 		
 		selectionBoxGraph.getSelectionModel().select(1);
+		
+		setUserFeedbackEvents();
 
+	}
+	
+	private void setUserFeedbackEvents(){
+		lookupHashMap = new HashMap<>();
+		lookupHashMap.put("graph", statusLabelGraph);
+		lookupHashMap.put("table", statusLabelTable);
+		lookupHashMap.put("dual", statusLabelDual);		
 	}
 	
 	private int reverseIndex(int currentIndex){
@@ -212,12 +238,13 @@ public class SystemController {
 		}
 		Vertex currentVertex = referenceWindow.getVisualisationRoot().getCurrentParser().getOneSynomyn(searchText);
 		if (currentVertex == null) {
-			statusLabelGraph.setText(String.format("Can't find \"%s\"", searchText));
+			lookupHashMap.get(choiceString).setText(String.format("Can't find \"%s\"", searchText));
 			return;
 		}
-		statusLabelGraph.setText(String.format("The word \"%s\" has been found", searchText));
+		lookupHashMap.get(choiceString).setText(String.format("The word \"%s\" has been found", searchText));
 		referenceWindow.getVisualisationRoot().setCurrentVertex(referenceWindow.getVisualisationRoot().runSpringOnVertex(currentVertex));
 		referenceWindow.getVisualisationRoot().addCanvas();
+		referenceWindow.getVisualisationRoot().addTable();
 	}
 	
 	@FXML
@@ -231,7 +258,7 @@ public class SystemController {
 	protected void doRunTutorial() {
 		TutorialRoot tutorialRootCurrent = new TutorialRoot(referenceWindow);
 		referenceWindow.setTutorialRootCurrent(tutorialRootCurrent);
-		referenceWindow.getStage().setScene(new Scene(tutorialRootCurrent, 800, 600));
+		referenceWindow.getStage().setScene(new Scene(tutorialRootCurrent));
 	}
 
 	@FXML
@@ -265,6 +292,14 @@ public class SystemController {
 	}
 
 	public Pane getCanvasDualGraph() {
+		return canvasDualGraph;
+	}
+	
+	public Pane getTableFullGraph() {
+		return canvasFullGraph;
+	}
+
+	public Pane getTableDualGraph() {
 		return canvasDualGraph;
 	}
 
