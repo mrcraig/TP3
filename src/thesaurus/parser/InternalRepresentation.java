@@ -80,7 +80,6 @@ public class InternalRepresentation
 	public void removeVertex(String w)
 	{
 		Vertex r = nodes.getVertexFromWord(w);
-		//r is correct
 		write.removeVertex(w);
 		nodes.removeVertex(r);
 	}
@@ -98,6 +97,7 @@ public class InternalRepresentation
 	
 	public Vertex getOneSynomyn(String s)
 	{
+		System.out.println("method called for "+s);
 		if(s.equalsIgnoreCase("")) return null;
 		if(nodes.getListOfSynomyns(s,1)!=null) return nodes.getListOfSynomyns(s, 1).getFirst();
 		return null;

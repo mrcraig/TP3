@@ -5,7 +5,14 @@ import java.util.LinkedList;
 
 
 /*
+ * one vertex at a time
+ * hashmap of string - vertex
  * 
+ * getNodes() - returns entries
+ * 
+ * clear() - same
+ * 
+ * craig doesnt touch the word in vertex 
  */
 
 public class Graph 
@@ -19,13 +26,10 @@ public class Graph
 	 
 	 public void debug()
 	 {
-		 for(int i=0;i<nodes.size();i++)
-		 {
-			 System.out.println("List index: "+i);
-		 }
+	
 		 for(Vertex v : nodes)
 		 {
-			 System.out.println("Graph index:" + v.getID());
+			 System.out.println(v);
 		 }
 	 }
 	 
@@ -36,9 +40,11 @@ public class Graph
 		 {
 			 if(v.getID().equals(nodes.get(i).getID())) 
 			 {
+				 System.out.println("removed");
 				 nodes.remove(i);
 			 }
 		 }
+		 //System.out.println("current nodes are\n"+nodes);
 	 }
 
 	void setNodes(LinkedList<Vertex> nodes)
