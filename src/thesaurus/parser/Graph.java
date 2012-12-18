@@ -17,11 +17,24 @@ public class Graph
 		return nodes;
 	}
 	 
+	 public void debug()
+	 {
+		 for(int i=0;i<nodes.size();i++)
+		 {
+			 System.out.println("List index: "+i);
+		 }
+		 for(Vertex v : nodes)
+		 {
+			 System.out.println("Graph index:" + v.getID());
+		 }
+	 }
+	 
+	 
 	 void removeVertex(Vertex v)
 	 {
 		 for(int i=0;i<nodes.size();i++)
 		 {
-			 if(v.getIndex().equals(nodes.get(i).getIndex())) 
+			 if(v.getID().equals(nodes.get(i).getID())) 
 			 {
 				 nodes.remove(i);
 			 }
@@ -57,7 +70,7 @@ public class Graph
 	{
 		for(Vertex x : nodes)
 		{
-			if(v.getIndex().equals(x.getIndex()))
+			if(v.getID().equals(x.getID()))
 			{
 				return true;
 			}
@@ -69,7 +82,7 @@ public class Graph
 	{
 		for(Vertex v : nodes)
 		{
-			if(v.getIndex().equals(index)) return v;
+			if(v.getID().equals(index)) return v;
 		}
 		return null;
 	}

@@ -8,7 +8,7 @@ public class Vertex {
    
     private LinkedList<Vertex> synonyms; 
     private LinkedList<Vertex> antonyms;
-    private String index; 
+    private String id; 
     private boolean visited = false;
     private String word;
     private Point2D pos;
@@ -29,7 +29,7 @@ public class Vertex {
     {
     	synonyms = new LinkedList<Vertex>();
     	antonyms = new LinkedList<Vertex>();
-    	index = i;
+    	id = i;
     }  
     
     
@@ -44,7 +44,7 @@ public class Vertex {
     public String toString()
     {
     	StringBuilder sb = new StringBuilder();
-    	sb.append("Vertex "); sb.append(this.index+" ");
+    	sb.append("Vertex "); sb.append(this.id+" ");
     	sb.append(this.word +"\nSynonyms\n ");
      	for(Vertex n : this.synonyms)
     	{
@@ -87,14 +87,14 @@ public class Vertex {
 		return antonyms;
 	}
      
-    public String getIndex()
+    public String getID()
     {
-    	return index;
+    	return id;
     }
     
-    public void setIndex(String n)
+    public void setID(String n)
     {
-    	index = n;
+    	id = n;
     }   
     
     public void addSynonym(Vertex n)
@@ -117,7 +117,7 @@ public class Vertex {
 		int result = 1;
 		result = prime * result
 				+ ((antonyms == null) ? 0 : antonyms.hashCode());
-		result = prime * result + ((index == null) ? 0 : index.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result
 				+ ((synonyms == null) ? 0 : synonyms.hashCode());
 		result = prime * result + ((word == null) ? 0 : word.hashCode());
@@ -138,10 +138,10 @@ public class Vertex {
 				return false;
 		} else if (!antonyms.equals(other.antonyms))
 			return false;
-		if (index == null) {
-			if (other.index != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!index.equals(other.index))
+		} else if (!id.equals(other.id))
 			return false;
 		if (synonyms == null) {
 			if (other.synonyms != null)

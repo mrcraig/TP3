@@ -73,6 +73,10 @@ public class InternalRepresentation
 		write.removeVertex(w);
 	}
 	
+	public void debug()
+	{
+		nodes.debug();
+	}
 	
 	/* facade pattern */
 	public LinkedList<Vertex> getListOfSynomyns(String s, int max)

@@ -26,8 +26,10 @@ public class Driver
 		
 		//driver.removeVertex("Merry");
 		
+		driver.debug();
+		
 		//driver.editVertex("Joyful", "sad");
-		System.out.println(driver.getListOfSynomyns("Jubilant"));
+		//System.out.println(driver.getListOfSynomyns("Jubilant"));
 		//System.out.println(driver.getTableData());
 		
 	}

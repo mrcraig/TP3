@@ -54,19 +54,19 @@ public class XmlWrite {
 
 	public void addVertex(Vertex v)
 	{	
-		this.addNode(v.getWord(), v.getIndex());
-		String source = v.getIndex();
+		this.addNode(v.getWord(), v.getID());
+		String source = v.getID();
 		String target = null;
 		for(Vertex j : v.getSynomyns())
 		{
 			if(j==null) continue;
-			target = j.getIndex();
+			target = j.getID();
 			this.addEdge(source, target, "s");
 		}
 		for(Vertex i : v.getAntonyms())
 		{
 			if(i==null) continue;
-			target = i.getIndex();
+			target = i.getID();
 			this.addEdge(source, target, "a");
 		}
 		saveFile();
@@ -75,7 +75,7 @@ public class XmlWrite {
 	
  void editVertex(String oldWord, String newWord)
 	{
-		String id = nodes.getVertexFromWord(oldWord).getIndex();
+		String id = nodes.getVertexFromWord(oldWord).getID();
 		NodeList allNodes = this.xml.getElementsByTagName("node");
 		for(int i=0;i<allNodes.getLength();i++)
 		{
@@ -129,8 +129,8 @@ public class XmlWrite {
 	public void removeVertex(String w)
 	{
 		Vertex v = nodes.getVertexFromWord(w);
-		removeNode(v.getIndex());
-		removeEdge(v.getIndex());
+		removeNode(v.getID());
+		removeEdge(v.getID());
 		nodes.removeVertex(v);
 		saveFile();
 	}
