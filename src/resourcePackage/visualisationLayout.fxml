@@ -88,6 +88,16 @@
                   </textFill>
                 </Label>
                 <Pane fx:id="tableFullGraph" layoutX="15.0" layoutY="14.0" prefHeight="366.0" prefWidth="728.0" />
+                <ChoiceBox id="selectionBoxGraph" fx:id="selectionBoxTable" layoutX="559.0" layoutY="427.0" prefWidth="186.0">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="Synonyms and Antonyms" />
+                      <String fx:value="Synonyms" />
+                      <String fx:value="Antonyms" />
+                    </FXCollections>
+                  </items>
+                </ChoiceBox>
+                <Label font="$x1" layoutX="469.0" layoutY="431.0" prefWidth="81.0" text="Viewing Mode:" />
               </children>
             </AnchorPane>
           </content>
@@ -96,6 +106,16 @@
           <content>
             <AnchorPane id="dualTabContent" minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="538.0">
               <children>
+                <ChoiceBox id="selectionBoxGraph" fx:id="selectionBoxDual" layoutX="559.0" layoutY="427.0" prefWidth="186.0">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="Synonyms and Antonyms" />
+                      <String fx:value="Synonyms" />
+                      <String fx:value="Antonyms" />
+                    </FXCollections>
+                  </items>
+                </ChoiceBox>
+                <Label font="$x1" layoutX="469.0" layoutY="431.0" prefWidth="81.0" text="Viewing Mode:" />
                 <TextField fx:id="searchBoxDual" layoutX="58.0" layoutY="400.0" prefWidth="200.0" />
                 <Button font="$x1" layoutX="265.0" layoutY="400.0" mnemonicParsing="false" onAction="#doSearchGraphD" text="Go" />
                 <Button font="$x1" layoutX="415.0" layoutY="400.0" mnemonicParsing="false" onAction="#doAddWord" prefWidth="100.0" text="Add" />

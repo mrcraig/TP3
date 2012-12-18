@@ -1,19 +1,13 @@
 package thesaurus.gui.table;
 
 import thesaurus.parser.Vertex;
-import javafx.application.Application;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
  
 public class ViewTable {
  
@@ -39,23 +33,26 @@ public class ViewTable {
         table.setMaxSize(windowWidth, windowHeight);
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
  
-        TableColumn firstNameCol = new TableColumn("Word");
-        firstNameCol.setMinWidth(windowWidth/3);
-        firstNameCol.setCellValueFactory(
+        TableColumn wordCol = new TableColumn("Word");
+        wordCol.setPrefWidth(windowWidth/3-10);
+        wordCol.setResizable(false);
+        wordCol.setCellValueFactory(
                 new PropertyValueFactory<Vertex, String>("word"));
  
-        TableColumn lastNameCol = new TableColumn("Synonym");
-        lastNameCol.setMinWidth(windowWidth/3);
-        lastNameCol.setCellValueFactory(
+        TableColumn synCol = new TableColumn("Synonym");
+        synCol.setPrefWidth(windowWidth/3);
+        synCol.setResizable(false);
+        synCol.setCellValueFactory(
                 new PropertyValueFactory<Vertex, String>("synonym"));
  
-        TableColumn emailCol = new TableColumn("Antonym");
-        emailCol.setMinWidth(windowWidth/3);
-        emailCol.setCellValueFactory(
+        TableColumn antCol = new TableColumn("Antonym");
+        antCol.setPrefWidth(windowWidth/3);
+        antCol.setResizable(false);
+        antCol.setCellValueFactory(
                 new PropertyValueFactory<Vertex, String>("antonym"));
  
         table.setItems(data);
-        table.getColumns().addAll(firstNameCol, lastNameCol, emailCol);
+        table.getColumns().addAll(wordCol, synCol, antCol);
         
         
         importData();
