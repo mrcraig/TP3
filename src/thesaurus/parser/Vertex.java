@@ -110,4 +110,49 @@ public class Vertex {
     public int vertexDegree(){
         return synonyms.size();
     }
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((antonyms == null) ? 0 : antonyms.hashCode());
+		result = prime * result + ((index == null) ? 0 : index.hashCode());
+		result = prime * result
+				+ ((synonyms == null) ? 0 : synonyms.hashCode());
+		result = prime * result + ((word == null) ? 0 : word.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Vertex other = (Vertex) obj;
+		if (antonyms == null) {
+			if (other.antonyms != null)
+				return false;
+		} else if (!antonyms.equals(other.antonyms))
+			return false;
+		if (index == null) {
+			if (other.index != null)
+				return false;
+		} else if (!index.equals(other.index))
+			return false;
+		if (synonyms == null) {
+			if (other.synonyms != null)
+				return false;
+		} else if (!synonyms.equals(other.synonyms))
+			return false;
+		if (word == null) {
+			if (other.word != null)
+				return false;
+		} else if (!word.equals(other.word))
+			return false;
+		return true;
+	}
 }
