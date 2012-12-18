@@ -88,12 +88,16 @@ public class VisualisationRoot extends AnchorPane {
 	}
 	
 	public void doClickSearchGraph(String inputString) {
-		Vertex currentVertex = referenceWindow.getVisualisationRoot().getCurrentParser().getOneSynomyn(inputString);
+		currentVertex = referenceWindow.getVisualisationRoot().getCurrentParser().getOneSynomyn(inputString);
 		if (currentVertex == null) {
 			return;
 		}
 		referenceWindow.getVisualisationRoot().setCurrentVertex(referenceWindow.getVisualisationRoot().runSpringOnVertex(currentVertex));
 		referenceWindow.getVisualisationRoot().addCanvas();
+	}
+	
+	public Vertex getCurrentVertex(){
+		return currentVertex;
 	}
 
 }

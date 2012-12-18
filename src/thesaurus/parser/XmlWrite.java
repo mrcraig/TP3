@@ -48,8 +48,7 @@ public class XmlWrite {
 		NodeList n = this.xml.getElementsByTagName("data");
 		for(int i=0;i<n.getLength();i++)
 		{
-			System.out.println(n.item(i).getTextContent());
-			
+			System.out.println(n.item(i).getTextContent());	
 		}
 	}
 
@@ -76,9 +75,6 @@ public class XmlWrite {
 	
  void editVertex(String oldWord, String newWord)
 	{
-		//go through all Nodes, find one that matches.
-		//go to data, set text content
-		
 		String id = nodes.getVertexFromWord(oldWord).getIndex();
 		NodeList allNodes = this.xml.getElementsByTagName("node");
 		for(int i=0;i<allNodes.getLength();i++)
@@ -93,8 +89,6 @@ public class XmlWrite {
 	}
 	
 
-	
-	
    private void addEdge(String source, String target, String type)
 	{
 		Element edge = this.xml.createElement("edge");
@@ -106,8 +100,6 @@ public class XmlWrite {
 		edge.appendChild(data);
 		this.xml.getElementsByTagName("graph").item(0).appendChild(edge);
 	}
-	
-	public void cleanXml() {}
 	
 	private void addNode(String word, String ID)
 	{
@@ -139,6 +131,7 @@ public class XmlWrite {
 		Vertex v = nodes.getVertexFromWord(w);
 		removeNode(v.getIndex());
 		removeEdge(v.getIndex());
+		nodes.removeVertex(v);
 		saveFile();
 	}
 	
@@ -182,9 +175,11 @@ public class XmlWrite {
 		
 		TransformerFactory transformer = TransformerFactory.newInstance();
 		Transformer trans = null;
-		try {
+		try 
+		{
 		trans = transformer.newTransformer();
-		} catch (TransformerConfigurationException e)
+		}
+		catch (TransformerConfigurationException e)
 		{
 			e.printStackTrace();
 		}
@@ -193,12 +188,10 @@ public class XmlWrite {
 		try 
 		{
 			trans.transform(source, result);
-		} catch (TransformerException e) 
+		} 
+		catch (TransformerException e) 
 		{
 				e.printStackTrace();
 		}
 	}
-	
-
-
 }

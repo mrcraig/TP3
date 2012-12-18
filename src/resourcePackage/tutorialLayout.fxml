@@ -7,7 +7,6 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
-<?scenebuilder-stylesheet tutorialStyle.css?>
 
 <fx:root type="javafx.scene.layout.AnchorPane" prefHeight="600.0" prefWidth="800.0" stylesheets="/resourcePackage/visualisationStyle.css" xmlns:fx="http://javafx.com/fxml">
   <children>

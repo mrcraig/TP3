@@ -15,6 +15,7 @@ public class PopupFactory {
 	MainWindow referenceWindow;
 	
 	public PopupFactory(String inputChoice, MainWindow inputWindow){
+		
 		referenceWindow = inputWindow;
 		if (inputChoice.equals("add")) {
 			currentPopup = new Popup();
@@ -46,6 +47,8 @@ public class PopupFactory {
 				referenceWindow.getVisualisationRoot().getCurrentParser().addVertex(addWordInput.getText(), addSynInput.getText(),"");
 				currentPopup.hide();
 				currentPopup = null;
+				referenceWindow.getVisualisationRoot().doClickSearchGraph(referenceWindow.getVisualisationRoot().getCurrentVertex().getWord());
+				referenceWindow.getVisualisationRoot().addCanvas();
 			}
 		});
 		Button cancelButton = new Button();
@@ -117,10 +120,11 @@ public class PopupFactory {
 		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				System.out.println(addWordInput.getText());
-				referenceWindow.getVisualisationRoot().getCurrentParser();
+				referenceWindow.getVisualisationRoot().getCurrentParser().removeVertex(addWordInput.getText());
 				currentPopup.hide();
 				currentPopup = null;
+				referenceWindow.getVisualisationRoot().doClickSearchGraph(referenceWindow.getVisualisationRoot().getCurrentVertex().getWord());
+				referenceWindow.getVisualisationRoot().addCanvas();
 			}
 		});
 		Button cancelButton = new Button();
