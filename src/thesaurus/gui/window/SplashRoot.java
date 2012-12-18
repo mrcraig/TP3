@@ -1,16 +1,11 @@
 package thesaurus.gui.window;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import thesaurus.controller.SystemController;
@@ -48,8 +43,6 @@ public class SplashRoot extends AnchorPane {
 		
 		currentController.addListenerListView();
 		
-		System.out.println("");
-		
 
 	}
 	
@@ -75,7 +68,6 @@ public class SplashRoot extends AnchorPane {
 		System.out.println("Content: \n");
 		fileWriter.write(currentBuilder.toString());
 		fileWriter.close();
-		System.out.println("");
 	}
 
 }
