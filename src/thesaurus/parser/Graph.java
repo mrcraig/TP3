@@ -16,6 +16,17 @@ public class Graph
 	{
 		return nodes;
 	}
+	 
+	 void removeVertex(Vertex v)
+	 {
+		 for(int i=0;i<nodes.size();i++)
+		 {
+			 if(v.getIndex().equals(nodes.get(i).getIndex())) 
+			 {
+				 nodes.remove(i);
+			 }
+		 }
+	 }
 
 	void setNodes(LinkedList<Vertex> nodes)
 	{

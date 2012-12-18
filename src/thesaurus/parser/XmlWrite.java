@@ -48,8 +48,7 @@ public class XmlWrite {
 		NodeList n = this.xml.getElementsByTagName("data");
 		for(int i=0;i<n.getLength();i++)
 		{
-			System.out.println(n.item(i).getTextContent());
-			
+			System.out.println(n.item(i).getTextContent());	
 		}
 	}
 
@@ -132,6 +131,7 @@ public class XmlWrite {
 		Vertex v = nodes.getVertexFromWord(w);
 		removeNode(v.getIndex());
 		removeEdge(v.getIndex());
+		nodes.removeVertex(v);
 		saveFile();
 	}
 	

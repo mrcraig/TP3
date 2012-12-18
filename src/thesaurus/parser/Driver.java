@@ -24,11 +24,11 @@ public class Driver
 		
 		//driver.addVertex("helen", "thumb, happy, supervisor", "fun, peaceful");
 		
-	
+		//driver.removeVertex("Merry");
 		
 		//driver.editVertex("Joyful", "sad");
-		//System.out.println(driver.getListOfSynomyns("Jubilant"));
-		System.out.println(driver.getTableData());
+		System.out.println(driver.getListOfSynomyns("Jubilant"));
+		//System.out.println(driver.getTableData());
 		
 	}
 }
