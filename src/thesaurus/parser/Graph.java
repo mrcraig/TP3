@@ -93,8 +93,10 @@ public class Graph
 	}
 	 Vertex getVertexFromWord(String word)
 	{
+		 //System.out.println("word looking for "+word);
 		for(Vertex v : nodes)
 		{
+			System.out.println(v.getWord());
 			if(v.getWord().equalsIgnoreCase(word)) return v;
 		}
 		return null;

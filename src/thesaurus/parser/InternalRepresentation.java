@@ -79,8 +79,10 @@ public class InternalRepresentation
 	 */
 	public void removeVertex(String w)
 	{
-		nodes.removeVertex(nodes.getVertexFromWord(w));
+		Vertex r = nodes.getVertexFromWord(w);
+		//r is correct
 		write.removeVertex(w);
+		nodes.removeVertex(r);
 	}
 	
 	public void debug()
