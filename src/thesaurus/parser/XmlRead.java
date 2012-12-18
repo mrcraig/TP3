@@ -153,7 +153,7 @@ public class XmlRead
 			String source = e.getAttributes().getNamedItem("source").getTextContent();
 			String target = e.getAttributes().getNamedItem("target").getTextContent();
 			Vertex s = nodes.getVertexFromIndex(source);
-			Vertex t= nodes.getVertexFromIndex(target); 
+			Vertex t = nodes.getVertexFromIndex(target); 
 			if(isSynomyn)
 			{
 				if(!s.getSynomyns().contains(t))

@@ -12,7 +12,7 @@ import java.util.LinkedList;
  * 
  * clear() - same
  * 
- * craig doesnt touch the word in vertex 
+ * craig doesnt touch the word in vertex - can use value set or similar
  */
 
 public class Graph 
@@ -36,9 +36,20 @@ public class Graph
 	 
 	 void removeVertex(Vertex v)
 	 {
+		 String w = v.getWord();
 		 for(int i=0;i<nodes.size();i++)
 		 {
-			 if(v.getID().equals(nodes.get(i).getID())) 
+			 Vertex x = nodes.get(i);
+			 for(Vertex a : x.getAntonyms())
+			 {
+				 if(a.getWord().equals(w)) x.getAntonyms().remove(a);
+			 }
+			 
+			 for(Vertex s : x.getSynomyns())
+			 {
+				 if(s.getWord().equals(w)) x.getSynomyns().remove(s);
+			 }
+			 if(x.getWord().equals(w)) 
 			 {
 				 System.out.println("removed");
 				 nodes.remove(i);
