@@ -13,7 +13,7 @@ on how big the xml file is
 if xml file is empty, put in tags
 
 
-need to stop duplicate edges - use contains - override equals?
+need to stop duplicate edges - use contains - override equals? - fix it
 
 
 
