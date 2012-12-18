@@ -15,7 +15,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
  
-public class ViewTable extends Application {
+public class ViewTable {
  
     private TableView<TabData> table = new TableView<TabData>();
     private final ObservableList<TabData> data = FXCollections.observableArrayList();
@@ -24,43 +24,39 @@ public class ViewTable extends Application {
     private int windowWidth;
     private int windowHeight;
     private Vertex vertex;
- 
-    public static void main(String[] args) {
-        launch(args);
-    }
     
     public ViewTable(int windowWidth, int windowHeight, Vertex vertex){
     	this.windowHeight = windowHeight;
     	this.windowWidth = windowWidth;
     	this.vertex = vertex;
+    	
+    	start();
     }
  
-    @Override
-    public void start(Stage stage) {
-        Scene scene = new Scene(new Group());
-        stage.setTitle("Table View Sample");
-        stage.setWidth(450);
-        stage.setHeight(550);
+    public void start() {
  
         table.setEditable(true);
+        table.setMaxSize(windowWidth, windowHeight);
  
         TableColumn firstNameCol = new TableColumn("Word");
-        firstNameCol.setMinWidth(100);
+        firstNameCol.setMinWidth(windowWidth/3);
         firstNameCol.setCellValueFactory(
                 new PropertyValueFactory<Vertex, String>("word"));
  
         TableColumn lastNameCol = new TableColumn("Synonym");
-        lastNameCol.setMinWidth(100);
+        lastNameCol.setMinWidth(windowWidth/3);
         lastNameCol.setCellValueFactory(
                 new PropertyValueFactory<Vertex, String>("synonym"));
  
         TableColumn emailCol = new TableColumn("Antonym");
-        emailCol.setMinWidth(200);
+        emailCol.setMinWidth(windowWidth/3);
         emailCol.setCellValueFactory(
                 new PropertyValueFactory<Vertex, String>("antonym"));
  
         table.setItems(data);
         table.getColumns().addAll(firstNameCol, lastNameCol, emailCol);
+        
+        importData();
  
 //        final TextField addFirstName = new TextField();
 //        addFirstName.setPromptText("First Name");
@@ -89,19 +85,57 @@ public class ViewTable extends Application {
 //        hb.getChildren().addAll(addFirstName, addLastName, addEmail, addButton);
 //        hb.setSpacing(3);
  
-        final VBox vbox = new VBox();
-        vbox.setSpacing(5);
-        vbox.setPadding(new Insets(10, 0, 0, 10));
-        vbox.getChildren().addAll(table);
- 
-        ((Group) scene.getRoot()).getChildren().addAll(vbox);
- 
-        stage.setScene(scene);
-        stage.show();
     }
     
     public TableView<TabData> getTable(){
     	return table;
+    }
+    
+    private void importData(){
+    	/* Main Vertex */
+    	String synList = "";
+    	String antList = "";
+    	
+    	for(int i=0;i<vertex.getSynomyns().size();i++){
+    		if(windowWidth>400){
+	    		if(i%4==0 && i>0){
+	    			synList += "\n";
+	    		} else if(i>0){
+	    			synList += ", ";
+	    		}
+    		} else {
+    			if(i>0){
+    				synList += "\n";
+    			}
+    		}
+    		synList += vertex.getSynomyns().get(i).getWord();
+    	}
+    	
+    	//Add data to table
+    	data.add(new TabData(vertex.getWord(),synList,antList));
+    	
+    	//Add synonyms
+    	for(Vertex v:vertex.getSynomyns()){
+    		synList = "";
+    		
+    		for(int i=0;i<v.getSynomyns().size();i++){
+    			if(windowWidth>400){
+	        		if(i%4==0 && i>0){
+	        			synList += "\n";
+	        		} else if(i>0){
+	        			synList += ", ";
+	        		}
+    			} else {
+    				if(i>0){
+    					synList += "\n";
+    				}
+    			}
+        		synList += v.getSynomyns().get(i).getWord();
+        	}
+    		
+    		//Add to table
+    		data.add(new TabData(v.getWord(),synList,antList));
+    	}
     }
  
     public static class TabData {
