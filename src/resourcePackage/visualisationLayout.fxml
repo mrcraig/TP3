@@ -87,7 +87,7 @@
                     <Color blue="0.376" green="0.376" red="0.376" fx:id="x3" />
                   </textFill>
                 </Label>
-                <Pane layoutX="15.0" layoutY="14.0" prefHeight="366.0" prefWidth="728.0" />
+                <Pane fx:id="tableFullGraph" layoutX="15.0" layoutY="14.0" prefHeight="366.0" prefWidth="728.0" />
               </children>
             </AnchorPane>
           </content>
@@ -101,7 +101,7 @@
                 <Button font="$x1" layoutX="415.0" layoutY="400.0" mnemonicParsing="false" onAction="#doAddWord" prefWidth="100.0" text="Add" />
                 <Button font="$x1" layoutX="530.0" layoutY="400.0" mnemonicParsing="false" onAction="#doEditWord" prefWidth="100.0" text="Edit" />
                 <Button font="$x1" layoutX="645.0" layoutY="400.0" mnemonicParsing="false" onAction="#doRemoveWord" prefWidth="100.0" text="Remove" />
-                <Pane fx:id="canvasDualGraph" layoutX="16.0" layoutY="14.0" prefHeight="362.0" prefWidth="353.9998779296875" />
+                <Pane fx:id="canvasDualGraph" layoutX="16.0" layoutY="14.0" prefHeight="362.0" prefWidth="354.0" />
                 <Text font="$x1" layoutX="15.0" layoutY="415.0" scaleY="0.9999910471279186" strokeType="OUTSIDE" strokeWidth="0.0" text="Search: " />
                 <Label id="statusLabelGraph" fx:id="statusLabelDual" font="$x4" layoutX="62.0" layoutY="424.0" text="Please enter a search term" textFill="$x3" />
                 <Pane id="" fx:id="tableDualGraph" layoutX="389.0" layoutY="14.0" prefHeight="362.0" prefWidth="353.9998779296875" />

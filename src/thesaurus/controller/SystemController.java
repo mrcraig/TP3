@@ -169,7 +169,7 @@ public class SystemController {
 	}
 	
 	private void setUserFeedbackEvents(){
-		lookupHashMap = new HashMap<>();
+		lookupHashMap = new HashMap<String, Label>();
 		lookupHashMap.put("graph", statusLabelGraph);
 		lookupHashMap.put("table", statusLabelTable);
 		lookupHashMap.put("dual", statusLabelDual);		

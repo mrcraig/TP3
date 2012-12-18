@@ -1,5 +1,6 @@
 package thesaurus.gui.window;
 
+import thesaurus.parser.Vertex;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -124,7 +125,9 @@ public class PopupFactory {
 				referenceWindow.getVisualisationRoot().getCurrentParser().removeVertex(addWordInput.getText());
 				currentPopup.hide();
 				currentPopup = null;
-				referenceWindow.getVisualisationRoot().doClickSearchGraph(referenceWindow.getVisualisationRoot().getCurrentVertex().getWord());
+				Vertex temp = referenceWindow.getVisualisationRoot().getCurrentVertex();
+				String tempWord = temp.getWord();
+				referenceWindow.getVisualisationRoot().doClickSearchGraph(tempWord);
 				referenceWindow.getVisualisationRoot().addCanvas();
 				referenceWindow.getVisualisationRoot().addTable();
 			}
