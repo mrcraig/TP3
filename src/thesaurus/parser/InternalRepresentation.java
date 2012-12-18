@@ -46,6 +46,14 @@ public class InternalRepresentation
 		write.addVertex(n);
 	}
 	
+	
+	
+	public String createNew()
+	{
+		StringBuilder x = new StringBuilder();
+		x.append("<graphml><graph>)
+	}
+	
 	/**
 	 * Edits the word of a vertex. This method
 	 * edits the word directly, it doesn't create a new vertex
@@ -70,6 +78,7 @@ public class InternalRepresentation
 	 */
 	public void removeVertex(String w)
 	{
+		nodes.removeVertex(nodes.getVertexFromWord(w));
 		write.removeVertex(w);
 	}
 	
