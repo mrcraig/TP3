@@ -1,6 +1,5 @@
 package thesaurus.gui.window;
 
-import thesaurus.parser.Vertex;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -86,8 +85,6 @@ public class PopupFactory {
 		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				System.out.println(addWordInput.getText());
-				System.out.println(addSynInput.getText());
 				referenceWindow.getVisualisationRoot().getCurrentParser();
 				currentPopup.hide();
 				currentPopup = null;
@@ -125,11 +122,7 @@ public class PopupFactory {
 				referenceWindow.getVisualisationRoot().getCurrentParser().removeVertex(addWordInput.getText());
 				currentPopup.hide();
 				currentPopup = null;
-				Vertex temp = referenceWindow.getVisualisationRoot().getCurrentVertex();
-				String tempWord = temp.getWord();
-				referenceWindow.getVisualisationRoot().doClickSearchGraph(tempWord);
-				referenceWindow.getVisualisationRoot().addCanvas();
-				referenceWindow.getVisualisationRoot().addTable();
+				referenceWindow.getVisualisationRoot().doSearchRefresh();
 			}
 		});
 		Button cancelButton = new Button();
