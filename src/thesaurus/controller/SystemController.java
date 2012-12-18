@@ -296,11 +296,11 @@ public class SystemController {
 	}
 	
 	public Pane getTableFullGraph() {
-		return canvasFullGraph;
+		return tableFullGraph;
 	}
 
 	public Pane getTableDualGraph() {
-		return canvasDualGraph;
+		return tableDualGraph;
 	}
 
 	private void setVisualisationFileName() {

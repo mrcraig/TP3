@@ -54,10 +54,10 @@ public class VisualisationRoot extends AnchorPane {
 	public void addTable() {
 		currentController.getTableFullGraph().getChildren().removeAll(currentController.getTableFullGraph().getChildren());
 		currentController.getTableDualGraph().getChildren().removeAll(currentController.getTableDualGraph().getChildren());
-		ViewTable displayGraphFull = new ViewTable(728, 366,currentVertex);
-		ViewTable displayGraphDual = new ViewTable(354, 362,currentVertex);
-		currentController.getTableFullGraph().getChildren().add(displayGraphFull.getTable());
-		currentController.getTableDualGraph().getChildren().add(displayGraphDual.getTable());
+		ViewTable displayTableFull = new ViewTable(728, 366,currentVertex);
+		ViewTable displayTableDual = new ViewTable(354, 362,currentVertex);
+		currentController.getTableFullGraph().getChildren().add(displayTableFull.getTable());
+		currentController.getTableDualGraph().getChildren().add(displayTableDual.getTable());
 	}
 
 	public void setCurrentParser(File inputFile) {
