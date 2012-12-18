@@ -16,9 +16,23 @@ if xml file is empty, put in tags
 change graph format - use index - linkedlist by index, or map?
 
 
+get last index 
+
+
+create consectutive index in memory?
+
+would like to keep xml and memory consistent so can use same index for data structure
+currently, nodes are removed, leaving gaps
+new nodes are added at the top
+
+
+
+
 
 
 
 
 change graph to a map not linkedlist
+
+try and only use word - have a map of word - vertex
 
