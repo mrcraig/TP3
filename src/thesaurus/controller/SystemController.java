@@ -43,7 +43,7 @@ public class SystemController {
 
 	@FXML
 	private Pane canvasDualGraph;
-	
+
 	@FXML
 	private Pane tableFullGraph;
 
@@ -58,10 +58,10 @@ public class SystemController {
 
 	@FXML
 	private TextField searchBoxGraph;
-	
+
 	@FXML
 	private TextField searchBoxTable;
-	
+
 	@FXML
 	private TextField searchBoxDual;
 
@@ -70,42 +70,42 @@ public class SystemController {
 
 	@FXML
 	private Text searchStatusLabel;
-	
+
 	@FXML
 	private ListView<String> currentListView;
-	
+
 	@FXML
 	private ChoiceBox<String> selectionBoxGraph;
-	
+
 	@FXML
 	private ChoiceBox<String> selectionBoxTable;
-	
+
 	@FXML
 	private ChoiceBox<String> selectionBoxDual;
-	
+
 	@FXML
 	private Label statusLabelGraph;
-	
+
 	@FXML
 	private Label statusLabelTable;
-	
+
 	@FXML
 	private Label statusLabelDual;
-	
+
 	@FXML
 	private MenuBar menuBar;
-	
+
 	@FXML
 	private Slider sliderGraph;
-	
+
 	@FXML
 	private Slider sliderTable;
-	
+
 	@FXML
 	private Slider sliderDual;
 
 	MainWindow referenceWindow;
-	
+
 	HashMap<String, Label> lookupHashMap;
 
 	public SystemController(MainWindow inputWindow) {
@@ -116,10 +116,12 @@ public class SystemController {
 	protected void doCreate() throws IOException {
 
 		FileChooser currentFileChooser = getFileChooser();
-		File currentFile = currentFileChooser.showSaveDialog(referenceWindow.getStage());
+		File currentFile = currentFileChooser.showSaveDialog(referenceWindow
+				.getStage());
 
 		if (currentFile != null) {
-			if (currentFile.getName().endsWith(".graphml") || currentFile.getName().endsWith(".xml")) {
+			if (currentFile.getName().endsWith(".graphml")
+					|| currentFile.getName().endsWith(".xml")) {
 				saveFile("Woot", currentFile);
 			} else {
 				System.out.println("Incorrect!");
@@ -129,16 +131,18 @@ public class SystemController {
 			return;
 		}
 
-		VisualisationRoot visualisationRootCurrent = new VisualisationRoot(referenceWindow);
+		VisualisationRoot visualisationRootCurrent = new VisualisationRoot(
+				referenceWindow);
 		referenceWindow.setVisualisationRoot(visualisationRootCurrent);
-		referenceWindow.getStage().setScene(new Scene(visualisationRootCurrent));
+		referenceWindow.getStage()
+				.setScene(new Scene(visualisationRootCurrent));
 		visualisationRootCurrent.setCurrentParser(currentFile);
 		setVisualisationFileName();
-		
+
 		setSearchBoxEvents();
-		
+
 		setSelectionBoxDefault();
-		
+
 		setUserFeedbackEvents();
 
 	}
@@ -147,87 +151,140 @@ public class SystemController {
 	protected void doImport() throws IOException {
 
 		FileChooser currentFileChooser = getFileChooser();
-		File file = currentFileChooser.showOpenDialog(referenceWindow.getStage());
+		File file = currentFileChooser.showOpenDialog(referenceWindow
+				.getStage());
 		if (file != null) {
-			//System.out.println(file.getAbsolutePath());
+			// System.out.println(file.getAbsolutePath());
 		} else {
 			return;
 		}
-		if(referenceWindow.getCurrentRecentArray().contains(file.getAbsolutePath())){
-			referenceWindow.getCurrentRecentArray().remove(file.getAbsolutePath());
+		if (referenceWindow.getCurrentRecentArray().contains(
+				file.getAbsolutePath())) {
+			referenceWindow.getCurrentRecentArray().remove(
+					file.getAbsolutePath());
 		}
 		referenceWindow.getCurrentRecentArray().add(file.getAbsolutePath());
 		referenceWindow.getSplashRoot().writeToRecentFile();
 
-		VisualisationRoot visualisationRootCurrent = new VisualisationRoot(referenceWindow);
+		VisualisationRoot visualisationRootCurrent = new VisualisationRoot(
+				referenceWindow);
 		referenceWindow.setVisualisationRoot(visualisationRootCurrent);
-		referenceWindow.getStage().setScene(new Scene(visualisationRootCurrent));
+		referenceWindow.getStage()
+				.setScene(new Scene(visualisationRootCurrent));
 		visualisationRootCurrent.setCurrentParser(file);
 		setVisualisationFileName();
-		
+
 		setSearchBoxEvents();
-		
+
 		setSelectionBoxDefault();
-		
+
 		setUserFeedbackEvents();
 
 	}
-	
+
 	private void doOpenRecent(int index) throws IOException {
 
-		File file = new File(referenceWindow.getCurrentRecentArray().get(reverseIndex(index+1)-1));
-		if(referenceWindow.getCurrentRecentArray().contains(file.getAbsolutePath())){
-			referenceWindow.getCurrentRecentArray().remove(file.getAbsolutePath());
+		File file = new File(referenceWindow.getCurrentRecentArray().get(
+				reverseIndex(index + 1) - 1));
+		if (referenceWindow.getCurrentRecentArray().contains(
+				file.getAbsolutePath())) {
+			referenceWindow.getCurrentRecentArray().remove(
+					file.getAbsolutePath());
 		}
 		referenceWindow.getCurrentRecentArray().add(file.getAbsolutePath());
 		referenceWindow.getSplashRoot().writeToRecentFile();
 
-		VisualisationRoot visualisationRootCurrent = new VisualisationRoot(referenceWindow);
+		VisualisationRoot visualisationRootCurrent = new VisualisationRoot(
+				referenceWindow);
 		referenceWindow.setVisualisationRoot(visualisationRootCurrent);
-		referenceWindow.getStage().setScene(new Scene(visualisationRootCurrent));
+		referenceWindow.getStage()
+				.setScene(new Scene(visualisationRootCurrent));
 		visualisationRootCurrent.setCurrentParser(file);
 		setVisualisationFileName();
-		
+
 		setSearchBoxEvents();
-		
+
 		setSelectionBoxDefault();
-		
+
 		setUserFeedbackEvents();
-		
+
 		setSliderHandlers();
 
 	}
-	
-	private void setUserFeedbackEvents(){
+
+	private void setUserFeedbackEvents() {
 		lookupHashMap = new HashMap<String, Label>();
 		lookupHashMap.put("graph", statusLabelGraph);
 		lookupHashMap.put("table", statusLabelTable);
-		lookupHashMap.put("dual", statusLabelDual);		
+		lookupHashMap.put("dual", statusLabelDual);
 	}
-	
-	private void setSelectionBoxDefault(){
+
+	private void setSelectionBoxDefault() {
 		selectionBoxGraph.getSelectionModel().select(1);
 		selectionBoxTable.getSelectionModel().select(1);
 		selectionBoxDual.getSelectionModel().select(1);
 	}
-	
+
 	private void setSelectionBoxHandlers(){
-//		selectionBoxGraph.get
+//		selectionBoxGraph.setOnMouseReleased(
+//				selectionBoxGraph.selectionModelProperty().getName();
+//				);
+//		selectionBoxGraph.selectionModelProperty().get().addListener(new ChangeListener<Number>() {
+//			public void changed(ObservableValue<? extends Number> ov,
+//					Number old_val, Number new_val) {
+//				System.out.println("Old: " + old_val.doubleValue());
+//				System.out.println("New: " + new_val.doubleValue());
+//				referenceWindow.getVisualisationRoot().getFullGraph()
+//						.setScale(new_val.doubleValue());
+//			}
+//		});
 	}
-	
-	private void setSliderHandlers(){
+
+	private void setSliderHandlers() {
 		sliderGraph.valueProperty().addListener(new ChangeListener<Number>() {
-            public void changed(ObservableValue<? extends Number> ov,
-                Number old_val, Number new_val) {
-            		System.out.println("Old: " + old_val.doubleValue());
-            		System.out.println("New: " + new_val.doubleValue());
-            		referenceWindow.getVisualisationRoot().getFullGraph().setScale(new_val.doubleValue());
-            }
-        });
+			public void changed(ObservableValue<? extends Number> ov,
+					Number old_val, Number new_val) {
+				System.out.println("Old: " + old_val.doubleValue());
+				System.out.println("New: " + new_val.doubleValue());
+				sliderTable.setValue(new_val.doubleValue());
+				sliderDual.setValue(new_val.doubleValue());
+				referenceWindow.getVisualisationRoot().getFullGraph()
+						.setScale(new_val.doubleValue());
+				referenceWindow.getVisualisationRoot().getDualGraph()
+				.setScale(new_val.doubleValue());
+			}
+		});
+		sliderTable.valueProperty().addListener(new ChangeListener<Number>() {
+			public void changed(ObservableValue<? extends Number> ov,
+					Number old_val, Number new_val) {
+				System.out.println("Old: " + old_val.doubleValue());
+				System.out.println("New: " + new_val.doubleValue());
+				sliderGraph.setValue(new_val.doubleValue());
+				sliderDual.setValue(new_val.doubleValue());
+				referenceWindow.getVisualisationRoot().getFullGraph()
+						.setScale(new_val.doubleValue());
+				referenceWindow.getVisualisationRoot().getDualGraph()
+				.setScale(new_val.doubleValue());
+			}
+		});
+		sliderDual.valueProperty().addListener(new ChangeListener<Number>() {
+			public void changed(ObservableValue<? extends Number> ov,
+					Number old_val, Number new_val) {
+				System.out.println("Old: " + old_val.doubleValue());
+				System.out.println("New: " + new_val.doubleValue());
+				sliderGraph.setValue(new_val.doubleValue());
+				sliderTable.setValue(new_val.doubleValue());
+				referenceWindow.getVisualisationRoot().getFullGraph()
+						.setScale(new_val.doubleValue());
+				referenceWindow.getVisualisationRoot().getDualGraph()
+				.setScale(new_val.doubleValue());
+			}
+		});
 	}
-	
-	private int reverseIndex(int currentIndex){
-		return (referenceWindow.getCurrentRecentArray().size()+1)-currentIndex;
+
+	private int reverseIndex(int currentIndex) {
+		return (referenceWindow.getCurrentRecentArray().size() + 1)
+				- currentIndex;
 	}
 
 	private void setSearchBoxEvents() {
@@ -240,7 +297,7 @@ public class SystemController {
 				}
 			}
 		});
-		
+
 		searchBoxTable.setOnKeyReleased(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent keyInput) {
@@ -249,7 +306,7 @@ public class SystemController {
 				}
 			}
 		});
-		
+
 		searchBoxDual.setOnKeyReleased(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent keyInput) {
@@ -258,19 +315,19 @@ public class SystemController {
 				}
 			}
 		});
-		
+
 	}
-	
+
 	@FXML
 	protected void doSearchGraphG() {
 		doSearchGraph("graph");
 	}
-	
+
 	@FXML
 	protected void doSearchGraphT() {
 		doSearchGraph("table");
 	}
-	
+
 	@FXML
 	protected void doSearchGraphD() {
 		doSearchGraph("dual");
@@ -278,26 +335,29 @@ public class SystemController {
 
 	private void doSearchGraph(String choiceString) {
 		String searchText = null;
-		if(choiceString.equals("graph")){
+		if (choiceString.equals("graph")) {
 			searchText = searchBoxGraph.getText();
-		}
-		else if(choiceString.equals("table")){
+		} else if (choiceString.equals("table")) {
 			searchText = searchBoxTable.getText();
-		}
-		else if(choiceString.equals("dual")){
+		} else if (choiceString.equals("dual")) {
 			searchText = searchBoxDual.getText();
 		}
-		Vertex currentVertex = referenceWindow.getVisualisationRoot().getCurrentParser().getOneSynomyn(searchText);
+		Vertex currentVertex = referenceWindow.getVisualisationRoot()
+				.getCurrentParser().getOneSynomyn(searchText);
 		if (currentVertex == null) {
-			lookupHashMap.get(choiceString).setText(String.format("Can't find \"%s\"", searchText));
+			lookupHashMap.get(choiceString).setText(
+					String.format("Can't find \"%s\"", searchText));
 			return;
 		}
-		lookupHashMap.get(choiceString).setText(String.format("The word \"%s\" has been found", searchText));
-		referenceWindow.getVisualisationRoot().setCurrentVertex(referenceWindow.getVisualisationRoot().runSpringOnVertex(currentVertex));
+		lookupHashMap.get(choiceString).setText(
+				String.format("The word \"%s\" has been found", searchText));
+		referenceWindow.getVisualisationRoot().setCurrentVertex(
+				referenceWindow.getVisualisationRoot().runSpringOnVertex(
+						currentVertex));
 		referenceWindow.getVisualisationRoot().addCanvas();
 		referenceWindow.getVisualisationRoot().addTable();
 	}
-	
+
 	@FXML
 	protected void doReturn() throws IOException {
 		referenceWindow.getStage().setScene(referenceWindow.getSplashScene());
@@ -329,7 +389,8 @@ public class SystemController {
 	private void saveFile(String content, File file) {
 		try {
 			OutputStreamWriter fileWriter;
-			fileWriter = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
+			fileWriter = new OutputStreamWriter(new FileOutputStream(file),
+					"UTF-8");
 			fileWriter.write(content);
 			fileWriter.close();
 		} catch (IOException ex) {
@@ -344,7 +405,7 @@ public class SystemController {
 	public Pane getCanvasDualGraph() {
 		return canvasDualGraph;
 	}
-	
+
 	public Pane getTableFullGraph() {
 		return tableFullGraph;
 	}
@@ -354,55 +415,61 @@ public class SystemController {
 	}
 
 	private void setVisualisationFileName() {
-		currentFileLabel.setText(referenceWindow.getVisualisationRoot().getCurrentFile().getName());
+		currentFileLabel.setText(referenceWindow.getVisualisationRoot()
+				.getCurrentFile().getName());
 	}
-	
-	private FileChooser getFileChooser(){
+
+	private FileChooser getFileChooser() {
 		FileChooser myFileChooser = new FileChooser();
-		FileChooser.ExtensionFilter graphmlFilter = new FileChooser.ExtensionFilter("GraphML files (*.graphml)", "*.graphml");
-		FileChooser.ExtensionFilter xmlFilter = new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
+		FileChooser.ExtensionFilter graphmlFilter = new FileChooser.ExtensionFilter(
+				"GraphML files (*.graphml)", "*.graphml");
+		FileChooser.ExtensionFilter xmlFilter = new FileChooser.ExtensionFilter(
+				"XML files (*.xml)", "*.xml");
 		myFileChooser.getExtensionFilters().add(graphmlFilter);
 		myFileChooser.getExtensionFilters().add(xmlFilter);
 		return myFileChooser;
 	}
-	
-	public void populateList(){
+
+	public void populateList() {
 		Collections.reverse(referenceWindow.getCurrentRecentArray());
 		ArrayList<String> parsedArray = new ArrayList<String>();
-		for(String s: referenceWindow.getCurrentRecentArray()){
+		for (String s : referenceWindow.getCurrentRecentArray()) {
 			File temp = new File(s);
 			parsedArray.add(temp.getName());
 		}
-		ObservableList<String> parsedList = FXCollections.observableList(parsedArray);
+		ObservableList<String> parsedList = FXCollections
+				.observableList(parsedArray);
 		currentListView.setEditable(true);
 		currentListView.setItems(parsedList);
 		Collections.reverse(referenceWindow.getCurrentRecentArray());
 		referenceWindow.setCurrentRecentList(parsedList);
 	}
-	
-	public void addListenerListView(){
-		
+
+	public void addListenerListView() {
+
 		currentListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-		    @Override
-		    public void handle(MouseEvent mouseEvent) {
-		        if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
-		            if(mouseEvent.getClickCount() == 2){
-		            	try {doOpenRecent(currentListView.getSelectionModel().getSelectedIndex());} catch (IOException e) {}
-		            }
-		        }
-		    }
+			@Override
+			public void handle(MouseEvent mouseEvent) {
+				if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
+					if (mouseEvent.getClickCount() == 2) {
+						try {
+							doOpenRecent(currentListView.getSelectionModel()
+									.getSelectedIndex());
+						} catch (IOException e) {
+						}
+					}
+				}
+			}
 		});
-		
+
 	}
-	
+
 	@FXML
-	private void handleExitAction(final ActionEvent event)
-	{
+	private void handleExitAction(final ActionEvent event) {
 		provideExitFunctionality();
 	}
 
-	private void provideExitFunctionality()
-	{
-		System.exit(0); 
+	private void provideExitFunctionality() {
+		System.exit(0);
 	}
 }
