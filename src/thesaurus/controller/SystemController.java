@@ -7,6 +7,9 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,6 +21,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -90,6 +94,15 @@ public class SystemController {
 	
 	@FXML
 	private MenuBar menuBar;
+	
+	@FXML
+	private Slider sliderGraph;
+	
+	@FXML
+	private Slider sliderTable;
+	
+	@FXML
+	private Slider sliderDual;
 
 	MainWindow referenceWindow;
 	
@@ -180,6 +193,8 @@ public class SystemController {
 		setSelectionBoxDefault();
 		
 		setUserFeedbackEvents();
+		
+		setSliderHandlers();
 
 	}
 	
@@ -198,6 +213,17 @@ public class SystemController {
 	
 	private void setSelectionBoxHandlers(){
 //		selectionBoxGraph.get
+	}
+	
+	private void setSliderHandlers(){
+		sliderGraph.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> ov,
+                Number old_val, Number new_val) {
+            		System.out.println("Old: " + old_val.doubleValue());
+            		System.out.println("New: " + new_val.doubleValue());
+            		referenceWindow.getVisualisationRoot().getFullGraph().setScale(new_val.doubleValue());
+            }
+        });
 	}
 	
 	private int reverseIndex(int currentIndex){

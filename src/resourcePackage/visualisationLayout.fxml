@@ -19,7 +19,7 @@
             <MenuItem id="menuSave" mnemonicParsing="false" text="Save" />
             <MenuItem id="menuCreateNew" mnemonicParsing="false" text="Create New File" />
             <MenuItem id="menuImport" mnemonicParsing="false" text="Import File" />
-            <MenuItem id="menuExit" mnemonicParsing="false" text="Exit" onAction="#handleExitAction"/>
+            <MenuItem id="menuExit" mnemonicParsing="false" onAction="#handleExitAction" text="Exit" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
@@ -69,6 +69,8 @@
                     <Font name="Georgia" size="11.0" fx:id="x4" />
                   </font>
                 </Label>
+                <Slider fx:id="sliderGraph" blockIncrement="0.1" layoutX="325.0" layoutY="432.0" majorTickUnit="0.1" max="2.0" min="0.5" value="1.0" />
+                <Label font="$x1" layoutX="287.0" layoutY="431.0" prefWidth="36.0" text="Zoom:" />
               </children>
             </AnchorPane>
           </content>
@@ -83,6 +85,8 @@
                 <Button font="$x1" layoutX="530.0" layoutY="400.0" mnemonicParsing="false" onAction="#doEditWord" prefWidth="100.0" text="Edit" />
                 <Button font="$x1" layoutX="645.0" layoutY="400.0" mnemonicParsing="false" onAction="#doRemoveWord" prefWidth="100.0" text="Remove" />
                 <Text font="$x1" layoutX="15.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search: " />
+                <Slider fx:id="sliderTable" blockIncrement="0.1" layoutX="325.0" layoutY="432.0" majorTickUnit="0.1" max="2.0" min="0.5" value="1.0" />
+                <Label font="$x1" layoutX="287.0" layoutY="431.0" prefWidth="36.0" text="Zoom:" />
                 <Label id="statusLabelGraph" fx:id="statusLabelTable" font="$x4" layoutX="62.0" layoutY="424.0" text="Please enter a search term">
                   <textFill>
                     <Color blue="0.376" green="0.376" red="0.376" fx:id="x3" />
@@ -120,9 +124,11 @@
                 <TextField fx:id="searchBoxDual" layoutX="58.0" layoutY="400.0" prefWidth="200.0" />
                 <Button font="$x1" layoutX="265.0" layoutY="400.0" mnemonicParsing="false" onAction="#doSearchGraphD" text="Go" />
                 <Button font="$x1" layoutX="415.0" layoutY="400.0" mnemonicParsing="false" onAction="#doAddWord" prefWidth="100.0" text="Add" />
+                <Label font="$x1" layoutX="287.0" layoutY="431.0" prefWidth="36.0" text="Zoom:" />
                 <Button font="$x1" layoutX="530.0" layoutY="400.0" mnemonicParsing="false" onAction="#doEditWord" prefWidth="100.0" text="Edit" />
                 <Button font="$x1" layoutX="645.0" layoutY="400.0" mnemonicParsing="false" onAction="#doRemoveWord" prefWidth="100.0" text="Remove" />
                 <Pane fx:id="canvasDualGraph" layoutX="16.0" layoutY="14.0" prefHeight="362.0" prefWidth="354.0" />
+                <Slider fx:id="sliderDual" blockIncrement="0.1" layoutX="325.0" layoutY="432.0" majorTickUnit="0.1" max="2.0" min="0.5" value="1.0" />
                 <Text font="$x1" layoutX="15.0" layoutY="415.0" scaleY="0.9999910471279186" strokeType="OUTSIDE" strokeWidth="0.0" text="Search: " />
                 <Label id="statusLabelGraph" fx:id="statusLabelDual" font="$x4" layoutX="62.0" layoutY="424.0" text="Please enter a search term" textFill="$x3" />
                 <Pane id="" fx:id="tableDualGraph" layoutX="389.0" layoutY="14.0" prefHeight="362.0" prefWidth="353.9998779296875" />
