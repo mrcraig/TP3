@@ -1,12 +1,15 @@
 package thesaurus.gui.table;
 
+import thesaurus.gui.window.VisualisationRoot;
 import thesaurus.parser.Vertex;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
  
 public class ViewTable {
@@ -18,11 +21,13 @@ public class ViewTable {
     private int windowWidth;
     private int windowHeight;
     private Vertex vertex;
+    private VisualisationRoot vr;
     
-    public ViewTable(int windowWidth, int windowHeight, Vertex vertex){
+    public ViewTable(int windowWidth, int windowHeight, Vertex vertex, VisualisationRoot vr){
     	this.windowHeight = windowHeight;
     	this.windowWidth = windowWidth;
     	this.vertex = vertex;
+    	this.vr = vr;
     	
     	start();
     }
@@ -38,7 +43,7 @@ public class ViewTable {
         wordCol.setResizable(false);
         wordCol.setCellValueFactory(
                 new PropertyValueFactory<Vertex, String>("word"));
- 
+        
         TableColumn synCol = new TableColumn("Synonym");
         synCol.setPrefWidth(windowWidth/3);
         synCol.setResizable(false);
@@ -164,6 +169,17 @@ public class ViewTable {
     		
     		//Add to table
     		data.add(new TabData(v.getWord(),synList,antList));
+    		
+    		//Double click support
+    		table.setOnMouseClicked(
+    				new EventHandler<MouseEvent>(){
+    					public void handle(MouseEvent e){
+    						if(e.getClickCount()==2){
+    							System.out.println("--- " + table.getSelectionModel().getSelectedItem().getWord());
+    							vr.doClickSearchGraph(table.getSelectionModel().getSelectedItem().getWord());
+    						}
+    					}
+    				});
     	}
     }
  

@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -44,8 +46,15 @@ public class ViewGraph {
 		start();
 	}
 	
-	public Canvas returnGraph(){
-		return graph;
+	public ScrollPane returnGraph(){
+		ScrollPane sp = new ScrollPane();
+		sp.setPrefSize(windowWidth, windowHeight);
+		sp.setMaxSize(windowWidth, windowHeight);
+		sp.setHbarPolicy(ScrollBarPolicy.NEVER);
+		sp.setVbarPolicy(ScrollBarPolicy.NEVER);
+		sp.setStyle("-fx-background-color:transparent;");
+		sp.setContent(graph);
+		return sp;
 	}
 	
 	private void drawMainNode(Vertex v){
@@ -144,9 +153,18 @@ public class ViewGraph {
 		gc.setFill(Color.BLACK);
 	}
 	
+	public void setScale(double scale){
+		graph.setScaleX(scale);
+		graph.setScaleY(scale);
+	}
+	
 	private void start() {
 		graph = new Canvas(windowWidth,windowHeight);
 		gc = graph.getGraphicsContext2D();
+
+		graph.setWidth(windowWidth);
+		graph.setHeight(windowHeight);
+		
 		resetGraph();
 		drawGraph();
 		

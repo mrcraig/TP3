@@ -23,6 +23,8 @@ public class VisualisationRoot extends AnchorPane {
 	private File currentFile;
 	private Popup currentPopup;
 	private Vertex currentVertex;
+	private ViewGraph displayGraphFull;
+	private ViewGraph displayGraphDual;
 
 	public VisualisationRoot(MainWindow inputWindow) throws IOException {
 
@@ -45,8 +47,8 @@ public class VisualisationRoot extends AnchorPane {
 	public void addCanvas() {
 		currentController.getCanvasFullGraph().getChildren().removeAll(currentController.getCanvasFullGraph().getChildren());
 		currentController.getCanvasDualGraph().getChildren().removeAll(currentController.getCanvasDualGraph().getChildren());
-		ViewGraph displayGraphFull = new ViewGraph(757, 375,currentVertex, referenceWindow.getVisualisationRoot(),1,1);
-		ViewGraph displayGraphDual = new ViewGraph(354, 362,currentVertex, referenceWindow.getVisualisationRoot(),1,1);
+		displayGraphFull = new ViewGraph(757, 375,currentVertex, referenceWindow.getVisualisationRoot(),1,1);
+		displayGraphDual = new ViewGraph(354, 362,currentVertex, referenceWindow.getVisualisationRoot(),1,1);
 		currentController.getCanvasFullGraph().getChildren().add(displayGraphFull.returnGraph());
 		currentController.getCanvasDualGraph().getChildren().add(displayGraphDual.returnGraph());
 	}
@@ -54,8 +56,8 @@ public class VisualisationRoot extends AnchorPane {
 	public void addTable() {
 		currentController.getTableFullGraph().getChildren().removeAll(currentController.getTableFullGraph().getChildren());
 		currentController.getTableDualGraph().getChildren().removeAll(currentController.getTableDualGraph().getChildren());
-		ViewTable displayTableFull = new ViewTable(728, 366,currentVertex);
-		ViewTable displayTableDual = new ViewTable(354, 362,currentVertex);
+		ViewTable displayTableFull = new ViewTable(728, 366,currentVertex, referenceWindow.getVisualisationRoot());
+		ViewTable displayTableDual = new ViewTable(354, 362,currentVertex, referenceWindow.getVisualisationRoot());
 		currentController.getTableFullGraph().getChildren().add(displayTableFull.getTable());
 		currentController.getTableDualGraph().getChildren().add(displayTableDual.getTable());
 	}
@@ -116,6 +118,14 @@ public class VisualisationRoot extends AnchorPane {
 	
 	public Vertex getCurrentVertex(){
 		return currentVertex;
+	}
+	
+	public ViewGraph getFullGraph(){
+		return displayGraphFull;
+	}
+	
+	public ViewGraph getDualGraph(){
+		return displayGraphDual;
 	}
 
 }

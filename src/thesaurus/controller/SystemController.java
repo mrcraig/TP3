@@ -7,8 +7,12 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -16,6 +20,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -85,6 +91,18 @@ public class SystemController {
 	
 	@FXML
 	private Label statusLabelDual;
+	
+	@FXML
+	private MenuBar menuBar;
+	
+	@FXML
+	private Slider sliderGraph;
+	
+	@FXML
+	private Slider sliderTable;
+	
+	@FXML
+	private Slider sliderDual;
 
 	MainWindow referenceWindow;
 	
@@ -139,6 +157,7 @@ public class SystemController {
 			referenceWindow.getCurrentRecentArray().remove(file.getAbsolutePath());
 		}
 		referenceWindow.getCurrentRecentArray().add(file.getAbsolutePath());
+		referenceWindow.getSplashRoot().writeToRecentFile();
 
 		VisualisationRoot visualisationRootCurrent = new VisualisationRoot(referenceWindow);
 		referenceWindow.setVisualisationRoot(visualisationRootCurrent);
@@ -161,6 +180,7 @@ public class SystemController {
 			referenceWindow.getCurrentRecentArray().remove(file.getAbsolutePath());
 		}
 		referenceWindow.getCurrentRecentArray().add(file.getAbsolutePath());
+		referenceWindow.getSplashRoot().writeToRecentFile();
 
 		VisualisationRoot visualisationRootCurrent = new VisualisationRoot(referenceWindow);
 		referenceWindow.setVisualisationRoot(visualisationRootCurrent);
@@ -173,6 +193,8 @@ public class SystemController {
 		setSelectionBoxDefault();
 		
 		setUserFeedbackEvents();
+		
+		setSliderHandlers();
 
 	}
 	
@@ -187,6 +209,21 @@ public class SystemController {
 		selectionBoxGraph.getSelectionModel().select(1);
 		selectionBoxTable.getSelectionModel().select(1);
 		selectionBoxDual.getSelectionModel().select(1);
+	}
+	
+	private void setSelectionBoxHandlers(){
+//		selectionBoxGraph.get
+	}
+	
+	private void setSliderHandlers(){
+		sliderGraph.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> ov,
+                Number old_val, Number new_val) {
+            		System.out.println("Old: " + old_val.doubleValue());
+            		System.out.println("New: " + new_val.doubleValue());
+            		referenceWindow.getVisualisationRoot().getFullGraph().setScale(new_val.doubleValue());
+            }
+        });
 	}
 	
 	private int reverseIndex(int currentIndex){
@@ -265,7 +302,6 @@ public class SystemController {
 	protected void doReturn() throws IOException {
 		referenceWindow.getStage().setScene(referenceWindow.getSplashScene());
 		populateList();
-		referenceWindow.getSplashRoot().writeToRecentFile();
 	}
 
 	@FXML
@@ -358,5 +394,15 @@ public class SystemController {
 		});
 		
 	}
+	
+	@FXML
+	private void handleExitAction(final ActionEvent event)
+	{
+		provideExitFunctionality();
+	}
 
+	private void provideExitFunctionality()
+	{
+		System.exit(0); 
+	}
 }
