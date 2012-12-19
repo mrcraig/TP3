@@ -191,6 +191,10 @@ public class SystemController {
 		selectionBoxDual.getSelectionModel().select(1);
 	}
 	
+	private void setSelectionBoxHandlers(){
+//		selectionBoxGraph.get
+	}
+	
 	private int reverseIndex(int currentIndex){
 		return (referenceWindow.getCurrentRecentArray().size()+1)-currentIndex;
 	}
