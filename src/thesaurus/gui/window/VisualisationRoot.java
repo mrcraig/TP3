@@ -54,8 +54,8 @@ public class VisualisationRoot extends AnchorPane {
 	public void addTable() {
 		currentController.getTableFullGraph().getChildren().removeAll(currentController.getTableFullGraph().getChildren());
 		currentController.getTableDualGraph().getChildren().removeAll(currentController.getTableDualGraph().getChildren());
-		ViewTable displayTableFull = new ViewTable(728, 366,currentVertex);
-		ViewTable displayTableDual = new ViewTable(354, 362,currentVertex);
+		ViewTable displayTableFull = new ViewTable(728, 366,currentVertex, referenceWindow.getVisualisationRoot());
+		ViewTable displayTableDual = new ViewTable(354, 362,currentVertex, referenceWindow.getVisualisationRoot());
 		currentController.getTableFullGraph().getChildren().add(displayTableFull.getTable());
 		currentController.getTableDualGraph().getChildren().add(displayTableDual.getTable());
 	}
