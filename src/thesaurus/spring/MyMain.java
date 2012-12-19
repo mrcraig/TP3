@@ -63,11 +63,11 @@ public class MyMain extends Application {
 		
 		 v3.addSynonym(v1);
 		 v3.addSynonym(v6);
-//		v3.addToAdjList(v6);
-//		v3.addToAdjList(v15);
-//		v3.addToAdjList(v17);
-//		v3.addToAdjList(v18);
-//		v3.addToAdjList(v19);
+		v3.addSynonym(v6);
+//		v3.addSynonym(v15);
+//		v3.addSynonym(v17);
+//		v3.addSynonym(v18);
+//		v3.addSynonym(v19);
 //		v3.addToAdjList(v20);
 
 		v4.addSynonym(v1);
@@ -77,7 +77,7 @@ public class MyMain extends Application {
 		v5.addSynonym(v1);
 		v5.addSynonym(v2);
 		v5.addSynonym(v3);
-		//v5.addToAdjList(v6);
+		v5.addSynonym(v6);
 		
 		v6.addSynonym(v1);
 		v6.addSynonym(v2);
@@ -89,19 +89,20 @@ public class MyMain extends Application {
 		
 		v8.addSynonym(v1);
 		v8.addSynonym(v7);
-		v8.addSynonym(v9);
-		v8.addSynonym(v10);
-		v8.addSynonym(v11);
+		//v8.addSynonym(v9);
+		//v8.addSynonym(v10);
+		//v8.addSynonym(v11);
 		
 		v9.addSynonym(v10);
 		v9.addSynonym(v11);
+		v9.addSynonym(v8);
 		
 		v12.addSynonym(v13);
 		v12.addSynonym(v14);
 		v12.addSynonym(v15);
-		//v5.addToAdjList(v6);
+		v5.addSynonym(v6);
 		
-		fr = new FrSpring(v1);
+		fr = new FrSpring(v10);
 		// fr.getPositions();
 		// fr.test();
 

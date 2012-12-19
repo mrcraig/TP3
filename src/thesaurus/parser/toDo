@@ -24,3 +24,5 @@ remove - not only remove from xml, nodes, but also the adjacency lists
 in graph - finsih off removeVertex properly
 
 
+
+
