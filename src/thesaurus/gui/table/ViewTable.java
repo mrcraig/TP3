@@ -1,5 +1,6 @@
 package thesaurus.gui.table;
 
+import thesaurus.gui.window.VisualisationRoot;
 import thesaurus.parser.Vertex;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -18,11 +19,13 @@ public class ViewTable {
     private int windowWidth;
     private int windowHeight;
     private Vertex vertex;
+    private VisualisationRoot vr;
     
-    public ViewTable(int windowWidth, int windowHeight, Vertex vertex){
+    public ViewTable(int windowWidth, int windowHeight, Vertex vertex, VisualisationRoot vr){
     	this.windowHeight = windowHeight;
     	this.windowWidth = windowWidth;
     	this.vertex = vertex;
+    	this.vr = vr;
     	
     	start();
     }
@@ -38,6 +41,7 @@ public class ViewTable {
         wordCol.setResizable(false);
         wordCol.setCellValueFactory(
                 new PropertyValueFactory<Vertex, String>("word"));
+       // wordCol.setOnEditStart(arg0)
  
         TableColumn synCol = new TableColumn("Synonym");
         synCol.setPrefWidth(windowWidth/3);
