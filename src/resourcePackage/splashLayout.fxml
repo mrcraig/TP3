@@ -21,13 +21,14 @@
     <Text font="$x1" layoutX="347.0" layoutY="103.0" scaleX="6.0" scaleY="6.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Graphical Thesaurus" />
     <Text font="$x1" layoutX="522.0" layoutY="248.0" scaleX="3.0" scaleY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Import Recent..." />
     <Text font="$x1" layoutX="684.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Created By Team O" />
-    <MenuBar prefHeight="24.0" prefWidth="800.0">
+    <MenuBar fx:id="menuBar" prefHeight="24.0" prefWidth="800.0">
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
             <MenuItem id="menuSave" mnemonicParsing="false" text="Save" />
             <MenuItem id="menuCreateNew" mnemonicParsing="false" text="Create New File" />
             <MenuItem id="menuImport" mnemonicParsing="false" text="Import File" />
+            <MenuItem id="menuExit" mnemonicParsing="false" text="Exit" onAction="#handleExitAction"/>
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
