@@ -41,16 +41,16 @@ public class WalshawSpring {
 																	                 	// this is the center of the canvas
 			}
 			
-			myX =i;    
-			myY =i;	
-			//myX =  Math.random()* this.width*1;    
-		//myY =  Math.random()* this.length*1;
+		//	myX =(size-i)*this.width/6;    
+		//	myY =(size-i)*this.length/6; 
+			myX =  Math.random()* this.width*1;    
+		   myY =  Math.random()* this.length*1;
 			System.out.println(myX+ " "+myY);
 			lstVertices.get(i).setPos (create(myX, myY));    				//place vertices at random
 			lstVertices.get(i).setPDis(create(0, 0));
 								//initialize displacement of every vertex to 0
 
-			k = Math.sqrt(((double) this.area / (double) this.size)); //k*=3050; // compute optimal pairwise distance
+			k = Math.sqrt(((double) this.area / (double) this.size));//k;// compute optimal pairwise distance
 			//System.out.println(k);
 		}
 		//k=20576.906738115205;
@@ -63,80 +63,72 @@ public class WalshawSpring {
 
 
 	private void mySpring() {
-		int converged = 0;
-		int count1 = 0;
-		while (converged != 1) {
-			converged = 1;
+		int converged =50;double count1 = 1;
+		while (converged >1) converged -= 1; {
 			for (Vertex v : this.lstVertices) {
-				if (v == null) continue;
-				Point2D oldPosistion = new Point2D.Double(v.getPos().getX(), v.getPos().getY());
-				
 				v.getDis().setLocation(0, 0); 
-				//boolean v1_OnBorder = isOnBorder(v.getDis());
+				
 				for (Vertex u : this.lstVertices) {
-					//System.out.println("I am in");
 					if (!(u.equals(v))) {
 						
-						double disX = u.getPos().getX() - v.getPos().getX();   // difference of x coordinate
-						double disY = u.getPos().getY() - v.getPos().getY();   // difference of y coordinate
+						double disX = v.getPos().getX() - u.getPos().getX();   // difference of x coordinate
+						double disY = v.getPos().getY() - u.getPos().getY();   // difference of y coordinate
 						double deltaLength = Math.max(EPSILON,  u.getPos()	   // if distance between vertices is zero, since  
 								.distanceSq(v.getPos()));				       // couldn't divided by zero use EPSILON
 						
+						double delta = Math.max(EPSILON, Math.sqrt((u.getPos().getX()*u.getPos().getX())+
+							(u.getPos().getY()*u.getPos().getY())));
+						//double rforce = repulsionF(Math.abs(deltaLength)/disX,Math.abs(u.getPos().getX()));     // repulsion force (distance)
+						//assert Double.isNaN(rforce) == false : "Unexpected mathematical result in FRSpring Layout:Spring [Repulsion force]";
 						
 						
-						disX = (v.getDis().getX() + (deltaLength/Math.abs(deltaLength))
-									*repulsionF(Math.abs(deltaLength), u.getPos().getX()));             // displacement of x
-						disY = (v.getDis().getY() + (deltaLength/Math.abs(deltaLength)) 
-									*repulsionF(Math.abs(deltaLength), u.getPos().getY()));			  //  displacement of y
-						
-						v.getDis().setLocation(disX,disY);
+							disX = v.getDis().getX() + deltaLength/Math.abs(deltaLength) *repulsionF( Math.abs(deltaLength),Math.abs(delta));             // displacement of x
+							disY = v.getDis().getY() + deltaLength/Math.abs(deltaLength)  *repulsionF( Math.abs(deltaLength),Math.abs(delta)); 			  //  displacement of y
+							v.getDis().setLocation(disX,disY);
 					
 					}
 				}
-			
-			
-				
-				
-
-				
-				for (Vertex u : v.getSynomyns()){
-
-				
-
+					Vertex source = v;		
+				for (Vertex target : source.getSynomyns()){
 					
-					if (u.getPos() == null) continue;
+					if (target.getPos() == null) continue;
 					
-					//boolean u_OnBorder = isOnBorder(target.getDis());
-					double disX = u.getPos().getX() - v.getPos().getX();
-					double disY = u.getPos().getY() - v.getPos().getY();
+					
 									
 					double deltaLength = Math.max(EPSILON,
-							u.getPos().distanceSq(v.getPos()));
+							source.getPos().distanceSq(target.getPos()));
 					
 					
-					disX = (v.getDis().getX() + (deltaLength/Math.abs(deltaLength))
-							*attractionF(Math.abs(deltaLength),Math.abs(v.getPos().getX()), Math.abs(u.getPos().getX())));             // displacement of x
-					disY = (v.getDis().getX() + (deltaLength/Math.abs(deltaLength))
-							*attractionF(Math.abs(deltaLength),Math.abs(v.getPos().getY()), Math.abs(u.getPos().getY())));		  //  displacement of y
-					     
-					      v.getDis().setLocation(Math.max(disX,EPSILON),Math.max(disY, EPSILON));
-					      
-		
+					double deltaTar = Math.max(EPSILON, Math.sqrt((target.getPos().getX()*target.getPos().getX())+
+							(target.getPos().getY()*target.getPos().getY())));
+					double deltaSor = Math.max(EPSILON, Math.sqrt((source.getPos().getX()*source.getPos().getX())+
+							(source.getPos().getY()*source.getPos().getY())));
+					
+					double tdisX = target.getDis().getX() +(deltaLength/Math.abs(deltaLength))*attractionF(Math.abs(deltaLength),Math.abs(deltaSor),Math.abs(deltaTar));					// displacement  edge x coordinate
+					double tdisY = target.getDis().getY() +(deltaLength/Math.abs(deltaLength))*attractionF(Math.abs(deltaLength),Math.abs(deltaSor),Math.abs(deltaTar));	
+					target.getDis().setLocation(tdisX, tdisY);
+					
 			}
-			
-				
-			double newPosX = v.getPos().getX() +( v.getDis().getX()/Math.max(Math.abs(v.getDis().getX()),EPSILON)* Math.min(temperature ,Math.abs(v.getDis().getX()))); 
-			double newPosY = v.getPos().getY() + (v.getDis().getY()/Math.max(Math.abs(v.getDis().getY()),EPSILON)* Math.min(temperature, Math.abs(v.getDis().getY()))); 
+				if( v.equals(myWord))continue;
+			System.out.println(v.getDis());
+			Point2D oldPosistion = new Point2D.Double(v.getPos().getX(), v.getPos().getY());	
+			double newPosX = v.getPos().getX() +( v.getDis().getX()/Math.max(Math.abs(v.getDis().getX()),EPSILON)*
+					Math.min(temperature ,Math.abs(v.getDis().getX()))); 
+			double newPosY = v.getPos().getY() + (v.getDis().getY()/Math.max(Math.abs(v.getDis().getY()),EPSILON)* 
+					Math.min(temperature, Math.abs(v.getDis().getY()))); 
+			newPosX = Math.max(30, Math.min(newPosX, width));					// limit max displacement to frame
+			newPosY = Math.max(30, Math.min(newPosY, length));
 			v.getPos().setLocation( new Point2D.Double(newPosX, newPosY));
+			System.out.println(v.getPos());
 			double changeX = v.getPos().getX() - oldPosistion.getX();
 			double changeY = v.getPos().getY() - oldPosistion.getY();
 			double change = Math.sqrt((changeX * changeX)+(changeY *changeY));
-			count1++;
-			System.out.println(change);
-			if (Math.abs(change)> k*0.1) converged=0;
+			count1= count1*0.98;
+			System.out.println(count1+"  " +change+" "+k);
+			if (Math.abs(change)> k* 0.0001) converged=0;
 			}//end of the first loop that sets displacement to zero.
 			temperature = cool(temperature);
-		   }
+		   }//first
 			
 		/* the is for test only, Begin testing */
 		Point2D[] tmp = new Point2D[size];
@@ -186,9 +178,8 @@ public class WalshawSpring {
 	/* calculates repulsion force between non-adjacent vertices x is a distance calculated by pythagoras   */
 	private double repulsionF(double x, double w) {
 
-		return (((-10*w*(k * k))/ x));
+		return (((-1*w*(k * k))/ x));
 	}
-
 	/* calculates attraction force between edges y is length of the edge*/
 	private double attractionF(double x, double d, double w) {
 		return (((x-k)/d)-repulsionF(x,w));
