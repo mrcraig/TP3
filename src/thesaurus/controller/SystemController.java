@@ -144,6 +144,7 @@ public class SystemController {
 			referenceWindow.getCurrentRecentArray().remove(file.getAbsolutePath());
 		}
 		referenceWindow.getCurrentRecentArray().add(file.getAbsolutePath());
+		referenceWindow.getSplashRoot().writeToRecentFile();
 
 		VisualisationRoot visualisationRootCurrent = new VisualisationRoot(referenceWindow);
 		referenceWindow.setVisualisationRoot(visualisationRootCurrent);
@@ -166,6 +167,7 @@ public class SystemController {
 			referenceWindow.getCurrentRecentArray().remove(file.getAbsolutePath());
 		}
 		referenceWindow.getCurrentRecentArray().add(file.getAbsolutePath());
+		referenceWindow.getSplashRoot().writeToRecentFile();
 
 		VisualisationRoot visualisationRootCurrent = new VisualisationRoot(referenceWindow);
 		referenceWindow.setVisualisationRoot(visualisationRootCurrent);
@@ -192,6 +194,10 @@ public class SystemController {
 		selectionBoxGraph.getSelectionModel().select(1);
 		selectionBoxTable.getSelectionModel().select(1);
 		selectionBoxDual.getSelectionModel().select(1);
+	}
+	
+	private void setSelectionBoxHandlers(){
+//		selectionBoxGraph.get
 	}
 	
 	private int reverseIndex(int currentIndex){
@@ -270,7 +276,6 @@ public class SystemController {
 	protected void doReturn() throws IOException {
 		referenceWindow.getStage().setScene(referenceWindow.getSplashScene());
 		populateList();
-		referenceWindow.getSplashRoot().writeToRecentFile();
 	}
 
 	@FXML
