@@ -158,7 +158,7 @@ public class MyMain extends Application {
 																					// connector
 		gc.setFill(Color.BLACK);
 		gc.setFont(new Font(14));
-		gc.fillText(v.getIndex(), (v.getPos().getX() - 25),
+		gc.fillText(v.getID(), (v.getPos().getX() - 25),
 				(v.getPos().getY() + 10));
 		// if (v.equals(myW)) {
 		// gc.fillRect(v.getPos().getX(), v.getPos().getY(), 20, 20);

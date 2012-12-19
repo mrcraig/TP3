@@ -7,6 +7,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Popup;
 import thesaurus.controller.SystemController;
 import thesaurus.gui.canvas.ViewGraph;
+import thesaurus.gui.table.ViewTable;
 import thesaurus.parser.*;
 import thesaurus.spring.FrSpring;
 
@@ -44,10 +45,19 @@ public class VisualisationRoot extends AnchorPane {
 	public void addCanvas() {
 		currentController.getCanvasFullGraph().getChildren().removeAll(currentController.getCanvasFullGraph().getChildren());
 		currentController.getCanvasDualGraph().getChildren().removeAll(currentController.getCanvasDualGraph().getChildren());
-		ViewGraph displayGraphFull = new ViewGraph(750, 376,currentVertex, referenceWindow.getVisualisationRoot());
-		ViewGraph displayGraphDual = new ViewGraph(354, 362,currentVertex, referenceWindow.getVisualisationRoot());
+		ViewGraph displayGraphFull = new ViewGraph(757, 375,currentVertex, referenceWindow.getVisualisationRoot(),1,1);
+		ViewGraph displayGraphDual = new ViewGraph(354, 362,currentVertex, referenceWindow.getVisualisationRoot(),1,1);
 		currentController.getCanvasFullGraph().getChildren().add(displayGraphFull.returnGraph());
 		currentController.getCanvasDualGraph().getChildren().add(displayGraphDual.returnGraph());
+	}
+	
+	public void addTable() {
+		currentController.getTableFullGraph().getChildren().removeAll(currentController.getTableFullGraph().getChildren());
+		currentController.getTableDualGraph().getChildren().removeAll(currentController.getTableDualGraph().getChildren());
+		ViewTable displayTableFull = new ViewTable(728, 366,currentVertex);
+		ViewTable displayTableDual = new ViewTable(354, 362,currentVertex);
+		currentController.getTableFullGraph().getChildren().add(displayTableFull.getTable());
+		currentController.getTableDualGraph().getChildren().add(displayTableDual.getTable());
 	}
 
 	public void setCurrentParser(File inputFile) {
@@ -88,12 +98,24 @@ public class VisualisationRoot extends AnchorPane {
 	}
 	
 	public void doClickSearchGraph(String inputString) {
-		Vertex currentVertex = referenceWindow.getVisualisationRoot().getCurrentParser().getOneSynomyn(inputString);
+		setCurrentVertex(getCurrentParser().getOneSynomyn(inputString));
 		if (currentVertex == null) {
 			return;
 		}
-		referenceWindow.getVisualisationRoot().setCurrentVertex(referenceWindow.getVisualisationRoot().runSpringOnVertex(currentVertex));
+		setCurrentVertex(referenceWindow.getVisualisationRoot().runSpringOnVertex(currentVertex));
 		referenceWindow.getVisualisationRoot().addCanvas();
+		referenceWindow.getVisualisationRoot().addTable();
+	}
+	
+	public void doSearchRefresh(){
+		Vertex replacementVertex = getCurrentParser().getOneSynomyn(currentVertex.getWord());
+		setCurrentVertex(referenceWindow.getVisualisationRoot().runSpringOnVertex(replacementVertex));
+		referenceWindow.getVisualisationRoot().addCanvas();
+		referenceWindow.getVisualisationRoot().addTable();
+	}
+	
+	public Vertex getCurrentVertex(){
+		return currentVertex;
 	}
 
 }

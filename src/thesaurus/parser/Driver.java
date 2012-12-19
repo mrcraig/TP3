@@ -8,7 +8,7 @@ public class Driver
 
 	public static void main(String[] args)
 	{
-		File test = new File("/home/james/GIT/myWorkspace/TP3/data.graphml");
+		File test = new File("/home/james/data.graphml");
 		System.out.println(test.getAbsolutePath());
 		InternalRepresentation driver = new InternalRepresentation(test);
 		
@@ -24,11 +24,13 @@ public class Driver
 		
 		//driver.addVertex("helen", "thumb, happy, supervisor", "fun, peaceful");
 		
-	
+		//driver.removeVertex("Merry");
+		
+		driver.debug();
 		
 		//driver.editVertex("Joyful", "sad");
-		System.out.println(driver.getListOfSynomyns("Jubilant"));
-		System.out.println(driver.getTableData());
+		//System.out.println(driver.getListOfSynomyns("Jubilant"));
+		//System.out.println(driver.getTableData());
 		
 	}
 }

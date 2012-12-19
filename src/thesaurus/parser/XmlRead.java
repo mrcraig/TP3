@@ -31,10 +31,7 @@ public class XmlRead
 		try 
 		{
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-			//this.xml = docBuilder.parse("/home/james/GIT/myWorkspace/TP3/data.xml");
-			//this.xml = docBuilder.parse(getClass().getResource(f.getPath()).getPath());
 			this.xml = docBuilder.parse(f.getPath());
-			if(checkEmpty()) System.out.println("empty document");
 		} catch (IOException e) 
 		{
 			System.out.println("bad file");
@@ -51,11 +48,8 @@ public class XmlRead
 		{
 			p.printStackTrace();
 		}
-		if(!checkEmpty())
-		{
-			getVertices();
-			getEdges();
-		}
+		getVertices();
+		getEdges();
 	}
 	
 	String getLastVertexIndex()
@@ -77,25 +71,7 @@ public class XmlRead
 		return newID;
 	}
 	
-	private boolean checkEmpty()
-	{
-		try 
-		{
-			XPathExpression ml = xpath.compile("//graphml");
-			XPathExpression graph = xpath.compile("//graphml/graph");
-			XPathExpression nodes = xpath.compile("//graphml/graph/nodes");
-		  NodeList listML  = (NodeList) ml.evaluate(this.xml, XPathConstants.NODESET);
-		  NodeList  listGraph = (NodeList) graph.evaluate(this.xml, XPathConstants.NODESET);
-		  NodeList  listNodes = (NodeList) nodes.evaluate(this.xml, XPathConstants.NODESET);
-		  
-		  if(listML==null || listGraph==null || listNodes==null ) return true;
-		}
-		catch (XPathExpressionException e) 
-		{
-			e.printStackTrace();
-		}
-	 return false;
-	}
+	
 	
 	public LinkedList<Vertex> getAllNodes()
 	{
@@ -134,10 +110,6 @@ public class XmlRead
 		}
 		this.nodes.setNodes(vertices);
 	}	
-	
-
-	
-	
 	
 	
 	private void getEdges()
@@ -180,21 +152,20 @@ public class XmlRead
 			}
 			String source = e.getAttributes().getNamedItem("source").getTextContent();
 			String target = e.getAttributes().getNamedItem("target").getTextContent();
-			Vertex v = nodes.getVertexFromIndex(source);
+			Vertex s = nodes.getVertexFromIndex(source);
+			Vertex t = nodes.getVertexFromIndex(target); 
 			if(isSynomyn)
 			{
-				//if(v.getSynomyns().contains(o))
-				v.addSynonym(nodes.getVertexFromIndex(target));
+				if(!s.getSynomyns().contains(t))
+				s.addSynonym(t);
 			}
 			else
-			{
-				v.addAntonym(nodes.getVertexFromIndex(target));
+			{	
+				if(!s.getAntonyms().contains(t))
+				s.addAntonym(t);
 			}
 		}
-	}
-	
-	
-	
+	}	
 }
 
 

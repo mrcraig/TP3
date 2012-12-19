@@ -5,7 +5,14 @@ import java.util.LinkedList;
 
 
 /*
+ * one vertex at a time
+ * hashmap of string - vertex
  * 
+ * getNodes() - returns entries
+ * 
+ * clear() - same
+ * 
+ * craig doesnt touch the word in vertex - can use value set or similar
  */
 
 public class Graph 
@@ -16,6 +23,40 @@ public class Graph
 	{
 		return nodes;
 	}
+	 
+	 public void debug()
+	 {
+	
+		 for(Vertex v : nodes)
+		 {
+			 System.out.println(v);
+		 }
+	 }
+	 
+	 
+	 void removeVertex(Vertex v)
+	 {
+		 String w = v.getWord();
+		 for(int i=0;i<nodes.size();i++)
+		 {
+			 Vertex x = nodes.get(i);
+			 for(Vertex a : x.getAntonyms())
+			 {
+				 if(a.getWord().equals(w)) x.getAntonyms().remove(a);
+			 }
+			 
+			 for(Vertex s : x.getSynomyns())
+			 {
+				 if(s.getWord().equals(w)) x.getSynomyns().remove(s);
+			 }
+			 if(x.getWord().equals(w)) 
+			 {
+				 System.out.println("removed");
+				 nodes.remove(i);
+			 }
+		 }
+		 //System.out.println("current nodes are\n"+nodes);
+	 }
 
 	void setNodes(LinkedList<Vertex> nodes)
 	{
@@ -46,7 +87,7 @@ public class Graph
 	{
 		for(Vertex x : nodes)
 		{
-			if(v.getIndex().equals(x.getIndex()))
+			if(v.getID().equals(x.getID()))
 			{
 				return true;
 			}
@@ -58,7 +99,7 @@ public class Graph
 	{
 		for(Vertex v : nodes)
 		{
-			if(v.getIndex().equals(index)) return v;
+			if(v.getID().equals(index)) return v;
 		}
 		return null;
 	}
@@ -69,8 +110,10 @@ public class Graph
 	}
 	 Vertex getVertexFromWord(String word)
 	{
+		 //System.out.println("word looking for "+word);
 		for(Vertex v : nodes)
 		{
+			System.out.println(v.getWord());
 			if(v.getWord().equalsIgnoreCase(word)) return v;
 		}
 		return null;

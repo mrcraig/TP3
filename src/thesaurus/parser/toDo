@@ -10,15 +10,19 @@ on how big the xml file is
 
 
 
-if xml file is empty, put in tags
-
-
-need to stop duplicate edges - use contains - override equals?
-
 
 
 
 
 
 change graph to a map not linkedlist
+
+try and only use word - have a map of word - vertex
+
+remove - not only remove from xml, nodes, but also the adjacency lists
+
+in graph - finsih off removeVertex properly
+
+
+
 

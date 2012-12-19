@@ -46,6 +46,15 @@ public class InternalRepresentation
 		write.addVertex(n);
 	}
 	
+	
+	
+	public String createNew()
+	{
+		StringBuilder x = new StringBuilder();
+		x.append("<graphml><graph></graph></graphml>");
+		return x.toString();
+	}
+	
 	/**
 	 * Edits the word of a vertex. This method
 	 * edits the word directly, it doesn't create a new vertex
@@ -70,9 +79,15 @@ public class InternalRepresentation
 	 */
 	public void removeVertex(String w)
 	{
+		Vertex r = nodes.getVertexFromWord(w);
 		write.removeVertex(w);
+		nodes.removeVertex(r);
 	}
 	
+	public void debug()
+	{
+		nodes.debug();
+	}
 	
 	/* facade pattern */
 	public LinkedList<Vertex> getListOfSynomyns(String s, int max)
@@ -82,6 +97,7 @@ public class InternalRepresentation
 	
 	public Vertex getOneSynomyn(String s)
 	{
+		System.out.println("method called for "+s);
 		if(s.equalsIgnoreCase("")) return null;
 		if(nodes.getListOfSynomyns(s,1)!=null) return nodes.getListOfSynomyns(s, 1).getFirst();
 		return null;

@@ -6,14 +6,15 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
-
+import java.util.HashMap;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
@@ -36,6 +37,12 @@ public class SystemController {
 
 	@FXML
 	private Pane canvasDualGraph;
+	
+	@FXML
+	private Pane tableFullGraph;
+
+	@FXML
+	private Pane tableDualGraph;
 
 	@FXML
 	private TabPane mainTabWindow;
@@ -60,8 +67,28 @@ public class SystemController {
 	
 	@FXML
 	private ListView<String> currentListView;
+	
+	@FXML
+	private ChoiceBox<String> selectionBoxGraph;
+	
+	@FXML
+	private ChoiceBox<String> selectionBoxTable;
+	
+	@FXML
+	private ChoiceBox<String> selectionBoxDual;
+	
+	@FXML
+	private Label statusLabelGraph;
+	
+	@FXML
+	private Label statusLabelTable;
+	
+	@FXML
+	private Label statusLabelDual;
 
 	MainWindow referenceWindow;
+	
+	HashMap<String, Label> lookupHashMap;
 
 	public SystemController(MainWindow inputWindow) {
 		referenceWindow = inputWindow;
@@ -86,11 +113,15 @@ public class SystemController {
 
 		VisualisationRoot visualisationRootCurrent = new VisualisationRoot(referenceWindow);
 		referenceWindow.setVisualisationRoot(visualisationRootCurrent);
-		referenceWindow.getStage().setScene(new Scene(visualisationRootCurrent, 800, 600));
+		referenceWindow.getStage().setScene(new Scene(visualisationRootCurrent));
 		visualisationRootCurrent.setCurrentParser(currentFile);
 		setVisualisationFileName();
 		
 		setSearchBoxEvents();
+		
+		setSelectionBoxDefault();
+		
+		setUserFeedbackEvents();
 
 	}
 
@@ -111,11 +142,15 @@ public class SystemController {
 
 		VisualisationRoot visualisationRootCurrent = new VisualisationRoot(referenceWindow);
 		referenceWindow.setVisualisationRoot(visualisationRootCurrent);
-		referenceWindow.getStage().setScene(new Scene(visualisationRootCurrent, 800, 600));
+		referenceWindow.getStage().setScene(new Scene(visualisationRootCurrent));
 		visualisationRootCurrent.setCurrentParser(file);
 		setVisualisationFileName();
 		
 		setSearchBoxEvents();
+		
+		setSelectionBoxDefault();
+		
+		setUserFeedbackEvents();
 
 	}
 	
@@ -129,12 +164,29 @@ public class SystemController {
 
 		VisualisationRoot visualisationRootCurrent = new VisualisationRoot(referenceWindow);
 		referenceWindow.setVisualisationRoot(visualisationRootCurrent);
-		referenceWindow.getStage().setScene(new Scene(visualisationRootCurrent, 800, 600));
+		referenceWindow.getStage().setScene(new Scene(visualisationRootCurrent));
 		visualisationRootCurrent.setCurrentParser(file);
 		setVisualisationFileName();
 		
 		setSearchBoxEvents();
+		
+		setSelectionBoxDefault();
+		
+		setUserFeedbackEvents();
 
+	}
+	
+	private void setUserFeedbackEvents(){
+		lookupHashMap = new HashMap<String, Label>();
+		lookupHashMap.put("graph", statusLabelGraph);
+		lookupHashMap.put("table", statusLabelTable);
+		lookupHashMap.put("dual", statusLabelDual);		
+	}
+	
+	private void setSelectionBoxDefault(){
+		selectionBoxGraph.getSelectionModel().select(1);
+		selectionBoxTable.getSelectionModel().select(1);
+		selectionBoxDual.getSelectionModel().select(1);
 	}
 	
 	private int reverseIndex(int currentIndex){
@@ -200,10 +252,13 @@ public class SystemController {
 		}
 		Vertex currentVertex = referenceWindow.getVisualisationRoot().getCurrentParser().getOneSynomyn(searchText);
 		if (currentVertex == null) {
+			lookupHashMap.get(choiceString).setText(String.format("Can't find \"%s\"", searchText));
 			return;
 		}
+		lookupHashMap.get(choiceString).setText(String.format("The word \"%s\" has been found", searchText));
 		referenceWindow.getVisualisationRoot().setCurrentVertex(referenceWindow.getVisualisationRoot().runSpringOnVertex(currentVertex));
 		referenceWindow.getVisualisationRoot().addCanvas();
+		referenceWindow.getVisualisationRoot().addTable();
 	}
 	
 	@FXML
@@ -217,7 +272,7 @@ public class SystemController {
 	protected void doRunTutorial() {
 		TutorialRoot tutorialRootCurrent = new TutorialRoot(referenceWindow);
 		referenceWindow.setTutorialRootCurrent(tutorialRootCurrent);
-		referenceWindow.getStage().setScene(new Scene(tutorialRootCurrent, 800, 600));
+		referenceWindow.getStage().setScene(new Scene(tutorialRootCurrent));
 	}
 
 	@FXML
@@ -252,6 +307,14 @@ public class SystemController {
 
 	public Pane getCanvasDualGraph() {
 		return canvasDualGraph;
+	}
+	
+	public Pane getTableFullGraph() {
+		return tableFullGraph;
+	}
+
+	public Pane getTableDualGraph() {
+		return tableDualGraph;
 	}
 
 	private void setVisualisationFileName() {
@@ -289,7 +352,6 @@ public class SystemController {
 		        if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
 		            if(mouseEvent.getClickCount() == 2){
 		            	try {doOpenRecent(currentListView.getSelectionModel().getSelectedIndex());} catch (IOException e) {}
-		            	System.out.println("");
 		            }
 		        }
 		    }
