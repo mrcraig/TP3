@@ -19,6 +19,7 @@
             <MenuItem id="menuSave" mnemonicParsing="false" text="Save" />
             <MenuItem id="menuCreateNew" mnemonicParsing="false" text="Create New File" />
             <MenuItem id="menuImport" mnemonicParsing="false" text="Import File" />
+            <MenuItem id="menuExit" mnemonicParsing="false" text="Exit" onAction="#handleExitAction"/>
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
