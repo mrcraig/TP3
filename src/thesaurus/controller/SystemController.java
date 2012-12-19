@@ -139,6 +139,7 @@ public class SystemController {
 			referenceWindow.getCurrentRecentArray().remove(file.getAbsolutePath());
 		}
 		referenceWindow.getCurrentRecentArray().add(file.getAbsolutePath());
+		referenceWindow.getSplashRoot().writeToRecentFile();
 
 		VisualisationRoot visualisationRootCurrent = new VisualisationRoot(referenceWindow);
 		referenceWindow.setVisualisationRoot(visualisationRootCurrent);
@@ -161,6 +162,7 @@ public class SystemController {
 			referenceWindow.getCurrentRecentArray().remove(file.getAbsolutePath());
 		}
 		referenceWindow.getCurrentRecentArray().add(file.getAbsolutePath());
+		referenceWindow.getSplashRoot().writeToRecentFile();
 
 		VisualisationRoot visualisationRootCurrent = new VisualisationRoot(referenceWindow);
 		referenceWindow.setVisualisationRoot(visualisationRootCurrent);
@@ -265,7 +267,6 @@ public class SystemController {
 	protected void doReturn() throws IOException {
 		referenceWindow.getStage().setScene(referenceWindow.getSplashScene());
 		populateList();
-		referenceWindow.getSplashRoot().writeToRecentFile();
 	}
 
 	@FXML
