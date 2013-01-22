@@ -1,6 +1,7 @@
 package thesaurus.gui.window;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import thesaurus.controller.SystemController;
@@ -35,8 +36,12 @@ public class MainWindow extends Application {
 	public void start(Stage stage) throws Exception {
 
 		setCurrentController(new SystemController(this));
-
-		setCurrentRecentFile(new File("./src/resourcePackage/recentfiles.dat"));
+		
+		File recentFile = new File("./src/resourcePackage/recentfiles.dat");
+		if(!recentFile.exists()){
+            recentFile.createNewFile();
+		}
+		setCurrentRecentFile(recentFile);
 		
 		splashRootCurrent = new SplashRoot(this);
 		stageCurrent = stage;

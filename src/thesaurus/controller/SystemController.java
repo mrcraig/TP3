@@ -186,6 +186,13 @@ public class SystemController {
 
 		File file = new File(referenceWindow.getCurrentRecentArray().get(
 				reverseIndex(index + 1) - 1));
+		if(!file.exists()){
+			referenceWindow.getCurrentRecentArray().remove(reverseIndex(index + 1) - 1);
+			populateList();
+			referenceWindow.getSplashRoot().writeToRecentFile();
+			referenceWindow.getSplashRoot().showPopup("fileError");
+			return;
+		}
 		if (referenceWindow.getCurrentRecentArray().contains(
 				file.getAbsolutePath())) {
 			referenceWindow.getCurrentRecentArray().remove(

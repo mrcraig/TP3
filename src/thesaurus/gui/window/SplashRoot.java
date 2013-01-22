@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Popup;
 import thesaurus.controller.SystemController;
 
 /** 
@@ -20,6 +21,8 @@ public class SplashRoot extends AnchorPane {
 	private MainWindow referenceWindow;
 
 	private SystemController currentController;
+	
+	private Popup currentPopup;
 
 	public SplashRoot(MainWindow inputWindow) throws IOException {
 
@@ -68,6 +71,17 @@ public class SplashRoot extends AnchorPane {
 		System.out.println("Content: \n");
 		fileWriter.write(currentBuilder.toString());
 		fileWriter.close();
+	}
+	
+	public void showPopup(String inputChoice) {
+		if(currentPopup != null){
+			currentPopup.hide();
+			currentPopup = null;
+		}
+		PopupFactory currentPopupFactory = new PopupFactory(inputChoice, referenceWindow);
+		currentPopup = currentPopupFactory.getPopup();
+		currentPopup.show(referenceWindow.getStage());
+		currentPopup.setY(currentPopup.getY()+50);
 	}
 
 }

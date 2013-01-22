@@ -26,6 +26,9 @@ public class PopupFactory {
 		} else if (inputChoice.equals("remove")) {
 			currentPopup = new Popup();
 			currentPopup.getContent().add(makeCanvasRemove());
+		} else if (inputChoice.equals("fileError")){
+			currentPopup = new Popup();
+			currentPopup.getContent().add(makeCanvasFileError());
 		}
 	}
 	
@@ -65,6 +68,25 @@ public class PopupFactory {
 		canvas.getChildren().addAll(addWordLabel, promptWordLabel,
 				addWordInput, promptSynLabel, addSynInput, promptAntLabel,
 				addAntInput, confirmButton, cancelButton);
+		canvas.setStyle("	-fx-background-color: #dfdfdf;"
+				+ "-fx-border-color: black;" + "-fx-border-width: 1px;" + "-fx-font-family: 'Arial';");
+		return canvas;
+	}
+	
+	private Pane makeCanvasFileError() {
+		Pane canvas = getPane(150,80);
+		Text confirmLabel = getText(25,10,"File Does Not Exist",1);
+		Button confirmButton = new Button();
+		confirmButton.setText("Confirm");
+		confirmButton.relocate(40, 42);
+		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				currentPopup.hide();
+				currentPopup = null;
+			}
+		});
+		canvas.getChildren().addAll(confirmLabel, confirmButton);
 		canvas.setStyle("	-fx-background-color: #dfdfdf;"
 				+ "-fx-border-color: black;" + "-fx-border-width: 1px;" + "-fx-font-family: 'Arial';");
 		return canvas;
