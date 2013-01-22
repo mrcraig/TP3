@@ -3,7 +3,7 @@
 }
 
 #graphicalTab {
-	-fx-font-family: "Georgia";
+	-fx-font-family: "Arial";
 }
 
 #graphicalTabContent {
@@ -19,25 +19,25 @@
 }
 
 #tableTab {
-	-fx-font-family: "Georgia";
+	-fx-font-family: "Arial";
 }
 
 #tableTabWordCol {
-	-fx-font-family: "Georgia";
+	-fx-font-family: "Arial";
 }
 
 
 #tableTabSynCol {
-	-fx-font-family: "Georgia";
+	-fx-font-family: "Arial";
 }
 
 #dualTabWordCol {
-	-fx-font-family: "Georgia";
+	-fx-font-family: "Arial";
 }
 
 
 #dualTabSynCol {
-	-fx-font-family: "Georgia";
+	-fx-font-family: "Arial";
 }
 
 #mainTable {

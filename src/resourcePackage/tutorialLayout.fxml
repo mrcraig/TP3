@@ -29,7 +29,7 @@
     </MenuBar>
     <Text layoutX="684.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Created By Team O">
       <font>
-        <Font name="Georgia" size="12.0" fx:id="x1" />
+        <Font name="Arial" size="12.0" fx:id="x1" />
       </font>
     </Text>
   </children>
