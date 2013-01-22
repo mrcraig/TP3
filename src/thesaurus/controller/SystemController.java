@@ -356,6 +356,12 @@ public class SystemController {
 						currentVertex));
 		referenceWindow.getVisualisationRoot().addCanvas();
 		referenceWindow.getVisualisationRoot().addTable();
+		defaultZoomValue();
+	}
+	
+	public void defaultZoomValue(){
+		sliderGraph.setValue(1.0);
+		sliderTable.setValue(1.0);
 	}
 
 	@FXML

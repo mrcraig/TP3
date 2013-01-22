@@ -107,13 +107,13 @@ public class VisualisationRoot extends AnchorPane {
 		setCurrentVertex(referenceWindow.getVisualisationRoot().runSpringOnVertex(currentVertex));
 		referenceWindow.getVisualisationRoot().addCanvas();
 		referenceWindow.getVisualisationRoot().addTable();
+		currentController.defaultZoomValue();
 	}
 	
 	public void doSearchRefresh(){
 		Vertex replacementVertex = getCurrentParser().getOneSynomyn(currentVertex.getWord());
 		setCurrentVertex(referenceWindow.getVisualisationRoot().runSpringOnVertex(replacementVertex));
-		referenceWindow.getVisualisationRoot().addCanvas();
-		referenceWindow.getVisualisationRoot().addTable();
+		currentController.defaultZoomValue();
 	}
 	
 	public Vertex getCurrentVertex(){
