@@ -127,5 +127,4 @@ public class VisualisationRoot extends AnchorPane {
 	public ViewGraph getDualGraph(){
 		return displayGraphDual;
 	}
-
 }
