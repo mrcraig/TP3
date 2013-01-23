@@ -32,12 +32,33 @@ public class InternalRepresentation
 		for(String s : parseCsvToArray(synomyns))
 		{
 			Vertex syn = nodes.getVertexFromWord(s);
-			n.addSynonym(syn);
+			if(syn==null)
+			{
+				Vertex v = new Vertex(read.getLastVertexIndex());
+				v.setWord(s);
+				n.addSynonym(v);
+				System.out.println("Vertex to be created and saved: "+v);
+				write.addVertex(v);
+			}
+			else
+			{
+				n.addSynonym(syn);
+			}
 		}
 		for(String a : parseCsvToArray(antonyms))
 		{
 			Vertex ant = nodes.getVertexFromWord(a);
-			n.addAntonym(ant);
+			if(ant==null)
+			{
+				Vertex v = new Vertex(read.getLastVertexIndex());
+				v.setWord(a);
+				n.addSynonym(v);
+				write.addVertex(v);
+			}
+			else
+			{
+				n.addAntonym(ant);
+			}
 		}
 		System.out.println(n.getWord());
 		System.out.println("Vertex to be added" + n);
@@ -87,6 +108,7 @@ public class InternalRepresentation
 	//need to alter xml too
 	public void addSynonym(String word, String synonym)
 	{
+		System.out.println(word+" "+synonym);
 		Vertex w = nodes.getVertexFromWord(word);
 		Vertex s = nodes.getVertexFromWord(synonym);
 		w.addSynonym(s);
