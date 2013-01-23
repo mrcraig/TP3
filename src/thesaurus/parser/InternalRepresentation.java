@@ -84,6 +84,23 @@ public class InternalRepresentation
 		nodes.removeVertex(r);
 	}
 	
+	//need to alter xml too
+	public void addSynonym(String word, String synonym)
+	{
+		Vertex w = nodes.getVertexFromWord(word);
+		Vertex s = nodes.getVertexFromWord(synonym);
+		w.addSynonym(s);
+		write.addEdge(word, synonym,"s");
+	}
+	
+	public void addAntonym(String word, String antonym)
+	{
+		Vertex w = nodes.getVertexFromWord(word);
+		Vertex a = nodes.getVertexFromWord(antonym);
+		w.addAntonym(a);
+		write.addEdge(word, antonym, "a");
+	}
+	
 	public void debug()
 	{
 		nodes.debug();

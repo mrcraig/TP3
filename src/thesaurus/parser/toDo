@@ -2,12 +2,6 @@
 
 
 
-at the moment all nodes being saved in memory -
-
-could also create methods to parse it everytime a method 
-is called, and then have the option of either, depending 
-on how big the xml file is
-
 
 
 
@@ -23,6 +17,15 @@ remove - not only remove from xml, nodes, but also the adjacency lists
 
 in graph - finsih off removeVertex properly
 
+
+
+create a string to pass to marc that sets up and empty graphml file
+test parsing on empty file
+
+
+graph should be a map not a linked list - string to vertex 
+
+two mappings - string and index?
 
 
 

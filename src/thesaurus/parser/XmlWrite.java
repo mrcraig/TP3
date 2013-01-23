@@ -89,7 +89,8 @@ public class XmlWrite {
 	}
 	
 
-   private void addEdge(String source, String target, String type)
+ 	// s for synonym, a for antonym
+   void addEdge(String source, String target, String type)
 	{
 		Element edge = this.xml.createElement("edge");
 		Element data = this.xml.createElement("data");
@@ -101,7 +102,7 @@ public class XmlWrite {
 		this.xml.getElementsByTagName("graph").item(0).appendChild(edge);
 	}
 	
-	private void addNode(String word, String ID)
+	void addNode(String word, String ID)
 	{
 		Element node = this.xml.createElement("node");
 		Element data = this.xml.createElement("data");
