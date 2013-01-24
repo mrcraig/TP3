@@ -99,6 +99,17 @@ public class VisualisationRoot extends AnchorPane {
 		return currentSpring.getCoordinates();
 	}
 	
+	public void initialSearch(){
+		setCurrentVertex(getCurrentParser().getOneSynomyn("Happy"));
+		if (currentVertex == null) {
+			return;
+		}
+		setCurrentVertex(referenceWindow.getVisualisationRoot().runSpringOnVertex(currentVertex));
+		referenceWindow.getVisualisationRoot().addCanvas();
+		referenceWindow.getVisualisationRoot().addTable();
+		currentController.defaultZoomValue();
+	}
+	
 	public void doClickSearchGraph(String inputString) {
 		setCurrentVertex(getCurrentParser().getOneSynomyn(inputString));
 		if (currentVertex == null) {

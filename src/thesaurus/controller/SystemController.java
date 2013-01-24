@@ -130,6 +130,11 @@ public class SystemController {
 		} else {
 			return;
 		}
+		
+		OutputStreamWriter fileWriter;
+		fileWriter = new OutputStreamWriter(new FileOutputStream(currentFile),"UTF-8");
+		fileWriter.write("<graphml><graph></graph></graphml>");
+		fileWriter.close();
 
 		VisualisationRoot visualisationRootCurrent = new VisualisationRoot(
 				referenceWindow);
@@ -138,12 +143,16 @@ public class SystemController {
 				.setScene(new Scene(visualisationRootCurrent));
 		visualisationRootCurrent.setCurrentParser(currentFile);
 		setVisualisationFileName();
-
+		
 		setSearchBoxEvents();
 
 		setSelectionBoxDefault();
 
 		setUserFeedbackEvents();
+		
+		setSliderHandlers();
+		
+		referenceWindow.getVisualisationRoot().initialSearch();
 
 	}
 
@@ -179,6 +188,10 @@ public class SystemController {
 		setSelectionBoxDefault();
 
 		setUserFeedbackEvents();
+		
+		setSliderHandlers();
+		
+		referenceWindow.getVisualisationRoot().initialSearch();
 
 	}
 
@@ -216,6 +229,8 @@ public class SystemController {
 		setUserFeedbackEvents();
 
 		setSliderHandlers();
+		
+		referenceWindow.getVisualisationRoot().initialSearch();
 
 	}
 
