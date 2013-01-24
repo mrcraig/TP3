@@ -15,8 +15,8 @@ public class FrSpring {
 	private double EPSILON = 0.000001D;
 	private thesaurus.parser.Vertex myWord;
 	private int layerIndex = 1;
-	final private int length = 300;
-	final private int width = 690;
+	final private int length = 400;
+	final private int width = 400;
 	private boolean overlap= false;
 	private boolean overEdgeCrossing = false;
 	private double constK = 1.000;
@@ -35,24 +35,24 @@ public class FrSpring {
 		double myY=0.0;
 		for (int i = 0; i < this.size; i++) {
 			if (i == 0) {
-				 myX = ((double) (this.width) / 1.5);    
-				 myY = (((double) this.length) / 1.5);	
+				 myX = ((double) (this.width) / 2.0);    
+				 myY = (((double) this.length) / 2.0);	
 				lstVertices.get(i).setPos(create(myX,myY));
 				lstVertices.get(i).setPDis(create(0, 0));
 				continue;
 																	                 	// this is the center of the canvas
 			}
 			
-			 myX =((double)(size -i)/(double)size)*this.width;    
-			myY =((double)(size-i)/(double)size)*this.length;	
-	//myX =  Math.random() * this.width;    
-	//myY = Math.random() * this.length;
+			// myX =((double)(size -i)/(double)size)*this.width;    
+			// myY =((double)(size-i)/(double)size)*this.length;	
+	        myX =  Math.random() * this.width;    
+	        myY = Math.random() * this.length;
 			System.out.println(myX+ " "+myY+ " "+i);
 			lstVertices.get(i).setPos (create(myX, myY));    				//place vertices at random
 			lstVertices.get(i).setPDis(create(0, 0));
 								//initialize displacement of every vertex to 0
 
-			constK = Math.sqrt(((double) this.area / (double) this.size));k=(constK*constK)*1; // compute optimal pairwise distance
+			constK = Math.sqrt(((double) this.area / (double) this.size));k=200*constK; // compute optimal pairwise distance
 			
 			//System.out.println(k);
 		}
@@ -168,7 +168,7 @@ public class FrSpring {
 			}
 			}
 
-			for (int j = 0; j < this.size; j++) {
+			for (int j = 1; j < this.size; j++) {
                 
 				if (this.lstVertices.get(j).equals(myWord))continue;
 				
@@ -186,8 +186,8 @@ public class FrSpring {
 				* Math.min(deltaforce, temprature);
 				assert Double.isNaN(newYDisp) == false : "Unexpected mathematical result in FRSpring Layout:Spring [newYDisp]";
 				
-				double newX = this.lstVertices.get(j).getPos().getX()+Math.max(-100, Math.min(100, newXDisp));				// adjust position  using displacement scaled by temperature
-				double newY = this.lstVertices.get(j).getPos().getY()+Math.max(-50, Math.min(100, newYDisp));
+				double newX = this.lstVertices.get(j).getPos().getX()+newXDisp;//Math.max(-100, Math.min(100, newXDisp));				// adjust position  using displacement scaled by temperature
+				double newY = this.lstVertices.get(j).getPos().getY()+newYDisp;Math.max(-50, Math.min(100, newYDisp));
 
 				newX = Math.max(30, Math.min(newX, width));					// limit max displacement to frame
 				newY = Math.max(30, Math.min(newY, length));
