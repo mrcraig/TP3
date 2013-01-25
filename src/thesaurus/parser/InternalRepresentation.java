@@ -134,6 +134,11 @@ public class InternalRepresentation
 		return nodes.getListOfSynomyns(s, max);
 	}
 	
+	public Vertex getFirst()
+	{
+		return nodes.getNodes().getFirst();
+	}
+	
 	public Vertex getOneSynomyn(String s)
 	{
 		System.out.println("method called for "+s);

@@ -33,11 +33,11 @@ public class Graph
 		 }
 	 }
 	 
-	 
+	 //should probably iterate backwards? not helping.
 	 void removeVertex(Vertex v)
 	 {
 		 String w = v.getWord();
-		 for(int i=0;i<nodes.size();i++)
+		 for(int i=nodes.size()-1;i>-1;i--)
 		 {
 			 Vertex x = nodes.get(i);
 			 for(Vertex a : x.getAntonyms())
@@ -104,10 +104,7 @@ public class Graph
 		return null;
 	}
 	
-	 LinkedList<Vertex> getList()
-	{
-		return nodes;
-	}
+	
 	 Vertex getVertexFromWord(String word)
 	{
 		 //System.out.println("word looking for "+word);
