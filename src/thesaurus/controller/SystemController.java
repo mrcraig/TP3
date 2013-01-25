@@ -152,6 +152,8 @@ public class SystemController {
 		
 		setSliderHandlers();
 		
+		mainTabWindow.getSelectionModel().select(2);
+		
 		referenceWindow.getVisualisationRoot().initialSearch();
 
 	}
@@ -191,6 +193,8 @@ public class SystemController {
 		
 		setSliderHandlers();
 		
+		mainTabWindow.getSelectionModel().select(2);
+		
 		referenceWindow.getVisualisationRoot().initialSearch();
 
 	}
@@ -229,6 +233,8 @@ public class SystemController {
 		setUserFeedbackEvents();
 
 		setSliderHandlers();
+		
+		mainTabWindow.getSelectionModel().select(2);
 		
 		referenceWindow.getVisualisationRoot().initialSearch();
 
