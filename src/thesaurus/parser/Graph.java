@@ -143,7 +143,7 @@ public class Graph
 	 public HashMap<String,HashMap<String, LinkedList<String>>> getTableData()
 		{	
 		 HashMap<String, HashMap<String, LinkedList<String>>> tableData = new HashMap<String, HashMap<String, LinkedList<String>>>();
-		 	for(Vertex v : this.getList())
+		 	for(Vertex v : this.getNodes())
 		 	{
 		 		HashMap<String,LinkedList<String>> words = new HashMap<String, LinkedList<String>>();	
 		 		LinkedList<String> syns = new LinkedList<String>();
