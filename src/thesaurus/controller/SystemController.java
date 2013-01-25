@@ -497,6 +497,16 @@ public class SystemController {
 		});
 
 	}
+	
+	@FXML
+	private void handleCreateAction(final ActionEvent event) throws IOException {
+		doCreate();
+	}
+	
+	@FXML
+	private void handleImportAction(final ActionEvent event) throws IOException {
+		doImport();
+	}
 
 	@FXML
 	private void handleExitAction(final ActionEvent event) {
