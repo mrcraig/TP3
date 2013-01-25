@@ -46,7 +46,7 @@ public class FrSpring {
 			
 			myX =  Math.random() * this.width;    
 	        myY = Math.random() * this.length;
-			System.out.println(myX+ " "+myY+ " "+i);
+			//System.out.println(myX+ " "+myY+ " "+i);
 			lstVertices.get(i).setPos (create(myX, myY));    				//place vertices at random
 			lstVertices.get(i).setPDis(create(0, 0));
 								//initialize displacement of every vertex to 0
@@ -56,7 +56,7 @@ public class FrSpring {
 			//System.out.println(k);
 		}
 		
-		System.out.println(k);
+		//System.out.println(k);
 		mySpring();
 		
 	}
@@ -148,7 +148,7 @@ public class FrSpring {
 		Point2D[] tmp = new Point2D[size];
 		for (int i = 0; i < this.size; i++) {
 			tmp[i]= this.lstVertices.get(i).getPos();
-			System.out.print(this.lstVertices.get(i).getWord()+" ");
+			//System.out.print(this.lstVertices.get(i).getWord()+" ");
 		}
 		int count = 0;
 		
@@ -170,7 +170,7 @@ public class FrSpring {
 		}
 		int optimaztion = 0;
 		while (optimaztion > 10 ) {mySpring(); optimaztion++;}
-		System.out.println("replication: "+count);
+		//System.out.println("replication: "+count);
 	//	int index = 0;
 		
 		if (count != 0)	mySpring();
