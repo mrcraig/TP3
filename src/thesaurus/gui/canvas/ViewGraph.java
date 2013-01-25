@@ -47,7 +47,6 @@ public class ViewGraph {
 		xOffset = (int) (vertex.getPos().getX() - (windowWidth/2));
 		yOffset = (int) (vertex.getPos().getY() - (windowHeight/2));
 		
-		
 		start();
 	}
 	
