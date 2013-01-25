@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -31,6 +32,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
+
 import thesaurus.gui.window.MainWindow;
 import thesaurus.gui.window.TutorialRoot;
 import thesaurus.gui.window.VisualisationRoot;
@@ -153,8 +155,6 @@ public class SystemController {
 		setSliderHandlers();
 		
 		mainTabWindow.getSelectionModel().select(2);
-		
-		referenceWindow.getVisualisationRoot().initialSearch();
 
 	}
 
@@ -500,10 +500,6 @@ public class SystemController {
 
 	@FXML
 	private void handleExitAction(final ActionEvent event) {
-		provideExitFunctionality();
-	}
-
-	private void provideExitFunctionality() {
 		System.exit(0);
 	}
 }
