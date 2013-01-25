@@ -52,7 +52,7 @@ public class XmlRead
 		getEdges();
 	}
 	
-	String getLastVertexIndex()
+	String getLastVertexIndex() throws NullPointerException
 	{
 		String newID = null;
 		try
