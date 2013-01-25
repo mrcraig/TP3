@@ -43,6 +43,11 @@ public class ViewGraph {
 			this.xOffset=windowWidth/2;
 		}
 		
+		//Centre origin node in canvas
+		xOffset = (int) (vertex.getPos().getX() - (windowWidth/2));
+		yOffset = (int) (vertex.getPos().getY() - (windowHeight/2));
+		
+		
 		start();
 	}
 	
@@ -167,6 +172,7 @@ public class ViewGraph {
 		
 		resetGraph();
 		drawGraph();
+		
 		
 		/**
 		 * Action Methods
