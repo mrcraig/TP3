@@ -56,7 +56,7 @@ public class Parser {
 
 	public LinkedList<Vertex> getAllNodes()
 	{
-		return allNodes.getList();
+		return allNodes.getNodes();
 	}
 	
 	
