@@ -100,7 +100,7 @@ public class VisualisationRoot extends AnchorPane {
 	}
 	
 	public void initialSearch(){
-		setCurrentVertex(getCurrentParser().getOneSynomyn("Happy"));
+		setCurrentVertex(currentParser.getFirst());
 		if (currentVertex == null) {
 			return;
 		}
