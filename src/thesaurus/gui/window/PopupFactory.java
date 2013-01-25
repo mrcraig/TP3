@@ -48,6 +48,7 @@ public class PopupFactory {
 			@Override
 			public void handle(ActionEvent event) {
 				referenceWindow.getVisualisationRoot().getCurrentParser().addVertex(addWordInput.getText(), addSynInput.getText(),"");
+				System.out.printf("\n\n=========== %s  ======== %s\n\n",addWordInput.getText(), addSynInput.getText());
 				currentPopup.hide();
 				currentPopup = null;
 				referenceWindow.getVisualisationRoot().doClickSearchGraph(referenceWindow.getVisualisationRoot().getCurrentVertex().getWord());
