@@ -16,15 +16,15 @@
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
-            <MenuItem id="menuCreateNew" mnemonicParsing="false" text="Create New File" />
-            <MenuItem id="menuImport" mnemonicParsing="false" text="Import File" />
+            <MenuItem id="menuCreateNew" mnemonicParsing="false" onAction="#handleCreateAction" text="Create New File" />
+            <MenuItem id="menuImport" mnemonicParsing="false" onAction="#handleImportAction" text="Import File" />
             <MenuItem id="menuExit" mnemonicParsing="false" onAction="#handleExitAction" text="Exit" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
           <items>
             <MenuItem id="menuTutorial" mnemonicParsing="false" onAction="#doRunTutorial" text="Tutorial" />
-            <MenuItem id="menuAbout" mnemonicParsing="false" text="About" />
+            <MenuItem id="menuAbout" mnemonicParsing="false" onAction="#handleAboutAction" text="About" />
           </items>
         </Menu>
       </menus>

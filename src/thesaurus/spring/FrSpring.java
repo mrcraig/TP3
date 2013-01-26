@@ -48,6 +48,10 @@ public class FrSpring {
 			
 			myX =  Math.random() * this.width;    
 	        myY = Math.random() * this.length;
+<<<<<<< HEAD
+=======
+			//System.out.println(myX+ " "+myY+ " "+i);
+>>>>>>> a8c487ca7bd68a5181809574f4bb6909397eabd0
 			lstVertices.get(i).setPos (create(myX, myY));    				//place vertices at random
 			lstVertices.get(i).setPDis(create(0, 0));
 								//initialize displacement of every vertex to 0
@@ -198,6 +202,11 @@ public class FrSpring {
 		}
 		int optimaztion = 0;
 		while (optimaztion > 10 ) {mySpring(); optimaztion++;}
+<<<<<<< HEAD
+=======
+		//System.out.println("replication: "+count);
+	//	int index = 0;
+>>>>>>> a8c487ca7bd68a5181809574f4bb6909397eabd0
 		
 		if (count != 0)	mySpring();
 		

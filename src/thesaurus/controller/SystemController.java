@@ -32,8 +32,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
+import javafx.stage.Popup;
 
 import thesaurus.gui.window.MainWindow;
+import thesaurus.gui.window.PopupFactory;
 import thesaurus.gui.window.TutorialRoot;
 import thesaurus.gui.window.VisualisationRoot;
 import thesaurus.parser.Vertex;
@@ -496,6 +498,24 @@ public class SystemController {
 			}
 		});
 
+	}
+	
+	@FXML
+	private void handleCreateAction(final ActionEvent event) throws IOException {
+		doCreate();
+	}
+	
+	@FXML
+	private void handleImportAction(final ActionEvent event) throws IOException {
+		doImport();
+	}
+	
+	@FXML
+	private void handleAboutAction(final ActionEvent event) {
+		PopupFactory currentPopupFactory = new PopupFactory("about", referenceWindow);
+		Popup currentPopup = currentPopupFactory.getPopup();
+		currentPopup.show(referenceWindow.getStage());
+		currentPopup.setY(currentPopup.getY()+15);
 	}
 
 	@FXML
