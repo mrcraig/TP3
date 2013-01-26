@@ -16,10 +16,12 @@ public class FrSpring {
 	private thesaurus.parser.Vertex myWord;
 	private int layerIndex = 1;
 	final private int length =1000;
-	final private int width = 1500;
+	final private int width = 1300;
 	private boolean overlap= false;
 	private boolean overEdgeCrossing = false;
-	private double constK = 1.000;
+	private double constAF = 0.7;
+	private double constRF = 0.8;
+	private double constK = 1.0;
 	
 	
 	
@@ -52,7 +54,7 @@ public class FrSpring {
 			lstVertices.get(i).setPDis(create(0, 0));
 								//initialize displacement of every vertex to 0
 
-			constK = Math.sqrt(((double) this.area / (double) this.size));k=23*constK; // compute optimal pairwise distance
+			constK = Math.sqrt(((double) this.area / (double) this.size));k=40*constK; // compute optimal pairwise distance
 			
 			//System.out.println(k);
 		}
@@ -99,6 +101,11 @@ public class FrSpring {
 					double deltaLength = Math.max(EPSILON,
 							source.getPos().distanceSq(target.getPos()));
 					double aForce = 1;
+					if (source.equals(myWord)|| target.equals(myWord)){
+						constAF = 5.0;
+					}else{
+						constAF = 0.7;
+					}
 					aForce = attractionF(Math.abs(deltaLength));        //compute attraction force
 					//if (source.equals(myWord)|| target.equals(myWord)) aForce*= 10;
 					assert Double.isNaN(aForce) == false : "Unexpected mathematical result in FRSpring Layout:Spring[Attraction force]";
@@ -125,6 +132,11 @@ public class FrSpring {
 					double deltaLength = Math.max(EPSILON,
 							source.getPos().distanceSq(target.getPos()));
 					double aForce = 1;
+					if (source.equals(myWord)|| target.equals(myWord)){
+						constAF = 5.0;
+					}else{
+						constAF = 0.7;
+					}
 					aForce = attractionF(Math.abs(deltaLength));        //compute attraction force
 					//if (source.equals(myWord)|| target.equals(myWord)) aForce*= 10;
 					assert Double.isNaN(aForce) == false : "Unexpected mathematical result in FRSpring Layout:Spring[Attraction force]";
@@ -132,9 +144,7 @@ public class FrSpring {
 						double sdisX = (source.getDis().getX() - (disX * aForce));					// displacement  edge x coordinate
 						double sdisY = (source.getDis().getY() - (disY* aForce));					// displacement edge y coordinate
 						source.getDis().setLocation(sdisX, sdisY);
-					//}
-					
-									
+												
 					double tdisX = (target.getDis().getX() + (disX * aForce));					// displacement  edge x coordinate
 					double tdisY = (target.getDis().getY() + (disY * aForce));	
 					target.getDis().setLocation(tdisX, tdisY);
@@ -218,12 +228,12 @@ public class FrSpring {
 	/* calculates repulsion force between non-adjacent vertices x is a distance calculated by pythagoras   */
 	private double repulsionF(double x) {
 
-		return ((k *k)/ x)*12 ;
+		return ((k *k)/ x)*constRF ;
 	}
 
 	/* calculates attraction force between edges y is length of the edge*/
 	private double attractionF(double y) {
-		return (((y * y) / (k)))*1.5;
+		return (((y * y) / (k)))*constAF;
 	}
 
 	/* create and returns coordinate points */
