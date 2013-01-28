@@ -46,14 +46,10 @@
             <AnchorPane id="graphicalTabContent" minHeight="0.0" minWidth="0.0" prefHeight="457.99609375" prefWidth="753.0" style="fx-background-color: #F2F2F2;">
               <children>
                 <Pane fx:id="canvasFullGraph" prefHeight="375.0" prefWidth="757.0" />
-                <Button layoutX="415.0" layoutY="400.0" mnemonicParsing="false" onAction="#doAddWord" prefWidth="100.0" text="Add">
-                  <font>
-                    <Font name="Arial" size="12.0" fx:id="x2" />
-                  </font>
-                </Button>
-                <Button font="$x2" layoutX="530.0" layoutY="400.0" mnemonicParsing="false" onAction="#doEditWord" prefWidth="100.0" text="Edit" />
-                <Button font="$x2" layoutX="645.0" layoutY="400.0" mnemonicParsing="false" onAction="#doRemoveWord" prefWidth="100.0" text="Remove" />
-                <Text font="$x2" layoutX="15.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search: " />
+                <Button font="$x1" layoutX="415.0" layoutY="400.0" mnemonicParsing="false" onAction="#doAddWord" prefWidth="100.0" text="Add" />
+                <Button font="$x1" layoutX="530.0" layoutY="400.0" mnemonicParsing="false" onAction="#doEditWord" prefWidth="100.0" text="Edit" />
+                <Button font="$x1" layoutX="645.0" layoutY="400.0" mnemonicParsing="false" onAction="#doRemoveWord" prefWidth="100.0" text="Remove" />
+                <Text font="$x1" layoutX="15.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search: " />
                 <TextField fx:id="searchBoxGraph" layoutX="58.0" layoutY="400.0" prefWidth="200.0" />
                 <Button font="$x1" layoutX="265.0" layoutY="400.0" mnemonicParsing="false" onAction="#doSearchGraphG" text="Go" />
                 <Text fx:id="searchStatusLabel" layoutX="57.0" layoutY="360.0" scaleX="1.0000163787583833" strokeType="OUTSIDE" strokeWidth="0.0" />
@@ -66,14 +62,14 @@
                     </FXCollections>
                   </items>
                 </ChoiceBox>
-                <Label font="$x2" layoutX="469.0" layoutY="431.0" prefWidth="81.0" text="Viewing Mode:" />
+                <Label font="$x1" layoutX="469.0" layoutY="431.0" prefWidth="81.0" text="Viewing Mode:" />
                 <Label fx:id="statusLabelGraph" layoutX="62.0" layoutY="424.0" text="Please enter a search term" textFill="#606060">
                   <font>
-                    <Font name="Arial" size="11.0" />
+                    <Font name="Arial" size="11.0" fx:id="x2" />
                   </font>
                 </Label>
                 <Slider fx:id="sliderGraph" blockIncrement="0.1" layoutX="325.0" layoutY="432.0" majorTickUnit="0.1" max="2.0" min="0.5" value="1.0" />
-                <Label font="$x2" layoutX="287.0" layoutY="431.0" prefWidth="36.0" text="Zoom:" />
+                <Label font="$x1" layoutX="287.0" layoutY="431.0" prefWidth="36.0" text="Zoom:" />
               </children>
             </AnchorPane>
           </content>
@@ -90,10 +86,7 @@
                 <Text font="$x1" layoutX="15.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search: " />
                 <Slider fx:id="sliderTable" blockIncrement="0.1" layoutX="325.0" layoutY="432.0" majorTickUnit="0.1" max="2.0" min="0.5" value="1.0" />
                 <Label font="$x1" layoutX="287.0" layoutY="431.0" prefWidth="36.0" text="Zoom:" />
-                <Label id="statusLabelGraph" fx:id="statusLabelTable" layoutX="62.0" layoutY="424.0" text="Please enter a search term">
-                  <font>
-                    <Font name="Arial" size="11.0" fx:id="x4" />
-                  </font>
+                <Label id="statusLabelGraph" fx:id="statusLabelTable" font="$x2" layoutX="62.0" layoutY="424.0" text="Please enter a search term">
                   <textFill>
                     <Color blue="0.376" green="0.376" red="0.376" fx:id="x3" />
                   </textFill>
@@ -136,7 +129,7 @@
                 <Pane fx:id="canvasDualGraph" layoutX="16.0" layoutY="14.0" prefHeight="362.0" prefWidth="354.0" />
                 <Slider fx:id="sliderDual" blockIncrement="0.1" layoutX="325.0" layoutY="432.0" majorTickUnit="0.1" max="2.0" min="0.5" value="1.0" />
                 <Text font="$x1" layoutX="15.0" layoutY="415.0" scaleY="0.9999910471279186" strokeType="OUTSIDE" strokeWidth="0.0" text="Search: " />
-                <Label id="statusLabelGraph" fx:id="statusLabelDual" font="$x4" layoutX="62.0" layoutY="424.0" text="Please enter a search term" textFill="$x3" />
+                <Label id="statusLabelGraph" fx:id="statusLabelDual" font="$x2" layoutX="62.0" layoutY="424.0" text="Please enter a search term" textFill="$x3" />
                 <Pane id="" fx:id="tableDualGraph" layoutX="389.0" layoutY="14.0" prefHeight="362.0" prefWidth="353.9998779296875" />
               </children>
             </AnchorPane>
@@ -144,7 +137,11 @@
         </Tab>
       </tabs>
     </TabPane>
-    <Button id="returnMainButton" font="$x2" layoutX="634.0" layoutY="55.0" mnemonicParsing="false" onAction="#doReturn" text="Return to Main Menu" />
-    <Text fx:id="currentFileLabel" font="$x5" layoutX="211.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hold" />
+    <Button id="returnMainButton" font="$x1" layoutX="634.0" layoutY="55.0" mnemonicParsing="false" onAction="#doReturn" text="Return to Main Menu" />
+    <Pane layoutX="205.0" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="425.0">
+      <children>
+        <Text fx:id="currentFileLabel" font="$x5" layoutX="7.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hold" />
+      </children>
+    </Pane>
   </children>
 </fx:root>
