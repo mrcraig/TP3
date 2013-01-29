@@ -43,6 +43,10 @@ public class ViewGraph {
 			this.xOffset=windowWidth/2;
 		}
 		
+		//Centre origin node in canvas
+		xOffset = (int) (vertex.getPos().getX() - (windowWidth/2));
+		yOffset = (int) (vertex.getPos().getY() - (windowHeight/2));
+		
 		start();
 	}
 	
@@ -58,29 +62,31 @@ public class ViewGraph {
 	}
 	
 	private void drawMainNode(Vertex v){
-		gc.setStroke(Color.BLACK);
-		gc.setFill(Color.rgb(176,220,247));
-		gc.setLineWidth(3);
-		gc.strokeOval((v.getPos().getX()-50-xOffset),(v.getPos().getY()-25-yOffset), 100, 50);
-		gc.fillOval((v.getPos().getX()-49-xOffset),(v.getPos().getY()-24-yOffset),98,48);
-		gc.setFill(Color.BLACK);
-		gc.setFont(new Font(20));
-		gc.setTextAlign(TextAlignment.CENTER);
-		gc.fillText(v.getWord(), (v.getPos().getX()-xOffset), (v.getPos().getY()+5-yOffset));
-	}
-	
-	private void drawSynNode(Vertex v){
-		int nodeWidth = v.getWord().length() * 10;
+		int nodeWidth = v.getWord().length() * 12;
 		
 		gc.setStroke(Color.BLACK);
-		gc.setFill(Color.rgb(191, 247, 176));
-		gc.setLineWidth(3);
+		gc.setFill(Color.rgb(176,220,247));
+		gc.setLineWidth(2);
 		gc.strokeOval((v.getPos().getX()-(nodeWidth/2)-xOffset),(v.getPos().getY()-13-yOffset), nodeWidth, 36);
 		gc.fillOval((v.getPos().getX()+1-(nodeWidth/2)-xOffset),(v.getPos().getY()-12-yOffset),nodeWidth-2,34);
 		gc.setFill(Color.BLACK);
 		gc.setFont(new Font(14));
 		gc.setTextAlign(TextAlignment.CENTER);
 		gc.fillText(v.getWord(), (v.getPos().getX()-xOffset), (v.getPos().getY()+10-yOffset));
+	}
+	
+	private void drawSynNode(Vertex v){
+		int nodeWidth = v.getWord().length() * 8;
+		
+		gc.setStroke(Color.BLACK);
+		gc.setFill(Color.rgb(191, 247, 176));
+		gc.setLineWidth(2);
+		gc.strokeOval((v.getPos().getX()-(nodeWidth/2)-xOffset),(v.getPos().getY()-10-yOffset), nodeWidth, 30);
+		gc.fillOval((v.getPos().getX()+1-(nodeWidth/2)-xOffset),(v.getPos().getY()-9-yOffset),nodeWidth-2,28);
+		gc.setFill(Color.BLACK);
+		gc.setFont(new Font(11));
+		gc.setTextAlign(TextAlignment.CENTER);
+		gc.fillText(v.getWord(), (v.getPos().getX()-xOffset), (v.getPos().getY()+9-yOffset));
 	}
 	
 	/*private void drawAntNode(Vertex v){
@@ -103,7 +109,7 @@ public class ViewGraph {
 			gc.setStroke(Color.RED);
 		}
 		
-		gc.setLineWidth(3);
+		gc.setLineWidth(2);
 		gc.strokeLine(x1-xOffset, y1-yOffset, x2-xOffset, y2-yOffset);
 	}
 	
@@ -167,6 +173,7 @@ public class ViewGraph {
 		
 		resetGraph();
 		drawGraph();
+		
 		
 		/**
 		 * Action Methods

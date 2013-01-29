@@ -15,11 +15,14 @@ public class FrSpring {
 	private double EPSILON = 0.000001D;
 	private thesaurus.parser.Vertex myWord;
 	private int layerIndex = 1;
-	final private int length = 400;
-	final private int width = 400;
+	final private int length =1000;
+	final private int width = 1300;
 	private boolean overlap= false;
 	private boolean overEdgeCrossing = false;
-	private double constK = 1.000;
+	private double constAF = 0.7;
+	private double constRF = 0.8;
+	private double constK = 1.0;
+	
 	
 	
 	public FrSpring(Vertex v1) {
@@ -28,38 +31,35 @@ public class FrSpring {
 		this.area = (this.width) * (this.length);
 		this.myWord = v1;
 		lstVertices = new LinkedList<Vertex>();
-		layerIndex = getVertex(this.myWord);			           	//add the vertices into arraylist
+		//layerIndex = 
+		getSnVertex(this.myWord);			           	//add the vertices into arraylist
+		getAnVertex(this.myWord);
 		this.size =  this.lstVertices.size();
 		
 		double myX = 0.0;   
 		double myY=0.0;
 		for (int i = 0; i < this.size; i++) {
 			if (i == 0) {
-				 myX = ((double) (this.width) / 2.0);    
-				 myY = (((double) this.length) / 2.0);	
+				 myX = ((double) (this.width) / 2.3);    
+				 myY = (((double) this.length) / 3.0);	
 				lstVertices.get(i).setPos(create(myX,myY));
 				lstVertices.get(i).setPDis(create(0, 0));
 				continue;
 																	                 	// this is the center of the canvas
 			}
 			
-			// myX =((double)(size -i)/(double)size)*this.width;    
-			// myY =((double)(size-i)/(double)size)*this.length;	
-	        myX =  Math.random() * this.width;    
+			myX =  Math.random() * this.width;    
 	        myY = Math.random() * this.length;
-			System.out.println(myX+ " "+myY+ " "+i);
 			lstVertices.get(i).setPos (create(myX, myY));    				//place vertices at random
 			lstVertices.get(i).setPDis(create(0, 0));
 								//initialize displacement of every vertex to 0
 
-			constK = Math.sqrt(((double) this.area / (double) this.size));k=200*constK; // compute optimal pairwise distance
+			constK = Math.sqrt(((double) this.area / (double) this.size));k=40*constK; // compute optimal pairwise distance
 			
 			//System.out.println(k);
 		}
-		//k=20576.906738115205;
-		//k=24128.56191321812;
-		//k=68800.906738115205;
-		System.out.println(k);
+		
+		//System.out.println(k);
 		mySpring();
 		
 	}
@@ -67,27 +67,18 @@ public class FrSpring {
 
 
 	private void mySpring() {
-		for (int ite = 0; ite < (7000); ite++) {
+		for (int ite = 0; ite < (900); ite++) {
 			for (Vertex v : this.lstVertices) {
 				v.getDis().setLocation(0, 0); 
 				//boolean v1_OnBorder = isOnBorder(v.getDis());
 				for (Vertex u : this.lstVertices) {
-					//boolean u_OnBorder = isOnBorder(u.getDis());
-					//if (v1_OnBorder & u_OnBorder)continue;
-					//if(u.equals(lstVertices.get(0)))continue;
 					if (!(u.equals(v))) {
-						//boolean u_OnBorder = isOnBorder(u.getDis());
-					//	if (v1_OnBorder & u_OnBorder)continue;
 						double disX = v.getPos().getX() - u.getPos().getX();   // difference of x coordinate
 						double disY = v.getPos().getY() - u.getPos().getY();   // difference of y coordinate
 						double deltaLength = Math.max(EPSILON,  v.getPos()	   // if distance between vertices is zero, since  
 								.distanceSq(u.getPos()));				       // couldn't divided by zero use EPSILON
-						
-						
 						double rforce = repulsionF(Math.abs(deltaLength));     // repulsion force (distance)
 						assert Double.isNaN(rforce) == false : "Unexpected mathematical result in FRSpring Layout:Spring [Repulsion force]";
-						
-						
 							disX = (v.getDis().getX() + (disX * rforce));             // displacement of x
 							disY = (v.getDis().getY() + (disY *rforce));			  //  displacement of y
 							v.getDis().setLocation(disX,disY);
@@ -99,76 +90,68 @@ public class FrSpring {
 				Vertex source = this.lstVertices.get(i);
 				
 				if (source.getPos() == null) continue;
-				boolean v_OnBorder = isOnBorder(source.getDis());
-				for (Vertex target : source.getSynomyns()){
+				for (Vertex target : source.getSynomyns() ){
 					if(target.equals(lstVertices.get(0))) continue;
 					if (target.equals(lstVertices.get(i)))continue;
 					if (target.getPos() == null) continue;
 					
-					boolean u_OnBorder = isOnBorder(target.getDis());
 					double disX = source.getPos().getX() - target.getPos().getX();
 					double disY = source.getPos().getY() - target.getPos().getY();
 									
 					double deltaLength = Math.max(EPSILON,
 							source.getPos().distanceSq(target.getPos()));
 					double aForce = 1;
-					//if ((source.equals(lstVertices.get(0)))) {this.k = (k/1.5);}
-					//else {k = constK*constK;}
-					 aForce = attractionF(Math.abs(deltaLength));        //compute attraction force
+					if (source.equals(myWord)|| target.equals(myWord)){
+						constAF = 5.0;
+					}else{
+						constAF = 0.7;
+					}
+					aForce = attractionF(Math.abs(deltaLength));        //compute attraction force
+					//if (source.equals(myWord)|| target.equals(myWord)) aForce*= 10;
 					assert Double.isNaN(aForce) == false : "Unexpected mathematical result in FRSpring Layout:Spring[Attraction force]";
-					
-					//double myAForce = aforce;
-					
-					
-				//	for (Vertex myS : lstVertices.get(0).getSynomyns()){
-						
-						//if (source.equals(myS)&& (!target.equals(myS))&& (!target.equals(lstVertices.get(0)))) myAForce = aforce*30;
-						//if ((source.equals(myS))&& target.equals(lstVertices.get(0))) {myAForce = aforce*60;}
-						//if ((source.equals(lstVertices.get(0)))&&(target.equals(myS))&& getCons(myS,target))myAForce = aforce*60;
-						//if ((source.equals(lstVertices.get(0)))&&(target.equals(myS))){  myAForce = aforce*60;}
-						
-					//	if ( !target.equals(myS)) {myAForce = aforce*10;}
-						//if  (target.equals(myS)) myAForce = aforce*aforce;
-						//if (source.equals(myS) && (target.equals(myS))) myAForce = aforce*aforce;
-					//	else {
-							// myAForce = aforce;
-						//}
-						
-					//}
-					     
-					//if ((source.equals(lstVertices.get(0)))&&(target.equals(myS))){  myAForce = aforce*170;}
-					
-					
-					
 				
-				/*if ((u_OnBorder) && (!(source.equals(lstVertices.get(0))))){
-						double sdisX = (source.getDis().getX() - (disX *2* myAForce));					// displacement  edge x coordinate
-						double sdisY = (source.getDis().getY() - (disY*2* myAForce));					// displacement edge y coordinate
-						source.getDis().setLocation(sdisX, sdisY);}
-					else
-					{*/
 						double sdisX = (source.getDis().getX() - (disX * aForce));					// displacement  edge x coordinate
 						double sdisY = (source.getDis().getY() - (disY* aForce));					// displacement edge y coordinate
 						source.getDis().setLocation(sdisX, sdisY);
 					//}
 					
-					
-					/*if (v_OnBorder){
-						double tdisX = (target.getDis().getX() + (disX *2* myAForce));					// displacement  edge x coordinate
-						double tdisY = (target.getDis().getY() + (disY *2* myAForce));	
-						target.getDis().setLocation(tdisX, tdisY);
-					}
-					else
-					{*/
-				
+									
 					double tdisX = (target.getDis().getX() + (disX * aForce));					// displacement  edge x coordinate
 					double tdisY = (target.getDis().getY() + (disY * aForce));	
 					target.getDis().setLocation(tdisX, tdisY);
-					//}
-			}
+					}
+				//this is replication and bad code organization make a method to be use by antonyms and syn
+				for (Vertex target : source.getAntonyms() ){
+					if(target.equals(lstVertices.get(0))) continue;
+					if (target.equals(lstVertices.get(i)))continue;
+					if (target.getPos() == null) continue;
+					
+					double disX = source.getPos().getX() - target.getPos().getX();
+					double disY = source.getPos().getY() - target.getPos().getY();
+									
+					double deltaLength = Math.max(EPSILON,
+							source.getPos().distanceSq(target.getPos()));
+					double aForce = 1;
+					if (source.equals(myWord)|| target.equals(myWord)){
+						constAF = 5.0;
+					}else{
+						constAF = 0.7;
+					}
+					aForce = attractionF(Math.abs(deltaLength));        //compute attraction force
+					//if (source.equals(myWord)|| target.equals(myWord)) aForce*= 10;
+					assert Double.isNaN(aForce) == false : "Unexpected mathematical result in FRSpring Layout:Spring[Attraction force]";
+				
+						double sdisX = (source.getDis().getX() - (disX * aForce));					// displacement  edge x coordinate
+						double sdisY = (source.getDis().getY() - (disY* aForce));					// displacement edge y coordinate
+						source.getDis().setLocation(sdisX, sdisY);
+												
+					double tdisX = (target.getDis().getX() + (disX * aForce));					// displacement  edge x coordinate
+					double tdisY = (target.getDis().getY() + (disY * aForce));	
+					target.getDis().setLocation(tdisX, tdisY);
+					}
 			}
 
-			for (int j = 1; j < this.size; j++) {
+			for (int j = 0; j < this.size; j++) {
                 
 				if (this.lstVertices.get(j).equals(myWord))continue;
 				
@@ -197,12 +180,14 @@ public class FrSpring {
 			
 			
 			temprature *= (1.0 - (ite / (double) (7000))); // reduce temperature
+			
 		}
+		
 		/* the is for test only, Begin testing */
 		Point2D[] tmp = new Point2D[size];
 		for (int i = 0; i < this.size; i++) {
 			tmp[i]= this.lstVertices.get(i).getPos();
-			System.out.print(this.lstVertices.get(i).getWord()+" ");
+			//System.out.print(this.lstVertices.get(i).getWord()+" ");
 		}
 		int count = 0;
 		
@@ -215,11 +200,6 @@ public class FrSpring {
 						count++;System.out.println(j);					
 					}
 					
-					
-					/*if ( myD < fixD){
-						this.overlap = true;
-						//System.out.println(Math.abs((tmp[i].distance(tmp[j])))+ " "+this.lstVertices.get(i).getIndex() +" "+this.lstVertices.get(j).getIndex());//break;	
-					}*/
 				}
 			}
 
@@ -229,12 +209,10 @@ public class FrSpring {
 		}
 		int optimaztion = 0;
 		while (optimaztion > 10 ) {mySpring(); optimaztion++;}
-		System.out.println("replication: "+count);
-	//	int index = 0;
 		
 		if (count != 0)	mySpring();
 		
-		/* end of the test. */
+		
 
 	}
 
@@ -250,12 +228,12 @@ public class FrSpring {
 	/* calculates repulsion force between non-adjacent vertices x is a distance calculated by pythagoras   */
 	private double repulsionF(double x) {
 
-		return ((k *k)/ x);
+		return ((k *k)/ x)*constRF ;
 	}
 
 	/* calculates attraction force between edges y is length of the edge*/
 	private double attractionF(double y) {
-		return (((y * y) / (k)));
+		return (((y * y) / (k)))*constAF;
 	}
 
 	/* create and returns coordinate points */
@@ -263,9 +241,9 @@ public class FrSpring {
 		return new Point2D.Double(x, y);
 	}
 
-	/* this method adds all vertices into lsVisited which is used for repulsion of vertices 
+	/* add all the sys vetex to the linked list 
 	 * and also helps to identify the actual number of vertices (size)*/
-	private int getVertex(thesaurus.parser.Vertex word) {
+	private int getSnVertex(thesaurus.parser.Vertex word) {
 		int count = 1;
 		this.lstVertices.addFirst(word);word.setVisited(true);
 		for (Vertex ver : word.getSynomyns()){
@@ -274,12 +252,35 @@ public class FrSpring {
 			for (Vertex inVer : ver.getSynomyns()){
 				if (!(inVer.isVisited())){
 				this.lstVertices.addLast(inVer);inVer.setVisited(true);count++;;}
+				for (Vertex thirdLayer : inVer.getSynomyns()){
+					if (!(thirdLayer.isVisited())){
+					this.lstVertices.addLast(thirdLayer);thirdLayer.setVisited(true);count++;;}
+				}
 			}
+			
 		}
 			
 		return count;
 	}
-
+	private int getAnVertex(thesaurus.parser.Vertex word) {
+		int count = 1;
+		//this.lstVertices.addFirst(word);word.setVisited(true);
+		for (Vertex ver : word.getAntonyms()){
+			if (!(ver.isVisited())){
+			this.lstVertices.addLast(ver); ver.setVisited(true);count++;}
+			for (Vertex inVer : ver.getSynomyns()){
+				if (!(inVer.isVisited())){
+				this.lstVertices.addLast(inVer);inVer.setVisited(true);count++;;}
+				for (Vertex thirdLayer : inVer.getSynomyns()){
+					if (!(thirdLayer.isVisited())){
+					this.lstVertices.addLast(thirdLayer);thirdLayer.setVisited(true);count++;;}
+				}
+			}
+			
+		}
+			
+		return count;
+	}
 
 
 	public Vertex getCoordinates() {
@@ -291,14 +292,7 @@ public LinkedList<Vertex> getVertices(){
 public boolean isOnBorder(Point2D x ){
 	return (x.getX()==0.0 || x.getY()==0.0||x.getX()==(double)this.width|| x.getY() == (double)this.length);
 }
-private boolean getCons(Vertex sor, Vertex tar){
-	if (sor.equals(tar)) return false;
-	for (Vertex b:sor.getSynomyns()){
-	if(	b.equals(tar)) return true;
-		
-	}
-	return false;
-}
+
 
 }
 

@@ -29,6 +29,9 @@ public class PopupFactory {
 		} else if (inputChoice.equals("fileError")){
 			currentPopup = new Popup();
 			currentPopup.getContent().add(makeCanvasFileError());
+		} else if (inputChoice.equals("about")){
+			currentPopup = new Popup();
+			currentPopup.getContent().add(makeAbout());
 		}
 	}
 	
@@ -48,6 +51,7 @@ public class PopupFactory {
 			@Override
 			public void handle(ActionEvent event) {
 				referenceWindow.getVisualisationRoot().getCurrentParser().addVertex(addWordInput.getText(), addSynInput.getText(),"");
+				System.out.printf("\n\n=========== %s  ======== %s\n\n",addWordInput.getText(), addSynInput.getText());
 				currentPopup.hide();
 				currentPopup = null;
 				referenceWindow.getVisualisationRoot().doClickSearchGraph(referenceWindow.getVisualisationRoot().getCurrentVertex().getWord());
@@ -87,6 +91,26 @@ public class PopupFactory {
 			}
 		});
 		canvas.getChildren().addAll(confirmLabel, confirmButton);
+		canvas.setStyle("	-fx-background-color: #dfdfdf;"
+				+ "-fx-border-color: black;" + "-fx-border-width: 1px;" + "-fx-font-family: 'Arial';");
+		return canvas;
+	}
+	
+	private Pane makeAbout() {
+		Pane canvas = getPane(150,80);
+		Text one_Label = getText(8,10,"Graphical Thesaurus",1);
+		Text two_Label = getText(35,26,"by Team O",1);
+		Button confirmButton = new Button();
+		confirmButton.setText("OK");
+		confirmButton.relocate(55, 45);
+		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				currentPopup.hide();
+				currentPopup = null;
+			}
+		});
+		canvas.getChildren().addAll(one_Label, two_Label, confirmButton);
 		canvas.setStyle("	-fx-background-color: #dfdfdf;"
 				+ "-fx-border-color: black;" + "-fx-border-width: 1px;" + "-fx-font-family: 'Arial';");
 		return canvas;
