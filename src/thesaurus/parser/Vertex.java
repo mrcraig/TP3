@@ -8,6 +8,7 @@ public class Vertex {
    
     private LinkedList<Vertex> synonyms; 
     private LinkedList<Vertex> antonyms;
+    private LinkedList<Vertex> groupings;
     private String id; 
     private boolean visited = false;
     private String word;
@@ -29,6 +30,7 @@ public class Vertex {
     {
     	synonyms = new LinkedList<Vertex>();
     	antonyms = new LinkedList<Vertex>();
+    	groupings = new LinkedList<Vertex>();
     	id = i;
     }  
     

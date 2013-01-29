@@ -24,6 +24,7 @@ public class XmlRead
 	private XPathFactory xfactory = XPathFactory.newInstance();
 	private XPath xpath = xfactory.newXPath();
 	private Graph nodes = new Graph();
+	boolean emptyFile = false;
 	
 	public XmlRead(File f)
 	{
@@ -52,7 +53,12 @@ public class XmlRead
 		getEdges();
 	}
 	
-	String getLastVertexIndex() throws NullPointerException
+	//boolean checkEmpty()
+	//{
+	//	XPathExpression expr = xpath.compile("//graphml)
+	//}
+	
+	String getLastVertexIndex() 
 	{
 		String newID = null;
 		try
@@ -67,6 +73,12 @@ public class XmlRead
 		catch (XPathExpressionException e)
 		{
 			e.printStackTrace();
+		}
+		//empty file.
+		catch (NullPointerException n)
+		{
+			this.emptyFile = true;
+			return "0";
 		}
 		return newID;
 	}

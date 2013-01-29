@@ -15,6 +15,7 @@ public class InternalRepresentation
 	public InternalRepresentation(File f)
 	{
 		read = new XmlRead(f);
+		this.emptyFile = read.emptyFile;
 		nodes.setNodes(read.getAllNodes());
 		write = new XmlWrite(f, nodes);
 	}
@@ -27,16 +28,8 @@ public class InternalRepresentation
 	 */
 	public void addVertex(String w, String synomyns, String antonyms)
 	{
-		String index;
-		try
-		{
-			index = read.getLastVertexIndex();
-		}
-		//empty file.
-		catch (NullPointerException n)
-		{
-			index = "0";
-		}
+		System.out.println(synomyns);
+		String index = read.getLastVertexIndex();
 		Vertex n = new Vertex(index);
 		n.setWord(w);
 		for(String s : parseCsvToArray(synomyns))
@@ -78,11 +71,18 @@ public class InternalRepresentation
 	}
 	
 	
+	public boolean isEmptyFile() {
+		return emptyFile;
+	}
 	
+
+	public void setEmptyFile(boolean emptyFile) {
+		this.emptyFile = emptyFile;
+	}
 	public String createNew()
 	{
 		StringBuilder x = new StringBuilder();
-		x.append("<graphml><graph><node><edge></graph></graphml>");
+		x.append("<graphml><graph></graph></graphml>");
 		return x.toString();
 	}
 	
