@@ -20,7 +20,7 @@ public class FrSpring {
 	private boolean overlap= false;
 	private boolean overEdgeCrossing = false;
 	private double constAF = 0.7;
-	private double constRF = 0.8;
+	private double constRF = 2.8;
 	private double constK = 1.0;
 	
 	
@@ -264,9 +264,9 @@ public class FrSpring {
 	}
 	private int getAnVertex(thesaurus.parser.Vertex word) {
 		int count = 1;
-		//this.lstVertices.addFirst(word);word.setVisited(true);
+		if (!word.getAntonyms().isEmpty()){
 		for (Vertex ver : word.getAntonyms()){
-			if (!(ver.isVisited())){
+			if (!(ver.isVisited())){ 
 			this.lstVertices.addLast(ver); ver.setVisited(true);count++;}
 			for (Vertex inVer : ver.getSynomyns()){
 				if (!(inVer.isVisited())){
@@ -279,7 +279,8 @@ public class FrSpring {
 			
 		}
 			
-		return count;
+		return count;}
+		return 0;
 	}
 
 
