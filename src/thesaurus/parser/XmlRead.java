@@ -127,7 +127,7 @@ public class XmlRead
 	private void getEdges()
 	{
 		NodeList edges = null;
-		boolean isSynomyn = false;
+		char type = 0;
 		try 
 		{
 			XPathExpression expr = xpath.compile("//graphml/graph/edge");
@@ -154,11 +154,15 @@ public class XmlRead
 						{
 							if(d.getTextContent().equals("s"))
 							{
-								isSynomyn = true;
+								type = 's';
 							}
 							else if(d.getTextContent().equals("a"))
 							{
-								isSynomyn = false;
+								type = 'a';
+							}
+							else if(d.getTextContent().equals("g"))
+							{
+								type = 'g';
 							}
 						}
 			}
@@ -166,15 +170,15 @@ public class XmlRead
 			String target = e.getAttributes().getNamedItem("target").getTextContent();
 			Vertex s = nodes.getVertexFromIndex(source);
 			Vertex t = nodes.getVertexFromIndex(target); 
-			if(isSynomyn)
+			switch(type)
 			{
-				if(!s.getSynomyns().contains(t))
-				s.addSynonym(t);
-			}
-			else
-			{	
-				if(!s.getAntonyms().contains(t))
-				s.addAntonym(t);
+				case 's': if(!s.getSynomyns().contains(t)) s.addSynonym(t);
+					  	  break;				
+			
+				case 'a': if(!s.getAntonyms().contains(t)) s.addAntonym(t);
+				          break;
+				          
+				case 'g': if(!s.getGroupings().contains(t)) s.addGrouping(t);
 			}
 		}
 	}	

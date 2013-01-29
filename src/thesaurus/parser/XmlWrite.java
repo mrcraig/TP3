@@ -69,6 +69,12 @@ public class XmlWrite {
 			target = i.getID();
 			this.addEdge(source, target, "a");
 		}
+		for(Vertex h: v.getGroupings())
+		{
+			if(h==null) continue;
+			target = h.getID();
+			this.addEdge(source, target, "g");
+		}
 		saveFile();
 	}
 	

@@ -61,6 +61,13 @@ public class Vertex {
      		sb.append(a.getWord());
      		sb.append(",");
      	}
+     	sb.append("\nGroupings\n");
+     	for(Vertex g : this.groupings)
+     	{
+     		if(g==null)continue;
+     		sb.append(g.getWord());
+     		sb.append(",");
+     	}
     	sb.append("\n");
     	return sb.toString();
     }     
@@ -88,6 +95,11 @@ public class Vertex {
 	{
 		return antonyms;
 	}
+	
+	public LinkedList<Vertex> getGroupings()
+	{
+		return groupings;
+	}
      
     public String getID()
     {
@@ -107,6 +119,11 @@ public class Vertex {
     public void addAntonym(Vertex n)
     {
     	antonyms.addLast(n);
+    }
+    
+    public void addGrouping(Vertex g)
+    {
+    	groupings.add(g);
     }
     
     public int vertexDegree(){

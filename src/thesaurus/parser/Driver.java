@@ -13,8 +13,10 @@ public class Driver
 		InternalRepresentation driver = new InternalRepresentation(test);
 		
 	
-		driver.addAntonym("Cheerful", "Jubilant");
-		driver.addSynonym("Cheerful","Merry");
+		Vertex t = driver.getOneSynomyn("merry");
+		System.out.println(t);
+		//driver.addAntonym("Cheerful", "Jubilant");
+		//driver.addSynonym("Cheerful","Merry");
 		
 		//String[] antonym = new String[3];
 		//antonym[0] = "happy";
