@@ -142,9 +142,9 @@
         </Text>
       </children>
     </Pane>
-    <Pane layoutX="20.0" layoutY="31.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="174.0">
+    <Pane layoutX="20.0" layoutY="36.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="174.0">
       <children>
-        <Text id="currentFileLabel" font="$x4" layoutX="5.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thesaurus:" />
+        <Text id="currentFileLabel" font="$x4" layoutX="5.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thesaurus:" />
       </children>
     </Pane>
   </children>
