@@ -33,3 +33,4 @@ two mappings - string and index?
 emptyfile should be working
 invisible edges.
 
+addnode method getting called three times, probably because of 3 synonyms

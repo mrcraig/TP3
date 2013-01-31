@@ -25,6 +25,7 @@ public class XmlRead
 	private XPath xpath = xfactory.newXPath();
 	private Graph nodes = new Graph();
 	boolean emptyFile = false;
+	private int lastIndex;
 	
 	public XmlRead(File f)
 	{
@@ -49,6 +50,7 @@ public class XmlRead
 		{
 			p.printStackTrace();
 		}
+		lastIndex = Integer.parseInt(getLastVertexIndex());
 		getVertices();
 		getEdges();
 	}
@@ -83,6 +85,10 @@ public class XmlRead
 		return newID;
 	}
 	
+	String getIndex()
+	{
+		return Integer.toString(this.lastIndex++);
+	}
 	
 	
 	public LinkedList<Vertex> getAllNodes()

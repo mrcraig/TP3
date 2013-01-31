@@ -28,39 +28,48 @@ public class InternalRepresentation
 	 */
 	public void addVertex(String w, String synomyns, String antonyms)
 	{
-		System.out.println(synomyns);
-		String index = read.getLastVertexIndex();
+		System.out.printf("adding synomyns...%s\n",synomyns);
+		String index = read.getIndex();
 		Vertex n = new Vertex(index);
 		n.setWord(w);
-		for(String s : parseCsvToArray(synomyns))
+		
+		if(!synomyns.isEmpty())
 		{
-			Vertex syn = nodes.getVertexFromWord(s);
-			if(syn==null)
+			System.out.println("-------------------adding synonyms");
+			for(String s : parseCsvToArray(synomyns))
 			{
-				Vertex v = new Vertex(read.getLastVertexIndex());
-				v.setWord(s);
-				n.addSynonym(v);
-				System.out.println("Vertex to be created and saved: "+v);
-				write.addVertex(v);
-			}
-			else
-			{
-				n.addSynonym(syn);
+				Vertex syn = nodes.getVertexFromWord(s);
+				if(syn==null)
+				{
+					Vertex v = new Vertex(read.getIndex());
+					v.setWord(s);
+					n.addSynonym(v);
+					nodes.add(v);
+					write.addVertex(v);
+				}
+				else
+				{
+					n.addSynonym(syn);
+				}
 			}
 		}
-		for(String a : parseCsvToArray(antonyms))
+		if(!antonyms.isEmpty())
 		{
-			Vertex ant = nodes.getVertexFromWord(a);
-			if(ant==null)
+			for(String a : parseCsvToArray(antonyms))
 			{
-				Vertex v = new Vertex(read.getLastVertexIndex());
-				v.setWord(a);
-				n.addSynonym(v);
-				write.addVertex(v);
-			}
-			else
-			{
-				n.addAntonym(ant);
+				Vertex ant = nodes.getVertexFromWord(a);
+				if(ant==null)
+				{
+					Vertex v = new Vertex(read.getIndex());
+					v.setWord(a);
+					n.addAntonym(v);
+					nodes.add(v);
+					write.addVertex(v);
+				}
+				else
+				{
+					n.addAntonym(ant);
+				}
 			}
 		}
 		System.out.println(n.getWord());
@@ -164,7 +173,7 @@ public class InternalRepresentation
 		return nodes.getTableData();
 	}
 	
-	 private String[] parseCsvToArray(String inputCsvString){
+	  String[] parseCsvToArray(String inputCsvString){
          String[] hold = inputCsvString.split(",");
          String[] toReturn = new String[hold.length];
          int i = 0;
@@ -172,5 +181,16 @@ public class InternalRepresentation
                  toReturn[i++] = s.replaceAll("\\s","");
          }
          return toReturn;
+	 }
+	 
+	  LinkedList<String> parseCsvToList(String inputCsvString)
+	 {
+		 String[] split = inputCsvString.split(",");
+		 LinkedList<String> syns = new LinkedList<String>();
+		 for(String s : split)
+		 {
+			 syns.add(s);
+		 }
+		 return syns;
 	 }
 }
