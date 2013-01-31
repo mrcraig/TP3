@@ -53,6 +53,9 @@ public class SystemController {
 
 	@FXML
 	private Pane tableDualGraph;
+	
+	@FXML
+	private Pane tut1pane;
 
 	@FXML
 	private TabPane mainTabWindow;
@@ -454,6 +457,10 @@ public class SystemController {
 	public Pane getTableDualGraph() {
 		return tableDualGraph;
 	}
+	
+	public Pane getTutOnePane() {
+		return tut1pane;
+	}
 
 	private void setVisualisationFileName() {
 		currentFileLabel.setText(referenceWindow.getVisualisationRoot()
@@ -526,5 +533,11 @@ public class SystemController {
 	@FXML
 	private void handleExitAction(final ActionEvent event) {
 		System.exit(0);
+	}
+	
+	@FXML
+	private void tutorialNext (final ActionEvent event) {
+		System.out.println("aaaa");
+		referenceWindow.getTutorialRootCurrent().next();
 	}
 }

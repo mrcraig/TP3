@@ -3,6 +3,8 @@ package thesaurus.gui.window;
 import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import thesaurus.controller.SystemController;
 
@@ -14,6 +16,9 @@ import thesaurus.controller.SystemController;
 public class TutorialRoot extends AnchorPane {
 
 	private MainWindow referenceWindow;
+	
+	private ImageView picture;
+	private Image image;
 
 	private SystemController currentController;
 
@@ -32,7 +37,31 @@ public class TutorialRoot extends AnchorPane {
 		} catch (IOException exception) {
 			throw new RuntimeException(exception);
 		}
+		
+		initialise();
 
 	}
 
+	private void initialise(){
+		
+		picture = new ImageView();
+		
+        image = new Image("./resourcePackage/tutorial0.jpg");
+        
+        picture.setImage(image);
+        
+        currentController.getTutOnePane().getChildren().add(picture);
+	}
+	
+	public void next(){
+		System.out.println("sss");
+		currentController.getTutOnePane().getChildren().remove(picture);
+		image = null;
+		picture = null;
+		picture = new ImageView();
+		image = new Image("./resourcePackage/tutorial1.jpg");
+		picture.setImage(image);
+		currentController.getTutOnePane().getChildren().add(picture);
+	}
+	
 }

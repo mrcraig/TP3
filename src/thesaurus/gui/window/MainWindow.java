@@ -86,8 +86,8 @@ public class MainWindow extends Application {
 		return tutorialRootCurrent;
 	}
 
-	public void setTutorialRootCurrent(TutorialRoot tutorialRootInput) {
-		tutorialRootCurrent = tutorialRootInput;
+	public void setTutorialRootCurrent(TutorialRoot tutorialRootCurrent2) {
+		tutorialRootCurrent = tutorialRootCurrent2;
 	}
 
 	public File getCurrentRecentFile() {
