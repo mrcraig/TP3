@@ -54,7 +54,7 @@ public class PopupFactory {
 				System.out.printf("\n\n=========== %s  ======== %s\n\n",addWordInput.getText(), addSynInput.getText());
 				currentPopup.hide();
 				currentPopup = null;
-				referenceWindow.getVisualisationRoot().doClickSearchGraph(referenceWindow.getVisualisationRoot().getCurrentVertex().getWord());
+				referenceWindow.getVisualisationRoot().doClickSearchGraph(addWordInput.getText());
 				referenceWindow.getVisualisationRoot().addCanvas();
 				referenceWindow.getVisualisationRoot().addTable();
 			}
