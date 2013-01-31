@@ -1,6 +1,7 @@
 package thesaurus.parser;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 
@@ -34,25 +35,31 @@ public class Graph
 	 }
 	 
 	 //should probably iterate backwards? not helping.
+	 //use a proper iterator
+	 //http://docs.oracle.com/javase/tutorial/collections/interfaces/collection.html
 	 void removeVertex(Vertex v)
 	 {
 		 String w = v.getWord();
-		 for(int i=nodes.size()-1;i>-1;i--)
+		 Iterator<Vertex> iter = nodes.iterator();
+		 
+		 while(iter.hasNext())
 		 {
-			 Vertex x = nodes.get(i);
-			 for(Vertex a : x.getAntonyms())
+			 Vertex x = iter.next();
+			 Iterator<Vertex> antonyms = x.getAntonyms().iterator();
+			 while(antonyms.hasNext())
 			 {
-				 if(a.getWord().equals(w)) x.getAntonyms().remove(a);
+				 if(antonyms.next().getWord().equals(w)) antonyms.remove();
 			 }
 			 
-			 for(Vertex s : x.getSynomyns())
+			 Iterator<Vertex> synonyms = x.getSynomyns().iterator();
+			 while(synonyms.hasNext())
 			 {
-				 if(s.getWord().equals(w)) x.getSynomyns().remove(s);
+				 if(synonyms.next().getWord().equals(w)) synonyms.remove();
 			 }
 			 if(x.getWord().equals(w)) 
 			 {
 				 System.out.println("removed");
-				 nodes.remove(i);
+				 iter.remove();
 			 }
 		 }
 		 //System.out.println("current nodes are\n"+nodes);

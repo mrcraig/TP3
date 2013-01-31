@@ -52,9 +52,9 @@ public class XmlWrite {
 		}
 	}
 
-	public void addVertex(Vertex v)
+	public void addVertex(Vertex v, boolean exists)
 	{	
-		this.addNode(v.getWord(), v.getID());
+		if(!exists) this.addNode(v.getWord(), v.getID());
 		String source = v.getID();
 		String target = null;
 		for(Vertex j : v.getSynomyns())
@@ -142,6 +142,7 @@ public class XmlWrite {
 		removeEdge(v.getID());
 		nodes.removeVertex(v);
 		saveFile();
+		System.out.println(w+" removed from graphml");
 	}
 	
 	private void removeNode(String id)
