@@ -406,6 +406,11 @@ public class SystemController {
 		referenceWindow.setTutorialRootCurrent(tutorialRootCurrent);
 		referenceWindow.getStage().setScene(new Scene(tutorialRootCurrent));
 	}
+	
+	@FXML
+	protected void doRefreshGraph() {
+		referenceWindow.getVisualisationRoot().doSearchRefresh();
+	}
 
 	@FXML
 	protected void doAddWord() {

@@ -52,7 +52,7 @@ public class VisualisationRoot extends AnchorPane {
 		currentController.getCanvasFullGraph().getChildren().add(displayGraphFull.returnGraph());
 		currentController.getCanvasDualGraph().getChildren().add(displayGraphDual.returnGraph());
 	}
-	
+
 	public void addTable() {
 		currentController.getTableFullGraph().getChildren().removeAll(currentController.getTableFullGraph().getChildren());
 		currentController.getTableDualGraph().getChildren().removeAll(currentController.getTableDualGraph().getChildren());
@@ -84,7 +84,7 @@ public class VisualisationRoot extends AnchorPane {
 	}
 
 	public void showPopup(String inputChoice) {
-		if(currentPopup != null){
+		if(currentPopup != null) {
 			currentPopup.hide();
 			currentPopup = null;
 		}
@@ -93,13 +93,13 @@ public class VisualisationRoot extends AnchorPane {
 		currentPopup.show(referenceWindow.getStage());
 		currentPopup.setY(currentPopup.getY()+15);
 	}
-	
-	public Vertex runSpringOnVertex(Vertex inputVertex){
+
+	public Vertex runSpringOnVertex(Vertex inputVertex) {
 		FrSpring currentSpring = new FrSpring(inputVertex);
 		return currentSpring.getCoordinates();
 	}
-	
-	public void initialSearch(){
+
+	public void initialSearch() {
 		setCurrentVertex(currentParser.getFirst());
 		if (currentVertex == null) {
 			return;
@@ -109,7 +109,7 @@ public class VisualisationRoot extends AnchorPane {
 		referenceWindow.getVisualisationRoot().addTable();
 		currentController.defaultZoomValue();
 	}
-	
+
 	public void doClickSearchGraph(String inputString) {
 		setCurrentVertex(getCurrentParser().getOneSynomyn(inputString));
 		if (currentVertex == null) {
@@ -120,22 +120,24 @@ public class VisualisationRoot extends AnchorPane {
 		referenceWindow.getVisualisationRoot().addTable();
 		currentController.defaultZoomValue();
 	}
-	
-	public void doSearchRefresh(){
+
+	public void doSearchRefresh() {
 		Vertex replacementVertex = getCurrentParser().getOneSynomyn(currentVertex.getWord());
 		setCurrentVertex(referenceWindow.getVisualisationRoot().runSpringOnVertex(replacementVertex));
+		referenceWindow.getVisualisationRoot().addCanvas();
+		referenceWindow.getVisualisationRoot().addTable();
 		currentController.defaultZoomValue();
 	}
-	
-	public Vertex getCurrentVertex(){
+
+	public Vertex getCurrentVertex() {
 		return currentVertex;
 	}
-	
-	public ViewGraph getFullGraph(){
+
+	public ViewGraph getFullGraph() {
 		return displayGraphFull;
 	}
-	
-	public ViewGraph getDualGraph(){
+
+	public ViewGraph getDualGraph() {
 		return displayGraphDual;
 	}
 }

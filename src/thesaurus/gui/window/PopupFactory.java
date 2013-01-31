@@ -10,12 +10,12 @@ import javafx.stage.Popup;
 
 
 public class PopupFactory {
-	
+
 	Popup currentPopup = null;
 	MainWindow referenceWindow;
-	
-	public PopupFactory(String inputChoice, MainWindow inputWindow){
-		
+
+	public PopupFactory(String inputChoice, MainWindow inputWindow) {
+
 		referenceWindow = inputWindow;
 		if (inputChoice.equals("add")) {
 			currentPopup = new Popup();
@@ -26,15 +26,15 @@ public class PopupFactory {
 		} else if (inputChoice.equals("remove")) {
 			currentPopup = new Popup();
 			currentPopup.getContent().add(makeCanvasRemove());
-		} else if (inputChoice.equals("fileError")){
+		} else if (inputChoice.equals("fileError")) {
 			currentPopup = new Popup();
 			currentPopup.getContent().add(makeCanvasFileError());
-		} else if (inputChoice.equals("about")){
+		} else if (inputChoice.equals("about")) {
 			currentPopup = new Popup();
 			currentPopup.getContent().add(makeAbout());
 		}
 	}
-	
+
 	private Pane makeCanvasAdd() {
 		Pane canvas = getPane(200,200);
 		Text addWordLabel = getText(35,10,"Add Word",2);
@@ -70,13 +70,13 @@ public class PopupFactory {
 			}
 		});
 		canvas.getChildren().addAll(addWordLabel, promptWordLabel,
-				addWordInput, promptSynLabel, addSynInput, promptAntLabel,
-				addAntInput, confirmButton, cancelButton);
+		                            addWordInput, promptSynLabel, addSynInput, promptAntLabel,
+		                            addAntInput, confirmButton, cancelButton);
 		canvas.setStyle("	-fx-background-color: #dfdfdf;"
-				+ "-fx-border-color: black;" + "-fx-border-width: 1px;" + "-fx-font-family: 'Arial';");
+		                + "-fx-border-color: black;" + "-fx-border-width: 1px;" + "-fx-font-family: 'Arial';");
 		return canvas;
 	}
-	
+
 	private Pane makeCanvasFileError() {
 		Pane canvas = getPane(150,80);
 		Text confirmLabel = getText(25,10,"File Does Not Exist",1);
@@ -92,10 +92,10 @@ public class PopupFactory {
 		});
 		canvas.getChildren().addAll(confirmLabel, confirmButton);
 		canvas.setStyle("	-fx-background-color: #dfdfdf;"
-				+ "-fx-border-color: black;" + "-fx-border-width: 1px;" + "-fx-font-family: 'Arial';");
+		                + "-fx-border-color: black;" + "-fx-border-width: 1px;" + "-fx-font-family: 'Arial';");
 		return canvas;
 	}
-	
+
 	private Pane makeAbout() {
 		Pane canvas = getPane(150,80);
 		Text one_Label = getText(8,10,"Graphical Thesaurus",1);
@@ -112,10 +112,10 @@ public class PopupFactory {
 		});
 		canvas.getChildren().addAll(one_Label, two_Label, confirmButton);
 		canvas.setStyle("	-fx-background-color: #dfdfdf;"
-				+ "-fx-border-color: black;" + "-fx-border-width: 1px;" + "-fx-font-family: 'Arial';");
+		                + "-fx-border-color: black;" + "-fx-border-width: 1px;" + "-fx-font-family: 'Arial';");
 		return canvas;
 	}
-	
+
 	private Pane makeCanvasEdit() {
 		Pane canvas = getPane(200,200);
 		Text addWordLabel = getText(35,10,"Edit Word",2);
@@ -133,7 +133,7 @@ public class PopupFactory {
 			public void handle(ActionEvent event) {
 				String newWord = addWordInput.getText();
 				String oldWord = referenceWindow.getVisualisationRoot().getCurrentVertex().getWord();
-				if(!oldWord.equalsIgnoreCase(newWord)){
+				if(!oldWord.equalsIgnoreCase(newWord)) {
 					referenceWindow.getVisualisationRoot().getCurrentParser().editVertex(oldWord, newWord);
 				}
 				referenceWindow.getVisualisationRoot().getCurrentParser().addVertex(newWord, addSynInput.getText(), addAntInput.getText());
@@ -152,13 +152,13 @@ public class PopupFactory {
 			}
 		});
 		canvas.getChildren().addAll(addWordLabel, promptWordLabel,
-				addWordInput, promptSynLabel, addSynInput, promptAntLabel,
-				addAntInput, confirmButton, cancelButton);
+		                            addWordInput, promptSynLabel, addSynInput, promptAntLabel,
+		                            addAntInput, confirmButton, cancelButton);
 		canvas.setStyle("	-fx-background-color: #dfdfdf;"
-				+ "-fx-border-color: black;" + "-fx-border-width: 1px;" + "-fx-font-family: 'Arial';");
+		                + "-fx-border-color: black;" + "-fx-border-width: 1px;" + "-fx-font-family: 'Arial';");
 		return canvas;
 	}
-	
+
 	private Pane makeCanvasRemove() {
 		Pane canvas = getPane(200,200);
 		Text addWordLabel = getText(45,10,"Remove Word",2);
@@ -194,14 +194,14 @@ public class PopupFactory {
 	public Popup getPopup() {
 		return currentPopup;
 	}
-	
-	private Pane getPane(int x, int y){
+
+	private Pane getPane(int x, int y) {
 		Pane currentCanvas = new Pane();
 		currentCanvas.setPrefSize(x, y);
 		return currentCanvas;
 	}
-	
-	private Text getText(int x, int y, String inputString, int scale){
+
+	private Text getText(int x, int y, String inputString, int scale) {
 		Text currentWordLabel = new Text();
 		currentWordLabel.relocate(x, y);
 		currentWordLabel.setText(inputString);
@@ -209,8 +209,8 @@ public class PopupFactory {
 		currentWordLabel.setScaleY(scale);
 		return currentWordLabel;
 	}
-	
-	private TextField getTextField(int x, int y, int width){
+
+	private TextField getTextField(int x, int y, int width) {
 		TextField currentWordInput = new TextField();
 		currentWordInput.setPrefWidth(width);
 		currentWordInput.relocate(x, y);

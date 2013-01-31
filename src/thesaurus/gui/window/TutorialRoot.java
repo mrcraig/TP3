@@ -6,7 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import thesaurus.controller.SystemController;
 
-/** 
+/**
  * This class is an extension of JavaFX2 node AnchorPane
  * and literally defines what is shown on the screen.
  * It also has mouseHandlers doCreate and doImport.
