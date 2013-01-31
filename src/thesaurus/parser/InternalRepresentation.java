@@ -26,59 +26,72 @@ public class InternalRepresentation
 	 * @param w			The word belonging to the vertex
 	 * @param synomyns	The synonyms for the vertex 
 	 */
-	public void addVertex(String w, String synomyns, String antonyms)
+	public void addVertex(String w, String synonyms, String antonyms)
 	{
-		System.out.printf("adding synomyns...%s\n",synomyns);
-		String index = read.getIndex();
-		Vertex n = new Vertex(index);
-		n.setWord(w);
-		
-		if(!synomyns.isEmpty())
+		Vertex n;
+		if(nodes.contains(nodes.getVertexFromWord(w)))
 		{
-			System.out.println("-------------------adding synonyms");
-			for(String s : parseCsvToArray(synomyns))
-			{
-				Vertex syn = nodes.getVertexFromWord(s);
-				if(syn==null)
-				{
-					Vertex v = new Vertex(read.getIndex());
-					v.setWord(s);
-					n.addSynonym(v);
-					nodes.add(v);
-					write.addVertex(v);
-				}
-				else
-				{
-					n.addSynonym(syn);
-				}
-			}
+			n = nodes.getVertexFromWord(w);
+		}
+		else
+		{
+			String index = read.getIndex();
+			n = new Vertex(index);
+			n.setWord(w);
+		}
+		if(!synonyms.isEmpty())
+		{
+			addSynonyms(n, synonyms);
 		}
 		if(!antonyms.isEmpty())
 		{
-			for(String a : parseCsvToArray(antonyms))
-			{
-				Vertex ant = nodes.getVertexFromWord(a);
-				if(ant==null)
-				{
-					Vertex v = new Vertex(read.getIndex());
-					v.setWord(a);
-					n.addAntonym(v);
-					nodes.add(v);
-					write.addVertex(v);
-				}
-				else
-				{
-					n.addAntonym(ant);
-				}
-			}
+			addAntonyms(n, antonyms);
 		}
-		System.out.println(n.getWord());
-		System.out.println("Vertex to be added" + n);
-		
 		nodes.add(n);
 		write.addVertex(n);
 	}
 	
+	
+	private void addSynonyms(Vertex n, String synonyms)
+	{
+		for(String s : parseCsvToArray(synonyms))
+		{
+			Vertex syn = nodes.getVertexFromWord(s);
+			if(syn==null)
+			{
+				Vertex v = new Vertex(read.getIndex());
+				v.setWord(s);
+				n.addSynonym(v);
+				nodes.add(v);
+				write.addVertex(v);
+			}
+			else
+			{
+				n.addSynonym(syn);
+			}
+		}
+	}
+	
+	
+	private void addAntonyms(Vertex n, String antonyms)
+	{
+		for(String a : parseCsvToArray(antonyms))
+		{
+			Vertex ant = nodes.getVertexFromWord(a);
+			if(ant==null)
+			{
+				Vertex v = new Vertex(read.getIndex());
+				v.setWord(a);
+				n.addAntonym(v);
+				nodes.add(v);
+				write.addVertex(v);
+			}
+			else
+			{
+				n.addAntonym(ant);
+			}
+		}
+	}
 	
 	public boolean isEmptyFile() {
 		return emptyFile;
