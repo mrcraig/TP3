@@ -29,9 +29,11 @@ public class InternalRepresentation
 	public void addVertex(String w, String synonyms, String antonyms)
 	{
 		Vertex n;
+		boolean exists = false;
 		if(nodes.contains(nodes.getVertexFromWord(w)))
 		{
 			n = nodes.getVertexFromWord(w);
+			exists = true;
 		}
 		else
 		{
@@ -48,7 +50,7 @@ public class InternalRepresentation
 			addAntonyms(n, antonyms);
 		}
 		nodes.add(n);
-		write.addVertex(n);
+		write.addVertex(n, exists);
 	}
 	
 	
@@ -63,7 +65,7 @@ public class InternalRepresentation
 				v.setWord(s);
 				n.addSynonym(v);
 				nodes.add(v);
-				write.addVertex(v);
+				write.addVertex(v, false);
 			}
 			else
 			{
@@ -84,7 +86,7 @@ public class InternalRepresentation
 				v.setWord(a);
 				n.addAntonym(v);
 				nodes.add(v);
-				write.addVertex(v);
+				write.addVertex(v, false);
 			}
 			else
 			{
