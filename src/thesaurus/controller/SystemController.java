@@ -258,7 +258,7 @@ public class SystemController {
 		selectionBoxDual.getSelectionModel().select(1);
 	}
 
-	private void setSelectionBoxHandlers(){
+//	private void setSelectionBoxHandlers(){
 //		selectionBoxGraph.setOnMouseReleased(
 //				selectionBoxGraph.selectionModelProperty().getName();
 //				);
@@ -271,7 +271,7 @@ public class SystemController {
 //						.setScale(new_val.doubleValue());
 //			}
 //		});
-	}
+//	}
 
 	private void setSliderHandlers() {
 		sliderGraph.valueProperty().addListener(new ChangeListener<Number>() {
@@ -539,5 +539,10 @@ public class SystemController {
 	private void tutorialNext (final ActionEvent event) {
 		System.out.println("aaaa");
 		referenceWindow.getTutorialRootCurrent().next();
+	}
+	
+	@FXML
+	private void runTutorial (final ActionEvent event) {
+		doRunTutorial();
 	}
 }

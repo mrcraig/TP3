@@ -19,6 +19,10 @@ public class TutorialRoot extends AnchorPane {
 	
 	private ImageView picture;
 	private Image image;
+	
+	private int count;
+	
+	String[] imageArray;
 
 	private SystemController currentController;
 
@@ -44,9 +48,21 @@ public class TutorialRoot extends AnchorPane {
 
 	private void initialise(){
 		
+		count = 0;
+		
+		imageArray = new String[20];
+		
+		imageArray[0] = "./resourcePackage/tutorial0.jpg";
+		imageArray[1] = "./resourcePackage/tutorial1.jpg";
+		imageArray[2] = "./resourcePackage/tutorial2.jpg";
+		imageArray[3] = "./resourcePackage/tutorial3.jpg";
+		imageArray[4] = "./resourcePackage/tutorial4.jpg";
+		imageArray[5] = "./resourcePackage/tutorial5.jpg";
+		imageArray[6] = "./resourcePackage/tutorial6.jpg";
+		
 		picture = new ImageView();
 		
-        image = new Image("./resourcePackage/tutorial0.jpg");
+        image = new Image(imageArray[count++]);
         
         picture.setImage(image);
         
@@ -54,14 +70,18 @@ public class TutorialRoot extends AnchorPane {
 	}
 	
 	public void next(){
-		System.out.println("sss");
-		currentController.getTutOnePane().getChildren().remove(picture);
-		image = null;
-		picture = null;
-		picture = new ImageView();
-		image = new Image("./resourcePackage/tutorial1.jpg");
-		picture.setImage(image);
-		currentController.getTutOnePane().getChildren().add(picture);
+		if(count == 7){
+			referenceWindow.getStage().setScene(referenceWindow.getSplashScene());
+		}
+		else{
+			currentController.getTutOnePane().getChildren().remove(picture);
+			image = null;
+			picture = null;
+			picture = new ImageView();
+			image = new Image(imageArray[count++]);
+			picture.setImage(image);
+			currentController.getTutOnePane().getChildren().add(picture);
+		}
 	}
 	
 }

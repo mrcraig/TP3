@@ -1,7 +1,6 @@
 package thesaurus.gui.window;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import thesaurus.controller.SystemController;

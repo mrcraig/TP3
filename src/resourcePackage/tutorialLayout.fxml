@@ -31,7 +31,7 @@
         <Font name="Arial" size="12.0" fx:id="x1" />
       </font>
     </Text>
-    <Button fx:id="tutorialNext" layoutX="331.0" layoutY="533.0" mnemonicParsing="false" text="Next!">
+    <Button fx:id="tutorialNext" layoutX="331.0" layoutY="533.0" mnemonicParsing="false" text="Next!" onAction="#tutorialNext">
       <font>
         <Font name="Arial" size="32.0" />
       </font>
