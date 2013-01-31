@@ -43,14 +43,14 @@ public class PopupFactory {
 		Text promptSynLabel = getText(10,82,"Synonyms: ",1);
 		final TextField addSynInput = getTextField(70, 80, 120);
 		Text promptAntLabel = getText(10,112,"Antonyms: ",1);
-		TextField addAntInput = getTextField(70, 110, 120);
+		final TextField addAntInput = getTextField(70, 110, 120);
 		Button confirmButton = new Button();
 		confirmButton.setText("Confirm");
 		confirmButton.relocate(30, 160);
 		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				referenceWindow.getVisualisationRoot().getCurrentParser().addVertex(addWordInput.getText(), addSynInput.getText(),"");
+				referenceWindow.getVisualisationRoot().getCurrentParser().addVertex(addWordInput.getText(), addSynInput.getText(),addAntInput.getText());
 				System.out.printf("\n\n=========== %s  ======== %s\n\n",addWordInput.getText(), addSynInput.getText());
 				currentPopup.hide();
 				currentPopup = null;
