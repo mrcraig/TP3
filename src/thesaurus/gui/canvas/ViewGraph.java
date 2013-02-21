@@ -130,7 +130,15 @@ public class ViewGraph {
 					if(v.getSynomyns().size()!=0){
 						for(Vertex c:v.getSynomyns()){
 							drawConnector(childX,childY,c.getPos().getX(),c.getPos().getY(),SYNONYM);
+							childX = c.getPos().getX();
+							childY = c.getPos().getY();
+							if(c.getSynomyns().size()!=0){
+								for(Vertex m:c.getSynomyns()){
+									drawConnector(childX,childY,m.getPos().getX(),m.getPos().getY(),SYNONYM);
+								}
+							}
 						}
+						
 					}
 				}
 			}
@@ -143,6 +151,10 @@ public class ViewGraph {
 					if(v.getSynomyns().size()!=0){
 						for(Vertex c:v.getSynomyns()){
 							drawSynNode(c);
+							if(c.getSynomyns().size()!=0)
+								for(Vertex m:c.getSynomyns()){
+									drawSynNode(m);
+								}
 						}
 					}
 				}
