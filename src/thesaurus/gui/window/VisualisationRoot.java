@@ -47,8 +47,8 @@ public class VisualisationRoot extends AnchorPane {
 	public void addCanvas() {
 		currentController.getCanvasFullGraph().getChildren().removeAll(currentController.getCanvasFullGraph().getChildren());
 		currentController.getCanvasDualGraph().getChildren().removeAll(currentController.getCanvasDualGraph().getChildren());
-		displayGraphFull = new ViewGraph(757, 375,currentVertex, referenceWindow.getVisualisationRoot(),1,1);
-		displayGraphDual = new ViewGraph(354, 362,currentVertex, referenceWindow.getVisualisationRoot(),1,1);
+		displayGraphFull = new ViewGraph(757, 375,currentVertex, referenceWindow.getVisualisationRoot(),1,1,0);
+		displayGraphDual = new ViewGraph(354, 362,currentVertex, referenceWindow.getVisualisationRoot(),1,1,0);
 		currentController.getCanvasFullGraph().getChildren().add(displayGraphFull.returnGraph());
 		currentController.getCanvasDualGraph().getChildren().add(displayGraphDual.returnGraph());
 	}
@@ -95,7 +95,10 @@ public class VisualisationRoot extends AnchorPane {
 	}
 
 	public Vertex runSpringOnVertex(Vertex inputVertex) {
-		FrSpring currentSpring = new FrSpring(inputVertex);
+		int temps = 1;
+		int tempa = 0;
+		int tempg = 0;
+		FrSpring currentSpring = new FrSpring(inputVertex,temps, tempa, tempg);
 		return currentSpring.getCoordinates();
 	}
 
