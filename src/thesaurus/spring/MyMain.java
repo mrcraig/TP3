@@ -203,7 +203,7 @@ public class MyMain extends Application {
 		
 		myW = v18;
 		//myW = v16;
-		fr = new FrSpring(myW);
+		fr = new FrSpring(myW,1,0,0);
 		// fr.getPositions();
 		// fr.test();
 
