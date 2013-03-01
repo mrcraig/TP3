@@ -115,20 +115,20 @@ public class ViewTable {
     		synList += vertex.getSynomyns().get(i).getWord();
     	}
     	
-//    	for(int i=0;i<vertex.getAntonyms().size();i++){
-//    		if(windowWidth>400){
-//	    		if(i%4==0 && i>0){
-//	    			antList += "\n";
-//	    		} else if(i>0){
-//	    			antList += ", ";
-//	    		}
-//    		} else {
-//    			if(i>0){
-//    				antList += "\n";
-//    			}
-//    		}
-//    		antList += vertex.getAntonyms().get(i).getWord();
-//    	}
+    	for(int i=0;i<vertex.getAntonyms().size();i++){
+    		if(windowWidth>400){
+	    		if(i%4==0 && i>0){
+	    			antList += "\n";
+	    		} else if(i>0){
+	    			antList += ", ";
+	    		}
+    		} else {
+    			if(i>0){
+    				antList += "\n";
+    			}
+    		}
+    		antList += vertex.getSynomyns().get(i).getWord();
+    	}
     	//Add data to table
     	data.add(new TabData(vertex.getWord(),synList,antList));
     	
@@ -151,20 +151,20 @@ public class ViewTable {
     			}
         		synList += v.getSynomyns().get(i).getWord();
         		
-//        		for(i=0;i<vertex.getAntonyms().size();i++){
-//            		if(windowWidth>400){
-//        	    		if(i%4==0 && i>0){
-//        	    			antList += "\n";
-//        	    		} else if(i>0){
-//        	    			antList += ", ";
-//        	    		}
-//            		} else {
-//            			if(i>0){
-//            				antList += "\n";
-//            			}
-//            		}
-//            		antList += vertex.getAntonyms().get(i).getWord();
-//            	}
+        		for(i=0;i<vertex.getAntonyms().size();i++){
+            		if(windowWidth>400){
+        	    		if(i%4==0 && i>0){
+        	    			antList += "\n";
+        	    		} else if(i>0){
+        	    			antList += ", ";
+        	    		}
+            		} else {
+            			if(i>0){
+            				antList += "\n";
+            			}
+            		}
+            		antList += vertex.getAntonyms().get(i).getWord();
+            	}
         	}
     		
     		//Add to table
