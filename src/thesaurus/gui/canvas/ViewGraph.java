@@ -27,16 +27,18 @@ public class ViewGraph {
 	private int xOffset = 0;
 	private int yOffset = 0;
 	
-	private int displaySynonyms = 1;
-	private int displayAntonyms = 1;
+	private int displaySynonyms;
+	private int displayAntonyms;
+	private int groupingEnabled;
 	
-	public ViewGraph(int width, int height, Vertex vertex, VisualisationRoot vr, int displaySynonyms, int displayAntonyms){
+	public ViewGraph(int width, int height, Vertex vertex, VisualisationRoot vr, int displaySynonyms, int displayAntonyms, int groupingEnabled){
 		windowWidth = width;
 		windowHeight = height;
 		this.vertex = vertex;
 		this.vr = vr;
 		this.displaySynonyms = displaySynonyms;
 		this.displayAntonyms = displayAntonyms;
+		this.groupingEnabled = groupingEnabled;
 		
 		//Move window to right to support dual view better
 		if(windowWidth<500){
@@ -89,16 +91,19 @@ public class ViewGraph {
 		gc.fillText(v.getWord(), (v.getPos().getX()-xOffset), (v.getPos().getY()+9-yOffset));
 	}
 	
-	/*private void drawAntNode(Vertex v){
-		gc.setStroke(Color.RED);
-		gc.setFill(Color.WHITE);
-		gc.setLineWidth(3);
-		gc.strokeOval((v.getPos().getX()-37+xOffset),(v.getPos().getX()-13+yOffset), 74+xOffset, 36+yOffset);
-		gc.fillOval((v.getPos().getX()-36+xOffset),(v.getPos().getY()-12+yOffset),72+xOffset,34+yOffset);	
+	private void drawAntNode(Vertex v){
+		int nodeWidth = v.getWord().length() * 8;
+		
+		gc.setStroke(Color.BLACK);
+		gc.setFill(Color.rgb(242, 211, 211));
+		gc.setLineWidth(2);
+		gc.strokeOval((v.getPos().getX()-(nodeWidth/2)-xOffset),(v.getPos().getY()-10-yOffset), nodeWidth, 30);
+		gc.fillOval((v.getPos().getX()+1-(nodeWidth/2)-xOffset),(v.getPos().getY()-9-yOffset),nodeWidth-2,28);
 		gc.setFill(Color.BLACK);
-		gc.setFont(new Font(14));
-		gc.fillText(v.getWord(), (v.getPos().getX()-25+xOffset), (v.getPos().getY()+10+yOffset));
-	}*/
+		gc.setFont(new Font(11));
+		gc.setTextAlign(TextAlignment.CENTER);
+		gc.fillText(v.getWord(), (v.getPos().getX()-xOffset), (v.getPos().getY()+9-yOffset));
+	}
 	
 	private void drawConnector(double x1, double y1, double x2, double y2, int type){
 		if(type==1){
@@ -143,6 +148,32 @@ public class ViewGraph {
 				}
 			}
 			
+			if(displayAntonyms==1){
+				double mainX = vertex.getPos().getX();
+				double mainY = vertex.getPos().getY();
+				
+				for(Vertex v:vertex.getSynomyns()){
+					//Draw connector main node to synonym
+					double childX = v.getPos().getX();
+					double childY = v.getPos().getY();
+					drawConnector(childX,childY,mainX,mainY,ANTONYM);
+					//Draw connector synonym to its synonyms
+					if(v.getAntonyms().size()!=0){
+						for(Vertex c:v.getAntonyms()){
+							drawConnector(childX,childY,c.getPos().getX(),c.getPos().getY(),ANTONYM);
+							childX = c.getPos().getX();
+							childY = c.getPos().getY();
+							if(c.getSynomyns().size()!=0){
+								for(Vertex m:c.getAntonyms()){
+									drawConnector(childX,childY,m.getPos().getX(),m.getPos().getY(),ANTONYM);
+								}
+							}
+						}
+						
+					}
+				}
+			}
+			
 			
 			//Draw synonym nodes
 			if(displaySynonyms==1){
@@ -154,6 +185,20 @@ public class ViewGraph {
 							if(c.getSynomyns().size()!=0)
 								for(Vertex m:c.getSynomyns()){
 									drawSynNode(m);
+								}
+						}
+					}
+				}
+			}
+			if(displayAntonyms==1){
+				for(Vertex v:vertex.getAntonyms()){
+					drawAntNode(v);
+					if(v.getAntonyms().size()!=0){
+						for(Vertex c:v.getAntonyms()){
+							drawAntNode(c);
+							if(c.getAntonyms().size()!=0)
+								for(Vertex m:c.getAntonyms()){
+									drawAntNode(m);
 								}
 						}
 					}
