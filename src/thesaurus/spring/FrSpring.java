@@ -22,14 +22,19 @@ public class FrSpring {
 	private double constAF = 0.7;
 	private double constRF = 2.8;
 	private double constK = 1.0;
+	private int sys = 0;
+	private int ant = 0;
+	private int hyp = 0;
 	
 	
-	
-	public FrSpring(Vertex v1) {
+	public FrSpring(Vertex v1,int sys, int ant, int hyp) {
 		
 		this.temprature = ((double) this.width / 50);
 		this.area = (this.width) * (this.length);
 		this.myWord = v1;
+		this.sys = sys;
+		this.ant = ant;
+		this.hyp = hyp;
 		lstVertices = new LinkedList<Vertex>();
 		//layerIndex = 
 		getSnVertex(this.myWord);			           	//add the vertices into arraylist
