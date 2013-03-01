@@ -2,6 +2,8 @@ package thesaurus.gui.window;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Popup;
@@ -25,8 +27,14 @@ public class VisualisationRoot extends AnchorPane {
 	private Vertex currentVertex;
 	private ViewGraph displayGraphFull;
 	private ViewGraph displayGraphDual;
+	private ArrayList<Integer> state;
 
 	public VisualisationRoot(MainWindow inputWindow) throws IOException {
+		
+		state = new ArrayList<Integer>();
+		state.add(0);
+		state.add(0);
+		state.add(0);
 
 		referenceWindow = inputWindow;
 
@@ -47,8 +55,8 @@ public class VisualisationRoot extends AnchorPane {
 	public void addCanvas() {
 		currentController.getCanvasFullGraph().getChildren().removeAll(currentController.getCanvasFullGraph().getChildren());
 		currentController.getCanvasDualGraph().getChildren().removeAll(currentController.getCanvasDualGraph().getChildren());
-		displayGraphFull = new ViewGraph(757, 375,currentVertex, referenceWindow.getVisualisationRoot(),1,1,0);
-		displayGraphDual = new ViewGraph(354, 362,currentVertex, referenceWindow.getVisualisationRoot(),1,1,0);
+		displayGraphFull = new ViewGraph(757, 375,currentVertex, referenceWindow.getVisualisationRoot(),state.get(0),state.get(1),0);
+		displayGraphDual = new ViewGraph(354, 362,currentVertex, referenceWindow.getVisualisationRoot(),state.get(0),state.get(1),0);
 		currentController.getCanvasFullGraph().getChildren().add(displayGraphFull.returnGraph());
 		currentController.getCanvasDualGraph().getChildren().add(displayGraphDual.returnGraph());
 	}
@@ -130,6 +138,10 @@ public class VisualisationRoot extends AnchorPane {
 		referenceWindow.getVisualisationRoot().addCanvas();
 		referenceWindow.getVisualisationRoot().addTable();
 		currentController.defaultZoomValue();
+	}
+	
+	public ArrayList<Integer> getStateArray(){
+		return state;
 	}
 
 	public Vertex getCurrentVertex() {

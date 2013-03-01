@@ -142,6 +142,8 @@ public class SystemController {
 		fileWriter = new OutputStreamWriter(new FileOutputStream(currentFile),"UTF-8");
 		fileWriter.write("<graphml><graph></graph></graphml>");
 		fileWriter.close();
+		referenceWindow.getCurrentRecentArray().add(currentFile.getAbsolutePath());
+		referenceWindow.getSplashRoot().writeToRecentFile();
 
 		VisualisationRoot visualisationRootCurrent = new VisualisationRoot(
 				referenceWindow);
@@ -156,6 +158,8 @@ public class SystemController {
 		setSelectionBoxDefault();
 
 		setUserFeedbackEvents();
+		
+		setSelectionBoxHandlers();
 		
 		setSliderHandlers();
 		
@@ -195,6 +199,8 @@ public class SystemController {
 		setSelectionBoxDefault();
 
 		setUserFeedbackEvents();
+		
+		setSelectionBoxHandlers();
 		
 		setSliderHandlers();
 		
@@ -236,6 +242,8 @@ public class SystemController {
 		setSelectionBoxDefault();
 
 		setUserFeedbackEvents();
+		
+		setSelectionBoxHandlers();
 
 		setSliderHandlers();
 		
@@ -258,20 +266,75 @@ public class SystemController {
 		selectionBoxDual.getSelectionModel().select(1);
 	}
 
-//	private void setSelectionBoxHandlers(){
-//		selectionBoxGraph.setOnMouseReleased(
-//				selectionBoxGraph.selectionModelProperty().getName();
-//				);
-//		selectionBoxGraph.selectionModelProperty().get().addListener(new ChangeListener<Number>() {
-//			public void changed(ObservableValue<? extends Number> ov,
-//					Number old_val, Number new_val) {
-//				System.out.println("Old: " + old_val.doubleValue());
-//				System.out.println("New: " + new_val.doubleValue());
-//				referenceWindow.getVisualisationRoot().getFullGraph()
-//						.setScale(new_val.doubleValue());
-//			}
-//		});
-//	}
+	private void setSelectionBoxHandlers(){
+		
+		
+
+		selectionBoxGraph.getSelectionModel().selectedIndexProperty()
+				.addListener(new ChangeListener<Number>() {
+					public void changed(ObservableValue ov, Number value,
+							Number new_value) {
+						selectionBoxDual.getSelectionModel().select(selectionBoxGraph.getSelectionModel().getSelectedIndex());
+						selectionBoxTable.getSelectionModel().select(selectionBoxGraph.getSelectionModel().getSelectedIndex());
+						if(selectionBoxGraph.getSelectionModel().getSelectedIndex() == 1){
+							referenceWindow.getVisualisationRoot().getStateArray().set(0, 1);
+							referenceWindow.getVisualisationRoot().getStateArray().set(1, 0);
+						}
+						else if(selectionBoxGraph.getSelectionModel().getSelectedIndex() == 2){
+							referenceWindow.getVisualisationRoot().getStateArray().set(0, 0);
+							referenceWindow.getVisualisationRoot().getStateArray().set(1, 1);
+						}
+						else{
+							referenceWindow.getVisualisationRoot().getStateArray().set(0, 1);
+							referenceWindow.getVisualisationRoot().getStateArray().set(1, 1);
+						}
+					}
+				});
+		
+		selectionBoxDual.getSelectionModel().selectedIndexProperty()
+		.addListener(new ChangeListener<Number>() {
+			public void changed(ObservableValue ov, Number value,
+					Number new_value) {
+				selectionBoxGraph.getSelectionModel().select(selectionBoxDual.getSelectionModel().getSelectedIndex());
+				selectionBoxTable.getSelectionModel().select(selectionBoxDual.getSelectionModel().getSelectedIndex());
+				if(selectionBoxGraph.getSelectionModel().getSelectedIndex() == 1){
+					referenceWindow.getVisualisationRoot().getStateArray().set(0, 1);
+					referenceWindow.getVisualisationRoot().getStateArray().set(1, 0);
+				}
+				else if(selectionBoxGraph.getSelectionModel().getSelectedIndex() == 2){
+					referenceWindow.getVisualisationRoot().getStateArray().set(0, 0);
+					referenceWindow.getVisualisationRoot().getStateArray().set(1, 1);
+				}
+				else{
+					referenceWindow.getVisualisationRoot().getStateArray().set(0, 1);
+					referenceWindow.getVisualisationRoot().getStateArray().set(1, 1);
+				}
+			}
+		});
+		
+		selectionBoxTable.getSelectionModel().selectedIndexProperty()
+		.addListener(new ChangeListener<Number>() {
+			public void changed(ObservableValue ov, Number value,
+					Number new_value) {
+				selectionBoxGraph.getSelectionModel().select(selectionBoxTable.getSelectionModel().getSelectedIndex());
+				selectionBoxTable.getSelectionModel().select(selectionBoxTable.getSelectionModel().getSelectedIndex());
+				if(selectionBoxGraph.getSelectionModel().getSelectedIndex() == 1){
+					referenceWindow.getVisualisationRoot().getStateArray().set(0, 1);
+					referenceWindow.getVisualisationRoot().getStateArray().set(1, 0);
+				}
+				else if(selectionBoxGraph.getSelectionModel().getSelectedIndex() == 2){
+					referenceWindow.getVisualisationRoot().getStateArray().set(0, 0);
+					referenceWindow.getVisualisationRoot().getStateArray().set(1, 1);
+				}
+				else{
+					referenceWindow.getVisualisationRoot().getStateArray().set(0, 1);
+					referenceWindow.getVisualisationRoot().getStateArray().set(1, 1);
+				}
+			}
+		});
+		
+
+	}
 
 	private void setSliderHandlers() {
 		sliderGraph.valueProperty().addListener(new ChangeListener<Number>() {
