@@ -29,7 +29,5 @@ two mappings - string and index?
 
 
 
-
-emptyfile should be working
-invisible edges.
+when adding word to empty file, gets added three times in xml, with the same id
 

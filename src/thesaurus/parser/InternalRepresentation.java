@@ -29,7 +29,7 @@ public class InternalRepresentation
 	public void addVertex(String w, String synomyns, String antonyms)
 	{
 		System.out.println(synomyns);
-		String index = read.getLastVertexIndex();
+		String index = read.getIndex();
 		Vertex n = new Vertex(index);
 		n.setWord(w);
 		for(String s : parseCsvToArray(synomyns))
@@ -37,7 +37,7 @@ public class InternalRepresentation
 			Vertex syn = nodes.getVertexFromWord(s);
 			if(syn==null)
 			{
-				Vertex v = new Vertex(read.getLastVertexIndex());
+				Vertex v = new Vertex(read.getIndex());
 				v.setWord(s);
 				n.addSynonym(v);
 				System.out.println("Vertex to be created and saved: "+v);
@@ -53,7 +53,7 @@ public class InternalRepresentation
 			Vertex ant = nodes.getVertexFromWord(a);
 			if(ant==null)
 			{
-				Vertex v = new Vertex(read.getLastVertexIndex());
+				Vertex v = new Vertex(read.getIndex());
 				v.setWord(a);
 				n.addSynonym(v);
 				write.addVertex(v);

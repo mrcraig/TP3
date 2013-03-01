@@ -24,6 +24,7 @@ public class XmlRead
 	private XPathFactory xfactory = XPathFactory.newInstance();
 	private XPath xpath = xfactory.newXPath();
 	private Graph nodes = new Graph();
+	private int lastIndex;
 	boolean emptyFile = false;
 	
 	public XmlRead(File f)
@@ -49,6 +50,8 @@ public class XmlRead
 		{
 			p.printStackTrace();
 		}
+		//this needs fixing
+		this.lastIndex = Integer.parseInt(getLastVertexIndex());
 		getVertices();
 		getEdges();
 	}
@@ -57,6 +60,14 @@ public class XmlRead
 	//{
 	//	XPathExpression expr = xpath.compile("//graphml)
 	//}
+	
+	
+	
+	String getIndex()
+	{
+		return Integer.toString(this.lastIndex++);
+	}
+	
 	
 	String getLastVertexIndex() 
 	{

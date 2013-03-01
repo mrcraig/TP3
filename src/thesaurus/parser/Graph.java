@@ -54,8 +54,7 @@ public class Graph
 				 System.out.println("removed");
 				 nodes.remove(i);
 			 }
-		 }
-		 //System.out.println("current nodes are\n"+nodes);
+		 };
 	 }
 
 	void setNodes(LinkedList<Vertex> nodes)
