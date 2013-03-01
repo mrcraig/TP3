@@ -164,7 +164,7 @@ public class ViewTable {
 //            		}
 //            		antList += vertex.getAntonyms().get(i).getWord();
 //            	}
-//        	}
+        	}
     		
     		//Add to table
     		data.add(new TabData(v.getWord(),synList,antList));
