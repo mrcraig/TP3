@@ -52,15 +52,16 @@ public class XmlWrite {
 		}
 	}
 
-	public void addVertex(Vertex v)
+	public void addVertex(Vertex v, boolean exists)
 	{	
-		this.addNode(v.getWord(), v.getID());
+		if(!exists) this.addNode(v.getWord(), v.getID());
 		String source = v.getID();
 		String target = null;
 		for(Vertex j : v.getSynomyns())
 		{
 			if(j==null) continue;
 			target = j.getID();
+			System.out.println("adding synonym");
 			this.addEdge(source, target, "s");
 		}
 		for(Vertex i : v.getAntonyms())
@@ -110,6 +111,7 @@ public class XmlWrite {
 	
 	void addNode(String word, String ID)
 	{
+		System.out.println("adding Node..."+word+" "+ID);
 		Element node = this.xml.createElement("node");
 		Element data = this.xml.createElement("data");
 		node.setAttribute("id", ID);
@@ -140,6 +142,7 @@ public class XmlWrite {
 		removeEdge(v.getID());
 		nodes.removeVertex(v);
 		saveFile();
+		System.out.println(w+" removed from graphml");
 	}
 	
 	private void removeNode(String id)

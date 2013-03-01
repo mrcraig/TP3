@@ -26,13 +26,44 @@ public class InternalRepresentation
 	 * @param w			The word belonging to the vertex
 	 * @param synomyns	The synonyms for the vertex 
 	 */
-	public void addVertex(String w, String synomyns, String antonyms)
+	public void addVertex(String w, String synonyms, String antonyms)
 	{
-		System.out.println(synomyns);
+
+		System.out.println(synonyms);
 		String index = read.getIndex();
 		Vertex n = new Vertex(index);
 		n.setWord(w);
-		for(String s : parseCsvToArray(synomyns))
+		for(String s : parseCsvToArray(synonyms))
+		{
+			boolean exists = false;
+			if(nodes.contains(nodes.getVertexFromWord(w)))
+			{
+				n = nodes.getVertexFromWord(w);
+				exists = true;
+			}
+			else
+			{
+				index = read.getIndex();
+				n = new Vertex(index);
+				n.setWord(w);
+			}
+			if(!synonyms.isEmpty())
+			{
+				addSynonyms(n, synonyms);
+			}
+			if(!antonyms.isEmpty())
+			{
+				addAntonyms(n, antonyms);
+			}
+			nodes.add(n);
+			write.addVertex(n, exists);
+		}
+	}
+	
+	private void addSynonyms(Vertex n, String synonyms)
+	{
+		for(String s : parseCsvToArray(synonyms))
+
 		{
 			Vertex syn = nodes.getVertexFromWord(s);
 			if(syn==null)
@@ -40,14 +71,19 @@ public class InternalRepresentation
 				Vertex v = new Vertex(read.getIndex());
 				v.setWord(s);
 				n.addSynonym(v);
-				System.out.println("Vertex to be created and saved: "+v);
-				write.addVertex(v);
+				nodes.add(v);
+				write.addVertex(v, false);
 			}
 			else
 			{
 				n.addSynonym(syn);
 			}
 		}
+	}
+	
+	
+	private void addAntonyms(Vertex n, String antonyms)
+	{
 		for(String a : parseCsvToArray(antonyms))
 		{
 			Vertex ant = nodes.getVertexFromWord(a);
@@ -55,21 +91,16 @@ public class InternalRepresentation
 			{
 				Vertex v = new Vertex(read.getIndex());
 				v.setWord(a);
-				n.addSynonym(v);
-				write.addVertex(v);
+				n.addAntonym(v);
+				nodes.add(v);
+				write.addVertex(v, false);
 			}
 			else
 			{
 				n.addAntonym(ant);
 			}
 		}
-		System.out.println(n.getWord());
-		System.out.println("Vertex to be added" + n);
-		
-		nodes.add(n);
-		write.addVertex(n);
 	}
-	
 	
 	public boolean isEmptyFile() {
 		return emptyFile;
@@ -164,7 +195,7 @@ public class InternalRepresentation
 		return nodes.getTableData();
 	}
 	
-	 private String[] parseCsvToArray(String inputCsvString){
+	  String[] parseCsvToArray(String inputCsvString){
          String[] hold = inputCsvString.split(",");
          String[] toReturn = new String[hold.length];
          int i = 0;
@@ -172,5 +203,16 @@ public class InternalRepresentation
                  toReturn[i++] = s.replaceAll("\\s","");
          }
          return toReturn;
+	 }
+	 
+	  LinkedList<String> parseCsvToList(String inputCsvString)
+	 {
+		 String[] split = inputCsvString.split(",");
+		 LinkedList<String> syns = new LinkedList<String>();
+		 for(String s : split)
+		 {
+			 syns.add(s);
+		 }
+		 return syns;
 	 }
 }

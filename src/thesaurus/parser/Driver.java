@@ -1,6 +1,7 @@
 package thesaurus.parser;
 
 import java.io.File;
+import java.util.LinkedList;
 
 
 public class Driver 
@@ -12,9 +13,22 @@ public class Driver
 		System.out.println(test.getAbsolutePath());
 		InternalRepresentation driver = new InternalRepresentation(test);
 		
+		
+		String[] array = driver.parseCsvToArray("");
+		LinkedList<String> list = driver.parseCsvToList("");
 	
-		Vertex t = driver.getOneSynomyn("merry");
-		System.out.println(t);
+		
+		for(String s : array)
+		{
+			System.out.printf("array syn: %s\n",s);
+		}
+		
+		for(String s : list)
+		{
+			System.out.printf("list syn: %s\n",s);
+		}
+		//Vertex t = driver.getOneSynomyn("merry");
+		//System.out.println(t);
 		//driver.addAntonym("Cheerful", "Jubilant");
 		//driver.addSynonym("Cheerful","Merry");
 		

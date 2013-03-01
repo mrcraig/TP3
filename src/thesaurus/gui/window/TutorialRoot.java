@@ -3,10 +3,12 @@ package thesaurus.gui.window;
 import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import thesaurus.controller.SystemController;
 
-/** 
+/**
  * This class is an extension of JavaFX2 node AnchorPane
  * and literally defines what is shown on the screen.
  * It also has mouseHandlers doCreate and doImport.
@@ -14,6 +16,13 @@ import thesaurus.controller.SystemController;
 public class TutorialRoot extends AnchorPane {
 
 	private MainWindow referenceWindow;
+	
+	private ImageView picture;
+	private Image image;
+	
+	private int count;
+	
+	String[] imageArray;
 
 	private SystemController currentController;
 
@@ -32,7 +41,47 @@ public class TutorialRoot extends AnchorPane {
 		} catch (IOException exception) {
 			throw new RuntimeException(exception);
 		}
+		
+		initialise();
 
 	}
 
+	private void initialise(){
+		
+		count = 0;
+		
+		imageArray = new String[20];
+		
+		imageArray[0] = "./resourcePackage/tutorial0.jpg";
+		imageArray[1] = "./resourcePackage/tutorial1.jpg";
+		imageArray[2] = "./resourcePackage/tutorial2.jpg";
+		imageArray[3] = "./resourcePackage/tutorial3.jpg";
+		imageArray[4] = "./resourcePackage/tutorial4.jpg";
+		imageArray[5] = "./resourcePackage/tutorial5.jpg";
+		imageArray[6] = "./resourcePackage/tutorial6.jpg";
+		
+		picture = new ImageView();
+		
+        image = new Image(imageArray[count++]);
+        
+        picture.setImage(image);
+        
+        currentController.getTutOnePane().getChildren().add(picture);
+	}
+	
+	public void next(){
+		if(count == 7){
+			referenceWindow.getStage().setScene(referenceWindow.getSplashScene());
+		}
+		else{
+			currentController.getTutOnePane().getChildren().remove(picture);
+			image = null;
+			picture = null;
+			picture = new ImageView();
+			image = new Image(imageArray[count++]);
+			picture.setImage(image);
+			currentController.getTutOnePane().getChildren().add(picture);
+		}
+	}
+	
 }

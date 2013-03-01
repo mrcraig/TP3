@@ -27,6 +27,7 @@ public class XmlRead
 	private int lastIndex;
 	boolean emptyFile = false;
 	
+	
 	public XmlRead(File f)
 	{
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -50,8 +51,12 @@ public class XmlRead
 		{
 			p.printStackTrace();
 		}
+
 		//this needs fixing
 		this.lastIndex = Integer.parseInt(getLastVertexIndex());
+
+		
+
 		getVertices();
 		getEdges();
 	}
@@ -93,6 +98,7 @@ public class XmlRead
 		}
 		return newID;
 	}
+	
 	
 	
 	

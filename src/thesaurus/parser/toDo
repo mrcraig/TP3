@@ -29,5 +29,10 @@ two mappings - string and index?
 
 
 
+<<<<<<< HEAD
 when adding word to empty file, gets added three times in xml, with the same id
 
+=======
+
+duplicate nodes are being added to xml, probably in addVertex in internalRepresentation
+>>>>>>> fdfa337605f0d527851537f86012c35bc18ab4a8

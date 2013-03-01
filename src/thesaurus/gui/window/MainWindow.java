@@ -1,7 +1,6 @@
 package thesaurus.gui.window;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import thesaurus.controller.SystemController;
@@ -11,7 +10,7 @@ import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 
-/** 
+/**
  * This main window class sets out what is displayed in the window.
  * Initially it sets ups a Splash page to be displayed and
  * send a reference of itself to the splash page so that
@@ -29,20 +28,20 @@ public class MainWindow extends Application {
 	private ArrayList<String> currentRecentArray;
 	private ObservableList<String> currentRecentList;
 
-	public void launchProgram(String[] args){
+	public void launchProgram(String[] args) {
 		launch(args);
 	}
 
 	public void start(Stage stage) throws Exception {
 
 		setCurrentController(new SystemController(this));
-		
+
 		File recentFile = new File("./src/resourcePackage/recentfiles.dat");
-		if(!recentFile.exists()){
-            recentFile.createNewFile();
+		if(!recentFile.exists()) {
+			recentFile.createNewFile();
 		}
 		setCurrentRecentFile(recentFile);
-		
+
 		splashRootCurrent = new SplashRoot(this);
 		stageCurrent = stage;
 		stageCurrent.setResizable(false);
@@ -52,28 +51,28 @@ public class MainWindow extends Application {
 		stageCurrent.getIcons().add(new Image("file:/../src/resourcePackage/o.png"));
 		stageCurrent.show();
 
-	}	
+	}
 
-	public Stage getStage(){
+	public Stage getStage() {
 		return stageCurrent;
 	}
 
-	public SplashRoot getSplashRoot(){
+	public SplashRoot getSplashRoot() {
 		return splashRootCurrent;
 	}
-	
-	public Scene getSplashScene(){
+
+	public Scene getSplashScene() {
 		return splashRootScene;
 	}
 
-	public void setVisualisationRoot(VisualisationRoot inputRoot){
+	public void setVisualisationRoot(VisualisationRoot inputRoot) {
 		visualisationRootCurrent = inputRoot;
 	}
 
-	public VisualisationRoot getVisualisationRoot(){
+	public VisualisationRoot getVisualisationRoot() {
 		return visualisationRootCurrent;
 	}
-	
+
 	public void setCurrentController(SystemController currentControllerInput) {
 		currentController = currentControllerInput;
 	}
@@ -86,8 +85,8 @@ public class MainWindow extends Application {
 		return tutorialRootCurrent;
 	}
 
-	public void setTutorialRootCurrent(TutorialRoot tutorialRootInput) {
-		tutorialRootCurrent = tutorialRootInput;
+	public void setTutorialRootCurrent(TutorialRoot tutorialRootCurrent2) {
+		tutorialRootCurrent = tutorialRootCurrent2;
 	}
 
 	public File getCurrentRecentFile() {

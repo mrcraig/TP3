@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<fx:root type="javafx.scene.layout.AnchorPane" prefHeight="600.0" prefWidth="800.0" stylesheets="/resourcePackage/visualisationStyle.css" xmlns:fx="http://javafx.com/fxml">
+<fx:root type="javafx.scene.layout.AnchorPane" pickOnBounds="false" prefHeight="600.0" prefWidth="800.0" stylesheets="/resourcePackage/visualisationStyle.css" xmlns:fx="http://javafx.com/fxml">
   <children>
     <MenuBar prefHeight="24.0" prefWidth="800.0">
       <menus>
@@ -31,5 +31,11 @@
         <Font name="Arial" size="12.0" fx:id="x1" />
       </font>
     </Text>
+    <Button fx:id="tutorialNext" layoutX="331.0" layoutY="533.0" mnemonicParsing="false" text="Next!" onAction="#tutorialNext">
+      <font>
+        <Font name="Arial" size="32.0" />
+      </font>
+    </Button>
+    <Pane fx:id="tut1pane" layoutX="57.0" layoutY="34.0" prefHeight="492.0" prefWidth="686.0" />
   </children>
 </fx:root>
