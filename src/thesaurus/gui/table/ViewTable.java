@@ -59,7 +59,6 @@ public class ViewTable {
         table.setItems(data);
         table.getColumns().addAll(wordCol, synCol, antCol);
         
-        
         importData();
  
 //        final TextField addFirstName = new TextField();
