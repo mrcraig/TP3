@@ -32,7 +32,7 @@ public class VisualisationRoot extends AnchorPane {
 	public VisualisationRoot(MainWindow inputWindow) throws IOException {
 		
 		state = new ArrayList<Integer>();
-		state.add(0);
+		state.add(1);
 		state.add(0);
 		state.add(0);
 
@@ -55,8 +55,8 @@ public class VisualisationRoot extends AnchorPane {
 	public void addCanvas() {
 		currentController.getCanvasFullGraph().getChildren().removeAll(currentController.getCanvasFullGraph().getChildren());
 		currentController.getCanvasDualGraph().getChildren().removeAll(currentController.getCanvasDualGraph().getChildren());
-		displayGraphFull = new ViewGraph(757, 375,currentVertex, referenceWindow.getVisualisationRoot(),state.get(0),state.get(1),0);
-		displayGraphDual = new ViewGraph(354, 362,currentVertex, referenceWindow.getVisualisationRoot(),state.get(0),state.get(1),0);
+		displayGraphFull = new ViewGraph(757, 375,currentVertex, referenceWindow.getVisualisationRoot(),state.get(0),state.get(1),state.get(2));
+		displayGraphDual = new ViewGraph(354, 362,currentVertex, referenceWindow.getVisualisationRoot(),state.get(0),state.get(1),state.get(2));
 		currentController.getCanvasFullGraph().getChildren().add(displayGraphFull.returnGraph());
 		currentController.getCanvasDualGraph().getChildren().add(displayGraphDual.returnGraph());
 	}

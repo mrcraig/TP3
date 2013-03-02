@@ -288,6 +288,7 @@ public class SystemController {
 							referenceWindow.getVisualisationRoot().getStateArray().set(0, 1);
 							referenceWindow.getVisualisationRoot().getStateArray().set(1, 1);
 						}
+						referenceWindow.getVisualisationRoot().doSearchRefresh();
 					}
 				});
 		
@@ -309,6 +310,7 @@ public class SystemController {
 					referenceWindow.getVisualisationRoot().getStateArray().set(0, 1);
 					referenceWindow.getVisualisationRoot().getStateArray().set(1, 1);
 				}
+				referenceWindow.getVisualisationRoot().doSearchRefresh();
 			}
 		});
 		
@@ -330,6 +332,7 @@ public class SystemController {
 					referenceWindow.getVisualisationRoot().getStateArray().set(0, 1);
 					referenceWindow.getVisualisationRoot().getStateArray().set(1, 1);
 				}
+				referenceWindow.getVisualisationRoot().doSearchRefresh();
 			}
 		});
 		
