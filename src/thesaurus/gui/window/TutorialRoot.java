@@ -62,7 +62,7 @@ public class TutorialRoot extends AnchorPane {
 		
 		picture = new ImageView();
 		
-        image = new Image(imageArray[count++]);
+        image = new Image(imageArray[count]);
         
         picture.setImage(image);
         
@@ -70,7 +70,22 @@ public class TutorialRoot extends AnchorPane {
 	}
 	
 	public void next(){
-		if(count == 7){
+		if(count == 6){
+			referenceWindow.getStage().setScene(referenceWindow.getCurrentScene());
+		}
+		else{
+			currentController.getTutOnePane().getChildren().remove(picture);
+			image = null;
+			picture = null;
+			picture = new ImageView();
+			image = new Image(imageArray[++count]);
+			picture.setImage(image);
+			currentController.getTutOnePane().getChildren().add(picture);
+		}
+	}
+	
+	public void previous(){
+		if(count == 0){
 			referenceWindow.getStage().setScene(referenceWindow.getSplashScene());
 		}
 		else{
@@ -78,10 +93,14 @@ public class TutorialRoot extends AnchorPane {
 			image = null;
 			picture = null;
 			picture = new ImageView();
-			image = new Image(imageArray[count++]);
+			image = new Image(imageArray[--count]);
 			picture.setImage(image);
 			currentController.getTutOnePane().getChildren().add(picture);
 		}
+	}
+
+	public void exit() {
+		referenceWindow.getStage().setScene(referenceWindow.getSplashScene());		
 	}
 	
 }

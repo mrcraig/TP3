@@ -29,6 +29,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -150,6 +151,7 @@ public class SystemController {
 		referenceWindow.setVisualisationRoot(visualisationRootCurrent);
 		referenceWindow.getStage()
 				.setScene(new Scene(visualisationRootCurrent));
+		referenceWindow.setCurrentScene(referenceWindow.getStage().getScene());
 		visualisationRootCurrent.setCurrentParser(currentFile);
 		setVisualisationFileName();
 		
@@ -191,6 +193,7 @@ public class SystemController {
 		referenceWindow.setVisualisationRoot(visualisationRootCurrent);
 		referenceWindow.getStage()
 				.setScene(new Scene(visualisationRootCurrent));
+		referenceWindow.setCurrentScene(referenceWindow.getStage().getScene());
 		visualisationRootCurrent.setCurrentParser(file);
 		setVisualisationFileName();
 
@@ -234,6 +237,7 @@ public class SystemController {
 		referenceWindow.setVisualisationRoot(visualisationRootCurrent);
 		referenceWindow.getStage()
 				.setScene(new Scene(visualisationRootCurrent));
+		referenceWindow.setCurrentScene(referenceWindow.getStage().getScene());
 		visualisationRootCurrent.setCurrentParser(file);
 		setVisualisationFileName();
 
@@ -466,6 +470,7 @@ public class SystemController {
 	@FXML
 	protected void doReturn() throws IOException {
 		referenceWindow.getStage().setScene(referenceWindow.getSplashScene());
+		referenceWindow.setCurrentScene(referenceWindow.getStage().getScene());
 		populateList();
 	}
 
@@ -603,8 +608,17 @@ public class SystemController {
 	
 	@FXML
 	private void tutorialNext (final ActionEvent event) {
-		System.out.println("aaaa");
 		referenceWindow.getTutorialRootCurrent().next();
+	}
+	
+	@FXML
+	private void tutorialPrev (final ActionEvent event) {
+		referenceWindow.getTutorialRootCurrent().previous();
+	}
+	
+	@FXML
+	private void tutorialExit (final ActionEvent event) {
+		referenceWindow.getTutorialRootCurrent().exit();
 	}
 	
 	@FXML
