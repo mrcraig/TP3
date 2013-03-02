@@ -121,6 +121,7 @@ public class ViewGraph {
 	private void drawGraph(){
 		
 		//Draw connectors
+		/*
 			//Synonyms
 			if(displaySynonyms==1){
 				double mainX = vertex.getPos().getX();
@@ -173,6 +174,66 @@ public class ViewGraph {
 					}
 				}
 			}
+			
+			*/
+		
+		
+		//Synonyms of root node
+		for(Vertex v:vertex.getSynomyns()){
+			drawConnector(vertex.getPos().getX(),vertex.getPos().getY(),v.getPos().getX(),v.getPos().getY(),SYNONYM);
+			//Synonyms of synonyms
+			for(Vertex c:v.getSynomyns()){
+				drawConnector(v.getPos().getX(),v.getPos().getY(),c.getPos().getX(),c.getPos().getY(),SYNONYM);
+				//Synonyms of synonyms of synonyms
+				for(Vertex m:c.getSynomyns()){
+					drawConnector(c.getPos().getX(),c.getPos().getY(),m.getPos().getX(),m.getPos().getY(),SYNONYM);
+				}
+				//antonyms of synonyms of synonyms
+				for(Vertex m:c.getAntonyms()){
+					drawConnector(c.getPos().getX(),c.getPos().getY(),m.getPos().getX(),m.getPos().getY(),ANTONYM);
+				}
+			}
+			//Antonyms of synonyms
+			for(Vertex c:v.getAntonyms()){
+				drawConnector(v.getPos().getX(),v.getPos().getY(),c.getPos().getX(),c.getPos().getY(),ANTONYM);
+				//Synonyms of antonyms of synonyms
+				for(Vertex m:c.getSynomyns()){
+					drawConnector(c.getPos().getX(),c.getPos().getY(),m.getPos().getX(),m.getPos().getY(),SYNONYM);
+				}
+				//antonyms of antonyms of synonyms
+				for(Vertex m:c.getAntonyms()){
+					drawConnector(c.getPos().getX(),c.getPos().getY(),m.getPos().getX(),m.getPos().getY(),ANTONYM);
+				}
+			}
+		}
+		//Antonyms of root node
+		for(Vertex v:vertex.getAntonyms()){
+			drawConnector(vertex.getPos().getX(),vertex.getPos().getY(),v.getPos().getX(),v.getPos().getY(),ANTONYM);
+			//Synonyms of antonyms
+			for(Vertex c:v.getSynomyns()){
+				drawConnector(v.getPos().getX(),v.getPos().getY(),c.getPos().getX(),c.getPos().getY(),SYNONYM);
+				//Synonyms of synonyms of antonyms
+				for(Vertex m:c.getSynomyns()){
+					drawConnector(c.getPos().getX(),c.getPos().getY(),m.getPos().getX(),m.getPos().getY(),SYNONYM);
+				}
+				//antonyms of synonyms of antonyms
+				for(Vertex m:c.getAntonyms()){
+					drawConnector(c.getPos().getX(),c.getPos().getY(),m.getPos().getX(),m.getPos().getY(),ANTONYM);
+				}
+			}
+			//Antonyms of antonyms
+			for(Vertex c:v.getAntonyms()){
+				drawConnector(v.getPos().getX(),v.getPos().getY(),c.getPos().getX(),c.getPos().getY(),ANTONYM);
+				//Synonyms of antonyms of antonyms
+				for(Vertex m:c.getSynomyns()){
+					drawConnector(c.getPos().getX(),c.getPos().getY(),m.getPos().getX(),m.getPos().getY(),SYNONYM);
+				}
+				//antonyms of antonyms of antonyms
+				for(Vertex m:c.getAntonyms()){
+					drawConnector(c.getPos().getX(),c.getPos().getY(),m.getPos().getX(),m.getPos().getY(),ANTONYM);
+				}
+			}
+		}
 			
 			
 			//Draw synonym nodes

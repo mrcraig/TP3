@@ -60,34 +60,6 @@ public class ViewTable {
         table.getColumns().addAll(wordCol, synCol, antCol);
         
         importData();
- 
-//        final TextField addFirstName = new TextField();
-//        addFirstName.setPromptText("First Name");
-//        addFirstName.setMaxWidth(firstNameCol.getPrefWidth());
-//        final TextField addLastName = new TextField();
-//        addLastName.setMaxWidth(lastNameCol.getPrefWidth());
-//        addLastName.setPromptText("Last Name");
-//        final TextField addEmail = new TextField();
-//        addEmail.setMaxWidth(emailCol.getPrefWidth());
-//        addEmail.setPromptText("Email");
-// 
-//        final Button addButton = new Button("Add");
-//        addButton.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent e) {
-//                data.add(new Person(
-//                        addFirstName.getText(),
-//                        addLastName.getText(),
-//                        addEmail.getText()));
-//                addFirstName.clear();
-//                addLastName.clear();
-//                addEmail.clear();
-//            }
-//        });
-// 
-//        hb.getChildren().addAll(addFirstName, addLastName, addEmail, addButton);
-//        hb.setSpacing(3);
- 
     }
     
     public TableView<TabData> getTable(){
@@ -95,7 +67,7 @@ public class ViewTable {
     }
     
     private void importData(){
-    	/* Main Vertex */
+    	/* Main Vertex 
     	String synList = "";
     	String antList = "";
     	
@@ -150,24 +122,63 @@ public class ViewTable {
     			}
         		synList += v.getSynomyns().get(i).getWord();
         		
-//        		for(i=0;i<vertex.getAntonyms().size();i++){
-//            		if(windowWidth>400){
-//        	    		if(i%4==0 && i>0){
-//        	    			antList += "\n";
-//        	    		} else if(i>0){
-//        	    			antList += ", ";
-//        	    		}
-//            		} else {
-//            			if(i>0){
-//            				antList += "\n";
-//            			}
-//            		}
-//            		antList += vertex.getAntonyms().get(i).getWord();
-//            	}
+        		for(i=0;i<v.getAntonyms().size();i++){
+            		if(windowWidth>400){
+        	    		if(i%4==0 && i>0){
+        	    			antList += "\n";
+        	    		} else if(i>0){
+        	    			antList += ", ";
+        	    		}
+            		} else {
+            			if(i>0){
+            				antList += "\n";
+            			}
+            		}
+            		antList += v.getAntonyms().get(i).getWord();
+            	}
         	}
     		
     		//Add to table
     		data.add(new TabData(v.getWord(),synList,antList));
+    		
+    		for(Vertex vant:vertex.getAntonyms()){
+    			synList = "";
+        		antList = "";
+        		
+        		for(int i=0;i<vant.getSynomyns().size();i++){
+        			if(windowWidth>400){
+    	        		if(i%4==0 && i>0){
+    	        			synList += "\n";
+    	        		} else if(i>0){
+    	        			synList += ", ";
+    	        		}
+        			} else {
+        				if(i>0){
+        					synList += "\n";
+        				}
+        			}
+            		synList += v.getSynomyns().get(i).getWord();
+            		
+            		for(i=0;i<v.getAntonyms().size();i++){
+                		if(windowWidth>400){
+            	    		if(i%4==0 && i>0){
+            	    			antList += "\n";
+            	    		} else if(i>0){
+            	    			antList += ", ";
+            	    		}
+                		} else {
+                			if(i>0){
+                				antList += "\n";
+                			}
+                		}
+                		antList += v.getAntonyms().get(i).getWord();
+                	}
+            	}
+    		}
+    		
+    		//Add to table
+    		data.add(new TabData(v.getWord(),synList,antList));
+    		
     		
     		//Double click support
     		table.setOnMouseClicked(
@@ -179,7 +190,7 @@ public class ViewTable {
     						}
     					}
     				});
-    	}
+    	}*/
     }
  
     public static class TabData {
