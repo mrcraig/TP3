@@ -152,7 +152,7 @@ public class ViewGraph {
 				double mainX = vertex.getPos().getX();
 				double mainY = vertex.getPos().getY();
 				
-				for(Vertex v:vertex.getSynomyns()){
+				for(Vertex v:vertex.getAntonyms()){
 					//Draw connector main node to synonym
 					double childX = v.getPos().getX();
 					double childY = v.getPos().getY();
@@ -163,7 +163,7 @@ public class ViewGraph {
 							drawConnector(childX,childY,c.getPos().getX(),c.getPos().getY(),ANTONYM);
 							childX = c.getPos().getX();
 							childY = c.getPos().getY();
-							if(c.getSynomyns().size()!=0){
+							if(c.getAntonyms().size()!=0){
 								for(Vertex m:c.getAntonyms()){
 									drawConnector(childX,childY,m.getPos().getX(),m.getPos().getY(),ANTONYM);
 								}
