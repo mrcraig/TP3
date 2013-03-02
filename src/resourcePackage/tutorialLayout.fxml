@@ -31,9 +31,19 @@
         <Font name="Arial" size="12.0" fx:id="x1" />
       </font>
     </Text>
-    <Button fx:id="tutorialNext" layoutX="331.0" layoutY="533.0" mnemonicParsing="false" text="Next!" onAction="#tutorialNext">
+    <Button fx:id="tutorialPrev" prefWidth="200.0" layoutX="175.0" layoutY="533.0" mnemonicParsing="false" text="Previous!" onAction="#tutorialPrev">
       <font>
-        <Font name="Arial" size="32.0" />
+        <Font name="Arial" size="24.0" />
+      </font>
+    </Button>
+    <Button fx:id="tutorialNext" prefWidth="200.0" layoutX="405.0" layoutY="533.0" mnemonicParsing="false" text="Next!" onAction="#tutorialNext">
+      <font>
+        <Font name="Arial" size="24.0" />
+      </font>
+    </Button>
+        <Button fx:id="tutorialExit" layoutX="340.0" layoutY="577.0" mnemonicParsing="false" text="Leave Tutorial" onAction="#tutorialExit">
+      <font>
+        <Font name="Arial" size="12.0" />
       </font>
     </Button>
     <Pane fx:id="tut1pane" layoutX="57.0" layoutY="34.0" prefHeight="492.0" prefWidth="686.0" />

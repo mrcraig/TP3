@@ -27,6 +27,7 @@ public class MainWindow extends Application {
 	private File currentRecentFile;
 	private ArrayList<String> currentRecentArray;
 	private ObservableList<String> currentRecentList;
+	private Scene sceneChoice;
 
 	public void launchProgram(String[] args) {
 		launch(args);
@@ -46,6 +47,7 @@ public class MainWindow extends Application {
 		stageCurrent = stage;
 		stageCurrent.setResizable(false);
 		splashRootScene = new Scene(splashRootCurrent);
+		setCurrentScene(splashRootScene);
 		stageCurrent.setScene(splashRootScene);
 		stageCurrent.setTitle("The Graphical Thesaurus by Team O");
 		stageCurrent.getIcons().add(new Image("file:/../src/resourcePackage/o.png"));
@@ -111,6 +113,14 @@ public class MainWindow extends Application {
 
 	public void setCurrentRecentList(ObservableList<String> currentRecentListInput) {
 		currentRecentList = currentRecentListInput;
+	}
+	
+	public void setCurrentScene(Scene input){
+		sceneChoice = input;
+	}
+	
+	public Scene getCurrentScene(){
+		return sceneChoice;
 	}
 
 }
