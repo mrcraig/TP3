@@ -28,6 +28,7 @@ public class VisualisationRoot extends AnchorPane {
 	private ViewGraph displayGraphFull;
 	private ViewGraph displayGraphDual;
 	private ArrayList<Integer> state;
+	private int limit;
 
 	public VisualisationRoot(MainWindow inputWindow) throws IOException {
 		
@@ -35,6 +36,7 @@ public class VisualisationRoot extends AnchorPane {
 		state.add(1);
 		state.add(0);
 		state.add(0);
+		limit = 5;
 
 		referenceWindow = inputWindow;
 
@@ -103,7 +105,7 @@ public class VisualisationRoot extends AnchorPane {
 	}
 
 	public Vertex runSpringOnVertex(Vertex inputVertex) {
-		FrSpring currentSpring = new FrSpring(inputVertex,state.get(0),state.get(1),state.get(2));
+		FrSpring currentSpring = new FrSpring(inputVertex,state.get(0),state.get(1),state.get(2),limit);
 		return currentSpring.getCoordinates();
 	}
 
