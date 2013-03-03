@@ -133,21 +133,24 @@ public class ViewGraph {
 						drawConnector(c.getPos().getX(),c.getPos().getY(),m.getPos().getX(),m.getPos().getY(),SYNONYM);
 					}
 					//antonyms of synonyms of synonyms
+					/*
 					if(displayAntonyms==1){
 						if(!c.getAntonyms().isEmpty()){
 							System.out.printf("Number of antonyms: %d\n",c.getAntonyms().size());
 							for(Vertex m:c.getAntonyms()){
-								System.out.printf("--: %s\n", m.getWord());
+								System.out.printf("--: %s\n--X: %d\n--Y: %d", m.getWord(),m.getPos().getX(),m.getPos().getY());
 								drawConnector(c.getPos().getX(),c.getPos().getY(),m.getPos().getX(),m.getPos().getY(),ANTONYM);
 							}
 						}
-					}
+					}*/
 				}
 				//Antonyms of synonyms
-				if(displayAntonyms==1){
+				
+				/*if(displayAntonyms==1){
 					for(Vertex c:v.getAntonyms()){
 						drawConnector(v.getPos().getX(),v.getPos().getY(),c.getPos().getX(),c.getPos().getY(),ANTONYM);
 						//Synonyms of antonyms of synonyms
+						/*
 						for(Vertex m:c.getSynomyns()){
 							drawConnector(c.getPos().getX(),c.getPos().getY(),m.getPos().getX(),m.getPos().getY(),SYNONYM);
 						}
@@ -156,7 +159,7 @@ public class ViewGraph {
 							drawConnector(c.getPos().getX(),c.getPos().getY(),m.getPos().getX(),m.getPos().getY(),ANTONYM);
 						}
 					}
-				}
+				}*/
 			}
 		}
 		
@@ -173,15 +176,18 @@ public class ViewGraph {
 							drawConnector(c.getPos().getX(),c.getPos().getY(),m.getPos().getX(),m.getPos().getY(),SYNONYM);
 						}
 						//antonyms of synonyms of antonyms
+						/*
 						for(Vertex m:c.getAntonyms()){
+							System.out.printf("--: %s\n--Y: %d\n", m.getWord(),m.getPos().getY());
 							drawConnector(c.getPos().getX(),c.getPos().getY(),m.getPos().getX(),m.getPos().getY(),ANTONYM);
-						}
+						}*/
 					}
 				}
 				//Antonyms of antonyms
-				for(Vertex c:v.getAntonyms()){
+				/*for(Vertex c:v.getAntonyms()){
 					drawConnector(v.getPos().getX(),v.getPos().getY(),c.getPos().getX(),c.getPos().getY(),ANTONYM);
 					//Synonyms of antonyms of antonyms
+					
 					if(displaySynonyms==1){
 						for(Vertex m:c.getSynomyns()){
 							drawConnector(c.getPos().getX(),c.getPos().getY(),m.getPos().getX(),m.getPos().getY(),SYNONYM);
@@ -191,33 +197,35 @@ public class ViewGraph {
 					for(Vertex m:c.getAntonyms()){
 						drawConnector(c.getPos().getX(),c.getPos().getY(),m.getPos().getX(),m.getPos().getY(),ANTONYM);
 					}
-				}
+				}*/
 			}
 		}
 		
 		/* DRAW NODES */
 		if(displaySynonyms==1){
-			for(Vertex v:vertex.getSynomyns()){
-				drawSynNode(v);
+			for(Vertex l:vertex.getSynomyns()){
+				drawSynNode(l);
 				//Synonyms of synonyms
-				for(Vertex c:v.getSynomyns()){
+				for(Vertex c:l.getSynomyns()){
 					drawSynNode(c);
 					//Synonyms of synonyms of synonyms
 					for(Vertex m:c.getSynomyns()){
 						drawSynNode(m);
 					}
 					//antonyms of synonyms of synonyms
+					/*
 					if(displayAntonyms==1){
 						for(Vertex m:c.getAntonyms()){
 							drawAntNode(m);
 						}
-					}
+					}*/
 				}
 				//Antonyms of synonyms
-				if(displayAntonyms==1){
-					for(Vertex c:v.getAntonyms()){
+				/*if(displayAntonyms==1){
+					for(Vertex c:l.getAntonyms()){
 						drawAntNode(c);
 						//Synonyms of antonyms of synonyms
+						
 						for(Vertex m:c.getSynomyns()){
 							drawSynNode(m);
 						}
@@ -226,32 +234,34 @@ public class ViewGraph {
 							drawAntNode(m);
 						}
 					}
-				}
+				}*/
 			}
 		}
 		
 		//Antonyms of root node
 		if(displayAntonyms==1){
-			for(Vertex v:vertex.getAntonyms()){
-				drawAntNode(v);
+			for(Vertex l:vertex.getAntonyms()){
+				drawAntNode(l);
 				//Synonyms of antonyms
 				if(displaySynonyms==1){
-					for(Vertex c:v.getSynomyns()){
+					for(Vertex c:l.getSynomyns()){
 						drawSynNode(c);
 						//Synonyms of synonyms of antonyms
 						for(Vertex m:c.getSynomyns()){
 							drawSynNode(m);
-						}
+						}/*
 						//antonyms of synonyms of antonyms
 						for(Vertex m:c.getAntonyms()){
 							drawAntNode(m);
-						}
+						}*/
 					}
 				}
 				//Antonyms of antonyms
-				for(Vertex c:v.getAntonyms()){
+				/*
+				for(Vertex c:l.getAntonyms()){
 					drawAntNode(c);
 					//Synonyms of antonyms of antonyms
+					/*
 					if(displaySynonyms==1){
 						for(Vertex m:c.getSynomyns()){
 							drawSynNode(m);
@@ -261,7 +271,7 @@ public class ViewGraph {
 					for(Vertex m:c.getAntonyms()){
 						drawAntNode(m);
 					}
-				}
+				}*/
 			}
 		}
 			
@@ -353,6 +363,115 @@ public class ViewGraph {
 									//found.
 									System.out.println(c.getPos());
 									vr.doClickSearchGraph(c.getWord());
+								}
+							}
+							for(Vertex m:c.getSynomyns()){
+								nodewidth = m.getWord().length() * 5;
+								if((clickX > m.getPos().getX()-nodeWidth) && clickX < (m.getPos().getX() + nodeWidth)){
+									if((clickY > m.getPos().getY()-13) && clickY < (m.getPos().getY()+13)){
+										vr.doClickSearchGraph(m.getWord());
+									}
+								}
+							}
+							for(Vertex m:c.getAntonyms()){
+								nodewidth = m.getWord().length() * 5;
+								if((clickX > m.getPos().getX()-nodeWidth) && clickX < (m.getPos().getX() + nodeWidth)){
+									if((clickY > m.getPos().getY()-13) && clickY < (m.getPos().getY()+13)){
+										vr.doClickSearchGraph(m.getWord());
+									}
+								}
+							}
+						}
+						for(Vertex c:v.getAntonyms()){
+							double nodewidth = c.getWord().length() * 5;
+							if((clickX > c.getPos().getX()-nodeWidth) && clickX < (c.getPos().getX() + nodeWidth)){
+								if((clickY > c.getPos().getY()-13) && clickY < (c.getPos().getY()+13)){
+									//found.
+									System.out.println(c.getPos());
+									vr.doClickSearchGraph(c.getWord());
+								}
+							}
+							for(Vertex m:c.getSynomyns()){
+								nodewidth = m.getWord().length() * 5;
+								if((clickX > m.getPos().getX()-nodeWidth) && clickX < (m.getPos().getX() + nodeWidth)){
+									if((clickY > m.getPos().getY()-13) && clickY < (m.getPos().getY()+13)){
+										vr.doClickSearchGraph(m.getWord());
+									}
+								}
+							}
+							for(Vertex m:c.getAntonyms()){
+								nodewidth = m.getWord().length() * 5;
+								if((clickX > m.getPos().getX()-nodeWidth) && clickX < (m.getPos().getX() + nodeWidth)){
+									if((clickY > m.getPos().getY()-13) && clickY < (m.getPos().getY()+13)){
+										vr.doClickSearchGraph(m.getWord());
+									}
+								}
+							}
+						}
+					}
+					/*ant*/
+
+					for(Vertex v:vertex.getAntonyms()){
+						double nodeWidth = v.getWord().length() * 5;
+						
+						if((clickX > v.getPos().getX()-nodeWidth) && clickX < (v.getPos().getX() + nodeWidth)){
+							if((clickY > v.getPos().getY()-13) && clickY < (v.getPos().getY()+13)){
+								//found.
+								System.out.println("//" + vertex.getSynomyns());
+								vr.doClickSearchGraph(v.getWord());
+								break;
+							}
+						}
+						//child nodes to go here.
+						for(Vertex c:v.getSynomyns()){
+							double nodewidth = c.getWord().length() * 5;
+							if((clickX > c.getPos().getX()-nodeWidth) && clickX < (c.getPos().getX() + nodeWidth)){
+								if((clickY > c.getPos().getY()-13) && clickY < (c.getPos().getY()+13)){
+									//found.
+									System.out.println(c.getPos());
+									vr.doClickSearchGraph(c.getWord());
+								}
+							}
+							for(Vertex m:c.getSynomyns()){
+								nodewidth = m.getWord().length() * 5;
+								if((clickX > m.getPos().getX()-nodeWidth) && clickX < (m.getPos().getX() + nodeWidth)){
+									if((clickY > m.getPos().getY()-13) && clickY < (m.getPos().getY()+13)){
+										vr.doClickSearchGraph(m.getWord());
+									}
+								}
+							}
+							for(Vertex m:c.getAntonyms()){
+								nodewidth = m.getWord().length() * 5;
+								if((clickX > m.getPos().getX()-nodeWidth) && clickX < (m.getPos().getX() + nodeWidth)){
+									if((clickY > m.getPos().getY()-13) && clickY < (m.getPos().getY()+13)){
+										vr.doClickSearchGraph(m.getWord());
+									}
+								}
+							}
+						}
+						for(Vertex c:v.getAntonyms()){
+							double nodewidth = c.getWord().length() * 5;
+							if((clickX > c.getPos().getX()-nodeWidth) && clickX < (c.getPos().getX() + nodeWidth)){
+								if((clickY > c.getPos().getY()-13) && clickY < (c.getPos().getY()+13)){
+									//found.
+									System.out.println(c.getPos());
+									vr.doClickSearchGraph(c.getWord());
+								}
+							}
+							for(Vertex m:c.getSynomyns()){
+								nodewidth = m.getWord().length() * 5;
+								if((clickX > m.getPos().getX()-nodeWidth) && clickX < (m.getPos().getX() + nodeWidth)){
+									if((clickY > m.getPos().getY()-13) && clickY < (m.getPos().getY()+13)){
+										vr.doClickSearchGraph(m.getWord());
+									}
+								}
+							}
+							for(Vertex m:c.getAntonyms()){
+								nodewidth = m.getWord().length() * 5;
+								if((clickX > m.getPos().getX()-nodeWidth) && clickX < (m.getPos().getX() + nodeWidth)){
+									if((clickY > m.getPos().getY()-13) && clickY < (m.getPos().getY()+13)){
+										vr.doClickSearchGraph(m.getWord());
+									}
 								}
 							}
 						}
