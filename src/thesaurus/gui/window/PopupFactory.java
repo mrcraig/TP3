@@ -36,21 +36,23 @@ public class PopupFactory {
 	}
 
 	private Pane makeCanvasAdd() {
-		Pane canvas = getPane(200,230);
+		Pane canvas = getPane(220,230);
 		Text addWordLabel = getText(35,10,"Add Word",2);
-		Text promptWordLabel = getText(10,52,"Word: ",1);
-		final TextField addWordInput = getTextField(70, 50, 120);
-		Text promptSynLabel = getText(10,82,"Synonyms: ",1);
-		final TextField addSynInput = getTextField(70, 80, 120);
-		Text promptAntLabel = getText(10,112,"Antonyms: ",1);
-		final TextField addAntInput = getTextField(70, 110, 120);
+		Text promptWordLabel = getText(5,52,"Word: ",1);
+		final TextField addWordInput = getTextField(80, 50, 120);
+		Text promptSynLabel = getText(5,82,"Synonyms: ",1);
+		final TextField addSynInput = getTextField(80, 80, 120);
+		Text promptAntLabel = getText(5,112,"Antonyms: ",1);
+		final TextField addAntInput = getTextField(80, 110, 120);
+		Text promptCatLabel = getText(5,142,"Category: ",1);
+		final TextField addCatInput = getTextField(80, 140, 120);
 		Button confirmButton = new Button();
 		confirmButton.setText("Confirm");
-		confirmButton.relocate(27, 160);
+		confirmButton.relocate(25, 190);
 		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				referenceWindow.getVisualisationRoot().getCurrentParser().addVertex(addWordInput.getText(), addSynInput.getText(),addAntInput.getText(),"");
+				referenceWindow.getVisualisationRoot().getCurrentParser().addVertex(addWordInput.getText(), addSynInput.getText(),addAntInput.getText(),addSynInput.getText());
 				System.out.printf("\n\n=========== %s  ======== %s\n\n",addWordInput.getText(), addSynInput.getText());
 				currentPopup.hide();
 				currentPopup = null;
@@ -61,7 +63,7 @@ public class PopupFactory {
 		});
 		Button cancelButton = new Button();
 		cancelButton.setText("Cancel");
-		cancelButton.relocate(100, 160);
+		cancelButton.relocate(105, 190);
 		cancelButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -71,7 +73,7 @@ public class PopupFactory {
 		});
 		canvas.getChildren().addAll(addWordLabel, promptWordLabel,
 		                            addWordInput, promptSynLabel, addSynInput, promptAntLabel,
-		                            addAntInput, confirmButton, cancelButton);
+		                            addAntInput, promptCatLabel, addCatInput, confirmButton, cancelButton);
 		canvas.setStyle("	-fx-background-color: #dfdfdf;"
 		                + "-fx-border-color: black;" + "-fx-border-width: 1px;" + "-fx-font-family: 'Arial';");
 		return canvas;
@@ -117,17 +119,19 @@ public class PopupFactory {
 	}
 
 	private Pane makeCanvasEdit() {
-		Pane canvas = getPane(200,200);
+		Pane canvas = getPane(220,230);
 		Text addWordLabel = getText(35,10,"Edit Word",2);
-		Text promptWordLabel = getText(10,52,"Word: ",1);
-		final TextField addWordInput = getTextField(70, 50, 120);
-		Text promptSynLabel = getText(10,82,"Synonyms: ",1);
-		final TextField addSynInput = getTextField(70, 80, 120);
-		Text promptAntLabel = getText(10,112,"Antonyms: ",1);
-		final TextField addAntInput = getTextField(70, 110, 120);
+		Text promptWordLabel = getText(5,52,"Word: ",1);
+		final TextField addWordInput = getTextField(80, 50, 120);
+		Text promptSynLabel = getText(5,82,"Synonyms: ",1);
+		final TextField addSynInput = getTextField(80, 80, 120);
+		Text promptAntLabel = getText(5,112,"Antonyms: ",1);
+		final TextField addAntInput = getTextField(80, 110, 120);
+		Text promptCatLabel = getText(5,142,"Category: ",1);
+		final TextField addCatInput = getTextField(80, 140, 120);
 		Button confirmButton = new Button();
 		confirmButton.setText("Confirm");
-		confirmButton.relocate(30, 160);
+		confirmButton.relocate(25, 190);
 		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -143,7 +147,7 @@ public class PopupFactory {
 		});
 		Button cancelButton = new Button();
 		cancelButton.setText("Cancel");
-		cancelButton.relocate(100, 160);
+		cancelButton.relocate(105, 190);
 		cancelButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -153,7 +157,7 @@ public class PopupFactory {
 		});
 		canvas.getChildren().addAll(addWordLabel, promptWordLabel,
 		                            addWordInput, promptSynLabel, addSynInput, promptAntLabel,
-		                            addAntInput, confirmButton, cancelButton);
+		                            addAntInput, promptCatLabel, addCatInput, confirmButton, cancelButton);
 		canvas.setStyle("	-fx-background-color: #dfdfdf;"
 		                + "-fx-border-color: black;" + "-fx-border-width: 1px;" + "-fx-font-family: 'Arial';");
 		return canvas;
@@ -161,12 +165,12 @@ public class PopupFactory {
 
 	private Pane makeCanvasRemove() {
 		Pane canvas = getPane(200,200);
-		Text addWordLabel = getText(45,10,"Remove Word",2);
+		Text addWordLabel = getText(50,10,"Remove Word",2);
 		Text promptWordLabel = getText(10,52,"Word: ",1);
 		final TextField addWordInput = getTextField(70, 50, 120);
 		Button confirmButton = new Button();
 		confirmButton.setText("Confirm");
-		confirmButton.relocate(30, 160);
+		confirmButton.relocate(25, 160);
 		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -178,7 +182,7 @@ public class PopupFactory {
 		});
 		Button cancelButton = new Button();
 		cancelButton.setText("Cancel");
-		cancelButton.relocate(100, 160);
+		cancelButton.relocate(105, 160);
 		cancelButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
