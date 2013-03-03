@@ -34,7 +34,7 @@ public class VisualisationRoot extends AnchorPane {
 		
 		state = new ArrayList<Integer>();
 		state.add(1);
-		state.add(0);
+		state.add(1);
 		state.add(0);
 		limit = 5;
 
