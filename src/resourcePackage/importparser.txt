@@ -1,0 +1,943 @@
+alcohol
+alky, booze, canned heat, cocktail, drink, ethanol, firewater, hard stuff, hootch, intoxicant, liquor, methanol
+
+shoe
+basketball shoe, boat shoe, boot, cleat, clog, cowboy boot, flip-flops, footgear, golf shoe, high heels, hightops
+
+airplane
+aeroplane, airbus, aircraft, airliner, airship, cab, crate, jet, kite, plane, ramjet, ship
+
+art
+adroitness,aptitude,artistry,craft,dexterity
+lack,unskill, science
+
+be
+abide,act,breathe,continue,do
+
+science 
+art, branch, discipline, information, learning
+art
+
+education
+apprenticeship,background,coaching,drilling,guidance
+ignorance
+
+erudition
+bookishness,brains,cultivation,culture,enlightenment
+ignorance
+
+eclectic
+all-embracing, assorted, broad, catholic, dilettantish, diverse, diversified, heterogeneous,
+
+sputnik
+ancillary, asteroid, luna, moon, rocket, spacecraft, sputnik
+
+discharge
+acquittal, clearance, disimprisonment, exoneration, liberation, pardon, parole, probation, release,
+remittance
+
+direction
+advice,assignment,guidelines,plan,specs
+misdirection,misinstruction
+
+advice
+aid,steer,caution,charge,directions
+betrayal,deceit,deception,falsehood,lie
+
+caution
+attention,care,heed,prudence
+imprudence,vigilance,negligence
+
+care
+alarm,anguish,charge,dismay,distress,fear,hardship,sorrow,stew,strain
+carelessness,disregard,ignorance,neglect,oversight
+
+computer
+CPU, MAC, PC, abacus, adding machine, analog, artificial intelligence, brain, calculator, clone
+
+onus
+blame,blur,bland,charge,culpability,fault
+aid,benefit,blessing,help
+
+blot
+blemish,blur,bland,defect,onus
+blank,clarity
+
+brand
+blot,blur,mark,onus,spot,stain
+
+charge
+allegation,beef,gripe
+exculpation,freeing
+
+duty
+burden, business, calling, charge, chore, commission, commitment, committal, contract, devoir, dues, engagement, function, hook, job, load, millstone, minding the store, mission, must, need, obligation, occupation, office, onus, ought, pains, part, province, role, service, station, string, taking care of business, task, trouble, trust, undertaking, weight, work
+disregard,responsibility
+
+affair
+assignment,avocation, calling, case, circumstance,duty
+
+allegiance
+adherence, ardor, constancy,duty,fealty
+disloyalty,emnity,treason
+
+assessment
+appraisal,charge,demand,duty
+
+assignment
+responsibility,task,appointment,beat,charge,duty,job
+
+burden
+task,blame,care,duty,concern,mishap,onus
+aid,help,relief
+
+business
+affair,assignment,duty,function
+
+chore
+assignment,burden,duty,effort,grind
+
+command
+act,ban,behest,call,canon,caveat,duty,law,mandate
+contradiction,countermand,opposition,recall
+
+commitment
+charge,commital,duty,engagement,must,need,ought
+denial,refusal
+
+compulsion
+coercion,constraint,demand,drive,duty,force
+freedom,independence,liberty,license
+
+conscience
+censor,duty,morals,principles,qualms,
+immorality
+
+debt
+iou,arrears,bill,check,claim,credit,duty,deficit
+asset,cash,credit,excess,profit
+
+department
+activity,admin,assignment,capacity,duty,office,realm
+
+detail
+army,body,duty,fatigue,force,squad,unit
+
+dues
+ante,assessment,charge,custom,debt,duty
+
+errand
+assignment,task,duty,job
+
+excise
+customs,duty,levy,toll
+
+justice
+candor,charity,courtesy,duty,equity,humanity,integrity,right
+inequity,injustice,partiality,unfairness,wrong
+
+conservative
+Tory, bourgeois, constant, controlled, conventional, die-hard, fearful, firm, fogyish, fuddy-duddy
+labour, idiotic
+
+redneck
+backwoodsman/woman, boor, bumpkin, clodhopper, cornfed
+
+hide
+abstain, avert, bypass, circumlocute, circumvent, deflect, desist
+face, meet, seek, want
+
+uncover
+bare, betray, break, bring to light, crack, denude, dig up, discover, display, divulge, expose
+conceal, cover, hide, suppress
+
+dead
+asleep, bereft of life, bloodless, bought the farm, breathless, buried, cadaverous
+alive, animated, being, existent, existing, live, living, subsisting
+
+cadaverous
+ashen, bag of bones, blanched, bloodless, consumptive, dead
+flushed, lifelike, lively
+
+uninteresting
+arid, banal, big yawn, bromidic, common, commonplace, depressing, dismal, drab
+eventful, exciting, interesting
+
+flat
+banal, blah, bland, blind, boring, colorless, dead, dim, uninteresting
+bubbly, effervescent, sharp
+
+faithfulness
+adherence,attachment,care,duty,loyalty
+dishonesty,disloyalty,falseness,treachery
+
+function
+action,activity,affair,charge,duty
+
+gallantry
+address,attentiveness,audacity,courage,daring,duty,honour
+cowardliness,fear
+
+goal
+aim,ambition,design,duty,end,limit,mark
+
+homage
+adoration,allegiance,fealty,loyalty,honour
+dishonour,disloyalty,scorn,treachery
+
+job
+act,action,burden,care,duty,effort,function,role
+fun
+
+levy
+burden,custom,duty,fee
+
+liability
+accountability,amenability,blame,burden,debt,duty
+irresponsibility,unaccountability
+
+load
+affliction,burden,care,charge,duty,liability,onus,trouble,trust
+benefit,blessing
+
+loyalty
+allegiance,bond,duty,faith,honour,tie,truth
+disloyalty, undependability,unfaithfulness
+
+machine
+apparatus, appliance, automaton, automobile, computer, contraption, contrivance, engine, gadget
+
+mark
+aim,ambition,duty,end,objective,use
+
+mission
+aim,assignment,charge,duty,errand,pursuit
+
+must
+charge,commitment,duty,obligation,right
+
+need
+charge,demand,duty,longing,must
+have
+
+number
+account, add, add up, aggregate, amount, come, computer, count heads, count noses, count off, enumerate, estimate
+estimate, guess
+
+object
+aim,duty,end,goal,intent
+
+obligation
+iou,accountability,charge,chit,debt,dues,duty
+
+office
+capacity,charge,commission,duty,post
+
+part
+bit,duty,charge,place,role
+
+percentage
+bite,chunk,duty,fee,part,section,slice
+whole
+
+piety
+allegiance,belief,duty,faith,fealty,passion,zeal
+impiety,irreverence
+
+position
+capacity,connection,duty,job,place,role
+unemployment
+
+province
+arena,business,calling,division,duty,part,post
+
+rate
+allowance,charge,cost,duty,price,tab
+
+responsibility
+authority,care,charge,duty,guilt,power
+exemption,freedom,immunity,irresponsibility
+
+service
+action,combat,duty,fighting
+
+station
+appointment, calling,class,duty,level,place
+
+stint
+assignment,duty,job,share,turn,work
+
+target
+aim,goal,duty,mark,spot
+
+random
+accidental, adventitious, aimless, arbitrary, casual, contingent, designless, desultory, driftless, fluky, fortuitous
+definite, methodical, particular, specific, systematic
+
+convalescent
+ambulatory, discharged, dismissed, gaining strength, getting better, getting over something, getting well
+failing, faltering, regressing, sickly, weak, worsening
+
+therapy
+analysis, cure, healing, medicine, remedial treatment, remedy, therapeutics
+damage, harm, hurt, injury
+
+fresh
+beginning, brand-new, comer, contemporary, crisp, crude, current, different, gleaming
+old, stale, tired, used
+
+aggressive
+assertory, bold, brassy, cheeky, cocky, come on, domineering, dynamic
+complaisant, laid-back
+
+tariff
+assessment,charge,duty,fee,price,toll
+
+task
+assignment,bother,burden,duty,effort,gig,labour,grind,nuisance,onus,pain
+entertainment,fun,pastime
+
+tax
+burden,charge,demand,duty,load,task,weight
+
+thing
+action,deed,duty,episode,job,task,work
+
+tie
+allegiance,association,bond,commitment,connection,duty
+break,divorce
+
+toll
+assessment,charge,cost,customs,demand,duty,expense,levy,payment,price,rate,tariff
+
+trust
+account,care,charge,duty,guard,moment
+
+vigil
+attention,duty,guard,notice,patrol
+
+vocation
+art,calling,career,duty,game,profession,pursuit,role,thing
+entertainment,fun,pastime
+
+watch
+attention,awareness,duty,guard,head,vigil
+
+weight
+charge,duty,load,onus,pressure,task
+advantage,benefit,pleasure,solution
+
+taxation
+assessment,duty,tax
+
+impost
+custom,duty,levy,fee
+
+heavy
+overweight, parturient, ponderous, porcine, portly, pregnant, stout, substantial, top-heavy, two-ton, unmanageable, unwieldy, weighted, weighty, zaftig
+airy, light, lightweight, little, slight, small
+
+abundant
+luxuriant, mucho, no end of, overflowing, plate is full of, plenteous, plenty, profuse, rich, rolling in, stinking with, sufficient, teeming
+lacking, rare, scarce, sparse
+
+sparse
+dispersed, exiguous, few and far between, inadequate, infrequent, meager, occasional, poor, rare, scant, scanty, scarce, scrimpy, skimpy, spare, sporadic, thin, uncommon
+full, lush, plentiful
+
+few
+occasional, paltry, petty, piddling, rare, scant, scanty, scarce, scarcely any, scattered, scattering, seldom, semioccasional, short, skimpy, slender, slight, slim, some, sparse, sporadic, stingy, straggling, thin, trifling, uncommon, unfrequent, widely spaced
+many, much
+
+incompetent
+ineligible, inept, inexperienced, inexpert, insufficient, maladroit, not cut out for, not equal to, not have it, out to lunch, raw, unadapted, unequipped, unfit, unfitted, unhandy, uninitiated, unproficient, unqualified, unskilled, untrained, useless
+able, adept, capable, competent, dexterous, effective, efficient, experienced, expert, proficient, skillful
+
+awkward
+uncouth, unfit, ungainly, ungraceful, unhandy, unpolished, unrefined, unskilled, unskillful
+adroit, artful, dexterous, elegant, graceful, handy, skillful
+
+unrefined
+primitive, raw, rough, rude, troglodytic, uncivilized, uncouth, uncultivated, uncultured, unpolished, unsophisticated, vulgar
+cultured, refined
+
+green
+raw, recent, sprouting, supple, tender, undecayed, undried, unfledged, ungrown, unripe, unseasoned, verdant, verduous, youthful
+old, withered
+
+recent
+neoteric, new, newborn, newfangled, novel, present-day, the latest, today, up-to-date, young
+earlier, future, old, past
+
+radical
+native, natural, organic, original, primal, primary, primitive, profound, thoroughgoing, underlying, vital
+extrinsic, nonessential, superficial
+
+avant-garde
+innovative, lead, leading-edge, liberal, new, new wave, pioneering, progressive, radical, state-of-the-art, vanguard
+conservative, conventional
+
+innovative
+leading-edge, new, newfangled, original, originative, state-of-the-art
+customary, habitual, old, traditional, uncreative, unimaginative
+
+hate
+abhorrence, abomination, anathema, animosity, animus, antagonism, antipathy, aversion, black beast, bother, bugbear, bête noire, detestation, disgust, enmity, execration, frost, grievance, gripe, hatred, horror, hostility
+liking, love, loving
+
+love
+adulation, affection, allegiance, amity, amorousness, amour, appreciation, ardency, ardor, attachment, case, cherishing, crush, delight, devotedness, devotion, emotion, enchantment, enjoyment, fervor, fidelity, flame, fondness, friendship, hankering
+dislike, hate, hatred
+
+happy
+blessed, blest, blissful, blithe, can't complain, captivated, cheerful, chipper, chirpy, content, contented, convivial, delighted, ecstatic, elated, exultant, flying high, gay, glad, gleeful, gratified, intoxicated, jolly, joyful, joyous, jubilant, laughing, light, lively, looking good, merry, mirthful, on cloud nine, overjoyed, peaceful, peppy, perky, playful, pleasant, pleased, sparkling, sunny, thrilled, tickled, tickled pink, up, upbeat, walking on air
+depressed, discouraged, dissatisfied, miserable, morose, pained, sad, sorrowful, unhappy
+
+airy
+animated, blithe, bouncy, cheerful, cheery, effervescent, elastic, fanciful, flippant, frolicsome, gay, graceful, happy, high-spirited, jaunty, light, light-hearted, merry, nonchalant, resilient, sprightly, volatile, whimsical
+burdensome, heavy
+
+animate
+activated, active, alert, animated, dynamic, energized, gay, happy, spirited, vivacious
+discouraged, dull, quiet, shy, spiritless
+
+animated
+activated, active, alert, animate, ardent, brisk, buoyant, dynamic, ebullient, elated, energetic, energized, enthusiastic, excited, fervent, gay, happy, passionate, peppy, quick, snappy, spirited, sprightly, vibrant, vigorous, vital, vitalized, vivacious, vivid, zealous, zestful, zingy, zippy
+
+apt
+applicable, apposite, appropriate, apropos, befitting, correct, felicitous, fit, fitting, germane, happy, just, pertinent, proper, relevant, seemly, suitable, timely
+incorrect, unsuitable
+
+auspicious
+advantageous, bright, favorable, felicitous, fortunate, golden, halcyon, happy, hopeful, lucky, opportune, promising, propitious, prosperous, rosy, timely, well-timed
+inauspicious, inopportune, ominous, unfortunate, unhappy, unlucky
+
+befitting
+apt, becoming, behooving, beseeming, comme il faut, conforming, correct, decent, decorous, felicitous, fit, fitting, happy, just, kosher, nice, on the button
+improper, inappropriate, incorrect, unbecoming, unfitting, unsuitable
+
+bright
+alert, animated, gay, genial, glad, happy, jolly, joyful, joyous, keen, lighthearted, lively, merry, optimistic, sanguine, spirited, sprightly, vivacious
+depressed, depressing, doleful, dreary, gloomy, unhappy
+
+buoyant
+animated, blithe, bouncy, breezy, bright, carefree, cheerful, debonair, effervescent, elastic, expansive, full of zip, gay, happy, invigorated, jaunty, jovial, joyful, laid back, lighthearted, lively, peppy, resilient, sunny, supple, vivacious
+depressed, down, heavy, heavy-hearted
+
+carefree
+airy, at ease, blithe, breezy, buoyant, calm, careless, cheerful, cheery, cool, easy, easy-going, feelgood, happy, happy-go-lucky, insouciant, jaunty, jovial, laid back, radiant, secure, sunny, unanxious, unbothered
+anxious, heavyhearted, troubled, worried
+
+comfortable
+adequate, agreeable, appropriate, at rest, cared for, cheerful, complacent, contented, convenient, cozy, delightful, easy, enjoyable, enjoying, gratified, hale, happy, healthy, hearty, loose, loose-fitting, made well, pleasant, pleased, protected, relaxed, relaxing, relieved, rested, restful, restored, satisfactory, satisfying, serene, sheltered, snug, snug as a bug in a rug, soft, soothed, strengthened, untroubled, useful, warm, well-off
+discontented, hopeless, miserable, neglected, uncomfortable, unhappy, upset
+
+complacent
+conceited, confident, easy-going, egoistic, egotistic, gratified, happy, obsequious, pleased, satisfied, self-assured, self-contented, self-pleased, self-possessed, self-righteous, self-satisfied, serene, smug, unconcerned
+concerned, discontent, discontented, dissatisfied
+
+congenial
+adapted, affable, agreeable, amical, clubby, companionable, compatible, complaisant, congruous, consistent, consonant, conversable, convivial, cooperative, cordial, delightful, favorable, fit, genial, good-humored, gracious, happy, harmonious, jovial, kindly, kindred, like-minded, mellow, pleasant, pleasing, regular fellow, right neighborly, sociable, social, suitable, sympathetic, well-suited
+disagreeable, ill-suited, incompatible, uncongenial, unfriendly, unsympathetic
+
+convivial
+back-slapping, cheerful, clubby, companionable, conversible, entertaining, festal, festive, friendly, gay, genial, glad-handering, happy, hearty, hilarious, holiday, jocund, jolly, jovial, lively, merry, mirthful, pleasant, sociable, vivacious
+blah, dull, serious, solemn, staid
+
+cordial
+affable, affectionate, agreeable, amicable, buddy-buddy, cheerful, clubby, companionable, congenial, convivial, cozy, earnest, genial, glowing, gracious, happy, heart-to-heart, heartfelt, hearty, invigorating, jovial, mellow, neighborly, palsy-walsy, polite, red-carpet, responsive, sincere, social, sympathetic, tender, warm, warmhearted, welcoming, wholehearted
+aloof, cool, disagreeable, hostile, indifferent, inhospitable, uncordial, unfriendly, unpleasant, unsociable
+
+debonair
+affable, buoyant, casual, cheerful, courteous, dashing, detached, happy, jaunty, lighthearted, nonchalant, pleasant, refined, smooth, sprightly, suave, urbane, well-bred
+awkward, clumsy, inelegant, uncharming, undebonair
+
+effervescent
+animated, bouncy, brash, bubbly, buoyant, ebullient, excited, exhilarated, exuberant, gleeful, happy, high-spirited, hilarious, in high spirits, irrepressible, jolly, joyous, lively, merry, mirthful, sprightly, vital, zingy
+dull, inactive, serious, sober, unenthusiastic
+
+favourable
+appropriate, auspicious, benefic, beneficial, benign, bright, cheering, convenient, encouraging, fair, fit, fortunate, full of promise, gratifying, happy, healthful, helpful, hopeful, kindly, lucky, nice, opportune, pleasant, pleasing, pleasurable, pleasureful, promising, propitious, prosperous, providential, reassuring, seasonable, suitable, toward, useful, welcome, well-timed, wholesome, worthy
+bad, derogatory, detrimental, harmful, hindering, hurtful, hurting, injurious, unfavorable, unhelpful
+
+felicitous
+applicable, apposite, apropos, apt, convincing, fit, fitting, germane, happy, inspired, just, meet, neat, opportune, pat, pertinent, proper, propitious, relevant, seasonable, telling, timely, well-chosen, well-timed
+improper, inappropriate, infelicitous, inopportune, unfitting, unsuitable, untimely
+
+fit
+able, adapted, adequate, advantageous, apposite, apt, becoming, befitting, beneficial, capable, comely, comme il faut, competent, conformable, convenient, correct, correspondent, deserving, desirable, due, equipped, equitable, expedient, favorable, feasible, felicitous, fitted, fitting, good enough, happy, just, likely, meet, opportune, practicable, preferable, prepared, proper, qualified, ready, right, rightful, seasonable, seemly, tasteful, timely, trained, well-suited, wise, worthy
+inadequate, inappropriate, incorrect, unfit, unsuitable, unsuited, unworthy
+
+fitting
+applicable, apt, becoming, comme il faut, correct, decent, decorous, desirable, due, felicitous, happy, just, just what was ordered, meet, on the button, on the nose, proper, right, right on, seemly, that's the ticket
+improper, inappropriate, incorrect, unfitting, unseemly, unsuitable
+
+fortuitous
+arbitrary, casual, chance, contingent, fluke, fluky, fortunate, haphazard, happy, incidental, luck in, luck out, lucky-dog, odd, providential, random, serendipitous, unforeseen, unplanned
+calculated, deliberate, designed, intentional, planned, unlucky
+
+fortunate
+advantageous, affluent, auspicious, blessed, born with a silver spoon, bright, charmed, convenient, encouraging, favorable, favored, felicitous, flourishing, fortuitous, gaining, get a break, golden, happy, healthy, helpful, hopeful, in luck, in the gravy, lucky, on a roll, opportune, overcoming, profitable, promising, propitious, prosperous, providential, rosy, sitting pretty, successful, sunny side, thriving, timely, triumphant, victorious, wealthy, well-off, well-to-do
+adverse, sad, unfortunate, unhappy, unlucky, untoward, upset
+
+frolicsome
+antic, coltish, frisky, fun, gamesome, gay, gleeful, happy, impish, jocular, jovial, kittenish, lively, merry, mischievous, roguish, rollicking, sportive, sprightly
+serious, staid, stiff
+
+gala
+bright, colorful, convivial, festal, festive, gay, happy, jovial, joyful, merry
+
+golden
+auspicious, best, blissful, bright, brilliant, delightful, excellent, favorable, flourishing, glorious, happy, joyful, joyous, opportune, precious, promising, propitious, prosperous, resplendent, rich, rosy, shining, successful, valuable
+disadvantaged, ugly, unsuccessful
+
+halcyon
+at peace, balmy, bucolic, gentle, golden, happy, harmonious, palmy, pastoral, quiet, serene, soothing, still, sunny, tranquil, untroubled
+
+hilarious
+amusing, comical, convivial, entertaining, exhilarated, frolicsome, gay, gleeful, gut-busting, happy, humorous, jocular, jolly, jovial, joyful, joyous, laughable, lively, merry, mirthful, noisy, priceless, riot, rollicking, scream, side-splitting, uproarious, witty
+grave, serious, somber, tragic, unfunny
+
+jolly
+blithe, blithesome, bouncy, carefree, cheerful, chipper, chirpy, convivial, daffy, delightful, enjoyable, entertaining, festive, frolicsome, funny, gay, gladsome, gleeful, happy, hilarious, jocund, jokey, joshing, jovial, joyous, jubilant, larking, lighthearted, lots of laughs, merry, mirthful, playful, pleasant, sportive, sprightly, zippy
+sad, unhappy
+
+just
+apt, befitting, condign, deserved, due, felicitous, fit, fitting, happy, justified, legitimate, meet, merited, proper, reasonable, requisite, right, rightful, well-deserved
+inappropriate, unfitting, unjust, unsuitable, unsuited
+
+lighthearted
+blithe, blithesome, bright, buoyant, cheerful, effervescent, expansive, feelgood, frolicsome, gay, glad, gleeful, happy, happy-go-lucky, high-spirited, insouciant, jocund, jolly, jovial, joyful, joyous, laid-back, lightsome, lively, merry, playful, resilient, spirited, sprightly, sunny, upbeat, vivacious, volatile
+depressed, heavy-hearted, troubled, upset, worried
+
+lively
+agile, alert, animate, animated, astir, blithe, blithesome, bouncy, bright, brisk, buoyant, bustling, buzzing, cheerful, chipper, chirpy, complex, dashing, driving, effervescent, enjoyable, enterprising, entertaining, festive, frisky, frolicsome, full of pep, gay, go-go, happy, hyper, industrious, involved, jocund, jumping, keen, merry, nimble, peppy, perky, pert, provocative, quick, refreshing, rousing, snappy, sparkling, spirited, sprightly, spry, stimulating, stirring, vigorous, vivacious, zippy
+apathetic, dispirited, inactive, lethargic, lifeless, sleepy
+
+lucky
+advantageous, adventitious, all systems go, auspicious, beneficial, benign, blessed, charmed, coming up roses, everything going, favored, felicitous, fortuitous, getting a break, golden, happy, hit it big, holding aces, hopeful, hot, in the groove, into something, on a roll, on a streak, promising, propitious, prosperous, providential, serendipitous, striking it rich, successful, timely, well
+bad, inopportune, unfortunate, unlucky, unpropitious, unsuccessful
+
+meet
+accommodated, applicable, appropriate, apt, conformed, equitable, expedient, fair, felicitous, fit, good, happy, just, proper, reconciled, right, suitable, timely
+improper, inappropriate, unfitting, unseemly
+
+mirthful
+amusing, blithe, blithesome, carefree, cheerful, cheery, convivial, enjoyable, entertaining, festive, frolicsome, fun-loving, funny, gay, glad, gleeful, happy, jocund, jolly, joyful, joyous, larking, lighthearted, lively, perky, playful, sunny, vivacious
+
+nonchalant
+airy, aloof, apathetic, blase, calm, careless, casual, cold, collected, composed, cool, detached, disimpassioned, disinterested, dispassionate, easy, effortless, happy, impassive, imperturbable, incurious, indifferent, insouciant, lackadaisical, light, listless, loose, lukewarm, mellow, neglectful, negligent, neutral, offhand, placid, serene, smooth, trifling, uncaring, unconcerned, unemotional, unexcited, unfeeling, unflappable, unimpressible, unperturbed, unruffled, untroubled
+intense, jumpy, nervous, unnerved
+
+opportune
+appropriate, apt, auspicious, convenient, favorable, felicitous, fit, fitting, fortuitous, fortunate, happy, helpful, pat, proper, propitious, seasonable, suitable, timely, timeous, well-timed
+disadvantageous, inauspicious, inopportune, unlucky, unsuitable
+
+pat
+apposite, apropos, apt, auspicious, felicitous, fitting, happy, neat, opportune, pertinent, propitious, rehearsed, timely, to the point
+imprecise, inexact, irrelevant, unacceptable, unsuitable, wrong
+
+promising
+able, assuring, auspicious, bright, encouraging, favorable, gifted, happy, likely, lucky, propitious, reassuring, rising, roseate, rosy, talented, up-and-coming
+hopeless, unpromising
+
+proper
+able, applicable, appropriate, apt, au fait, becoming, befitting, capable, competent, convenient, decent, desired, felicitous, fit, fitting, good, happy, just, legitimate, meet, qualified, right, suited, true, useful
+improper, unacceptable, unsuitable
+
+propitious
+advantageous, auspicious, beneficial, benign, brave, bright, dexter, encouraging, favoring, fortunate, happy, hopeful, lucky, opportune, pat, promising, prosperous, rosy, seasonable, timely, toward, useful, well-timed
+inauspicious, unfavorable, unpromising
+
+prosperous
+appropriate, auspicious, bright, convenient, desirable, favorable, felicitous, fortunate, good, happy, lucky, opportune, profitable, propitious, seasonable, timely, well-timed
+disadvantageous, hopeless, unpromising, unprosperous
+
+rapt
+absent, absent-minded, abstracted, beguiled, bewitched, blissful, busy, captivated, carried away, caught up in, charmed, daydreaming, deep, delighted, dreaming, ecstatic, employed, enamored, engaged, engrossed, enraptured, enthralled, entranced, gripped, happy, held, hung up, hypnotized, immersed, inattentive, intent, involved, lost, oblivious, occupied, overwhelmed, preoccupied, rapturous, ravished, spellbound, taken, transported, unconscious, wrapped, wrapped up
+disenchanted, repulsed, turned off
+
+ready
+agreeable, apt, ardent, disposed, eager, enthusiastic, fain, game, game for, glad, happy, keen, minded, predisposed, prompt, prone, psyched up, wired, zealous
+disinclined, unprepared, unwilling
+
+right
+acceptable, adequate, advantageous, all right, becoming, befitting, comely, comme il faut, common, condign, convenient, correct, decent, decorous, deserved, desirable, done, due, favorable, felicitous, fit, good, happy, ideal, merited, nice, opportune, proper, propitious, requisite, rightful, satisfactory, seemly, sufficient, suitable, tolerable
+inappropriate, unfitting, unsuitable, unsuited, wrong
+
+rollicking
+antic, boisterous, carefree, cavorting, cheerful, devil-may-care, exuberant, frisky, frolicsome, glad, happy, hearty, jaunty, jovial, joyful, joyous, lighthearted, merry, playful, rip-roaring, romping, spirited, sportive, sprightly
+serious, solemn
+
+suitable
+advisable, applicable, apposite, apt, becoming, befitting, commodious, condign, convenient, copacetic, correct, cut out for, deserved, due, expedient, felicitous, fit, fitting, good, good enough, handy, happy, in character, in keeping, just, kosher, legit, meet, merited, nice, okay, opportune, peachy, pertinent, politic, presentable, proper, reasonable, relevant, requisite, right, righteous, rightful, satisfactory, seemly, sufficient, suited, swell, up to snuff, useful, user friendly
+improper, inappropriate, irrelevant, unacceptable, unfitting, unsuitable
+
+tipsy
+addled, dazed, drunk, drunken, fuddled, happy, high, intoxicated, irrigated, lit, loaded, mellow, merry, stewed, tight, unsteady, woozy
+sober
+
+triumphant
+boastful, celebratory, champion, conquering, dominant, elated, exultant, glorious, happy, in the lead, jubilant, looking good, lucky, on top, out front, prizewinning, proud, rejoicing, swaggering, triumphal, unbeaten, undefeated, victorious, winning
+defeated, failing, losing, unsuccessful
+
+upbeat
+buoyant, cheery, encouraging, favorable, fond, happy, heartening, hopeful, optimistic, positive, promising, rosy, sanguine
+depressed, down, sad
+
+vivacious
+active, alert, animate, animated, bouncy, brash, breezy, bubbling, cheerful, ebullient, effervescent, exuberant, frolicsome, full of life, gay, happy, high-spirited, jolly, jumping, keen, lighthearted, merry, playful, rocking, scintillating, sparkling, sportive, sprightly, swinging, upbeat, vibrant, vital, zesty
+boring, dispirited, dull, unattractive, unhappy
+
+warm
+affable, affectionate, amiable, amorous, ardent, cheerful, compassionate, cordial, empathetic, fervent, genial, gracious, happy, heartfelt, hearty, hospitable, kindhearted, kindly, loving, pleasant, responsive, sincere, softhearted, sympathetic, tender, warmhearted, wholehearted
+aloof, cold, cool, uncaring, unfeeling, unfriendly, unkind
+
+red-letter
+auspicious, banner, fortunate, happy, memorable, notable, noteworthy
+
+well
+advisable, agreeable, bright, comfortable, fine, fitting, flourishing, good, happy, pleasing, profitable, proper, prosperous, providential, prudent, right, satisfactory, thriving, useful
+unfortunate, unhappy, unlucky
+
+willing
+accommodating, active, amenable, cheerful, compliant, consenting, content, deliberate, desirous, disposed, eager, energetic, enthusiastic, fair, favorable, feeling, forward, game, go along with, happy, in accord with, in favor, in the mood, inclined, intentional, like-minded, obedient, one, pleased, predisposed, prepared, prompt, prone, reliable, responsible, tractable, unasked, unbidden, unforced, voluntary, well-disposed, willful, witting, zealous
+disagreeable, unprepared, unwilling
+
+cheery
+bright, happy, lively, pleasant, sprightly
+
+enchanted
+delighted, enraptured, entranced, fascinated, happy
+
+entertained
+amused, beguiled, charmed, cheered, delighted, engrossed, enjoying oneself, enthralled, entranced, exhilarated, happy, having fun, interested, occupied, pleased, relaxed, tickled, transported
+bored, depressed, irritated
+
+jocular
+amusing, blithe, boffo, camp, campy, cheerful, comic, comical, crazy, daffy, droll, facetious, flaky, for grins, frolicsome, gagged up, gay, gleeful, happy, humorous, jesting, jocose, jocund, jokey, joking, jolly, joshing, jovial, joyous, laughable, lighthearted, lively, ludicrous, merry, mischievous, playful, pleasant, roguish, sportive, teasing, wacky, waggish, whimsical, witty
+serious, solemn
+
+pleased
+appreciative, charmed, content, contented, happy, satisfied
+
+rapturous
+delighted, delightful, enchanted, enraptured, euphoric, happy
+
+satisfied
+appeased, certain, compensated, contented, convinced, filled, fulfilled, gratified, happy, paid, positive, quenched, requited, sated, satiated, supplied
+
+blithesome
+blithe, carefree, cheerful, cheery, convivial, gladsome, gleeful, happy, jocund, jolly, jovial, joyful, joyous, lighthearted, lightsome, merry, mirthful, sunny
+
+gratified
+accomplished, achieved, actualized, attained, brought about, brought to a close, carried out, compassed, concluded, consummated, content, crowned, delighted, dispatched, effected, effectuated, executed, finished, happy, made good, matured, obtained, perf
+
+rose-coloured
+Panglossian, Utopian, assured, bright, buoyant, cheerful, cheering, confident, encouraged, expectant, happy, high, hopeful, hoping, idealistic, keeping the faith, looking on the bright side, looking through rose-colored glasses, merry, on cloud nine, on top of world, positive, promising, ray of sunshine, roseate, rosy, sanguine, sunny, trusting, upbeat
+
+tickled
+animated, beaming, beautiful, blithesome, bright, can't complain, cheerful, cheering, cheery, contented, delighted, exhilarated, felicitous, floating on air, gay, genial, gleeful, gratified, gratifying, happy, hilarious, jocund, jovial, joyful, joyous, lighthearted, merry, mirthful, overjoyed, pleasant, pleased, pleased as punch, pleasing, radiant, rejoicing, sparkling, tickled pink, tickled to death, up, willing
+
+sad
+bereaved, bitter, blue, cheerless, dejected, despairing, despondent, disconsolate, dismal, distressed, doleful, down, down in dumps, down in mouth, downcast, forlorn, gloomy, glum, grief-stricken, grieved, heartbroken, heartsick, heavyhearted, hurting, in doldrums, in grief, in the dumps, languishing, low, low-spirited, lugubrious, melancholy, morbid, morose, mournful, out of sorts, pensive, pessimistic, sick at heart, somber, sorrowful, sorry, troubled, weeping, wistful, woebegone
+cheerful, glad, happy, joyful
+
+bad
+abominable, amiss, atrocious, awful, bad news, beastly, blah, bottom out, bummer, careless, cheap, cheesy, crappy, cruddy, crummy, defective, deficient, diddly, dissatisfactory, downer, dreadful, erroneous, fallacious, faulty, garbage, godawful, grody, gross, grungy, icky, imperfect, inadequate, incorrect, inferior, junky, lousy, not good, off, poor, raunchy, rough, sad, slipshod, stinking, substandard, synthetic, the pits, unacceptable, unsatisfactory
+good, honest, reputable, right, upright, virtuous, worthy
+
+black
+atrocious, bleak, depressing, depressive, dismal, dispiriting, distressing, doleful, dreary, foreboding, funereal, gloomy, horrible, lugubrious, mournful, ominous, oppressive, sad, sinister, sombre, threatening
+hopeful, optimistic
+
+bleak
+black, cheerless, comfortless, dark, discouraging, disheartening, dismal, drear, dreary, funereal, gloomy, grim, hard, harsh, hopeless, joyless, lonely, melancholy, mournful, oppressive, sad, somber, unpromising
+cheerful, comforting, congenial, encouraging, nice, pleasant
+
+cabin fever
+SAD , claustrophobia, climbing the walls, climbing the walls, distress, neurosis, restlessness, seasonal affective disorder, temporary insanity, winter blues
+
+cheerless
+austere, black, bleak, blue, comfortless, dark, dejected, dejecting, depressed, desolate, despondent, disconsolate, dismal, dispiriting, dolorous, drab, draggy, drearisome, dreary, dull, forlorn, funereal, gloomy, grim, in the dumps, jarring, joyless, melancholy, miserable, mopey, mournful, oppressive, sad, somber, sorrowful, sullen, tenebrific, uncomfortable, wintry, woebegone, woeful
+bright, cheerful, happy, uplifting
+
+contemptible
+abhorrent, abject, abominable, bad, base, beggarly, cheap, crass, currish, degenerate, despisable, detestable, dirty, disgusting, hateful, heel, ignoble, ignominious, inferior, low, low-down, lowest, mean, odious, outcast, paltry, pitiable, pitiful, poor, sad, scummy, scurvy, shabby, sordid, sorry, swinish, unworthy, vile, worthless, wretched
+admirable, admired, good, honorable, loved, respectable, worthy
+
+crestfallen
+ass in a sling, blue, cast down, chapfallen, dejected, depressed, despondent, disconsolate, discouraged, disheartened, dispirited, down, down in the dumps, downcast, downhearted, in a funk, inconsolable, low, sad, singing the blues, taken down
+cheered, elated, encouraged, excited, happy, hearted, inspirited
+
+dejected
+abject, all torn up, atrabilious, black, bleak, broody, bummed out, cast down, cheerless, clouded, crestfallen, dampened, dashed, despondent, disconsolate, discouraged, disheartened, dismal, dispirited, doleful, down, down in the dumps, down in the mouth, downcast, downhearted, dragged, drooping, droopy, gloomy, glum, heavyhearted, hurting, in the pits, low, low-spirited, melancholy, miserable, moody, mopey, mopish, morose, sad, sagging, shot down, spiritless, woebegone, wretched
+cheerful, encouraged, happy, joyous
+
+depressed
+bad, bleeding, blue, bummed out, cast-down, crestfallen, crummy, dejected, despondent, destroyed, disconsolate, dispirited, down, down and out, down in the dumps, down in the mouth, downcast, downhearted, dragged, fed up, glum, grim, hurting, in a blue funk, in pain, in the dumps, in the pits, in the toilet, let down, low, low-down, low-spirited, lugubrious, melancholy, moody, morose, on a downer, pessimistic, ripped, sad, sob story, spiritless, taken down, torn up, unhappy, weeping, woebegone
+cheerful, comforted, encouraged, happy, satisfied, unburdened
+
+depressing
+black, bleak, daunting, dejecting, disheartening, dismal, dispiriting, distressing, dreary, funereal, gloomy, heartbreaking, hopeless, joyless, melancholic, melancholy, mournful, oppressive, sad, saddening, somber
+cheering, encouraging, happy
+
+despairing
+anxious, at end of one's rope, blue, brokenhearted, can't win, cynical, dejected, depressed, desperate, disconsolate, downcast, forlorn, frantic, grief-stricken, hopeless, in pain, in the dumps, in the pits, in the soup, inconsolable, melancholic, melancholy, miserable, no-win, not a prayer, oppressed, pessimistic, sad, shot down, strabilious, suicidal, sunk, weighed down, wretched
+confident, encouraged, expectant, hopeful
+
+desperate
+at end of one's rope, back to the wall, can't win, dead duck, despairing, despondent, desponding, downcast, forlorn, futile, gone, goner, hard up, in the soup, in the toilet, inconsolable, irrecoverable, irremediable, irretrievable, no-chance, no-way, no-win, running out of time, sad, sunk, up against it, up the creek, useless, vain, wretched
+hopeful
+
+despondent
+all torn up, blue, bummed-out, cast-down, dejected, despairing, disconsolate, discouraged, disheartened, dispirited, doleful, down, downcast, downhearted, forlorn, gloomy, glum, griefstricken, grieving, hopeless, in a blue funk, in despair, in the pits, low, low-spirited, melancholy, miserable, morose, mourning, sad, shot down, sorrowful, woebegone, wretched
+cheerful, elated, happy, hopeful, spirited, up
+
+disconsolate
+bad, black, blue, cheerless, cold, comfortless, crestfallen, crushed, dark, dejected, desolate, despairing, destroyed, dispirited, distressed, doleful, down, downcast, downhearted, dreary, forlorn, gloomy, grief-stricken, heartbroken, hopeless, hurting, in pain, in the pits, inconsolable, low, melancholy, miserable, ripped, sad, somber, sorrowful, torn-up, woebegone, woeful, wretched
+cheerful, consoled, happy, solaced, soothed
+
+discouraged
+beat, beat-down, blue, caved-in, come-apart, crestfallen, dashed, daunted, depressed, deterred, dismayed, dispirited, down, down-in-mouth, downbeat, downcast, glum, gone to pieces, in a funk, in blue funk, in the dumps, lost momentum, pessimistic, sad
+encouraged, heartened, inspired
+
+dismal
+afflictive, black, boring, cheerless, cloudy, dark, depressed, depressing, desolate, despondent, dim, dingy, disagreeable, discouraging, disheartening, dispiriting, doleful, dolorous, dull, forlorn, frowning, funereal, ghastly, gruesome, hopeless, horrible, horrid, in the pits, inauspicious, joyless, lonesome, lowering, lugubrious, melancholy, miserable, monotonous, morbid, murky, oppressive, overcast, sad, shadowy, somber, sorrowful, tedious, tenebrous, troublesome, unfortunate, unhappy
+bright, cheerful, glad, happy, hopeful, light, pleasant
+
+doleful
+afflicted, cast down, cheerless, crestfallen, dejected, depressed, dirgeful, dismal, dispirited, distressing, dolent, dolorous, down, down in the mouth, downcast, downhearted, dreary, forlorn, funereal, gloomy, grieving, lamentable, lugubrious, melancholy, mournful, painful, piteous, pitiful, plaintive, rueful, sad, somber, sorrowful, woebegone, woeful, wretched
+cheerful, elated, glad, gleeful, happy, joyful
+
+down
+bad, blue, cast down, chapfallen, crestfallen, dejected, depressed, disheartened, dispirited, downcast, downhearted, low, miserable, off, sad, slack, sluggish
+cheerful, cheery, happy, heartened
+
+downcast
+bad, blue, brooding, bummed out, cast down, chapfallen, cheerless, crestfallen, daunted, dejected, despondent, disappointed, disconsolate, discouraged, disheartened, dismayed, dispirited, distressed, doleful, down, down in the dumps, down-in-the-mouth, downhearted, dragged, droopy, dull, forlorn, gloomy, glum, heartsick, in pain, listless, low, low-spirited, miserable, moody, mopey, morose, oppressed, sad, shot down, singing the blues, sunk, troubled, weighed down, woebegone
+cheerful, elated, glad, happy, heartened, satisfied
+
+dreary
+black, blah, bleak, boring, cheerless, colorless, comfortless, damp, depressing, depressive, dingy, dismal, dispiriting, doleful, downcast, drab, dull, forlorn, funereal, glum, humdrum, joyless, lonely, lonesome, melancholy, monotonous, mournful, oppressive, pedestrian, raw, routine, sad, somber, sorrowful, tedious, uneventful, uninteresting, wearisome, windy, wintry, wretched
+bright, clear, happy, light, pleasant
+
+elegiac
+doleful, funereal, melancholy, mournful, sad, sorrowful, threnodial
+
+frail
+brittle, dainty, decrepit, delicate, feeble, fishy, flimsy, fracturable, fragile, frangible, infirm, insubstantial, puny, sad, shatterable, shattery, sickly, slender, slight, slim, tender, tenuous, thin, unsound, unsubstantial, vulnerable, wimpy, wishy-washy, wispy
+firm, strong, unbreakable
+
+funereal
+black, bleak, dark, deathlike, dirgelike, disheartening, dismal, doleful, dreary, elegiac, gloomy, grave, grim, lamenting, lugubrious, melancholy, mournful, oppressive, sad, sepulchral, serious, solemn, somber, woeful
+cheerful, happy, joyful, lively, upbeat
+
+gloomy
+blue funk, broody, chapfallen, cheerless, crabbed, crestfallen, dejected, depressed, desolate, despondent, disconsolate, dismal, dispirited, dour, down in the dumps, down in the mouth, downcast, downhearted, dragged, forlorn, glum, in low spirits, in the dumps, joyless, low, melancholy, mirthless, miserable, moody, moping, mopish, morose, mournful, oppressed, pessimistic, sad, saturnine, solemn, sulky, sullen, surly, ugly, unhappy, weary, woebegone, woeful
+animated, cheerful, content, encouraged, happy, joyful, sparkling, vivacious
+
+glum
+blue, bummed out, dejected, depressed, dismal, dispirited, down, gloomy, low, melancholy, morose, sad, sulky
+
+grievous
+afflicting, agonizing, appalling, atrocious, calamitous, damaging, deplorable, dire, dismal, disquieting, distressing, disturbing, dreadful, egregious, flagrant, glaring, grave, harmful, heart-rending, heavy, heinous, hurtful, injurious, intolerable, lamentable, monstrous, mournful, offensive, onerous, oppressive, outrageous, pathetic, pitiful, sad, shameful, sharp, shocking, sorrowful, taxing, tough, tragic, troublesome, unbearable, upsetting, villainous, weighty, wounding
+good, harmless, pleasant
+
+heartbreaking
+affecting, afflictive, agonizing, bitter, calamitous, cheerless, deplorable, dire, distressing, grievous, heart-rending, joyless, lamentable, moving, pitiful, poignant, regrettable, sad, touching, tragic, unfortunate
+exhilarating, heartwarming, joyous, wonderful
+
+heartrending
+agonizing, distressing, doleful, excruciating, harrowing, heartbreaking, heartsickening, moving, piteous, pitiful, sad, tear-jerking, touching, tragic
+
+heartsick
+all torn up, blue, bummed-out, dejected, depressed, despairing, disappointed, disconsolate, disheartened, down, forlorn, grieving, heavy-hearted, inconsolable, low, melancholy, mournful, sad, unhappy, woebegone
+
+heavy
+close, cloudy, crestfallen, damp, dark, dejected, despondent, disconsolate, dismal, downcast, dull, grieving, leaden, lowering, melancholy, oppressive, overcast, sad, sodden, soggy, sorrowful, stifling, wet
+gay, happy, joyful
+
+hopeless
+bad, beyond recall, cynical, dejected, demoralized, despairing, desperate, despondent, disconsolate, discouraging, downhearted, fatal, forlorn, gone, goner, helpless, ill-fated, impossible, impracticable, in despair, incurable, irredeemable, irreparable, irreversible, irrevocable, lost, menacing, no-win, past hope, pointless, sad, shot down, sinister, sunk, threatening, tragic, unachievable, unavailing, unfortunate, unmitigable, up the creek, useless, vain, woebegone, worsening
+auspicious, bright, encouraging, expectant, hopeful, optimistic, promising, propitious, rosy
+
+hurt
+aching, aggrieved, agonized, all torn up, battered, bleeding, bruised, buffeted, burned, busted up, contused, crushed, cut, damaged, disfigured, distressed, disturbed, grazed, harmed, hit, impaired, in pain, indignant, lacerated, marred, mauled, miffed, mutilated, nicked, offended, pained, piqued, put away, resentful, rueful, sad, scarred, scraped, scratched, shook, shot, sore, stricken, struck, suffering, tender, tortured, umbrageous, unhappy, warped, wounded
+comforted, cured, healed, healthy, ok, pleased, remedied, well
+
+inconsolable
+comfortless, dejected, desolate, despairing, disconsolate, discouraged, distressed, forlorn, heartbroken, heartsick, sad, unconsolable
+consolable, happy, understanding
+
+inferior
+average, bad, base, common, declasse, fair, good-for-nothing, hack, imperfect, indifferent, junk, lemon, lousy, low-grade, low-rent, mean, mediocre, middling, ordinary, paltry, poorer, sad, second-class, sorry, substandard, tawdry, two-bit, worse, wretched
+
+lamentable
+afflictive, awful, bad, calamitous, deplorable, dire, dirty, distressing, doleful, dolorous, god-awful, grievous, grim, heartbreaking, hurting, lousy, low, lugubrious, meager, mean, melancholy, mournful, pitiful, plaintive, poor, regretful, rotten, rueful, sad, sorrowful, stinking, tragic, unfavorable, unfortunate, unsatisfactory, woeful, wretched
+cheering, fortunate, good, lucky, satisfactory
+
+low
+bad, blue, crestfallen, dejected, despondent, disheartened, down, down and out, down in the dumps, down in the mouth, downcast, downhearted, dragged, fed up, forlorn, gloomy, glum, in the pits, low-down, miserable, moody, morose, sad, singing the blues, spiritless, unhappy
+cheerful, gay, happy
+
+miserable
+afflicted, agonized, ailing, anguished, brokenhearted, crestfallen, dejected, desolate, despairing, despondent, destroyed, disconsolate, discontented, distressed, doleful, dolorous, down, down in the mouth, downcast, forlorn, gloomy, heartbroken, hopeless, hurt, hurting, ill, in pain, injured, melancholy, mournful, on a downer, pained, pathetic, pitiable, racked, rueful, ruthful, sad, sick, sickly, sorrowful, strained, suffering, tormented, tortured, tragic, troubled, woebegone, wounded, wretched
+cheerful, elated, happy, joyful, merry
+
+moody
+angry, cantankerous, capricious, changeable, crabbed, crestfallen, cross, dismal, doleful, dour, down in the dumps, down in the mouth, downcast, erratic, fickle, fitful, flighty, frowning, gloomy, glum, huffy, ill-humored, ill-tempered, impulsive, in a huff, in the doldrums, introspective, irascible, irritable, lugubrious, melancholy, mercurial, miserable, moping, morose, offended, out of sorts, pensive, petulant, piqued, sad, saturnine, short-tempered, splenetic, sulky, sullen, testy, touchy
+balanced, cheerful, happy, overjoyed
+
+morose
+acrimonious, blue, brusque, cantankerous, choleric, churlish, crabbed, crabby, cranky, cross, dolorous, dour, down, down in the dumps, down in the mouth, frowning, gloomy, glum, grouchy, gruff, harsh, having blue devils, having the blahs, ill-humored, ill-tempered, in a bad mood, in a blue funk, irritable, low, melancholy, moody, moping, mournful, perverse, perversive, sad, saturnine, singing the blues, snappish, sour, splenetic, sulky, sullen, surly, taciturn, testy, troubled, ugly
+cheerful, friendly, happy, light-hearted, optimistic, uplifted
+
+mournful
+anguished, bereft, cheerless, depressed, disconsolate, distressing, doleful, dolent, forlorn, full of sorrow, grief-stricken, grieving, grievous, heartbroken, in mourning, in pain, in sorrow, lamentable, pitiful, sad, sombre, woeful
+
+murky
+black, caliginous, cheerless, cloudy, dark, darkened, dim, dingy, dirty, dismal, drab, dreary, dull, dun, dusk, dusky, filthy, foggy, foul, fuzzy, glowering, gray, grubby, impenetrable, lowering, misty, mucky, muddy, nasty, nebulous, nubilous, overcast, roily, sad, smoky, somber, squalid, stormy, tenebrous, turbid, unclean
+bright, clear, light, luminous, sparkling, unobscured
+
+pessimistic
+bleak, cynical, dark, dejected, depressed, despairing, despondent, discouraged, distrustful, downhearted, fatalistic, foreboding, gloomy, glum, hopeless, melancholy, misanthropic, morbid, morose, resigned, sad, sullen, troubled, worried
+confident, optimistic, trusting
+
+pitiful
+abject, affecting, afflicted, arousing, base, beggarly, cheap, cheerless, comfortless, commiserative, compassionate, contemptible, deplorable, despicable, dismal, distressed, distressing, grievous, heartbreaking, heartrending, inadequate, insignificant, joyless, lamentable, low, mean, miserable, mournful, moving, paltry, pathetic, piteous, pitiable, sad, scurvy, shabby, sorrowful, sorry, stirring, suffering, tearful, touching, vile, woeful, worthless, wretched
+excellent, happy, superb, superior, wonderful, worthwhile
+
+plaintive
+beefing, bellyaching, cantankerous, crabby, cranky, disconsolate, doleful, grief-stricken, grievous, grousing, grumpy, heartrending, lamenting, lugubrious, melancholy, mournful, out of sorts, pathetic, piteous, pitiful, rueful, sad, saddening, sorrowful, wailing, wistful, woeful
+cheerful, happy
+
+poignant
+agitating, agonizing, bitter, distressing, disturbing, emotional, heartbreaking, heartrending, impressive, intense, moving, passionate, pathetic, perturbing, piteous, pitiful, sad, sentimental, sorrowful, touching, upsetting
+calm, numb, pleasant, soothing, unaffecting
+
+regrettable
+afflictive, calamitous, deplorable, dire, disappointing, distressing, dreadful, grievous, heartbreaking, ill-advised, lamentable, pitiable, pitiful, sad, shameful, unfavorable, unhappy, woeful
+blessed, fortunate, happy, lucky, right
+
+remorseful
+apologetic, attritional, chastened, compunctious, conscience-stricken, contrite, guilt-ridden, mournful, penitent, penitential, regretful, repentant, rueful, sad, self-reproachful, sorrowful, sorry
+callous, merciless, remorseless, ruthless, unashamed, unmerciful
+
+rueful
+apologetic, ashamed, deplorable, lamentable, mournful, remorseful, repentant, sad, sorrowful, sorry
+
+saturnine
+blue, cheerless, dejected, depressed, desolate, despondent, dispirited, dour, down, down in the dumps, forlorn, glum, grave, hopeless, in low spirits, in the dumps, low, melancholy, miserable, moping, morose, sad, solemn, sorrowful, sulky, sullen, unhappy, woebegone, woeful
+
+sorrowful
+affecting, afflicted, dejected, depressed, disconsolate, distressing, doleful, dolent, full of sorrow, grievous, heartbroken, heartrending, heavy-hearted, hurting, in mourning, in pain, in sorrow, lamentable, lugubrious, melancholy, miserable, mournful, painful, piteous, plaintive, rueful, ruthful, sad, sick at heart, singing the blues, sorry, tear-jerking, tearful, unhappy, woebegone, woeful, wretched
+delighted, happy, joyful
+
+sorry
+abject, base, beggarly, cheap, contemptible, deplorable, despisable, disgraceful, dismal, distressing, inadequate, insignificant, mean, miserable, paltry, piteous, pitiable, pitiful, poor, sad, scruffy, scummy, scurvy, shabby, shoddy, small, trifling, trivial, unimportant, vile, worthless, wretched
+good, hopeful, nice
+
+tearful
+bawling, blubbering, blubbery, distressed, dolorous, in tears, lachrymose, lamentable, lamenting, moist, mournful, pathetic, pitiable, pitiful, poignant, sad, sniveling, sobbing, sorrowful, teary, watery, weeping, weepy, wet, whimpering, woeful
+cheerful, happy
+
+touching
+compassionate, emotive, heart-rending, heartbreaking, impressive, melting, mind-blowing, pathetic, piteous, pitiable, pitiful, poignant, responsive, sad, stirring, stunning, sympathetic, tear-jerking, tender, wistful
+unaffecting, unmoving
+
+tragic
+adverse, anguished, appalling, awful, calamitous, cataclysmic, crushing, deadly, deathly, deplorable, desolate, destructive, dire, disastrous, doleful, dreadful, fatal, fateful, forlorn, grievous, grim, hapless, harrowing, heart-rending, heartbreaking, ill-fated, ill-starred, lamentable, miserable, mournful, painful, pathetic, pitiable, pitiful, ruinous, sad, shocking, sorrowful, terrible, unfortunate, unhappy, woeful, wretched
+advantageous, blessed, good, happy, successful
+
+unsavoury
+acid, bitter, bland, disagreeable, distasteful, dull, flavorless, gross, icky, insipid, lousy, nasty, nauseating, no good, objectionable, obnoxious, offensive, rancid, rank, raunchy, repellent, repugnant, repulsive, rough, sad, shady, sharp, shifty, sour, stinking, tart, tasteless, tough, unappetizing, unpalatable, unpleasant, wrong
+appetizing, attractive, savory
+
+wistful
+contemplative, desirous, disconsolate, dreaming, dreamy, forlorn, hopeless, meditative, melancholy, mournful, musing, nostalgic, pensive, plaintive, reflective, sad, thoughtful, wishful, yearning
+uncaring
+
+woebegone
+black, bleak, blue, bummed out, chapfallen, cheerless, crestfallen, dejected, despondent, disconsolate, dismal, dispirited, doleful, down, down-in-the-mouth, downcast, downhearted, dreary, forlorn, gloomy, grief-stricken, grim, hangdog, hurting, in pain, long-faced, low, lugubrious, melancholy, miserable, mournful, sad, shot down, sorrowful, unhappy, woeful, wretched
+enthused, excited, happy, untroubled
+
+demoralized
+sad, shaken, unnerved, weakened
+
+heartbroken
+brokenhearted, doleful, grief-stricken, heartsick, heartsore, sad, sorrowful
+
+lamenting
+lamentable, mournful, regretting, sad, sorrowful, unfortunate
+
+languishing
+longing, melancholy, pining, sad, unhappy
+
+lugubrious
+gloomy, mournful, pensive, sad, sorrowful
+
+lachrymose
+sad, tearful, teary, weeping, weepy
+
+weeping
+grievous, mournful, sad, sorrowful
+
+heavyhearted
+dejected, depressed, despondent, doleful, melancholy, sad, unhappy
+cheerful, lighthearted
+
+distressing
+afflictive, deplorable, distressful, dreadful, fearful, frightening, grievous, nagging, painful, poignant, regrettable, sad, troublesome, woeful
+comforting
+
+dispiriting
+cheerless, crushing, demoralizing, discouraging, disheartening, dismal, gloomy, joyless, melancholy, sad, saddening
+
+irremediable
+bad, beyond recall, cureless, cynical, dejected, demoralized, despairing, desperate, despondent, disconsolate, discouraging, downhearted, fatal, forlorn, gone, goner, helpless, ill-fated, impossible, impracticable, in despair, incurable, irredeemable, irreparable, irreversible, irrevocable, lost, menacing, no-win, past hope, pointless, sad, shot down, sinister, sunk, threatening, tragic, unachievable, unavailing, unfortunate, unmitigable, up the creek, useless, vain, woebegone, worsening
+
+low-grade
+average, bad, base, common, declasse, fair, good-for-nothing, hack, imperfect, indifferent, junk, lemon, lousy, low-quality, low-rent, mean, mediocre, middling, ordinary, paltry, poorer, sad, second-class, second-rate, shabby, sorry, substandard, tawdry, two-bit, worse, wretched
+
+low-quality
+average, bad, base, common, declasse, fair, good-for-nothing, hack, imperfect, indifferent, junk, lemon, lousy, low-grade, low-rent, mean, mediocre, middling, ordinary, paltry, poorer, sad, second-class, second-rate, shabby, sorry, substandard, tawdry, two-bit, worse, wretched
+
+melancholic
+at, bad, bleeding, blue, bummed out, cast-down, crestfallen, crummy, dejected, desolate, despondent, destroyed, disconsolate, dispirited, down, down and out, down in the dumps, down in the mouth, downcast, downhearted, dragged, dull, dysphoric, fed up, gloomy, glum, grim, heavy-hearted, hurting, in a blue funk, in pain, in the dumps, in the pits, in the toilet, let down, low, low-down, low-spirited, lugubrious, melancholy, moody, morose, on a downer, pessimistic, ripped, sad, sob story, spiritless, taken down, torn up, tristful, unhappy, weeping, wistful, woebegone
+
+penitential
+apologetic, attritional, chastened, compunctious, conscience-stricken, contrite, guilt-ridden, mournful, penitent, regretful, repentant, rueful, sad, self-reproachful, sorrowful, sorry
+
+pitiable
+abject, affecting, afflicted, arousing, base, beggarly, cheap, cheerless, comfortless, commiserative, compassionate, contemptible, deplorable, despicable, dismal, distressed, distressing, grievous, heartbreaking, heartrending, inadequate, insignificant, joyless, lamentable, low, mean, miserable, mournful, moving, paltry, pathetic, piteous, poor, rueful, ruthful, sad, scurvy, shabby, sorrowful, sorry, stirring, suffering, tearful, touching, vile, woeful, worthless, wretched
+
+ruthful
+abject, affecting, afflicted, arousing, base, beggarly, cheap, cheerless, comfortless, commiserative, compassionate, contemptible, deplorable, despicable, dismal, distressed, distressing, grievous, heartbreaking, heartrending, inadequate, insignificant, joyless, lamentable, low, mean, miserable, mournful, moving, paltry, pathetic, piteous, pitiable, poor, rueful, sad, scurvy, shabby, sorrowful, sorry, stirring, suffering, tearful, touching, vile, woeful, worthless, wretched
+
+second-class
+average, bad, base, common, declasse, fair, good-for-nothing, hack, imperfect, indifferent, junk, lemon, lousy, low-grade, low-quality, low-rent, mean, mediocre, middling, ordinary, paltry, poorer, sad, second-rate, shabby, sorry, substandard, tawdry, two-bit, worse, wretched
+
+teary
+bawling, blubbering, blubbery, distressed, dolorous, in tears, lachrymose, lamentable, lamenting, moist, mournful, pathetic, pitiable, pitiful, poignant, sad, sniveling, sobbing, sorrowful, watery, weeping, weepy, wet, whimpering, woeful
+
+tristful
+at, bad, bleeding, blue, bummed out, cast-down, crestfallen, crummy, dejected, desolate, despondent, destroyed, disconsolate, dispirited, down, down and out, down in the dumps, down in the mouth, downcast, downhearted, dragged, dull, dysphoric, fed up, gloomy, glum, grim, heavy-hearted, hurting, in a blue funk, in pain, in the dumps, in the pits, in the toilet, let down, low, low-down, low-spirited, lugubrious, melancholic, melancholy, moody, morose, on a downer, pessimistic, ripped, sad, sob story, spiritless, taken down, torn up, unhappy, weeping, wistful, woebegone
+
+low
+be low, crouched, debased, flat, level with the ground, low, lying low, neap, nether, nethermost, prostrate, squat, subjacent, sublunar, underhung
+
+admire
+adore, applaud, appreciate, approve, be crazy about, be crazy for, be crazy over, be mad about, be nuts about, be stuck on
+abhor, condemn, despise, detest, dislike, execrate, hate, scorn
+
+sport
+action, amusement, athletics, ball, disport, diversion, exercise, frolic, fun, fun and games, gaiety, game, games, pastime, physical activity, picnic, play, pleasure, recreation
+vocation, work
+
+work
+assignment, attempt, commission, daily grind, drudge, drudgery, effort, elbow grease, endeavor, exertion, functioning, grind, grindstone, industry, job, moil, muscle, obligation, pains, performance, production, push, salt mines, servitude, slogging, stint, stress, striving, struggle, sweat, task, toil, travail, trial, trouble, undertaking
+entertainment, fun, pastime
+
+report
+address, announcement, article, blow by blow, brief, broadcast, cable, chronicle, communication, communique, declaration, description, detail, digest, dispatch, handout, history, hot wire, information, message, narration, narrative, news, note, opinion, outline, paper, picture, piece, proclamation, pronouncement, precis, recital, record, relation, release, rundown, resume, scoop, statement, summary, tale, telegram, tidings, version, wire, word, write-up
