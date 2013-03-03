@@ -190,8 +190,78 @@ public class ViewGraph {
 				}
 			}
 		}
+		
+		//Synonyms of root node
+				if(displaySynonyms==1){
+					for(Vertex v:vertex.getSynomyns()){
+						drawSynNode(v);
+						//Synonyms of synonyms
+						for(Vertex c:v.getSynomyns()){
+							drawSynNode(c);
+							//Synonyms of synonyms of synonyms
+							for(Vertex m:c.getSynomyns()){
+								drawSynNode(m);
+							}
+							//antonyms of synonyms of synonyms
+							if(displayAntonyms==1){
+								for(Vertex m:c.getAntonyms()){
+									drawAntNode(m);
+								}
+							}
+						}
+						//Antonyms of synonyms
+						if(displayAntonyms==1){
+							for(Vertex c:v.getAntonyms()){
+								drawAntNode(c);
+								//Synonyms of antonyms of synonyms
+								for(Vertex m:c.getSynomyns()){
+									drawSynNode(m);
+								}
+								//antonyms of antonyms of synonyms
+								for(Vertex m:c.getAntonyms()){
+									drawAntNode(m);
+								}
+							}
+						}
+					}
+				}
+				
+				//Antonyms of root node
+				if(displayAntonyms==1){
+					for(Vertex v:vertex.getAntonyms()){
+						drawAntNode(v);
+						//Synonyms of antonyms
+						if(displaySynonyms==1){
+							for(Vertex c:v.getSynomyns()){
+								drawSynNode(c);
+								//Synonyms of synonyms of antonyms
+								for(Vertex m:c.getSynomyns()){
+									drawSynNode(m);
+								}
+								//antonyms of synonyms of antonyms
+								for(Vertex m:c.getAntonyms()){
+									drawAntNode(m);
+								}
+							}
+						}
+						//Antonyms of antonyms
+						for(Vertex c:v.getAntonyms()){
+							drawAntNode(c);
+							//Synonyms of antonyms of antonyms
+							if(displaySynonyms==1){
+								for(Vertex m:c.getSynomyns()){
+									drawSynNode(m);
+								}
+							}
+							//antonyms of antonyms of antonyms
+							for(Vertex m:c.getAntonyms()){
+								drawAntNode(m);
+							}
+						}
+					}
+				}
 			
-		/* DRAW NODES */
+		/* DRAW NODES 
 		//Synonyms
 		if(displaySynonyms==1){
 			for(Vertex v:vertex.getSynomyns()){
@@ -260,7 +330,7 @@ public class ViewGraph {
 					}
 				}
 			}
-		}
+		}*/
 			
 		//Draw main node
 		drawMainNode(vertex);
