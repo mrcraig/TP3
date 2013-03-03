@@ -57,9 +57,11 @@ public class InternalRepresentation
 	public void addVertex(String w, String synonyms, String antonyms, String groupings)
 	{
 		Vertex n;
+		boolean exists = false;
 		if(nodes.contains(nodes.getVertexFromWord(w)))
 		{
 			n = nodes.getVertexFromWord(w);
+			exists = true;
 		}
 		else
 		{
@@ -80,7 +82,7 @@ public class InternalRepresentation
 			addGroupings(n,groupings);
 		}
 		nodes.add(n);
-		write.addVertex(n);
+		write.addVertex(n,exists);
 	}
 	
 	
@@ -95,7 +97,7 @@ public class InternalRepresentation
 				v.setWord(s);
 				n.addSynonym(v);
 				nodes.add(v);
-				write.addVertex(v);
+				write.addVertex(v,false);
 			}
 			else
 			{
@@ -116,7 +118,7 @@ public class InternalRepresentation
 				v.setWord(a);
 				n.addAntonym(v);
 				nodes.add(v);
-				write.addVertex(v);
+				write.addVertex(v, false);
 			}
 			else
 			{
@@ -135,8 +137,9 @@ public class InternalRepresentation
 			if(vertices==null)
 			{
 				this.catergories.addCatergory(catergory);
+				continue;
 			}
-		
+			System.out.println("vertices in "+catergory+vertices);
 			for(String g : vertices)
 			{
 				Vertex grouping = nodes.getVertexFromWord(g);
@@ -146,7 +149,7 @@ public class InternalRepresentation
 					v.setWord(g);
 					n.addGrouping(v);
 					nodes.add(v);
-					write.addVertex(v);
+					write.addVertex(v,false);
 				}
 				else
 				{
@@ -180,12 +183,23 @@ public class InternalRepresentation
 	 * @param newWord The new word you wish the vertex to contain
 	 */
 	
-	public void editVertex(String oldWord, String newWord)
+	
+	
+	
+	
+	public void editVertex(String w, String synonyms, String antonyms, String groupings)
+	{
+		
+	}
+	
+	
+	
+	public void editVertexWord(String oldWord, String newWord)
 	{
 		Vertex old = nodes.getVertexFromWord(oldWord);
 		old.setWord(newWord);
 		write.editVertex(oldWord, newWord);
-	}
+	} 
 	
 	/**
 	 * Removes a vertex from the xml file, including
@@ -195,6 +209,7 @@ public class InternalRepresentation
 	 */
 	public void removeVertex(String w)
 	{
+		
 		Vertex r = nodes.getVertexFromWord(w);
 		write.removeVertex(w);
 		nodes.removeVertex(r);
@@ -203,7 +218,6 @@ public class InternalRepresentation
 	//need to alter xml too
 	public void addSynonym(String word, String synonym)
 	{
-		System.out.println(word+" "+synonym);
 		Vertex w = nodes.getVertexFromWord(word);
 		Vertex s = nodes.getVertexFromWord(synonym);
 		w.addSynonym(s);

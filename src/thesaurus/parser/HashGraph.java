@@ -74,30 +74,57 @@ public class HashGraph
 		return nodesMap;
 	}
 
-    //go through all vertices, and check to see
-    //if synomyns or antonyms match the vertex being removed
+    //
+    //remove key and value
     void removeVertex(Vertex old)
     {
     	String word = old.getWord();
+    	System.out.println("word to be deleted "+word);
     	nodesMap.remove(word);
     	Iterator<Entry<String,Vertex>> all = nodesMap.entrySet().iterator();
+    	System.out.println("nodes at start " + nodesMap);
     	while(all.hasNext())
     	{
     		Vertex v = all.next().getValue();
-    		for(Vertex a : v.getAntonyms())
+    		System.out.println("currently checking "+v.getWord());
+    		Iterator<Vertex> antonyms = v.getAntonyms().iterator();
+    		while(antonyms.hasNext())
 			 {
-				 if(a.getWord().equals(word)) nodesMap.remove(a);
+    			 Vertex a = antonyms.next();
+				 if(a.getWord().equals(word))
+					 {
+					 	System.out.println("removing antonym "+word);
+					 	v.removeAntonym(a);
+					 	nodesMap.remove(a.getWord());
+					 }
 			 }
 
-			 for(Vertex s : v.getSynomyns())
+    		Iterator<Vertex> synonyms = v.getSynomyns().iterator();
+			 while(synonyms.hasNext())
 			 {
-				 if(s.getWord().equals(word)) nodesMap.remove(s);
+				 Vertex s = synonyms.next();
+				 if(s.getWord().equals(word))
+					 {
+					
+					 System.out.println("removing synonym "+word);
+					 	v.removeSynonym(s);
+					 	nodesMap.remove(s.getWord());
+					 }
 			 }
-			 for(Vertex g : v.getGroupings())
+			 
+			 Iterator<Vertex> groupings = v.getGroupings().iterator();
+			 while(groupings.hasNext())
 			 {
-				 if(g.getWord().equals(word)) nodesMap.remove(g);
+				 Vertex g = groupings.next();
+				 if(g.getWord().equals(word))
+				 {
+					 System.out.println("removing grouping "+word);
+					 v.removeGrouping(g);
+					 nodesMap.remove(g.getWord());
+				 }
 			 }
     	}
+    	System.out.println("nodes at end " + nodesMap);
     }
 
     

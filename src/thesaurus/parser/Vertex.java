@@ -126,6 +126,36 @@ public class Vertex {
     	groupings.add(g);
     }
     
+    public void removeSynonym(Vertex s)
+    {
+    	synonyms.remove(s);
+    }
+    
+    public void removeAntonym(Vertex a)
+    {
+    	antonyms.remove(a);
+    }
+    
+    public void removeGrouping(Vertex g)
+    {
+    	synonyms.remove(g);
+    }
+    
+    public void setSynonyms(LinkedList<Vertex> syns)
+    {
+    	this.synonyms = syns;
+    }
+    
+    public void setAntonyms(LinkedList<Vertex> ants)
+    {
+    	this.antonyms = ants;
+    }
+    
+    public void setGroupings(LinkedList<Vertex> g)
+    {
+    	this.groupings = g;
+    }
+    
     public int vertexDegree(){
         return synonyms.size();
     }
@@ -140,6 +170,8 @@ public class Vertex {
 		result = prime * result
 				+ ((synonyms == null) ? 0 : synonyms.hashCode());
 		result = prime * result + ((word == null) ? 0 : word.hashCode());
+		result = prime * result
+				+ ((groupings == null) ? 0 : groupings.hashCode());
 		return result;
 	}
 
@@ -157,6 +189,11 @@ public class Vertex {
 				return false;
 		} else if (!antonyms.equals(other.antonyms))
 			return false;
+		if (groupings == null) {
+			if(other.groupings != null)
+				return false;
+		}	else if(!groupings.equals(other.groupings))
+				return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
