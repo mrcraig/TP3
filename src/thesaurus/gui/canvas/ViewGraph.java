@@ -134,8 +134,12 @@ public class ViewGraph {
 					}
 					//antonyms of synonyms of synonyms
 					if(displayAntonyms==1){
-						for(Vertex m:c.getAntonyms()){
-							drawConnector(c.getPos().getX(),c.getPos().getY(),m.getPos().getX(),m.getPos().getY(),ANTONYM);
+						if(!c.getAntonyms().isEmpty()){
+							System.out.printf("Number of antonyms: %d\n",c.getAntonyms().size());
+							for(Vertex m:c.getAntonyms()){
+								System.out.printf("--: %s\n", m.getWord());
+								drawConnector(c.getPos().getX(),c.getPos().getY(),m.getPos().getX(),m.getPos().getY(),ANTONYM);
+							}
 						}
 					}
 				}
