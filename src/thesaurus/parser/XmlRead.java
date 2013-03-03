@@ -2,7 +2,9 @@ package thesaurus.parser;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map.Entry;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -23,7 +25,7 @@ public class XmlRead
 	private Document xml;
 	private XPathFactory xfactory = XPathFactory.newInstance();
 	private XPath xpath = xfactory.newXPath();
-	private Graph nodes = new Graph();
+	private HashGraph nodes = new HashGraph();
 	boolean emptyFile = false;
 	private int lastIndex;
 	
@@ -91,7 +93,7 @@ public class XmlRead
 	}
 	
 	
-	public LinkedList<Vertex> getAllNodes()
+	public HashMap<String,Vertex> getAllNodes()
 	{
 		return nodes.getNodes();
 	}
@@ -100,7 +102,9 @@ public class XmlRead
 	private void getVertices()
 	{
 		NodeList nodes = null;
-		LinkedList<Vertex> vertices = new LinkedList<Vertex>();
+		//LinkedList<Vertex> vertices = new LinkedList<Vertex>();
+		HashMap<String,Vertex> vertices = new HashMap<String,Vertex>();
+		
 		try
 		{
 			XPathExpression expr = xpath.compile("//graphml/graph/node");
@@ -124,8 +128,12 @@ public class XmlRead
 					v.setWord(word);
 				}
 			}
-			if(!this.nodes.contains(v)) vertices.add(v);
+			if(!this.nodes.contains(v))
+				{
+				vertices.put(v.getWord(), v);
+				}
 		}
+		//vertices should be added
 		this.nodes.setNodes(vertices);
 	}	
 	
@@ -176,6 +184,7 @@ public class XmlRead
 			String target = e.getAttributes().getNamedItem("target").getTextContent();
 			Vertex s = nodes.getVertexFromIndex(source);
 			Vertex t = nodes.getVertexFromIndex(target); 
+			//vertex with 5 is null
 			switch(type)
 			{
 				case 's': if(!s.getSynomyns().contains(t)) s.addSynonym(t);

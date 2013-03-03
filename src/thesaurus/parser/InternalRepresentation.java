@@ -6,10 +6,11 @@ import java.util.LinkedList;
 
 public class InternalRepresentation
 {
-	private Graph nodes = new Graph();
+	private HashGraph nodes = new HashGraph();
 	private XmlRead read;
 	private XmlWrite write;
 	private boolean emptyFile;
+	
 
 	
 	public InternalRepresentation(File f)
@@ -17,7 +18,9 @@ public class InternalRepresentation
 		read = new XmlRead(f);
 		this.emptyFile = read.emptyFile;
 		nodes.setNodes(read.getAllNodes());
+		System.out.println("read");
 		write = new XmlWrite(f, nodes);
+		System.out.println("written");
 	}
 	/**
 	 * Adds a vertex to the xml file. The synomyns
@@ -154,37 +157,43 @@ public class InternalRepresentation
 		w.addAntonym(a);
 		write.addEdge(word, antonym, "a");
 	}
-	
+	/*
 	public void debug()
 	{
 		nodes.debug();
 	}
+	*/
 	
 	/* facade pattern */
+	/*
 	public LinkedList<Vertex> getListOfSynomyns(String s, int max)
 	{
 		return nodes.getListOfSynomyns(s, max);
 	}
+	*/
 	
 	public Vertex getFirst()
 	{
-		return nodes.getNodes().getFirst();
+		return nodes.getRandVertex();
+		//return nodes.getNodes().getFirst();
 	}
 	
 	public Vertex getOneSynomyn(String s)
 	{
 		System.out.println("method called for "+s);
 		if(s.equalsIgnoreCase("")) return null;
-		if(nodes.getListOfSynomyns(s,1)!=null) return nodes.getListOfSynomyns(s, 1).getFirst();
-		return null;
+		return nodes.getVertexFromWord(s);
+		//if(nodes.getListOfSynomyns(s,1)!=null) return nodes.getListOfSynomyns(s, 1).getFirst();
+		//return null;
 	}
  	
-	public LinkedList<Vertex> getListOfSynomyns(String s){return getListOfSynomyns(s, 100);}
+	//public LinkedList<Vertex> getListOfSynomyns(String s){return getListOfSynomyns(s, 100);}
 	
+	/*
 	public HashMap<String, HashMap<String, LinkedList<String>>> getTableData()
 	{
 		return nodes.getTableData();
-	}
+	} */
 	
 	  String[] parseCsvToArray(String inputCsvString){
          String[] hold = inputCsvString.split(",");
@@ -205,5 +214,5 @@ public class InternalRepresentation
 			 syns.add(s);
 		 }
 		 return syns;
-	 }
+	 } 
 }
