@@ -49,23 +49,30 @@
                 <TextField fx:id="searchBoxGraph" layoutX="53.0" layoutY="400.0" prefWidth="200.0" />
                 <Button font="$x1" layoutX="260.0" layoutY="400.0" mnemonicParsing="false" onAction="#doSearchGraphG" text="Go" />
                 <Text fx:id="searchStatusLabel" layoutX="57.0" layoutY="360.0" scaleX="1.0000163787583833" strokeType="OUTSIDE" strokeWidth="0.0" />
-                <ChoiceBox fx:id="selectionBoxGraph" layoutX="559.0" layoutY="427.0" prefWidth="186.0">
+                <ChoiceBox fx:id="selectionBoxGraph" layoutX="578.0" layoutY="427.0" prefWidth="167.0">
                   <items>
                     <FXCollections fx:factory="observableArrayList">
-                      <String fx:value="Synonyms and Antonyms" />
+                      <String fx:value="Both" />
                       <String fx:value="Synonyms" />
                       <String fx:value="Antonyms" />
                     </FXCollections>
                   </items>
                 </ChoiceBox>
-                <Label font="$x1" layoutX="469.0" layoutY="431.0" prefWidth="81.0" text="Viewing Mode:" />
+                <ChoiceBox fx:id="groupingGraph" layoutX="470.0" layoutY="427.0" prefWidth="100.0">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="Grouped" />
+                      <String fx:value="Free" />
+                    </FXCollections>
+                  </items>
+                </ChoiceBox>
                 <Label fx:id="statusLabelGraph" layoutX="57.0" layoutY="424.0" text="Please enter a search term" textFill="#606060">
                   <font>
                     <Font name="Arial" size="11.0" fx:id="x2" />
                   </font>
                 </Label>
                 <Slider fx:id="sliderGraph" blockIncrement="0.1" layoutX="325.0" layoutY="432.0" majorTickUnit="0.1" max="2.0" min="0.5" value="1.0" />
-                <Label font="$x1" layoutX="287.0" layoutY="431.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="36.0" text="Zoom:" />
+                <Label font="$x1" layoutX="287.0" layoutY="431.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="42.0" text="Zoom:" />
               </children>
             </AnchorPane>
           </content>
@@ -82,23 +89,30 @@
                 <Text font="$x1" layoutX="8.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search: " />
                  <Button font="$x1" layoutX="305.0" layoutY="400.0" mnemonicParsing="false" onAction="#doRefreshGraph" prefWidth="100.0" text="Refresh" />
                 <Slider fx:id="sliderTable" blockIncrement="0.1" layoutX="325.0" layoutY="432.0" majorTickUnit="0.1" max="2.0" min="0.5" value="1.0" />
-                <Label font="$x1" layoutX="287.0" layoutY="431.0" prefWidth="36.0" text="Zoom:" />
+                <Label font="$x1" layoutX="287.0" layoutY="431.0" prefWidth="42.0" text="Zoom:" />
                 <Label id="statusLabelGraph" fx:id="statusLabelTable" font="$x2" layoutX="57.0" layoutY="424.0" text="Please enter a search term">
                   <textFill>
                     <Color blue="0.376" green="0.376" red="0.376" fx:id="x3" />
                   </textFill>
                 </Label>
                 <Pane fx:id="tableFullGraph" layoutX="15.0" layoutY="14.0" prefHeight="366.0" prefWidth="728.0" />
-                <ChoiceBox id="selectionBoxGraph" fx:id="selectionBoxTable" layoutX="559.0" layoutY="427.0" prefWidth="186.0">
+                <ChoiceBox id="selectionBoxGraph" fx:id="selectionBoxTable" layoutX="578.0" layoutY="427.0" prefWidth="167.0">
                   <items>
                     <FXCollections fx:factory="observableArrayList">
-                      <String fx:value="Synonyms and Antonyms" />
+                      <String fx:value="Both" />
                       <String fx:value="Synonyms" />
                       <String fx:value="Antonyms" />
                     </FXCollections>
                   </items>
                 </ChoiceBox>
-                <Label font="$x1" layoutX="469.0" layoutY="431.0" prefWidth="81.0" text="Viewing Mode:" />
+                <ChoiceBox fx:id="groupingTable" layoutX="470.0" layoutY="427.0" prefWidth="100.0">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="Grouped" />
+                      <String fx:value="Free" />
+                    </FXCollections>
+                  </items>
+                </ChoiceBox>
               </children>
             </AnchorPane>
           </content>
@@ -107,21 +121,28 @@
           <content>
             <AnchorPane id="dualTabContent" minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="538.0">
               <children>
-                <ChoiceBox id="selectionBoxGraph" fx:id="selectionBoxDual" layoutX="559.0" layoutY="427.0" prefWidth="186.0">
+                <ChoiceBox id="selectionBoxGraph" fx:id="selectionBoxDual" layoutX="578.0" layoutY="427.0" prefWidth="167.0">
                   <items>
                     <FXCollections fx:factory="observableArrayList">
-                      <String fx:value="Synonyms and Antonyms" />
+                      <String fx:value="Both" />
                       <String fx:value="Synonyms" />
                       <String fx:value="Antonyms" />
                     </FXCollections>
                   </items>
                 </ChoiceBox>
-                <Label font="$x1" layoutX="469.0" layoutY="431.0" prefWidth="81.0" text="Viewing Mode:" />
+                <ChoiceBox fx:id="groupingDual" layoutX="470.0" layoutY="427.0" prefWidth="100.0">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="Grouped" />
+                      <String fx:value="Free" />
+                    </FXCollections>
+                  </items>
+                </ChoiceBox>
                 <TextField fx:id="searchBoxDual" layoutX="53.0" layoutY="400.0" prefWidth="200.0" />
                 <Button font="$x1" layoutX="260.0" layoutY="400.0" mnemonicParsing="false" onAction="#doSearchGraphD" text="Go" />
                 <Button font="$x1" layoutX="305.0" layoutY="400.0" mnemonicParsing="false" onAction="#doRefreshGraph" prefWidth="100.0" text="Refresh" />
                 <Button font="$x1" layoutX="420.0" layoutY="400.0" mnemonicParsing="false" onAction="#doAddWord" prefWidth="100.0" text="Add" />
-                <Label font="$x1" layoutX="287.0" layoutY="431.0" prefWidth="36.0" text="Zoom:" />
+                <Label font="$x1" layoutX="287.0" layoutY="431.0" prefWidth="42.0" text="Zoom:" />
                 <Button font="$x1" layoutX="535.0" layoutY="400.0" mnemonicParsing="false" onAction="#doEditWord" prefWidth="100.0" text="Edit" />
                 <Button font="$x1" layoutX="650.0" layoutY="400.0" mnemonicParsing="false" onAction="#doRemoveWord" prefWidth="100.0" text="Remove" />
                 <Pane fx:id="canvasDualGraph" layoutX="16.0" layoutY="14.0" prefHeight="362.0" prefWidth="354.0" />

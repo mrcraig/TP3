@@ -90,6 +90,15 @@ public class SystemController {
 
 	@FXML
 	private ChoiceBox<String> selectionBoxDual;
+	
+	@FXML
+	private ChoiceBox<String> groupingGraph;
+
+	@FXML
+	private ChoiceBox<String> groupingTable;
+
+	@FXML
+	private ChoiceBox<String> groupingDual;
 
 	@FXML
 	private Label statusLabelGraph;
@@ -335,6 +344,54 @@ public class SystemController {
 				else{
 					referenceWindow.getVisualisationRoot().getStateArray().set(0, 1);
 					referenceWindow.getVisualisationRoot().getStateArray().set(1, 1);
+				}
+				referenceWindow.getVisualisationRoot().doSearchRefresh();
+			}
+		});
+		
+		groupingGraph.getSelectionModel().selectedIndexProperty()
+		.addListener(new ChangeListener<Number>() {
+			public void changed(ObservableValue ov, Number value,
+					Number new_value) {
+				groupingDual.getSelectionModel().select(groupingGraph.getSelectionModel().getSelectedIndex());
+				groupingTable.getSelectionModel().select(groupingGraph.getSelectionModel().getSelectedIndex());
+				if(groupingGraph.getSelectionModel().getSelectedIndex() == 1){
+					referenceWindow.getVisualisationRoot().getStateArray().set(2, 0);
+				}
+				else{
+					referenceWindow.getVisualisationRoot().getStateArray().set(2, 1);
+				}
+				referenceWindow.getVisualisationRoot().doSearchRefresh();
+			}
+		});
+		
+		groupingDual.getSelectionModel().selectedIndexProperty()
+		.addListener(new ChangeListener<Number>() {
+			public void changed(ObservableValue ov, Number value,
+					Number new_value) {
+				groupingGraph.getSelectionModel().select(groupingDual.getSelectionModel().getSelectedIndex());
+				groupingTable.getSelectionModel().select(groupingDual.getSelectionModel().getSelectedIndex());
+				if(groupingDual.getSelectionModel().getSelectedIndex() == 1){
+					referenceWindow.getVisualisationRoot().getStateArray().set(2, 0);
+				}
+				else{
+					referenceWindow.getVisualisationRoot().getStateArray().set(2, 1);
+				}
+				referenceWindow.getVisualisationRoot().doSearchRefresh();
+			}
+		});
+		
+		groupingTable.getSelectionModel().selectedIndexProperty()
+		.addListener(new ChangeListener<Number>() {
+			public void changed(ObservableValue ov, Number value,
+					Number new_value) {
+				groupingGraph.getSelectionModel().select(groupingTable.getSelectionModel().getSelectedIndex());
+				groupingTable.getSelectionModel().select(groupingTable.getSelectionModel().getSelectedIndex());
+				if(groupingTable.getSelectionModel().getSelectedIndex() == 1){
+					referenceWindow.getVisualisationRoot().getStateArray().set(2, 0);
+				}
+				else{
+					referenceWindow.getVisualisationRoot().getStateArray().set(2, 1);
 				}
 				referenceWindow.getVisualisationRoot().doSearchRefresh();
 			}

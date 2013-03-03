@@ -103,10 +103,7 @@ public class VisualisationRoot extends AnchorPane {
 	}
 
 	public Vertex runSpringOnVertex(Vertex inputVertex) {
-		int temps = 1;
-		int tempa = 0;
-		int tempg = 0;
-		FrSpring currentSpring = new FrSpring(inputVertex,temps, tempa, tempg);
+		FrSpring currentSpring = new FrSpring(inputVertex,state.get(0),state.get(1),state.get(2));
 		return currentSpring.getCoordinates();
 	}
 
