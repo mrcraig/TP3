@@ -191,85 +191,14 @@ public class ViewGraph {
 			}
 		}
 		
-		//Synonyms of root node
-				if(displaySynonyms==1){
-					for(Vertex v:vertex.getSynomyns()){
-						drawSynNode(v);
-						//Synonyms of synonyms
-						for(Vertex c:v.getSynomyns()){
-							drawSynNode(c);
-							//Synonyms of synonyms of synonyms
-							for(Vertex m:c.getSynomyns()){
-								drawSynNode(m);
-							}
-							//antonyms of synonyms of synonyms
-							if(displayAntonyms==1){
-								for(Vertex m:c.getAntonyms()){
-									drawAntNode(m);
-								}
-							}
-						}
-						//Antonyms of synonyms
-						if(displayAntonyms==1){
-							for(Vertex c:v.getAntonyms()){
-								drawAntNode(c);
-								//Synonyms of antonyms of synonyms
-								for(Vertex m:c.getSynomyns()){
-									drawSynNode(m);
-								}
-								//antonyms of antonyms of synonyms
-								for(Vertex m:c.getAntonyms()){
-									drawAntNode(m);
-								}
-							}
-						}
-					}
-				}
-				
-				//Antonyms of root node
-				if(displayAntonyms==1){
-					for(Vertex v:vertex.getAntonyms()){
-						drawAntNode(v);
-						//Synonyms of antonyms
-						if(displaySynonyms==1){
-							for(Vertex c:v.getSynomyns()){
-								drawSynNode(c);
-								//Synonyms of synonyms of antonyms
-								for(Vertex m:c.getSynomyns()){
-									drawSynNode(m);
-								}
-								//antonyms of synonyms of antonyms
-								for(Vertex m:c.getAntonyms()){
-									drawAntNode(m);
-								}
-							}
-						}
-						//Antonyms of antonyms
-						for(Vertex c:v.getAntonyms()){
-							drawAntNode(c);
-							//Synonyms of antonyms of antonyms
-							if(displaySynonyms==1){
-								for(Vertex m:c.getSynomyns()){
-									drawSynNode(m);
-								}
-							}
-							//antonyms of antonyms of antonyms
-							for(Vertex m:c.getAntonyms()){
-								drawAntNode(m);
-							}
-						}
-					}
-				}
-			
-		/* DRAW NODES 
-		//Synonyms
+		/* DRAW NODES */
 		if(displaySynonyms==1){
 			for(Vertex v:vertex.getSynomyns()){
 				drawSynNode(v);
-				//synonyms of synonyms
+				//Synonyms of synonyms
 				for(Vertex c:v.getSynomyns()){
-					drawSynNode(v);
-					//synonyms of synonyms of synonyms
+					drawSynNode(c);
+					//Synonyms of synonyms of synonyms
 					for(Vertex m:c.getSynomyns()){
 						drawSynNode(m);
 					}
@@ -280,11 +209,11 @@ public class ViewGraph {
 						}
 					}
 				}
-				//antonyms of synonyms
+				//Antonyms of synonyms
 				if(displayAntonyms==1){
 					for(Vertex c:v.getAntonyms()){
-						drawAntNode(v);
-						//synonyms of antonyms of synonyms
+						drawAntNode(c);
+						//Synonyms of antonyms of synonyms
 						for(Vertex m:c.getSynomyns()){
 							drawSynNode(m);
 						}
@@ -297,15 +226,15 @@ public class ViewGraph {
 			}
 		}
 		
-		//Antonyms
+		//Antonyms of root node
 		if(displayAntonyms==1){
 			for(Vertex v:vertex.getAntonyms()){
 				drawAntNode(v);
-				//synonyms of antonyms
+				//Synonyms of antonyms
 				if(displaySynonyms==1){
 					for(Vertex c:v.getSynomyns()){
-						drawSynNode(v);
-						//synonyms of synonyms of antonyms
+						drawSynNode(c);
+						//Synonyms of synonyms of antonyms
 						for(Vertex m:c.getSynomyns()){
 							drawSynNode(m);
 						}
@@ -315,10 +244,10 @@ public class ViewGraph {
 						}
 					}
 				}
-				//antonyms of antonyms
+				//Antonyms of antonyms
 				for(Vertex c:v.getAntonyms()){
-					drawAntNode(v);
-					//synonyms of antonyms of antonyms
+					drawAntNode(c);
+					//Synonyms of antonyms of antonyms
 					if(displaySynonyms==1){
 						for(Vertex m:c.getSynomyns()){
 							drawSynNode(m);
@@ -330,7 +259,7 @@ public class ViewGraph {
 					}
 				}
 			}
-		}*/
+		}
 			
 		//Draw main node
 		drawMainNode(vertex);
