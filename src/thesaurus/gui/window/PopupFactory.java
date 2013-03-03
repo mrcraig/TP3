@@ -1,5 +1,9 @@
 package thesaurus.gui.window;
 
+import java.util.LinkedList;
+
+import thesaurus.parser.Vertex;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -160,6 +164,10 @@ public class PopupFactory {
 		                            addAntInput, promptCatLabel, addCatInput, confirmButton, cancelButton);
 		canvas.setStyle("	-fx-background-color: #dfdfdf;"
 		                + "-fx-border-color: black;" + "-fx-border-width: 1px;" + "-fx-font-family: 'Arial';");
+		addWordInput.setText(referenceWindow.getVisualisationRoot().getCurrentVertex().getWord());
+		addSynInput.setText(convertCsv(referenceWindow.getVisualisationRoot().getCurrentVertex().getSynomyns()));
+		addAntInput.setText(convertCsv(referenceWindow.getVisualisationRoot().getCurrentVertex().getAntonyms()));
+		addCatInput.setText(convertCsv(referenceWindow.getVisualisationRoot().getCurrentVertex().getGroupings()));
 		return canvas;
 	}
 
@@ -219,6 +227,21 @@ public class PopupFactory {
 		currentWordInput.setPrefWidth(width);
 		currentWordInput.relocate(x, y);
 		return currentWordInput;
+	}
+	
+	private String convertCsv(LinkedList<Vertex> input){
+		String toreturn = "";
+		for(Vertex s:input){
+			if(!toreturn.equals("")){
+				System.out.println(s.getWord());
+				toreturn = toreturn + ", "+s.getWord();
+			}
+			else{
+				System.out.println(s.getWord());
+				toreturn = toreturn + s.getWord();
+			}
+		}
+		return toreturn;
 	}
 
 }
