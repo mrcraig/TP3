@@ -185,7 +185,7 @@ public class PopupFactory {
 				referenceWindow.getVisualisationRoot().getCurrentParser().removeVertex(addWordInput.getText());
 				currentPopup.hide();
 				currentPopup = null;
-				referenceWindow.getVisualisationRoot().doSearchRefresh();
+				referenceWindow.getVisualisationRoot().initialSearch();
 			}
 		});
 		Button cancelButton = new Button();
