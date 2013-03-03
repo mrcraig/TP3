@@ -67,6 +67,10 @@ public class TextParser {
 		InternalRepresentation currentParser = new InternalRepresentation(inputFile);
 		
 		for (ArrayList<String> s : entryArray) {
+			for(String st: s){
+				//System.out.println(st);
+			}
+			//System.in.read();
 			currentParser.addVertex(s.get(0), s.get(1),s.get(2));
 		}
 		

@@ -49,7 +49,7 @@ public class Driver
 		
 		
 		
-		driver.debug();
+
 		
 		//driver.editVertex("Joyful", "sad");
 		//System.out.println(driver.getListOfSynomyns("Jubilant"));

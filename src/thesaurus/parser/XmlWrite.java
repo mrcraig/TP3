@@ -24,16 +24,16 @@ public class XmlWrite {
 	
 	private Document xml;
 	private String path;
-	private Graph nodes;
+	private HashGraph nodes;
 	
-	public XmlWrite (File f, Graph nodes)
+	public XmlWrite (File f, HashGraph nodes2)
 	{
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		try 
 		{
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			path = f.getPath();
-			this.nodes = nodes;
+			this.nodes = nodes2;
 			this.xml = docBuilder.parse(path);
 			checkNew();
 		} 
