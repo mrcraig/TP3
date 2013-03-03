@@ -373,6 +373,7 @@ public class ViewGraph {
 									}
 								}
 							}
+							/*
 							for(Vertex m:c.getAntonyms()){
 								nodewidth = m.getWord().length() * 5;
 								if((clickX > m.getPos().getX()-nodeWidth) && clickX < (m.getPos().getX() + nodeWidth)){
@@ -380,9 +381,9 @@ public class ViewGraph {
 										vr.doClickSearchGraph(m.getWord());
 									}
 								}
-							}
+							}*/
 						}
-						for(Vertex c:v.getAntonyms()){
+						/*for(Vertex c:v.getAntonyms()){
 							double nodewidth = c.getWord().length() * 5;
 							if((clickX > c.getPos().getX()-nodeWidth) && clickX < (c.getPos().getX() + nodeWidth)){
 								if((clickY > c.getPos().getY()-13) && clickY < (c.getPos().getY()+13)){
@@ -407,7 +408,7 @@ public class ViewGraph {
 									}
 								}
 							}
-						}
+						}*/
 					}
 					/*ant*/
 
@@ -440,6 +441,7 @@ public class ViewGraph {
 									}
 								}
 							}
+							/*
 							for(Vertex m:c.getAntonyms()){
 								nodewidth = m.getWord().length() * 5;
 								if((clickX > m.getPos().getX()-nodeWidth) && clickX < (m.getPos().getX() + nodeWidth)){
@@ -447,8 +449,9 @@ public class ViewGraph {
 										vr.doClickSearchGraph(m.getWord());
 									}
 								}
-							}
+							}*/
 						}
+						/*
 						for(Vertex c:v.getAntonyms()){
 							double nodewidth = c.getWord().length() * 5;
 							if((clickX > c.getPos().getX()-nodeWidth) && clickX < (c.getPos().getX() + nodeWidth)){
@@ -474,7 +477,7 @@ public class ViewGraph {
 									}
 								}
 							}
-						}
+						}*/
 					}
 				}
 			}
