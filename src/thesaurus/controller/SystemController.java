@@ -277,6 +277,9 @@ public class SystemController {
 		selectionBoxGraph.getSelectionModel().select(1);
 		selectionBoxTable.getSelectionModel().select(1);
 		selectionBoxDual.getSelectionModel().select(1);
+		groupingGraph.getSelectionModel().select(1);
+		groupingTable.getSelectionModel().select(1);
+		groupingDual.getSelectionModel().select(1);
 	}
 
 	private void setSelectionBoxHandlers(){
