@@ -36,7 +36,7 @@ public class PopupFactory {
 	}
 
 	private Pane makeCanvasAdd() {
-		Pane canvas = getPane(200,200);
+		Pane canvas = getPane(200,230);
 		Text addWordLabel = getText(35,10,"Add Word",2);
 		Text promptWordLabel = getText(10,52,"Word: ",1);
 		final TextField addWordInput = getTextField(70, 50, 120);
@@ -46,11 +46,11 @@ public class PopupFactory {
 		final TextField addAntInput = getTextField(70, 110, 120);
 		Button confirmButton = new Button();
 		confirmButton.setText("Confirm");
-		confirmButton.relocate(30, 160);
+		confirmButton.relocate(27, 160);
 		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				referenceWindow.getVisualisationRoot().getCurrentParser().addVertex(addWordInput.getText(), addSynInput.getText(),addAntInput.getText());
+				referenceWindow.getVisualisationRoot().getCurrentParser().addVertex(addWordInput.getText(), addSynInput.getText(),addAntInput.getText(),"");
 				System.out.printf("\n\n=========== %s  ======== %s\n\n",addWordInput.getText(), addSynInput.getText());
 				currentPopup.hide();
 				currentPopup = null;
@@ -136,7 +136,7 @@ public class PopupFactory {
 				if(!oldWord.equalsIgnoreCase(newWord)) {
 					referenceWindow.getVisualisationRoot().getCurrentParser().editVertex(oldWord, newWord);
 				}
-				referenceWindow.getVisualisationRoot().getCurrentParser().addVertex(newWord, addSynInput.getText(), addAntInput.getText());
+				referenceWindow.getVisualisationRoot().getCurrentParser().addVertex(newWord, addSynInput.getText(), addAntInput.getText(),"");
 				currentPopup.hide();
 				currentPopup = null;
 			}

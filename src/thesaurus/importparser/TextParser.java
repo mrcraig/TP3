@@ -71,7 +71,7 @@ public class TextParser {
 				//System.out.println(st);
 			}
 			//System.in.read();
-			currentParser.addVertex(s.get(0), s.get(1),s.get(2));
+			currentParser.addVertex(s.get(0), s.get(1),s.get(2),"");
 		}
 		
 		
