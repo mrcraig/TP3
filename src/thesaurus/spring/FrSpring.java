@@ -19,7 +19,7 @@ public class FrSpring {
 	final private int width = 1300;
 	private boolean overlap= false;
 	private boolean overEdgeCrossing = false;
-	private double constAF = 0.7;
+	private double constAF = 20;
 	private double constRF = 2.8;
 	private double constK = 1.0;
 	/*private int syn = 0;
@@ -27,7 +27,7 @@ public class FrSpring {
 	private int hyp = 0;
 	
 	
-	public FrSpring(Vertex v1,int syn, int ant, int hyp) {
+	public FrSpring(Vertex v1,int syn, int ant, int hyp, int limit) {
 		
 		this.temprature = ((double) this.width / 50);
 		this.area = (this.width) * (this.length);
@@ -135,9 +135,9 @@ public class FrSpring {
 							source.getPos().distanceSq(target.getPos()));
 					double aForce = 1;
 					if (source.equals(myWord)|| target.equals(myWord)){
-						constAF = 5.0;
+						constAF = 20.0;
 					}else{
-						constAF = 0.7;
+						constAF = 10;
 					}
 					aForce = attractionF(Math.abs(deltaLength));        //compute attraction force
 					//if (source.equals(myWord)|| target.equals(myWord)) aForce*= 10;
@@ -166,9 +166,9 @@ public class FrSpring {
 							source.getPos().distanceSq(target.getPos()));
 					double aForce = 1;
 					if (source.equals(myWord)|| target.equals(myWord)){
-						constAF = 5.0;
+						constAF = 20;
 					}else{
-						constAF = 0.7;
+						constAF =10;
 					}
 					aForce = attractionF(Math.abs(deltaLength));        //compute attraction force
 					//if (source.equals(myWord)|| target.equals(myWord)) aForce*= 10;
