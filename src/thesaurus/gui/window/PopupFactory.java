@@ -142,7 +142,7 @@ public class PopupFactory {
 				String newWord = addWordInput.getText();
 				String oldWord = referenceWindow.getVisualisationRoot().getCurrentVertex().getWord();
 				if(!oldWord.equalsIgnoreCase(newWord)) {
-					referenceWindow.getVisualisationRoot().getCurrentParser().editVertex(oldWord, newWord);
+					//referenceWindow.getVisualisationRoot().getCurrentParser().editVertex(oldWord, newWord);
 				}
 				referenceWindow.getVisualisationRoot().getCurrentParser().addVertex(newWord, addSynInput.getText(), addAntInput.getText(),"");
 				currentPopup.hide();
