@@ -9,6 +9,7 @@ public class InternalRepresentation
 	private HashGraph nodes = new HashGraph();
 	private XmlRead read;
 	private XmlWrite write;
+	private Catergories catergories;
 	private boolean emptyFile;
 	
 
@@ -18,10 +19,34 @@ public class InternalRepresentation
 		read = new XmlRead(f);
 		this.emptyFile = read.emptyFile;
 		nodes.setNodes(read.getAllNodes());
-		System.out.println("read");
+		
 		write = new XmlWrite(f, nodes);
-		System.out.println("written");
+		this.catergories = new Catergories();
 	}
+	
+	
+	public void addCatergory(String catergory)
+	{
+		catergories.addCatergory(catergory);
+	}
+	
+	public void removeCatergory(String catergory)
+	{
+		catergories.removeCatergory(catergory);
+	}
+	
+	public void addVertexToCatergory(String c, String word)
+	{
+		catergories.addVertexToCatergory(c, word);
+	}
+	
+	public void removeVertexToCatergory(String c, String word)
+	{
+		catergories.removeVertexFromCategory(c, word);
+	}
+	
+	
+	
 	/**
 	 * Adds a vertex to the xml file. The synomyns
 	 * must be valid vertices in the xml, too.
@@ -29,7 +54,7 @@ public class InternalRepresentation
 	 * @param w			The word belonging to the vertex
 	 * @param synomyns	The synonyms for the vertex 
 	 */
-	public void addVertex(String w, String synonyms, String antonyms)
+	public void addVertex(String w, String synonyms, String antonyms, String groupings)
 	{
 		Vertex n;
 		if(nodes.contains(nodes.getVertexFromWord(w)))
@@ -49,6 +74,10 @@ public class InternalRepresentation
 		if(!antonyms.isEmpty())
 		{
 			addAntonyms(n, antonyms);
+		}
+		if(!groupings.isEmpty())
+		{
+			addGroupings(n,groupings);
 		}
 		nodes.add(n);
 		write.addVertex(n);
@@ -92,6 +121,37 @@ public class InternalRepresentation
 			else
 			{
 				n.addAntonym(ant);
+			}
+		}
+	}
+	
+	
+	private void addGroupings(Vertex n, String groupings)
+	{
+		String[] catergories =  parseCsvToArray(groupings);
+		for(String catergory : catergories)
+		{
+			LinkedList<String> vertices = this.catergories.getCatergory(catergory);
+			if(vertices==null)
+			{
+				this.catergories.addCatergory(catergory);
+			}
+		
+			for(String g : vertices)
+			{
+				Vertex grouping = nodes.getVertexFromWord(g);
+				if(grouping==null)
+				{
+					Vertex v = new Vertex(read.getIndex());
+					v.setWord(g);
+					n.addGrouping(v);
+					nodes.add(v);
+					write.addVertex(v);
+				}
+				else
+				{
+					n.addGrouping(grouping);
+				}
 			}
 		}
 	}
