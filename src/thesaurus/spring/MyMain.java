@@ -86,8 +86,7 @@ public class MyMain extends Application {
 		v18.addAntonym(v36);
 		v18.addAntonym(v37);
 		
-		//v36.addAntonym(v18);
-		//v37.addAntonym(v18);
+		
 		
 		v18.addSynonym(v26);
 		v18.addSynonym(v31);
@@ -201,9 +200,25 @@ public class MyMain extends Application {
 		v25.addSynonym(v20);
 		v25.addSynonym(v24);
 		
+		
+		v5.addGrouping(v35);
+		v5.addGrouping(v37);
+		v5.addGrouping(v6);
+		v5.addGrouping(v4);
+		
+		v35.addGrouping(v5);
+		v35.addGrouping(v6);
+		v35.addGrouping(v37);
+		v35.addGrouping(v4);
+		
+		v37.addGrouping(v35);
+		v37.addGrouping(v37);
+		v37.addGrouping(v5);
+		v37.addGrouping(v4);
+		
 		myW = v18;
 		//myW = v16;
-		fr = new FrSpring(myW,1,0,0);
+		fr = new FrSpring(myW,1,0,1);
 		// fr.getPositions();
 		// fr.test();
 
@@ -247,6 +262,15 @@ public class MyMain extends Application {
 					gc.strokeLine(sX, sY, atX, atY);
 				}
 			}
+			/*for (Vertex y : x.getGroupings()) {
+				if (y.getPos() != null) {
+					gc.setStroke(Color.BLUE);
+					gc.setLineWidth(3);
+					double atX = y.getPos().getX();
+					double atY = y.getPos().getY();
+					gc.strokeLine(sX, sY, atX, atY);
+				}
+			}*/
 		}
 
 		for (Vertex v : fr.getVertices()) {

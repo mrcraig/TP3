@@ -22,23 +22,51 @@ public class FrSpring {
 	private double constAF = 0.7;
 	private double constRF = 2.8;
 	private double constK = 1.0;
-	private int sys = 0;
-	private int ant = 0;
+	/*private int syn = 0;
+	private int ant = 0;*/
 	private int hyp = 0;
 	
 	
-	public FrSpring(Vertex v1,int sys, int ant, int hyp) {
+	public FrSpring(Vertex v1,int syn, int ant, int hyp) {
 		
 		this.temprature = ((double) this.width / 50);
 		this.area = (this.width) * (this.length);
 		this.myWord = v1;
-		this.sys = sys;
-		this.ant = ant;
-		this.hyp = hyp;
 		lstVertices = new LinkedList<Vertex>();
-		//layerIndex = 
-		getSnVertex(this.myWord);			           	//add the vertices into arraylist
-		getAnVertex(this.myWord);
+		/*this.syn = syn;
+		this.ant = ant;*/
+		this.hyp = hyp;
+		
+		if (syn == 1 & ant == 0 & hyp == 0) 
+		{
+			getSnVertex(this.myWord);			           	//add the vertices into arraylist
+		}
+		if (syn == 0 & ant == 1 & hyp == 0)
+		{
+			getAnVertex(this.myWord);
+		}
+		if (syn == 1 & ant == 1 & hyp == 0)
+		{
+			getSnVertex(this.myWord);
+			getAnVertex(this.myWord);
+		}
+		if (syn == 1 & ant == 1 & hyp == 1)
+		{
+			getSnVertex(this.myWord);
+			getAnVertex(this.myWord);
+			gethypernym(this.myWord);
+		}
+		if (syn == 1 & ant == 0 & hyp == 1)
+		{
+			getSnVertex(this.myWord);
+			gethypernym(this.myWord);
+		}
+		if (syn == 0 & ant == 1 & hyp == 1)
+		{
+			getAnVertex(this.myWord);
+			gethypernym(this.myWord);
+		}
+		
 		this.size =  this.lstVertices.size();
 		
 		double myX = 0.0;   
@@ -154,6 +182,10 @@ public class FrSpring {
 					double tdisY = (target.getDis().getY() + (disY * aForce));	
 					target.getDis().setLocation(tdisX, tdisY);
 					}
+				if (this.hyp == 1)
+				{
+					groupingAtt(source, i);
+				}
 			}
 
 			for (int j = 0; j < this.size; j++) {
@@ -235,6 +267,37 @@ public class FrSpring {
 
 		return ((k *k)/ x)*constRF ;
 	}
+	
+	private void groupingAtt(Vertex v, int i){
+		for (Vertex target : v.getGroupings() ){
+			if(target.equals(lstVertices.get(0))) continue;
+			if (target.equals(lstVertices.get(i)))continue;
+			if (target.getPos() == null) continue;
+			
+			double disX = v.getPos().getX() - target.getPos().getX();
+			double disY = v.getPos().getY() - target.getPos().getY();
+							
+			double deltaLength = Math.max(EPSILON,
+					v.getPos().distanceSq(target.getPos()));
+			double aForce = 1;
+			if (v.equals(myWord)|| target.equals(myWord)){
+				constAF = 2.0;
+			}else{
+				constAF = 0.7;
+			}
+			aForce = attractionF(Math.abs(deltaLength));        //compute attraction force
+			//if (source.equals(myWord)|| target.equals(myWord)) aForce*= 10;
+			assert Double.isNaN(aForce) == false : "Unexpected mathematical result in FRSpring Layout:Spring[Attraction force]";
+		
+				double sdisX = (v.getDis().getX() - (disX * aForce));					// displacement  edge x coordinate
+				double sdisY = (v.getDis().getY() - (disY* aForce));					// displacement edge y coordinate
+				v.getDis().setLocation(sdisX, sdisY);
+										
+			double tdisX = (target.getDis().getX() + (disX * aForce));					// displacement  edge x coordinate
+			double tdisY = (target.getDis().getY() + (disY * aForce));	
+			target.getDis().setLocation(tdisX, tdisY);
+			}
+	}
 
 	/* calculates attraction force between edges y is length of the edge*/
 	private double attractionF(double y) {
@@ -269,6 +332,10 @@ public class FrSpring {
 	}
 	private int getAnVertex(thesaurus.parser.Vertex word) {
 		int count = 1;
+		if (this.lstVertices.isEmpty())
+		{
+			this.lstVertices.addFirst(word);word.setVisited(true);
+		}
 		if (!word.getAntonyms().isEmpty()){
 		for (Vertex ver : word.getAntonyms()){
 			if (!(ver.isVisited())){ 
@@ -288,7 +355,27 @@ public class FrSpring {
 		return 0;
 	}
 
-
+	private int gethypernym(thesaurus.parser.Vertex word) {
+		int count = 1;
+		if (!word.getGroupings().isEmpty()){
+		for (Vertex ver : word.getGroupings()){
+			if (!(ver.isVisited())){ 
+			this.lstVertices.addLast(ver); ver.setVisited(true);count++;}
+			for (Vertex inVer : ver.getGroupings()){
+				if (!(inVer.isVisited())){
+				this.lstVertices.addLast(inVer);inVer.setVisited(true);count++;;}
+				for (Vertex thirdLayer : inVer.getGroupings()){
+					if (!(thirdLayer.isVisited())){
+					this.lstVertices.addLast(thirdLayer);thirdLayer.setVisited(true);count++;;}
+				}
+			}
+			
+		}
+			
+		return count;}
+		return 0;
+	}
+	
 	public Vertex getCoordinates() {
 		return myWord;
 	}
