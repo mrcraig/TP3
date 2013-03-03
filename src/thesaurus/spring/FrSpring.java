@@ -513,13 +513,12 @@ public class FrSpring {
 
 	private Vertex alterVertex(Vertex v1in) {
 		ArrayList<String> currentArray = new ArrayList<String>();
-		int limit = 15;
+		int limit = 8;
 		Vertex current0s = new Vertex("0");
 		current0s.setWord(v1in.getWord());
 		currentArray.add(v1in.getWord());
-		int loop0 = Math.min(limit, v1in.getSynomyns().size());
-		for (int i = 0; i < loop0; i++) {
-			System.out.println("syn = " + v1in.getSynomyns().get(i).getWord());
+		int loop0s = Math.min(limit, v1in.getSynomyns().size());
+		for (int i = 0; i < loop0s; i++) {
 			Vertex current1s = new Vertex("0");
 			if(!currentArray.contains(v1in.getSynomyns().get(i).getWord())){
 				current1s.setWord(v1in.getSynomyns().get(i).getWord());
@@ -529,8 +528,8 @@ public class FrSpring {
 			else{
 				continue;
 			}
-			int loop1 = Math.min(limit, v1in.getSynomyns().get(i).getSynomyns().size());
-			for (int j = 0; j < loop1; j++) {
+			int loop1s = Math.min(limit, v1in.getSynomyns().get(i).getSynomyns().size());
+			for (int j = 0; j < loop1s; j++) {
 				Vertex current2s = new Vertex("0");
 				if(!currentArray.contains(v1in.getSynomyns().get(i).getSynomyns().get(j).getWord())){
 					current2s.setWord(v1in.getSynomyns().get(i).getSynomyns().get(j).getWord());
@@ -540,8 +539,8 @@ public class FrSpring {
 				else{
 					continue;
 				}
-				int loop2 = Math.min(limit, v1in.getSynomyns().get(i).getSynomyns().get(j).getSynomyns().size());
-				for (int k = 0; k < loop2; k++) {
+				int loop2s = Math.min(limit, v1in.getSynomyns().get(i).getSynomyns().get(j).getSynomyns().size());
+				for (int k = 0; k < loop2s; k++) {
 					Vertex current3s = new Vertex("0");
 					if(!currentArray.contains(v1in.getSynomyns().get(i).getSynomyns().get(j).getSynomyns().get(k).getWord())){
 						current3s.setWord(v1in.getSynomyns().get(i).getSynomyns().get(j).getSynomyns().get(k).getWord());
@@ -554,6 +553,44 @@ public class FrSpring {
 				}
 			}
 		}
+		
+		int loop0a = Math.min(limit, v1in.getAntonyms().size());
+		for (int i = 0; i < loop0a; i++) {
+			Vertex current1a = new Vertex("0");
+			if(!currentArray.contains(v1in.getAntonyms().get(i).getWord())){
+				current1a.setWord(v1in.getAntonyms().get(i).getWord());
+				current0s.addAntonym(current1a);
+				currentArray.add(v1in.getAntonyms().get(i).getWord());
+			}
+			else{
+				continue;
+			}
+			int loop1a = Math.min(limit, v1in.getAntonyms().get(i).getSynomyns().size());
+			for (int j = 0; j < loop1a; j++) {
+				Vertex current2s = new Vertex("0");
+				if(!currentArray.contains(v1in.getAntonyms().get(i).getSynomyns().get(j).getWord())){
+					current2s.setWord(v1in.getAntonyms().get(i).getSynomyns().get(j).getWord());
+					current1a.addSynonym(current2s);
+					currentArray.add(v1in.getAntonyms().get(i).getSynomyns().get(j).getWord());
+				}
+				else{
+					continue;
+				}
+				int loop2a = Math.min(limit, v1in.getAntonyms().get(i).getSynomyns().get(j).getSynomyns().size());
+				for (int k = 0; k < loop2a; k++) {
+					Vertex current3s = new Vertex("0");
+					if(!currentArray.contains(v1in.getAntonyms().get(i).getSynomyns().get(j).getSynomyns().get(k).getWord())){
+						current3s.setWord(v1in.getAntonyms().get(i).getSynomyns().get(j).getSynomyns().get(k).getWord());
+						current2s.addSynonym(current3s);
+						currentArray.add(v1in.getAntonyms().get(i).getSynomyns().get(j).getSynomyns().get(k).getWord());
+					}
+					else{
+						continue;
+					}
+				}
+			}
+		}
+		
 		System.out.println("bvv = " + current0s.getWord());
 		for(Vertex v:current0s.getSynomyns()){
 			System.out.println("v = " + v.getWord());

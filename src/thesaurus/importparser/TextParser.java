@@ -7,11 +7,13 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
 import thesaurus.parser.InternalRepresentation;
+import thesaurus.parser.Vertex;
 
 import javafx.stage.FileChooser;
 
@@ -39,9 +41,10 @@ public class TextParser {
 					currentEntry.add(1, "");
 					currentEntry.add(2, "");
 					index++;
-				} else {
-					entryArray.get(entryindex).add(index, words);
-					index++;
+				}
+				else {
+				entryArray.get(entryindex).add(index, words);
+				index++;
 				}
 			} else {
 				index = 0;
@@ -58,11 +61,11 @@ public class TextParser {
 		}
 		
 		OutputStreamWriter fileWriter;
-		fileWriter = new OutputStreamWriter(new FileOutputStream("out.txt"),"UTF-8");
+		fileWriter = new OutputStreamWriter(new FileOutputStream("smile.graphml"),"UTF-8");
 		fileWriter.write("<graphml><graph></graph></graphml>");
 		fileWriter.close();
 		
-		File inputFile = new File("out.txt");
+		File inputFile = new File("smile.graphml");
 		
 		InternalRepresentation currentParser = new InternalRepresentation(inputFile);
 		
