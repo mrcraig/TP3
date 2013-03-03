@@ -113,7 +113,7 @@ public class ViewTable {
         				antList += "\n";
         			}
         		}
-        		antList += vertex.getSynomyns().get(i).getWord();
+        		antList += vertex.getAntonyms().get(i).getWord();
         	}
     	}
     	
@@ -281,167 +281,16 @@ public class ViewTable {
 	    		}
     		}
     	}
-    	
-    	/* Main Vertex 
-    	String synList = "";
-    	String antList = "";
-    	
-    	for(int i=0;i<vertex.getSynomyns().size();i++){
-    		if(windowWidth>400){
-	    		if(i%4==0 && i>0){
-	    			synList += "\n";
-	    		} else if(i>0){
-	    			synList += ", ";
-	    		}
-    		} else {
-    			if(i>0){
-    				synList += "\n";
-    			}
-    		}
-    		synList += vertex.getSynomyns().get(i).getWord();
+    		
+		//Double click support
+		table.setOnMouseClicked(
+				new EventHandler<MouseEvent>(){
+					public void handle(MouseEvent e){
+						if(e.getClickCount()==2){
+							System.out.println("--- " + table.getSelectionModel().getSelectedItem().getWord());
+							vr.doClickSearchGraph(table.getSelectionModel().getSelectedItem().getWord());
+						}
+					}
+				});
     	}
-    	
-    	for(int i=0;i<vertex.getAntonyms().size();i++){
-    		if(windowWidth>400){
-	    		if(i%4==0 && i>0){
-	    			antList += "\n";
-	    		} else if(i>0){
-	    			antList += ", ";
-	    		}
-    		} else {
-    			if(i>0){
-    				antList += "\n";
-    			}
-    		}
-    		antList += vertex.getSynomyns().get(i).getWord();
-    	}
-    	//Add data to table
-    	data.add(new TabData(vertex.getWord(),synList,antList));
-    	
-    	//Add synonyms
-    	for(Vertex v:vertex.getSynomyns()){
-    		synList = "";
-    		antList = "";
-    		
-    		for(int i=0;i<v.getSynomyns().size();i++){
-    			if(windowWidth>400){
-	        		if(i%4==0 && i>0){
-	        			synList += "\n";
-	        		} else if(i>0){
-	        			synList += ", ";
-	        		}
-    			} else {
-    				if(i>0){
-    					synList += "\n";
-    				}
-    			}
-        		synList += v.getSynomyns().get(i).getWord();
-        		
-        		for(i=0;i<v.getAntonyms().size();i++){
-            		if(windowWidth>400){
-        	    		if(i%4==0 && i>0){
-        	    			antList += "\n";
-        	    		} else if(i>0){
-        	    			antList += ", ";
-        	    		}
-            		} else {
-            			if(i>0){
-            				antList += "\n";
-            			}
-            		}
-            		antList += v.getAntonyms().get(i).getWord();
-            	}
-        	}
-    		
-    		//Add to table
-    		data.add(new TabData(v.getWord(),synList,antList));
-    		
-    		for(Vertex vant:vertex.getAntonyms()){
-    			synList = "";
-        		antList = "";
-        		
-        		for(int i=0;i<vant.getSynomyns().size();i++){
-        			if(windowWidth>400){
-    	        		if(i%4==0 && i>0){
-    	        			synList += "\n";
-    	        		} else if(i>0){
-    	        			synList += ", ";
-    	        		}
-        			} else {
-        				if(i>0){
-        					synList += "\n";
-        				}
-        			}
-            		synList += v.getSynomyns().get(i).getWord();
-            		
-            		for(i=0;i<v.getAntonyms().size();i++){
-                		if(windowWidth>400){
-            	    		if(i%4==0 && i>0){
-            	    			antList += "\n";
-            	    		} else if(i>0){
-            	    			antList += ", ";
-            	    		}
-                		} else {
-                			if(i>0){
-                				antList += "\n";
-                			}
-                		}
-                		antList += v.getAntonyms().get(i).getWord();
-                	}
-            	}
-    		}
-    		
-    		//Add to table
-    		data.add(new TabData(v.getWord(),synList,antList));
-    		
-    		
-    		//Double click support
-    		table.setOnMouseClicked(
-    				new EventHandler<MouseEvent>(){
-    					public void handle(MouseEvent e){
-    						if(e.getClickCount()==2){
-    							System.out.println("--- " + table.getSelectionModel().getSelectedItem().getWord());
-    							vr.doClickSearchGraph(table.getSelectionModel().getSelectedItem().getWord());
-    						}
-    					}
-    				});
-    	}*/
     }
- 
-    public static class TabData {
- 
-        private final SimpleStringProperty word;
-        private final SimpleStringProperty synonym;
-        private final SimpleStringProperty antonym;
- 
-        private TabData(String word, String synonym, String antonym) {
-            this.word = new SimpleStringProperty(word);
-            this.synonym = new SimpleStringProperty(synonym);
-            this.antonym = new SimpleStringProperty(antonym);
-        }
- 
-        public String getWord() {
-            return word.get();
-        }
- 
-        public void setWord(String word) {
-            this.word.set(word);
-        }
- 
-        public String getSynonym() {
-            return synonym.get();
-        }
- 
-        public void setSynonym(String synonym) {
-            this.synonym.set(synonym);
-        }
- 
-        public String getAntonym() {
-            return antonym.get();
-        }
- 
-        public void setAntonym(String antonym) {
-            this.antonym.set(antonym);
-        }
-    }
-} 
