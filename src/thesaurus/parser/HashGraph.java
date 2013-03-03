@@ -94,7 +94,7 @@ public class HashGraph
 				 if(a.getWord().equals(word))
 					 {
 					 	System.out.println("removing antonym "+word);
-					 	a.removeAntonym(a);
+					 	v.removeAntonym(a);
 					 	nodesMap.remove(a.getWord());
 					 }
 			 }
@@ -105,8 +105,9 @@ public class HashGraph
 				 Vertex s = synonyms.next();
 				 if(s.getWord().equals(word))
 					 {
+					
 					 System.out.println("removing synonym "+word);
-					 	s.removeSynonym(s);
+					 	v.removeSynonym(s);
 					 	nodesMap.remove(s.getWord());
 					 }
 			 }
@@ -118,15 +119,10 @@ public class HashGraph
 				 if(g.getWord().equals(word))
 				 {
 					 System.out.println("removing grouping "+word);
-					 g.removeGrouping(g);
+					 v.removeGrouping(g);
 					 nodesMap.remove(g.getWord());
 				 }
 			 }
-			// if(v.getWord().equalsIgnoreCase(word))
-			// {
-			//	 System.out.println("removing "+v);
-			//	 all.remove();
-			// }
     	}
     	System.out.println("nodes at end " + nodesMap);
     }
