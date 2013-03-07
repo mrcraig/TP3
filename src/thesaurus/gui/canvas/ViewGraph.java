@@ -170,10 +170,10 @@ public class ViewGraph {
 				//Synonyms of antonyms
 				if(displaySynonyms==1){
 					for(Vertex c:v.getSynomyns()){
-						drawConnector(v.getPos().getX(),v.getPos().getY(),c.getPos().getX(),c.getPos().getY(),SYNONYM);
+						drawConnector(v.getPos().getX(),v.getPos().getY(),c.getPos().getX(),c.getPos().getY(),ANTONYM);
 						//Synonyms of synonyms of antonyms
 						for(Vertex m:c.getSynomyns()){
-							drawConnector(c.getPos().getX(),c.getPos().getY(),m.getPos().getX(),m.getPos().getY(),SYNONYM);
+							drawConnector(c.getPos().getX(),c.getPos().getY(),m.getPos().getX(),m.getPos().getY(),ANTONYM);
 						}
 						//antonyms of synonyms of antonyms
 						/*
@@ -245,10 +245,10 @@ public class ViewGraph {
 				//Synonyms of antonyms
 				if(displaySynonyms==1){
 					for(Vertex c:l.getSynomyns()){
-						drawSynNode(c);
+						drawAntNode(c);
 						//Synonyms of synonyms of antonyms
 						for(Vertex m:c.getSynomyns()){
-							drawSynNode(m);
+							drawAntNode(m);
 						}/*
 						//antonyms of synonyms of antonyms
 						for(Vertex m:c.getAntonyms()){
@@ -282,7 +282,7 @@ public class ViewGraph {
 	
 	private void resetGraph(){
 		gc.setFill(Color.rgb(242,242,242));
-		gc.fillRect(0, 0, windowWidth, windowHeight);
+		gc.fillRect(0, 0, windowWidth*2, windowHeight*2);
 		gc.setFill(Color.BLACK);
 	}
 	
@@ -294,9 +294,6 @@ public class ViewGraph {
 	private void start() {
 		graph = new Canvas(windowWidth,windowHeight);
 		gc = graph.getGraphicsContext2D();
-
-		graph.setWidth(windowWidth);
-		graph.setHeight(windowHeight);
 		
 		resetGraph();
 		drawGraph();
