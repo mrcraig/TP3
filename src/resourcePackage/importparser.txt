@@ -30,7 +30,7 @@ eclectic
 all-embracing, assorted, broad, catholic, dilettantish, diverse, diversified, heterogeneous,
 
 sputnik
-ancillary, asteroid, luna, moon, rocket, spacecraft, sputnik
+ancillary, asteroid, luna, moon, rocket, spacecraft
 
 discharge
 acquittal, clearance, disimprisonment, exoneration, liberation, pardon, parole, probation, release,

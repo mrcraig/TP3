@@ -94,7 +94,7 @@ public class HashGraph
 				 if(a.getWord().equals(word))
 					 {
 					 	System.out.println("removing antonym "+word);
-					 	v.removeAntonym(a);
+					 	//v.removeAntonym(a);
 					 	nodesMap.remove(a.getWord());
 					 }
 			 }
@@ -107,7 +107,7 @@ public class HashGraph
 					 {
 					
 					 System.out.println("removing synonym "+word);
-					 	v.removeSynonym(s);
+					 	//v.removeSynonym(s);
 					 	nodesMap.remove(s.getWord());
 					 }
 			 }
@@ -119,7 +119,7 @@ public class HashGraph
 				 if(g.getWord().equals(word))
 				 {
 					 System.out.println("removing grouping "+word);
-					 v.removeGrouping(g);
+					 //v.removeGrouping(g);
 					 nodesMap.remove(g.getWord());
 				 }
 			 }
