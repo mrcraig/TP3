@@ -22,8 +22,8 @@ public class FrSpring {
 	final private int width = 1300;
 	private boolean overlap = false;
 	private boolean overEdgeCrossing = false;
-	private double constAF = 20;
-	private double constRF = 2.8;
+	private double constAF = 10;
+	private double constRF = 90;
 	private double constK = 1.0;
 	/*
 	 * private int syn = 0; private int ant = 0;

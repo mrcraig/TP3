@@ -218,7 +218,7 @@ public class MyMain extends Application {
 		
 		myW = v18;
 		//myW = v16;
-		fr = new FrSpring(myW,1,0,1);
+		fr = new FrSpring(myW,1,0,0,3);
 		// fr.getPositions();
 		// fr.test();
 
@@ -262,7 +262,7 @@ public class MyMain extends Application {
 					gc.strokeLine(sX, sY, atX, atY);
 				}
 			}
-			/*for (Vertex y : x.getGroupings()) {
+			for (Vertex y : x.getGroupings()) {
 				if (y.getPos() != null) {
 					gc.setStroke(Color.BLUE);
 					gc.setLineWidth(3);
@@ -270,7 +270,7 @@ public class MyMain extends Application {
 					double atY = y.getPos().getY();
 					gc.strokeLine(sX, sY, atX, atY);
 				}
-			}*/
+			}
 		}
 
 		for (Vertex v : fr.getVertices()) {
