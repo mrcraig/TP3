@@ -139,12 +139,10 @@ public class PopupFactory {
 		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				String newWord = addWordInput.getText();
-				String oldWord = referenceWindow.getVisualisationRoot().getCurrentVertex().getWord();
-				if(!oldWord.equalsIgnoreCase(newWord)) {
-					//referenceWindow.getVisualisationRoot().getCurrentParser().editVertex(oldWord, newWord);
-				}
-				referenceWindow.getVisualisationRoot().getCurrentParser().addVertex(newWord, addSynInput.getText(), addAntInput.getText(),"");
+				String remove = referenceWindow.getVisualisationRoot().getCurrentVertex().getWord();
+				referenceWindow.getVisualisationRoot().getCurrentParser().removeVertex(remove);
+				referenceWindow.getVisualisationRoot().getCurrentParser().addVertex(addWordInput.getText(), addSynInput.getText(), addAntInput.getText(),"");
+				referenceWindow.getVisualisationRoot().doClickSearchGraph(remove);
 				currentPopup.hide();
 				currentPopup = null;
 			}
