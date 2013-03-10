@@ -23,6 +23,11 @@ public class InternalRepresentation {
 	public void addCatergory(String catergory) {
 		catergories.addCatergory(catergory);
 	}
+	
+	public String getCatergory(Vertex v)
+	{
+		return catergories.getCatergories(v);
+	}
 
 	public void removeCatergory(String catergory) {
 		catergories.removeCatergory(catergory);
@@ -87,7 +92,6 @@ public class InternalRepresentation {
 
 	private void addAntonyms(Vertex n, String antonyms) {
 		for (String a : parseCsvToList(antonyms)) {
-			System.out.println("top of loop");
 			Vertex ant = nodes.getVertexFromWord(a);
 			if (ant == null) {
 				Vertex v = new Vertex(read.getIndex());
@@ -106,21 +110,17 @@ public class InternalRepresentation {
 		LinkedList<String> vertices = this.catergories.getCatergory(catergory);
 		if (vertices == null) {
 			this.catergories.addCatergory(catergory).add(n.getWord());
+			System.out.println("And added word " + n.getWord());
+			System.out.println("catssss " + this.catergories.getCatergory(catergory).getFirst());
 			return;
 		}
+		this.catergories.addVertexToCatergory(catergory, n.getWord());
 
 		System.out.println("vertices in " + catergory + vertices);
 		for (String g : vertices) {
 			Vertex grouping = nodes.getVertexFromWord(g);
-			if (grouping == null) {
-				Vertex v = new Vertex(read.getIndex());
-				v.setWord(g);
-				n.addGrouping(v);
-				nodes.add(v);
-				write.addVertex(v, false);
-			} else {
-				n.addGrouping(grouping);
-			}
+			n.addGrouping(grouping);
+			write.addVertex(n, true);
 		}
 
 	}
@@ -155,18 +155,14 @@ public class InternalRepresentation {
 		editVertex.getSynomyns().clear();
 		editVertex.getAntonyms().clear();
 		editVertex.getGroupings().clear();
-		addSynonyms(editVertex,synonyms);
-		addAntonyms(editVertex,antonyms);
-		/*for (String s : synArr) {
-			Vertex temp = nodes.getVertexFromWord(s);
-			editVertex.addSynonym(temp);
-		}
-		for (String a : antArr) {
-			editVertex.addAntonym(nodes.getVertexFromWord(a));
-		}
-		for (String g : grpArr) {
-			editVertex.addGrouping(nodes.getVertexFromWord(g));
-		} */
+		addSynonyms(editVertex, synonyms);
+		addAntonyms(editVertex, antonyms);
+		/*
+		 * for (String s : synArr) { Vertex temp = nodes.getVertexFromWord(s);
+		 * editVertex.addSynonym(temp); } for (String a : antArr) {
+		 * editVertex.addAntonym(nodes.getVertexFromWord(a)); } for (String g :
+		 * grpArr) { editVertex.addGrouping(nodes.getVertexFromWord(g)); }
+		 */
 		write.removeVertex(w);
 		write.addVertex(editVertex, false);
 	}
@@ -238,18 +234,15 @@ public class InternalRepresentation {
 	 * getTableData() { return nodes.getTableData(); }
 	 */
 
-/*	String[] parseCsvToArray(String inputCsvString) {
-		String[] hold = inputCsvString.split(",");
-		String[] toReturn = new String[hold.length];
-		int i = 0;
-		for (String s : hold) {
-			toReturn[i++] = s.replaceAll("\\s", "");
-		}
-		return toReturn;
-	}*/
+	/*
+	 * String[] parseCsvToArray(String inputCsvString) { String[] hold =
+	 * inputCsvString.split(","); String[] toReturn = new String[hold.length];
+	 * int i = 0; for (String s : hold) { toReturn[i++] = s.replaceAll("\\s",
+	 * ""); } return toReturn; }
+	 */
 
 	LinkedList<String> parseCsvToList(String inputCsvString) {
-		if(inputCsvString.isEmpty()){
+		if (inputCsvString.isEmpty()) {
 			return new LinkedList<String>();
 		}
 		String[] split = inputCsvString.split(",");

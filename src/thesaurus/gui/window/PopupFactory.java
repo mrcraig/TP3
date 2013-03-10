@@ -164,7 +164,7 @@ public class PopupFactory {
 		addWordInput.setText(referenceWindow.getVisualisationRoot().getCurrentVertex().getWord());
 		addSynInput.setText(convertCsv(referenceWindow.getVisualisationRoot().getCurrentVertex().getSynomyns()));
 		addAntInput.setText(convertCsv(referenceWindow.getVisualisationRoot().getCurrentVertex().getAntonyms()));
-		addCatInput.setText(convertCsv(referenceWindow.getVisualisationRoot().getCurrentVertex().getGroupings()));
+		addCatInput.setText(referenceWindow.getVisualisationRoot().getCurrentParser().getCatergory(referenceWindow.getVisualisationRoot().getCurrentVertex()));
 		return canvas;
 	}
 
