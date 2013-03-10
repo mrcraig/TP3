@@ -7,9 +7,7 @@ import java.util.LinkedList;
 import java.util.Map.Entry;
 import java.util.Set;
 
-//use string as index
 
-//use word first then maybe index
 public class HashGraph {
 	private HashMap<String, Vertex> nodesMap;
 
@@ -43,7 +41,7 @@ public class HashGraph {
 	}
 
 	Vertex getVertexFromWord(String word) {
-		return nodesMap.get(word);
+		return nodesMap.get(word.trim());
 	}
 
 	Vertex getRandVertex() {
@@ -77,7 +75,6 @@ public class HashGraph {
 				if (a.getWord().equals(word)) {
 					System.out.println("removing antonym " + word);
 					r.la.add(a);
-					// nodesMap.remove(a.getWord());
 				}
 			}
 
@@ -88,8 +85,6 @@ public class HashGraph {
 
 					System.out.println("removing synonym " + word);
 					r.ls.add(s);
-					// v.removeSynonym(s);
-					// nodesMap.remove(s.getWord());
 				}
 			}
 
@@ -98,9 +93,7 @@ public class HashGraph {
 				Vertex g = groupings.next();
 				if (g.getWord().equals(word)) {
 					System.out.println("removing grouping " + word);
-					// v.removeGrouping(g);
 					r.lg.add(g);
-					// nodesMap.remove(g.getWord());
 				}
 			}
 			

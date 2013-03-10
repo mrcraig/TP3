@@ -140,8 +140,7 @@ public class PopupFactory {
 			@Override
 			public void handle(ActionEvent event) {
 				String remove = referenceWindow.getVisualisationRoot().getCurrentVertex().getWord();
-				referenceWindow.getVisualisationRoot().getCurrentParser().removeVertex(remove);
-				referenceWindow.getVisualisationRoot().getCurrentParser().addVertex(addWordInput.getText(), addSynInput.getText(), addAntInput.getText(),"");
+				referenceWindow.getVisualisationRoot().getCurrentParser().editVertex(addWordInput.getText(), addSynInput.getText(), addAntInput.getText(),addCatInput.getText());
 				referenceWindow.getVisualisationRoot().doClickSearchGraph(remove);
 				currentPopup.hide();
 				currentPopup = null;

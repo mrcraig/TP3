@@ -14,7 +14,7 @@ public class Driver
 		InternalRepresentation driver = new InternalRepresentation(test);
 		
 		
-		String[] array = driver.parseCsvToArray("");
+		LinkedList<String> array = driver.parseCsvToList("");
 		LinkedList<String> list = driver.parseCsvToList("");
 	
 		

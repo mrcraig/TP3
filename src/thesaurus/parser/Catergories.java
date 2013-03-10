@@ -13,9 +13,11 @@ public class Catergories
 	
 	public Catergories(){}
 	
-	void addCatergory(String c)
+	LinkedList<String> addCatergory(String c)
 	{
-		catergories.put(c, null);
+		LinkedList<String> vertices = new LinkedList<String>();
+		catergories.put(c, vertices);
+		return vertices;
 	}
 	
 	
