@@ -1,6 +1,7 @@
 package thesaurus.parser;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -115,13 +116,26 @@ public class InternalRepresentation {
 		}
 		this.catergories.addVertexToCatergory(catergory, n.getWord());
 
-		Iterator<String> vertIterator = vertices.iterator();
-		while (vertIterator.hasNext()) {
-			String g = vertIterator.next();
-			Vertex grouping = nodes.getVertexFromWord(g);
-			addGroupingsToVertex(grouping, vertices);
-			write.addVertex(n, true);
+//		Iterator<String> vertIterator = vertices.iterator();
+//		while (vertIterator.hasNext()) {
+//			String g = vertIterator.next();
+//			Vertex grouping = nodes.getVertexFromWord(g);
+//			addGroupingsToVertex(grouping, vertices);
+//		}
+		for(String s:vertices){
+			Vertex added = nodes.getVertexFromWord(s);
+			ArrayList<Vertex> temp = new ArrayList<Vertex>(); 
+			for(String t:vertices){
+				Vertex toAdd = nodes.getVertexFromWord(t);
+				if(!added.getGroupings().contains(toAdd)){
+					temp.add(toAdd);
+				}
+			}
+			for(Vertex v:temp){
+				added.addGrouping(v);
+			}
 		}
+		//write.addVertex(n, true);
 	}
 
 	private void addGroupingsToVertex(Vertex input, LinkedList<String> vertices){
