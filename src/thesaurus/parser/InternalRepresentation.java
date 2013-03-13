@@ -222,7 +222,12 @@ public class InternalRepresentation {
 	 */
 
 	public Vertex getFirst() {
-		return nodes.getRandVertex();
+		if (!nodes.getNodes().isEmpty()){
+			return nodes.getRandVertex();
+		}else{
+			return null;
+		}
+		
 		// return nodes.getNodes().getFirst();
 	}
 

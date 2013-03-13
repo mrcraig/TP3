@@ -161,10 +161,12 @@ public class PopupFactory {
 		                            addAntInput, promptCatLabel, addCatInput, confirmButton, cancelButton);
 		canvas.setStyle("	-fx-background-color: #dfdfdf;"
 		                + "-fx-border-color: black;" + "-fx-border-width: 1px;" + "-fx-font-family: 'Arial';");
-		addWordInput.setText(referenceWindow.getVisualisationRoot().getCurrentVertex().getWord());
-		addSynInput.setText(convertCsv(referenceWindow.getVisualisationRoot().getCurrentVertex().getSynomyns()));
-		addAntInput.setText(convertCsv(referenceWindow.getVisualisationRoot().getCurrentVertex().getAntonyms()));
-		addCatInput.setText(referenceWindow.getVisualisationRoot().getCurrentParser().getCatergory(referenceWindow.getVisualisationRoot().getCurrentVertex()));
+		if(referenceWindow.getVisualisationRoot().getCurrentVertex() != null){
+			addWordInput.setText(referenceWindow.getVisualisationRoot().getCurrentVertex().getWord());
+			addSynInput.setText(convertCsv(referenceWindow.getVisualisationRoot().getCurrentVertex().getSynomyns()));
+			addAntInput.setText(convertCsv(referenceWindow.getVisualisationRoot().getCurrentVertex().getAntonyms()));
+			addCatInput.setText(referenceWindow.getVisualisationRoot().getCurrentParser().getCatergory(referenceWindow.getVisualisationRoot().getCurrentVertex()));
+		}
 		return canvas;
 	}
 
