@@ -88,6 +88,7 @@ public class InternalRepresentation {
 				write.addVertex(v, false);
 			} else {
 				n.addSynonym(syn);
+				write.addVertex(n,true);
 			}
 		}
 	}
@@ -103,6 +104,7 @@ public class InternalRepresentation {
 				write.addVertex(v, false);
 			} else {
 				n.addAntonym(ant);
+				write.addVertex(n,true);
 			}
 		}
 	}

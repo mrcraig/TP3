@@ -17,7 +17,7 @@ public class HashGraph {
 	}
 
 	void add(Vertex v) {
-		nodesMap.put(v.getWord(), v);
+		nodesMap.put(v.getWord().toLowerCase().trim(), v);
 	}
 
 	int size() {
@@ -41,7 +41,7 @@ public class HashGraph {
 	}
 
 	Vertex getVertexFromWord(String word) {
-		return nodesMap.get(word.trim());
+		return nodesMap.get(word.trim().toLowerCase());
 	}
 
 	Vertex getRandVertex() {
