@@ -2,6 +2,7 @@ package thesaurus.parser;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class InternalRepresentation {
@@ -110,21 +111,32 @@ public class InternalRepresentation {
 		LinkedList<String> vertices = this.catergories.getCatergory(catergory);
 		if (vertices == null) {
 			this.catergories.addCatergory(catergory).add(n.getWord());
-			System.out.println("And added word " + n.getWord());
-			System.out.println("catssss " + this.catergories.getCatergory(catergory).getFirst());
 			return;
 		}
 		this.catergories.addVertexToCatergory(catergory, n.getWord());
 
-		System.out.println("vertices in " + catergory + vertices);
-		for (String g : vertices) {
+		Iterator<String> vertIterator = vertices.iterator();
+		while (vertIterator.hasNext()) {
+			String g = vertIterator.next();
 			Vertex grouping = nodes.getVertexFromWord(g);
-			n.addGrouping(grouping);
+			addGroupingsToVertex(grouping, vertices);
 			write.addVertex(n, true);
 		}
-
 	}
 
+	private void addGroupingsToVertex(Vertex input, LinkedList<String> vertices){
+		Iterator<String> vertIterator = vertices.iterator();
+		while(vertIterator.hasNext()){
+			String g = vertIterator.next();
+			Vertex toAdd = nodes.getVertexFromWord(g);
+			if(!g.equals(input.getWord())){
+				if(!input.getGroupings().contains(toAdd)){
+					input.addGrouping(toAdd);
+				}
+			}
+		}
+	}
+	
 	public boolean isEmptyFile() {
 		return emptyFile;
 	}
