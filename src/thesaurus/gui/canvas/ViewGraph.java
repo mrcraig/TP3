@@ -2,12 +2,14 @@ package thesaurus.gui.canvas;
 
 import java.util.LinkedList;
 
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
@@ -287,6 +289,7 @@ public class ViewGraph {
 	}
 	
 	public void setScale(double scale){
+		scale += graph.getScaleX();
 		graph.setScaleX(scale);
 		graph.setScaleY(scale);
 	}
@@ -332,6 +335,13 @@ public class ViewGraph {
 				curY.clear();
 			}
 		});
+		
+		graph.setOnScroll(new EventHandler<ScrollEvent>() {
+            @Override public void handle(ScrollEvent event) {
+                System.out.println("-----" + event.getDeltaY());
+                setScale(event.getDeltaY()/400);
+            }
+        });
 		
 		graph.addEventHandler(MouseEvent.MOUSE_CLICKED, 
 				new EventHandler<MouseEvent>(){
