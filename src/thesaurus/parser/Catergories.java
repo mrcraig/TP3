@@ -13,24 +13,31 @@ import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map.Entry;
 
 public class Catergories implements Serializable {
-	private HashMap<String, LinkedList<String>> cateasdrgories = new HashMap<String, LinkedList<String>>();
+	private HashMap<String, LinkedList<String>> categories = new HashMap<String, LinkedList<String>>();
 	private String filePath;
 	private CategoriesData localCat = new CategoriesData();
 
 	public Catergories() {
 		//readFromFile();
 	}
+	
+	public ArrayList<String> getAllCategories()
+	{
+		ArrayList<String> cats = new ArrayList<String>();
+		cats.addAll(localCat.getCategories().keySet());
+		return cats;
+	}
 
 	LinkedList<String> addCatergory(String c) {
 		LinkedList<String> vertices = new LinkedList<String>();
 		localCat.getCategories().put(c, vertices);
-		System.out.println("Added cat " + c);
 		//saveToFile();
 		return vertices;
 	}

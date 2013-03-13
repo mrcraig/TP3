@@ -17,9 +17,9 @@ public class InternalRepresentation {
 		read = new XmlRead(f);
 		this.emptyFile = read.emptyFile;
 		nodes.setNodes(read.getAllNodes());
-
-		write = new XmlWrite(f, nodes);
 		this.catergories = new Catergories();
+		write = new XmlWrite(f, nodes, catergories);
+		
 	}
 
 	public void addCatergory(String catergory) {
@@ -60,7 +60,7 @@ public class InternalRepresentation {
 			n = nodes.getVertexFromWord(w);
 			exists = true;
 		} else {
-			String index = read.getIndex();
+			String index = read.getIndex();  
 			n = new Vertex(index);
 			n.setWord(w);
 		}
@@ -114,9 +114,12 @@ public class InternalRepresentation {
 		LinkedList<String> vertices = this.catergories.getCatergory(catergory);
 		if (vertices == null) {
 			this.catergories.addCatergory(catergory).add(n.getWord());
+			System.out.println("categories are "+this.catergories.getAllCategories());
+			this.write.addCategories();
 			return;
 		}
 		this.catergories.addVertexToCatergory(catergory, n.getWord());
+		
 
 		for(String s:vertices){
 			Vertex added = nodes.getVertexFromWord(s);
