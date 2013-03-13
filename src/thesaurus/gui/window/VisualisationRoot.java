@@ -28,7 +28,6 @@ public class VisualisationRoot extends AnchorPane {
 	private ViewGraph displayGraphFull;
 	private ViewGraph displayGraphDual;
 	private ArrayList<Integer> state;
-	private int limit;
 
 	public VisualisationRoot(MainWindow inputWindow) throws IOException {
 		
@@ -36,7 +35,7 @@ public class VisualisationRoot extends AnchorPane {
 		state.add(1);
 		state.add(1);
 		state.add(0);
-		limit = 5;
+		state.add(5);
 
 		referenceWindow = inputWindow;
 
@@ -105,7 +104,7 @@ public class VisualisationRoot extends AnchorPane {
 	}
 
 	public Vertex runSpringOnVertex(Vertex inputVertex) {
-		FrSpring currentSpring = new FrSpring(inputVertex,state.get(0),state.get(1),state.get(2),limit);
+		FrSpring currentSpring = new FrSpring(inputVertex,state.get(0),state.get(1),state.get(2),state.get(3));
 		return currentSpring.getCoordinates();
 	}
 
@@ -117,7 +116,6 @@ public class VisualisationRoot extends AnchorPane {
 		setCurrentVertex(referenceWindow.getVisualisationRoot().runSpringOnVertex(currentVertex));
 		referenceWindow.getVisualisationRoot().addCanvas();
 		referenceWindow.getVisualisationRoot().addTable();
-		currentController.defaultZoomValue();
 	}
 
 	public void doClickSearchGraph(String inputString) {
@@ -128,7 +126,6 @@ public class VisualisationRoot extends AnchorPane {
 		setCurrentVertex(referenceWindow.getVisualisationRoot().runSpringOnVertex(currentVertex));
 		referenceWindow.getVisualisationRoot().addCanvas();
 		referenceWindow.getVisualisationRoot().addTable();
-		currentController.defaultZoomValue();
 	}
 
 	public void doSearchRefresh() {
@@ -136,7 +133,6 @@ public class VisualisationRoot extends AnchorPane {
 		setCurrentVertex(referenceWindow.getVisualisationRoot().runSpringOnVertex(replacementVertex));
 		referenceWindow.getVisualisationRoot().addCanvas();
 		referenceWindow.getVisualisationRoot().addTable();
-		currentController.defaultZoomValue();
 	}
 	
 	public ArrayList<Integer> getStateArray(){

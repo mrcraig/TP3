@@ -71,8 +71,25 @@
                     <Font name="Arial" size="11.0" fx:id="x2" />
                   </font>
                 </Label>
-                <Slider fx:id="sliderGraph" blockIncrement="0.1" layoutX="325.0" layoutY="432.0" majorTickUnit="0.1" max="2.0" min="0.5" value="1.0" />
-                <Label font="$x1" layoutX="287.0" layoutY="431.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="42.0" text="Zoom:" />
+                
+                <ChoiceBox fx:id="sliderGraph" layoutX="400.0" layoutY="427.0" prefWidth="60.0">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="1" />
+                      <String fx:value="2" />
+                      <String fx:value="3" />
+                      <String fx:value="4" />
+                      <String fx:value="5" />
+                      <String fx:value="6" />
+                      <String fx:value="7" />
+                      <String fx:value="8" />
+                      <String fx:value="9" />
+                      <String fx:value="10" />
+                    </FXCollections>
+                  </items>
+                </ChoiceBox>
+                
+                <Label font="$x1" layoutX="360.0" layoutY="431.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="50.0" text="Limit:" />
               </children>
             </AnchorPane>
           </content>
@@ -88,8 +105,24 @@
                 <Button font="$x1" layoutX="650.0" layoutY="400.0" mnemonicParsing="false" onAction="#doRemoveWord" prefWidth="100.0" text="Remove" />
                 <Text font="$x1" layoutX="8.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search: " />
                  <Button font="$x1" layoutX="305.0" layoutY="400.0" mnemonicParsing="false" onAction="#doRefreshGraph" prefWidth="100.0" text="Refresh" />
-                <Slider fx:id="sliderTable" blockIncrement="0.1" layoutX="325.0" layoutY="432.0" majorTickUnit="0.1" max="2.0" min="0.5" value="1.0" />
-                <Label font="$x1" layoutX="287.0" layoutY="431.0" prefWidth="42.0" text="Zoom:" />
+                <ChoiceBox fx:id="sliderTable" layoutX="400.0" layoutY="427.0" prefWidth="60.0">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="1" />
+                      <String fx:value="2" />
+                      <String fx:value="3" />
+                      <String fx:value="4" />
+                      <String fx:value="5" />
+                      <String fx:value="6" />
+                      <String fx:value="7" />
+                      <String fx:value="8" />
+                      <String fx:value="9" />
+                      <String fx:value="10" />
+                    </FXCollections>
+                  </items>
+                </ChoiceBox>
+                
+                <Label font="$x1" layoutX="360.0" layoutY="431.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="50.0" text="Limit:" />
                 <Label id="statusLabelGraph" fx:id="statusLabelTable" font="$x2" layoutX="57.0" layoutY="424.0" text="Please enter a search term">
                   <textFill>
                     <Color blue="0.376" green="0.376" red="0.376" fx:id="x3" />
@@ -142,11 +175,27 @@
                 <Button font="$x1" layoutX="260.0" layoutY="400.0" mnemonicParsing="false" onAction="#doSearchGraphD" text="Go" />
                 <Button font="$x1" layoutX="305.0" layoutY="400.0" mnemonicParsing="false" onAction="#doRefreshGraph" prefWidth="100.0" text="Refresh" />
                 <Button font="$x1" layoutX="420.0" layoutY="400.0" mnemonicParsing="false" onAction="#doAddWord" prefWidth="100.0" text="Add" />
-                <Label font="$x1" layoutX="287.0" layoutY="431.0" prefWidth="42.0" text="Zoom:" />
                 <Button font="$x1" layoutX="535.0" layoutY="400.0" mnemonicParsing="false" onAction="#doEditWord" prefWidth="100.0" text="Edit" />
                 <Button font="$x1" layoutX="650.0" layoutY="400.0" mnemonicParsing="false" onAction="#doRemoveWord" prefWidth="100.0" text="Remove" />
                 <Pane fx:id="canvasDualGraph" layoutX="16.0" layoutY="14.0" prefHeight="362.0" prefWidth="354.0" />
-                <Slider fx:id="sliderDual" blockIncrement="0.1" layoutX="325.0" layoutY="432.0" majorTickUnit="0.1" max="2.0" min="0.5" value="1.0" />
+                <ChoiceBox fx:id="sliderDual" layoutX="400.0" layoutY="427.0" prefWidth="60.0">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="1" />
+                      <String fx:value="2" />
+                      <String fx:value="3" />
+                      <String fx:value="4" />
+                      <String fx:value="5" />
+                      <String fx:value="6" />
+                      <String fx:value="7" />
+                      <String fx:value="8" />
+                      <String fx:value="9" />
+                      <String fx:value="10" />
+                    </FXCollections>
+                  </items>
+                </ChoiceBox>
+                
+                <Label font="$x1" layoutX="360.0" layoutY="431.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="50.0" text="Limit:" />
                 <Text font="$x1" layoutX="8.0" layoutY="415.0" scaleY="0.9999910471279186" strokeType="OUTSIDE" strokeWidth="0.0" text="Search: " />
                 <Label id="statusLabelGraph" fx:id="statusLabelDual" font="$x2" layoutX="57.0" layoutY="424.0" text="Please enter a search term" textFill="$x3" />
                 <Pane id="" fx:id="tableDualGraph" layoutX="389.0" layoutY="14.0" prefHeight="362.0" prefWidth="353.9998779296875" />

@@ -32,9 +32,9 @@ public class FrSpring {
 
 	public FrSpring(Vertex v1in, int syn, int ant, int hyp, int limit) {
 		
-		System.out.println("hyp is " + hyp);
+		System.out.println("Limit is " + limit);
 
-		Vertex v1 = alterVertex(v1in);
+		Vertex v1 = alterVertex(v1in, limit);
 
 		this.temprature = ((double) this.width / 50);
 		this.area = (this.width) * (this.length);
@@ -513,9 +513,8 @@ public class FrSpring {
 				|| x.getX() == (double) this.width || x.getY() == (double) this.length);
 	}
 
-	private Vertex alterVertex(Vertex v1in) {
+	private Vertex alterVertex(Vertex v1in, int limit) {
 		ArrayList<String> currentArray = new ArrayList<String>();
-		int limit = 8;
 		Vertex current0s = new Vertex(v1in.getID());
 		current0s.setWord(v1in.getWord());
 		current0s.setGroupings(v1in.getGroupings());

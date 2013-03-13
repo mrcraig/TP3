@@ -113,13 +113,13 @@ public class SystemController {
 	private MenuBar menuBar;
 
 	@FXML
-	private Slider sliderGraph;
+	private ChoiceBox<String> sliderGraph;
 
 	@FXML
-	private Slider sliderTable;
+	private ChoiceBox<String> sliderTable;
 
 	@FXML
-	private Slider sliderDual;
+	private ChoiceBox<String> sliderDual;
 
 	MainWindow referenceWindow;
 
@@ -280,6 +280,7 @@ public class SystemController {
 		groupingGraph.getSelectionModel().select(1);
 		groupingTable.getSelectionModel().select(1);
 		groupingDual.getSelectionModel().select(1);
+		sliderGraph.getSelectionModel().select(4);
 	}
 
 	private void setSelectionBoxHandlers(){
@@ -404,45 +405,40 @@ public class SystemController {
 	}
 
 	private void setSliderHandlers() {
-		sliderGraph.valueProperty().addListener(new ChangeListener<Number>() {
-			public void changed(ObservableValue<? extends Number> ov,
-					Number old_val, Number new_val) {
-				System.out.println("Old: " + old_val.doubleValue());
-				System.out.println("New: " + new_val.doubleValue());
-				sliderTable.setValue(new_val.doubleValue());
-				sliderDual.setValue(new_val.doubleValue());
-				referenceWindow.getVisualisationRoot().getFullGraph()
-						.setScale(new_val.doubleValue());
-				referenceWindow.getVisualisationRoot().getDualGraph()
-				.setScale(new_val.doubleValue());
+		
+		sliderGraph.getSelectionModel().selectedIndexProperty()
+		.addListener(new ChangeListener<Number>() {
+			public void changed(ObservableValue ov, Number value,
+					Number new_value) {
+				referenceWindow.getVisualisationRoot().getStateArray().set(3, (sliderGraph.getSelectionModel().getSelectedIndex()+1));
+				referenceWindow.getVisualisationRoot().doSearchRefresh();
+				sliderTable.getSelectionModel().select(sliderGraph.getSelectionModel().getSelectedIndex());
+				sliderDual.getSelectionModel().select(sliderGraph.getSelectionModel().getSelectedIndex());
 			}
 		});
-		sliderTable.valueProperty().addListener(new ChangeListener<Number>() {
-			public void changed(ObservableValue<? extends Number> ov,
-					Number old_val, Number new_val) {
-				System.out.println("Old: " + old_val.doubleValue());
-				System.out.println("New: " + new_val.doubleValue());
-				sliderGraph.setValue(new_val.doubleValue());
-				sliderDual.setValue(new_val.doubleValue());
-				referenceWindow.getVisualisationRoot().getFullGraph()
-						.setScale(new_val.doubleValue());
-				referenceWindow.getVisualisationRoot().getDualGraph()
-				.setScale(new_val.doubleValue());
+		
+		sliderTable.getSelectionModel().selectedIndexProperty()
+		.addListener(new ChangeListener<Number>() {
+			public void changed(ObservableValue ov, Number value,
+					Number new_value) {
+				referenceWindow.getVisualisationRoot().getStateArray().set(3, (sliderGraph.getSelectionModel().getSelectedIndex()+1));
+				referenceWindow.getVisualisationRoot().doSearchRefresh();
+				sliderGraph.getSelectionModel().select(sliderTable.getSelectionModel().getSelectedIndex());
+				sliderDual.getSelectionModel().select(sliderTable.getSelectionModel().getSelectedIndex());
 			}
 		});
-		sliderDual.valueProperty().addListener(new ChangeListener<Number>() {
-			public void changed(ObservableValue<? extends Number> ov,
-					Number old_val, Number new_val) {
-				System.out.println("Old: " + old_val.doubleValue());
-				System.out.println("New: " + new_val.doubleValue());
-				sliderGraph.setValue(new_val.doubleValue());
-				sliderTable.setValue(new_val.doubleValue());
-				referenceWindow.getVisualisationRoot().getFullGraph()
-						.setScale(new_val.doubleValue());
-				referenceWindow.getVisualisationRoot().getDualGraph()
-				.setScale(new_val.doubleValue());
+		
+		sliderDual.getSelectionModel().selectedIndexProperty()
+		.addListener(new ChangeListener<Number>() {
+			public void changed(ObservableValue ov, Number value,
+					Number new_value) {
+				referenceWindow.getVisualisationRoot().getStateArray().set(3, (sliderGraph.getSelectionModel().getSelectedIndex()+1));
+				referenceWindow.getVisualisationRoot().doSearchRefresh();
+				sliderTable.getSelectionModel().select(sliderDual.getSelectionModel().getSelectedIndex());
+				sliderGraph.getSelectionModel().select(sliderDual.getSelectionModel().getSelectedIndex());
 			}
 		});
+		
 	}
 
 	private int reverseIndex(int currentIndex) {
@@ -519,12 +515,6 @@ public class SystemController {
 						currentVertex));
 		referenceWindow.getVisualisationRoot().addCanvas();
 		referenceWindow.getVisualisationRoot().addTable();
-		defaultZoomValue();
-	}
-	
-	public void defaultZoomValue(){
-		sliderGraph.setValue(1.0);
-		sliderTable.setValue(1.0);
 	}
 
 	@FXML
