@@ -116,12 +116,6 @@ public class InternalRepresentation {
 		}
 		this.catergories.addVertexToCatergory(catergory, n.getWord());
 
-//		Iterator<String> vertIterator = vertices.iterator();
-//		while (vertIterator.hasNext()) {
-//			String g = vertIterator.next();
-//			Vertex grouping = nodes.getVertexFromWord(g);
-//			addGroupingsToVertex(grouping, vertices);
-//		}
 		for(String s:vertices){
 			Vertex added = nodes.getVertexFromWord(s);
 			ArrayList<Vertex> temp = new ArrayList<Vertex>(); 
@@ -135,20 +129,7 @@ public class InternalRepresentation {
 				added.addGrouping(v);
 			}
 		}
-		//write.addVertex(n, true);
-	}
-
-	private void addGroupingsToVertex(Vertex input, LinkedList<String> vertices){
-		Iterator<String> vertIterator = vertices.iterator();
-		while(vertIterator.hasNext()){
-			String g = vertIterator.next();
-			Vertex toAdd = nodes.getVertexFromWord(g);
-			if(!g.equals(input.getWord())){
-				if(!input.getGroupings().contains(toAdd)){
-					input.addGrouping(toAdd);
-				}
-			}
-		}
+		write.addVertex(n, true);
 	}
 	
 	public boolean isEmptyFile() {
