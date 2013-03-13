@@ -8,37 +8,13 @@ public class InternalRepresentation {
 	private HashGraph nodes = new HashGraph();
 	private XmlRead read;
 	private XmlWrite write;
-	private Catergories catergories;
 	private boolean emptyFile;
 
 	public InternalRepresentation(File f) {
 		read = new XmlRead(f);
 		this.emptyFile = read.emptyFile;
 		nodes.setNodes(read.getAllNodes());
-
 		write = new XmlWrite(f, nodes);
-		this.catergories = new Catergories();
-	}
-
-	public void addCatergory(String catergory) {
-		catergories.addCatergory(catergory);
-	}
-	
-	public String getCatergory(Vertex v)
-	{
-		return catergories.getCatergories(v);
-	}
-
-	public void removeCatergory(String catergory) {
-		catergories.removeCatergory(catergory);
-	}
-
-	public void addVertexToCatergory(String c, String word) {
-		catergories.addVertexToCatergory(c, word);
-	}
-
-	public void removeVertexToCatergory(String c, String word) {
-		catergories.removeVertexFromCategory(c, word);
 	}
 
 	/**
@@ -73,6 +49,7 @@ public class InternalRepresentation {
 		}
 		nodes.add(n);
 		write.addVertex(n, exists);
+		System.out.println(n);
 	}
 
 	private void addSynonyms(Vertex n, String synonyms) {
@@ -105,24 +82,19 @@ public class InternalRepresentation {
 		}
 	}
 
-	private void addGroupings(Vertex n, String catergory) {
-
-		LinkedList<String> vertices = this.catergories.getCatergory(catergory);
-		if (vertices == null) {
-			this.catergories.addCatergory(catergory).add(n.getWord());
-			System.out.println("And added word " + n.getWord());
-			System.out.println("catssss " + this.catergories.getCatergory(catergory).getFirst());
-			return;
+	private void addGroupings(Vertex n, String category) {
+		for (String c : parseCsvToList(category)) {
+			Vertex cat = nodes.getVertexFromWord(c);
+			if (cat == null) {
+				Vertex v = new Vertex(read.getIndex());
+				v.setWord(c);
+				n.addGrouping(v);
+				nodes.add(v);
+				write.addVertex(v, false);
+			} else {
+				n.addGrouping(cat);
+			}
 		}
-		this.catergories.addVertexToCatergory(catergory, n.getWord());
-
-		System.out.println("vertices in " + catergory + vertices);
-		for (String g : vertices) {
-			Vertex grouping = nodes.getVertexFromWord(g);
-			n.addGrouping(grouping);
-			write.addVertex(n, true);
-		}
-
 	}
 
 	public boolean isEmptyFile() {
@@ -157,6 +129,7 @@ public class InternalRepresentation {
 		editVertex.getGroupings().clear();
 		addSynonyms(editVertex, synonyms);
 		addAntonyms(editVertex, antonyms);
+		addGroupings(editVertex, groupings);
 		/*
 		 * for (String s : synArr) { Vertex temp = nodes.getVertexFromWord(s);
 		 * editVertex.addSynonym(temp); } for (String a : antArr) {
