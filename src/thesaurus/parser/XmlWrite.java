@@ -77,7 +77,7 @@ public class XmlWrite {
 			node.appendChild(data);
 			this.xml.getElementsByTagName("graph").item(0).appendChild(node);
 			System.out.println("adding "+c+" to xml.");
-			//LinkedList<String> vertices = this.catergories.getCatergory(catergory);
+			//ArrayList<String> vertices = this.catergories.getCatergory(catergory);
 			
 		}
 		//for every vertex in a category, write an edge between them

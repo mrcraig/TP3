@@ -1,18 +1,19 @@
 package thesaurus.parser;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class RemoveEntry {
 	
 	Vertex v;
-	LinkedList<Vertex> la;
-	LinkedList<Vertex> ls;
-	LinkedList<Vertex> lg;
+	ArrayList<Vertex> la;
+	ArrayList<Vertex> ls;
+	ArrayList<Vertex> lg;
 	
 	public RemoveEntry(){
-		la = new LinkedList<Vertex>();
-		ls = new LinkedList<Vertex>();
-		lg = new LinkedList<Vertex>();
+		la = new ArrayList<Vertex>();
+		ls = new ArrayList<Vertex>();
+		lg = new ArrayList<Vertex>();
 	}
 	
 	

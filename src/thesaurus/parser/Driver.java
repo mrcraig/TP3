@@ -1,6 +1,7 @@
 package thesaurus.parser;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 
@@ -14,8 +15,8 @@ public class Driver
 		InternalRepresentation driver = new InternalRepresentation(test);
 		
 		
-		LinkedList<String> array = driver.parseCsvToList("");
-		LinkedList<String> list = driver.parseCsvToList("");
+		ArrayList<String> array = driver.parseCsvToList("");
+		ArrayList<String> list = driver.parseCsvToList("");
 	
 		
 		for(String s : array)

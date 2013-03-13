@@ -3,7 +3,6 @@ package thesaurus.parser;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 
 public class InternalRepresentation {
@@ -85,9 +84,11 @@ public class InternalRepresentation {
 				v.setWord(s);
 				n.addSynonym(v);
 				nodes.add(v);
+				v.addSynonym(n);
 				write.addVertex(v, false);
 			} else {
 				n.addSynonym(syn);
+				syn.addSynonym(n);
 				write.addVertex(n,true);
 			}
 		}
@@ -101,9 +102,11 @@ public class InternalRepresentation {
 				v.setWord(a);
 				n.addAntonym(v);
 				nodes.add(v);
+				v.addAntonym(n);
 				write.addVertex(v, false);
 			} else {
 				n.addAntonym(ant);
+				ant.addAntonym(n);
 				write.addVertex(n,true);
 			}
 		}
@@ -111,7 +114,7 @@ public class InternalRepresentation {
 
 	private void addGroupings(Vertex n, String catergory) {
 
-		LinkedList<String> vertices = this.catergories.getCatergory(catergory);
+		ArrayList<String> vertices = this.catergories.getCatergory(catergory);
 		if (vertices == null) {
 			this.catergories.addCatergory(catergory).add(n.getWord());
 			System.out.println("categories are "+this.catergories.getAllCategories());
@@ -220,7 +223,7 @@ public class InternalRepresentation {
 
 	/* facade pattern */
 	/*
-	 * public LinkedList<Vertex> getListOfSynomyns(String s, int max) { return
+	 * public ArrayList<Vertex> getListOfSynomyns(String s, int max) { return
 	 * nodes.getListOfSynomyns(s, max); }
 	 */
 
@@ -244,11 +247,11 @@ public class InternalRepresentation {
 		// return null;
 	}
 
-	// public LinkedList<Vertex> getListOfSynomyns(String s){return
+	// public ArrayList<Vertex> getListOfSynomyns(String s){return
 	// getListOfSynomyns(s, 100);}
 
 	/*
-	 * public HashMap<String, HashMap<String, LinkedList<String>>>
+	 * public HashMap<String, HashMap<String, ArrayList<String>>>
 	 * getTableData() { return nodes.getTableData(); }
 	 */
 
@@ -259,12 +262,12 @@ public class InternalRepresentation {
 	 * ""); } return toReturn; }
 	 */
 
-	LinkedList<String> parseCsvToList(String inputCsvString) {
+	ArrayList<String> parseCsvToList(String inputCsvString) {
 		if (inputCsvString.isEmpty()) {
-			return new LinkedList<String>();
+			return new ArrayList<String>();
 		}
 		String[] split = inputCsvString.split(",");
-		LinkedList<String> syns = new LinkedList<String>();
+		ArrayList<String> syns = new ArrayList<String>();
 		for (String s : split) {
 			syns.add(s);
 		}

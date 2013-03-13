@@ -1,14 +1,15 @@
 package thesaurus.parser;
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 
 
 public class Vertex {
    
-    private LinkedList<Vertex> synonyms; 
-    private LinkedList<Vertex> antonyms;
-    private LinkedList<Vertex> groupings;
+    private ArrayList<Vertex> synonyms; 
+    private ArrayList<Vertex> antonyms;
+    private ArrayList<Vertex> groupings;
     private String id; 
     private boolean visited = false;
     private String word;
@@ -28,9 +29,9 @@ public class Vertex {
 
     public Vertex(String i)
     {
-    	synonyms = new LinkedList<Vertex>();
-    	antonyms = new LinkedList<Vertex>();
-    	groupings = new LinkedList<Vertex>();
+    	synonyms = new ArrayList<Vertex>();
+    	antonyms = new ArrayList<Vertex>();
+    	groupings = new ArrayList<Vertex>();
     	id = i;
     }  
     
@@ -86,17 +87,17 @@ public class Vertex {
 		this.pos = pos;
 	}
 
-	public LinkedList<Vertex> getSynomyns()
+	public ArrayList<Vertex> getSynomyns()
 	{
         return synonyms;
     }
 	
-	public LinkedList<Vertex> getAntonyms()
+	public ArrayList<Vertex> getAntonyms()
 	{
 		return antonyms;
 	}
 	
-	public LinkedList<Vertex> getGroupings()
+	public ArrayList<Vertex> getGroupings()
 	{
 		return groupings;
 	}
@@ -113,12 +114,12 @@ public class Vertex {
     
     public void addSynonym(Vertex n)
     {
-        synonyms.addLast(n);
+        synonyms.add(n);
     }
     
     public void addAntonym(Vertex n)
     {
-    	antonyms.addLast(n);
+    	antonyms.add(n);
     }
     
     public void addGrouping(Vertex g)
@@ -141,17 +142,17 @@ public class Vertex {
     	synonyms.remove(g);
     }
     
-    public void setSynonyms(LinkedList<Vertex> syns)
+    public void setSynonyms(ArrayList<Vertex> syns)
     {
     	this.synonyms = syns;
     }
     
-    public void setAntonyms(LinkedList<Vertex> ants)
+    public void setAntonyms(ArrayList<Vertex> ants)
     {
     	this.antonyms = ants;
     }
     
-    public void setGroupings(LinkedList<Vertex> g)
+    public void setGroupings(ArrayList<Vertex> g)
     {
     	this.groupings = g;
     }
@@ -175,15 +176,14 @@ public class Vertex {
 		return result;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Vertex obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Vertex other = (Vertex) obj;
+		Vertex other = obj;
 		if (antonyms == null) {
 			if (other.antonyms != null)
 				return false;

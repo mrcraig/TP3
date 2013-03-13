@@ -1,5 +1,6 @@
 package thesaurus.parser;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -61,7 +62,7 @@ public class Handler extends DefaultHandler
 		//System.out.println("leaving"+qname);
 	}
 	
-	 LinkedList<Vertex> getNodes()
+	 ArrayList<Vertex> getNodes()
 	{
 		return nodes.getNodes();
 	}

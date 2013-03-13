@@ -1,5 +1,6 @@
 package thesaurus.gui.window;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import thesaurus.parser.Vertex;
@@ -228,7 +229,7 @@ public class PopupFactory {
 		return currentWordInput;
 	}
 	
-	private String convertCsv(LinkedList<Vertex> input){
+	private String convertCsv(ArrayList<Vertex> input){
 		String toreturn = "";
 		for(Vertex s:input){
 			if(!toreturn.equals("")){

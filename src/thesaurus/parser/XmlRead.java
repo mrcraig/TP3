@@ -102,7 +102,7 @@ public class XmlRead
 	private void getVertices()
 	{
 		NodeList nodes = null;
-		//LinkedList<Vertex> vertices = new LinkedList<Vertex>();
+		//ArrayList<Vertex> vertices = new ArrayList<Vertex>();
 		HashMap<String,Vertex> vertices = new HashMap<String,Vertex>();
 		
 		try

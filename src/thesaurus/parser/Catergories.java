@@ -15,12 +15,10 @@ import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.Map.Entry;
 
 public class Catergories implements Serializable {
-	private HashMap<String, LinkedList<String>> categories = new HashMap<String, LinkedList<String>>();
+	private HashMap<String, ArrayList<String>> categories = new HashMap<String, ArrayList<String>>();
 	private String filePath;
 	private CategoriesData localCat = new CategoriesData();
 
@@ -35,8 +33,8 @@ public class Catergories implements Serializable {
 		return cats;
 	}
 
-	LinkedList<String> addCatergory(String c) {
-		LinkedList<String> vertices = new LinkedList<String>();
+	ArrayList<String> addCatergory(String c) {
+		ArrayList<String> vertices = new ArrayList<String>();
 		localCat.getCategories().put(c, vertices);
 		//saveToFile();
 		return vertices;
@@ -47,7 +45,7 @@ public class Catergories implements Serializable {
 		//saveToFile();
 	}
 
-	LinkedList<String> getCatergory(String c) {
+	ArrayList<String> getCatergory(String c) {
 		return localCat.getCategories().get(c);
 	}
 
@@ -59,9 +57,7 @@ public class Catergories implements Serializable {
 	String getCatergories(Vertex v) {
 		System.out.println("entering method " + v.getWord() + " wo "
 				+ localCat.getCategories().size());
-		Iterator<Entry<String, LinkedList<String>>> allCats = localCat.getCategories().entrySet().iterator();
-		while (allCats.hasNext()) {
-			Entry<String, LinkedList<String>> checker = allCats.next();
+		for(Entry<String, ArrayList<String>> checker: localCat.getCategories().entrySet()){
 			System.out.println("checking " + checker.getKey());
 			if (checker.getValue().contains(v.getWord()))
 				return checker.getKey();

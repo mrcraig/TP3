@@ -1,8 +1,8 @@
 package thesaurus.parser;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 
 public class CategoriesData implements Serializable {
 	
@@ -10,17 +10,17 @@ public class CategoriesData implements Serializable {
 	 * Hello
 	 */
 	private static final long serialVersionUID = 2037245769706830936L;
-	private HashMap<String, LinkedList<String>> categories;
+	private HashMap<String, ArrayList<String>> categories;
 
 	public CategoriesData(){
-		categories = new HashMap<String, LinkedList<String>>();
+		categories = new HashMap<String, ArrayList<String>>();
 	}
 	
-	public HashMap<String, LinkedList<String>> getCategories() {
+	public HashMap<String, ArrayList<String>> getCategories() {
 		return categories;
 	}
 
-	public void setCategories(HashMap<String, LinkedList<String>> categories) {
+	public void setCategories(HashMap<String, ArrayList<String>> categories) {
 		this.categories = categories;
 	}
 
@@ -31,7 +31,7 @@ public class CategoriesData implements Serializable {
 		{
 			s += c;
 			s += "values are ";
-			s += categories.get(c).getFirst();
+			s += categories.get(c).get(0);
 		}
 		return s;
 	}

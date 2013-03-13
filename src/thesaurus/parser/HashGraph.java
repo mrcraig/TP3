@@ -1,7 +1,7 @@
 package thesaurus.parser;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map.Entry;
@@ -25,9 +25,8 @@ public class HashGraph {
 	}
 
 	Vertex getVertexFromIndex(String index) {
-		Iterator<Entry<String, Vertex>> all = nodesMap.entrySet().iterator();
-		while (all.hasNext()) {
-			Vertex v = all.next().getValue();
+		for(Entry<String, Vertex> vv: nodesMap.entrySet()){
+			Vertex v = vv.getValue();
 			if (v.getID().equals(index)) {
 				return v;
 			}
@@ -61,36 +60,28 @@ public class HashGraph {
 		String word = old.getWord();
 		System.out.println("word to be deleted " + word);
 		nodesMap.remove(word);
-		Iterator<Entry<String, Vertex>> all = nodesMap.entrySet().iterator();
-		LinkedList<RemoveEntry> verticesRemove = new LinkedList<RemoveEntry>();
 
-		while (all.hasNext()) {
-			Vertex v = all.next().getValue();
+		ArrayList<RemoveEntry> verticesRemove = new ArrayList<RemoveEntry>();
+		for(Entry<String, Vertex> all: nodesMap.entrySet()){
+			Vertex v = all.getValue();
 			System.out.println("currently checking " + v.getWord());
-			Iterator<Vertex> antonyms = v.getAntonyms().iterator();
 			RemoveEntry r = new RemoveEntry();
 			r.v = v;
-			while (antonyms.hasNext()) {
-				Vertex a = antonyms.next();
+			for(Vertex a:v.getAntonyms()){
 				if (a.getWord().equals(word)) {
 					System.out.println("removing antonym " + word);
 					r.la.add(a);
 				}
 			}
 
-			Iterator<Vertex> synonyms = v.getSynomyns().iterator();
-			while (synonyms.hasNext()) {
-				Vertex s = synonyms.next();
+			for(Vertex s:v.getSynomyns()){
 				if (s.getWord().equals(word)) {
 
 					System.out.println("removing synonym " + word);
 					r.ls.add(s);
 				}
 			}
-
-			Iterator<Vertex> groupings = v.getGroupings().iterator();
-			while (groupings.hasNext()) {
-				Vertex g = groupings.next();
+			for(Vertex g: v.getGroupings()){
 				if (g.getWord().equals(word)) {
 					System.out.println("removing grouping " + word);
 					r.lg.add(g);
@@ -105,7 +96,7 @@ public class HashGraph {
 		
 	}
 	
-	void removeVertices(LinkedList<RemoveEntry> entries)
+	void removeVertices(ArrayList<RemoveEntry> entries)
 	{
 		for(RemoveEntry e : entries)
 		{

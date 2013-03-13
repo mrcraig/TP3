@@ -1,6 +1,7 @@
 package thesaurus.parser;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -15,7 +16,7 @@ public class Parser {
 	Handler handler;
 	SAXParserFactory factory = SAXParserFactory.newInstance();
 	SAXParser parser;
-	//List<Vertex> currentlyInUse = new LinkedList<Vertex>();
+	//List<Vertex> currentlyInUse = new ArrayList<Vertex>();
 	Graph allNodes = new Graph();
 	
 	public Parser(String path)
@@ -54,27 +55,27 @@ public class Parser {
 	}
 	
 
-	public LinkedList<Vertex> getAllNodes()
+	public ArrayList<Vertex> getAllNodes()
 	{
 		return allNodes.getNodes();
 	}
 	
 	
 	/* Breadth First Search*/
-	public LinkedList<Vertex> getSynmsFor(String s, int max)
+	public ArrayList<Vertex> getSynmsFor(String s, int max)
 	{
 		return allNodes.getListOfSynomyns(s, max);
 	}
 	
 	public Vertex getSynmsForOne(String s)
 	{
-		return allNodes.getListOfSynomyns(s, 1).getFirst();
+		return allNodes.getListOfSynomyns(s, 1).get(0);
 	}
  	
-	public LinkedList<Vertex> getSynmsFor(String s){return getSynmsFor(s, 100);}
+	public ArrayList<Vertex> getSynmsFor(String s){return getSynmsFor(s, 100);}
 		
 	//dictionary key is word, value is linkedlist of synomns	
-	public HashMap<String, HashMap<String, LinkedList<String>>> getTableData()
+	public HashMap<String, HashMap<String, ArrayList<String>>> getTableData()
 	{
 		return allNodes.getTableData();
 	}

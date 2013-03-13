@@ -1,7 +1,7 @@
 package thesaurus.parser;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 
 
 /*
@@ -17,9 +17,9 @@ import java.util.LinkedList;
 
 public class Graph 
 {
-	private LinkedList<Vertex> nodes = new LinkedList<Vertex>();
+	private ArrayList<Vertex> nodes = new ArrayList<Vertex>();
 
-	 LinkedList<Vertex> getNodes() 
+	 ArrayList<Vertex> getNodes() 
 	{
 		return nodes;
 	}
@@ -58,7 +58,7 @@ public class Graph
 		 //System.out.println("current nodes are\n"+nodes);
 	 }
 
-	void setNodes(LinkedList<Vertex> nodes)
+	void setNodes(ArrayList<Vertex> nodes)
 	{
 		this.nodes = nodes;
 	}
@@ -80,7 +80,7 @@ public class Graph
 	
 	void setLastWord(String word)
 	{
-		nodes.getLast().setWord(word);
+		nodes.get(nodes.size()-1).setWord(word);
 	}
 	
 	boolean contains(Vertex v)
@@ -118,16 +118,16 @@ public class Graph
 	 
 	 
 	 /* Breadth First Search*/
-	    LinkedList<Vertex> getListOfSynomyns(String s, int max)
+	    ArrayList<Vertex> getListOfSynomyns(String s, int max)
 		{
-			LinkedList<Vertex> workQueue = new LinkedList<Vertex>();
-			LinkedList<Vertex> results = new LinkedList<Vertex>();
+			ArrayList<Vertex> workQueue = new ArrayList<Vertex>();
+			ArrayList<Vertex> results = new ArrayList<Vertex>();
 			Vertex start = this.getVertexFromWord(s);
 			if(start==null) return null;
 			workQueue.add(start);
 			while(!workQueue.isEmpty() && results.size()<max)
 			{
-				Vertex current = workQueue.remove();
+				Vertex current = workQueue.remove(0);
 				results.add(current);
 				for(Vertex child : current.getSynomyns())
 				{
@@ -140,14 +140,14 @@ public class Graph
 			return results;
 		}
 	 
-	 public HashMap<String,HashMap<String, LinkedList<String>>> getTableData()
+	 public HashMap<String,HashMap<String, ArrayList<String>>> getTableData()
 		{	
-		 HashMap<String, HashMap<String, LinkedList<String>>> tableData = new HashMap<String, HashMap<String, LinkedList<String>>>();
+		 HashMap<String, HashMap<String, ArrayList<String>>> tableData = new HashMap<String, HashMap<String, ArrayList<String>>>();
 		 	for(Vertex v : this.getNodes())
 		 	{
-		 		HashMap<String,LinkedList<String>> words = new HashMap<String, LinkedList<String>>();	
-		 		LinkedList<String> syns = new LinkedList<String>();
-		 		LinkedList<String> ants = new LinkedList<String>();
+		 		HashMap<String,ArrayList<String>> words = new HashMap<String, ArrayList<String>>();	
+		 		ArrayList<String> syns = new ArrayList<String>();
+		 		ArrayList<String> ants = new ArrayList<String>();
  		 		for(Vertex s : v.getSynomyns())
 		 		{
  		 			if (s==null) continue;
