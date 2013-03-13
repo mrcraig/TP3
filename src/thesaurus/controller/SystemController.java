@@ -281,6 +281,8 @@ public class SystemController {
 		groupingTable.getSelectionModel().select(1);
 		groupingDual.getSelectionModel().select(1);
 		sliderGraph.getSelectionModel().select(4);
+		sliderTable.getSelectionModel().select(4);
+		sliderDual.getSelectionModel().select(4);
 	}
 
 	private void setSelectionBoxHandlers(){
