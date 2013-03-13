@@ -516,12 +516,14 @@ public class FrSpring {
 		int limit = 8;
 		Vertex current0s = new Vertex("0");
 		current0s.setWord(v1in.getWord());
+		current0s.setGroupings(v1in.getGroupings());
 		currentArray.add(v1in.getWord());
 		int loop0s = Math.min(limit, v1in.getSynomyns().size());
 		for (int i = 0; i < loop0s; i++) {
 			Vertex current1s = new Vertex("0");
 			if(!currentArray.contains(v1in.getSynomyns().get(i).getWord())){
 				current1s.setWord(v1in.getSynomyns().get(i).getWord());
+				current1s.setGroupings(v1in.getSynomyns().get(i).getGroupings());
 				current0s.addSynonym(current1s);
 				currentArray.add(v1in.getSynomyns().get(i).getWord());
 			}
@@ -533,6 +535,7 @@ public class FrSpring {
 				Vertex current2s = new Vertex("0");
 				if(!currentArray.contains(v1in.getSynomyns().get(i).getSynomyns().get(j).getWord())){
 					current2s.setWord(v1in.getSynomyns().get(i).getSynomyns().get(j).getWord());
+					current2s.setGroupings(v1in.getSynomyns().get(i).getSynomyns().get(j).getGroupings());
 					current1s.addSynonym(current2s);
 					currentArray.add(v1in.getSynomyns().get(i).getSynomyns().get(j).getWord());
 				}
@@ -544,6 +547,7 @@ public class FrSpring {
 					Vertex current3s = new Vertex("0");
 					if(!currentArray.contains(v1in.getSynomyns().get(i).getSynomyns().get(j).getSynomyns().get(k).getWord())){
 						current3s.setWord(v1in.getSynomyns().get(i).getSynomyns().get(j).getSynomyns().get(k).getWord());
+						current3s.setGroupings(v1in.getSynomyns().get(i).getSynomyns().get(j).getSynomyns().get(k).getGroupings());
 						current2s.addSynonym(current3s);
 						currentArray.add(v1in.getSynomyns().get(i).getSynomyns().get(j).getSynomyns().get(k).getWord());
 					}
@@ -559,6 +563,7 @@ public class FrSpring {
 			Vertex current1a = new Vertex("0");
 			if(!currentArray.contains(v1in.getAntonyms().get(i).getWord())){
 				current1a.setWord(v1in.getAntonyms().get(i).getWord());
+				current1a.setGroupings(v1in.getAntonyms().get(i).getGroupings());
 				current0s.addAntonym(current1a);
 				currentArray.add(v1in.getAntonyms().get(i).getWord());
 			}
@@ -570,6 +575,7 @@ public class FrSpring {
 				Vertex current2s = new Vertex("0");
 				if(!currentArray.contains(v1in.getAntonyms().get(i).getSynomyns().get(j).getWord())){
 					current2s.setWord(v1in.getAntonyms().get(i).getSynomyns().get(j).getWord());
+					current2s.setGroupings(v1in.getAntonyms().get(i).getSynomyns().get(j).getGroupings());
 					current1a.addSynonym(current2s);
 					currentArray.add(v1in.getAntonyms().get(i).getSynomyns().get(j).getWord());
 				}
@@ -581,6 +587,7 @@ public class FrSpring {
 					Vertex current3s = new Vertex("0");
 					if(!currentArray.contains(v1in.getAntonyms().get(i).getSynomyns().get(j).getSynomyns().get(k).getWord())){
 						current3s.setWord(v1in.getAntonyms().get(i).getSynomyns().get(j).getSynomyns().get(k).getWord());
+						current3s.setGroupings(v1in.getAntonyms().get(i).getSynomyns().get(j).getSynomyns().get(k).getGroupings());
 						current2s.addSynonym(current3s);
 						currentArray.add(v1in.getAntonyms().get(i).getSynomyns().get(j).getSynomyns().get(k).getWord());
 					}
@@ -589,11 +596,6 @@ public class FrSpring {
 					}
 				}
 			}
-		}
-		
-		System.out.println("bvv = " + current0s.getWord());
-		for(Vertex v:current0s.getSynomyns()){
-			System.out.println("v = " + v.getWord());
 		}
 		return current0s;
 	}
