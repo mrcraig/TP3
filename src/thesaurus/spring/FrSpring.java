@@ -31,6 +31,8 @@ public class FrSpring {
 	private int hyp = 0;
 
 	public FrSpring(Vertex v1in, int syn, int ant, int hyp, int limit) {
+		
+		System.out.println("hyp is " + hyp);
 
 		Vertex v1 = alterVertex(v1in);
 

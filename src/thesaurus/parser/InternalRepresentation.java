@@ -157,6 +157,7 @@ public class InternalRepresentation {
 		editVertex.getGroupings().clear();
 		addSynonyms(editVertex, synonyms);
 		addAntonyms(editVertex, antonyms);
+		addGroupings(editVertex, groupings);
 		/*
 		 * for (String s : synArr) { Vertex temp = nodes.getVertexFromWord(s);
 		 * editVertex.addSynonym(temp); } for (String a : antArr) {
