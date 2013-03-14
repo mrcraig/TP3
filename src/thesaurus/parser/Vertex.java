@@ -177,38 +177,7 @@ public class Vertex {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
 		Vertex other = (Vertex) obj;
-		if (antonyms == null) {
-			if (other.antonyms != null)
-				return false;
-		} else if (!antonyms.equals(other.antonyms))
-			return false;
-		if (groupings == null) {
-			if(other.groupings != null)
-				return false;
-		}	else if(!groupings.equals(other.groupings))
-				return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (synonyms == null) {
-			if (other.synonyms != null)
-				return false;
-		} else if (!synonyms.equals(other.synonyms))
-			return false;
-		if (word == null) {
-			if (other.word != null)
-				return false;
-		} else if (!word.equals(other.word))
-			return false;
-		return true;
+		return this.id.equals(other.id);
 	}
 }
