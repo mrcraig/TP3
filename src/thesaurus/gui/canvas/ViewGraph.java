@@ -289,9 +289,11 @@ public class ViewGraph {
 	}
 	
 	public void setScale(double scale){
-		scale += graph.getScaleX();
-		graph.setScaleX(scale);
-		graph.setScaleY(scale);
+		if(scale+graph.getScaleX()>=1){
+			scale += graph.getScaleX();
+			graph.setScaleX(scale);
+			graph.setScaleY(scale);
+		}
 	}
 	
 	private void start() {
@@ -338,7 +340,6 @@ public class ViewGraph {
 		
 		graph.setOnScroll(new EventHandler<ScrollEvent>() {
             @Override public void handle(ScrollEvent event) {
-                System.out.println("-----" + event.getDeltaY());
                 setScale(event.getDeltaY()/400);
             }
         });
