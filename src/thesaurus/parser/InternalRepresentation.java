@@ -170,6 +170,7 @@ public class InternalRepresentation {
 
 	public void editVertex(String w, String synonyms, String antonyms,
 			String groupings) {
+		w = w.toLowerCase().trim();
 		Vertex editVertex = nodes.getVertexFromWord(w);
 		editVertex.getSynomyns().clear();
 		editVertex.getAntonyms().clear();
