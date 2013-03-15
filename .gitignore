@@ -4,5 +4,7 @@
 .classpath
 .project
 .metadata
+.xml
+.graphml
 *~
 src/resourcePackage/recentfiles.dat

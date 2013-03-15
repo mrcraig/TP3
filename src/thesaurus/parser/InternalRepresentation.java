@@ -55,6 +55,7 @@ public class InternalRepresentation {
 	public void addVertex(String w, String synonyms, String antonyms,
 			String groupings) {
 		Vertex n;
+		w = w.toLowerCase().trim();
 		boolean exists = false;
 		if (nodes.contains(nodes.getVertexFromWord(w))) {
 			n = nodes.getVertexFromWord(w);
@@ -79,6 +80,7 @@ public class InternalRepresentation {
 
 	private void addSynonyms(Vertex n, String synonyms) {
 		for (String s : parseCsvToList(synonyms)) {
+			s = s.toLowerCase().trim();
 			Vertex syn = nodes.getVertexFromWord(s);
 			if (syn == null) {
 				Vertex v = new Vertex(read.getIndex());
@@ -95,6 +97,7 @@ public class InternalRepresentation {
 
 	private void addAntonyms(Vertex n, String antonyms) {
 		for (String a : parseCsvToList(antonyms)) {
+			a = a.toLowerCase().trim();
 			Vertex ant = nodes.getVertexFromWord(a);
 			if (ant == null) {
 				Vertex v = new Vertex(read.getIndex());
