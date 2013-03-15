@@ -137,15 +137,21 @@ public class SystemController {
 				.getStage());
 
 		if (currentFile != null) {
-			if (currentFile.getName().endsWith(".graphml")
-					|| currentFile.getName().endsWith(".xml")) {
+			if (currentFile.getName().endsWith(".graphml")) {
 				saveFile("Woot", currentFile);
 			} else {
-				System.out.println("Incorrect!");
+				String appendedString = currentFile.getAbsolutePath() + ".graphml";
+				currentFile = new File(appendedString);
 				saveFile("Woot", currentFile);
 			}
 		} else {
 			return;
+		}
+		
+		if (referenceWindow.getCurrentRecentArray().contains(
+				currentFile.getAbsolutePath())) {
+			referenceWindow.getCurrentRecentArray().remove(
+					currentFile.getAbsolutePath());
 		}
 		
 		OutputStreamWriter fileWriter;
@@ -594,10 +600,7 @@ public class SystemController {
 		FileChooser myFileChooser = new FileChooser();
 		FileChooser.ExtensionFilter graphmlFilter = new FileChooser.ExtensionFilter(
 				"GraphML files (*.graphml)", "*.graphml");
-		FileChooser.ExtensionFilter xmlFilter = new FileChooser.ExtensionFilter(
-				"XML files (*.xml)", "*.xml");
 		myFileChooser.getExtensionFilters().add(graphmlFilter);
-		myFileChooser.getExtensionFilters().add(xmlFilter);
 		return myFileChooser;
 	}
 
