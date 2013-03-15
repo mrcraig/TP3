@@ -56,6 +56,11 @@ public class InternalRepresentation {
 			String groupings) {
 		Vertex n;
 		w = w.toLowerCase().trim();
+		if(w.isEmpty())
+		{
+			System.out.println("Empty word ");
+			return;
+		}
 		boolean exists = false;
 		if (nodes.contains(nodes.getVertexFromWord(w))) {
 			n = nodes.getVertexFromWord(w);
@@ -171,6 +176,11 @@ public class InternalRepresentation {
 	public void editVertex(String w, String synonyms, String antonyms,
 			String groupings) {
 		w = w.toLowerCase().trim();
+		if(w.isEmpty())
+		{
+			System.out.println("Empty word ");
+			return;
+		}
 		Vertex editVertex = nodes.getVertexFromWord(w);
 		editVertex.getSynomyns().clear();
 		editVertex.getAntonyms().clear();

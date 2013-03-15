@@ -32,7 +32,7 @@ public class HashGraph {
 				return v;
 			}
 		}
-		System.out.println("null");
+		System.out.println("cant find vertex index");
 		return null;
 	}
 

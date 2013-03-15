@@ -185,7 +185,8 @@ public class XmlRead
 			Vertex s = nodes.getVertexFromIndex(source);
 			Vertex t = nodes.getVertexFromIndex(target); 
 			//vertex with 5 is null
-			System.out.println("------>"+type);
+			//System.out.println("------>"+type);
+			
 			switch(type)
 			{
 				case 's': if(!s.getSynomyns().contains(t)) s.addSynonym(t);
