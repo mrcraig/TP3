@@ -358,9 +358,9 @@ public class FrSpring {
 					v.getPos().distanceSq(target.getPos()));
 			double aForce = 1;
 			if (v.equals(myWord) || target.equals(myWord)) {
-				constAF = 2.0;
+				constAF = 9.0;
 			} else {
-				constAF = 0.7;
+				constAF = 8;
 			}
 			aForce = attractionF(Math.abs(deltaLength)); // compute attraction
 															// force

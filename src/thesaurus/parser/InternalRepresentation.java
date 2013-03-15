@@ -87,9 +87,11 @@ public class InternalRepresentation {
 				v.setWord(s);
 				n.addSynonym(v);
 				nodes.add(v);
+				v.addSynonym(n);
 				write.addVertex(v, false);
 			} else {
 				n.addSynonym(syn);
+				syn.addSynonym(n);
 				write.addVertex(n,true);
 			}
 		}
@@ -104,9 +106,11 @@ public class InternalRepresentation {
 				v.setWord(a);
 				n.addAntonym(v);
 				nodes.add(v);
+				v.addAntonym(n);
 				write.addVertex(v, false);
 			} else {
 				n.addAntonym(ant);
+				ant.addAntonym(n);
 				write.addVertex(n,true);
 			}
 		}
