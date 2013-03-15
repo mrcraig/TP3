@@ -229,7 +229,6 @@ public class SystemController {
 	}
 
 	private void doOpenRecent(int index) throws IOException {
-
 		File file = new File(referenceWindow.getCurrentRecentArray().get(
 				reverseIndex(index + 1) - 1));
 		if(!file.exists()){
@@ -557,6 +556,11 @@ public class SystemController {
 	@FXML
 	protected void doRemoveWord() {
 		referenceWindow.getVisualisationRoot().showPopup("remove");
+	}
+	
+	@FXML
+	protected void doFullScreen() {
+		referenceWindow.getVisualisationRoot().fullScreen();
 	}
 
 	private void saveFile(String content, File file) {
