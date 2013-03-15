@@ -48,7 +48,7 @@
                 <Text font="$x1" layoutX="8.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search: " />
                 <TextField fx:id="searchBoxGraph" layoutX="53.0" layoutY="400.0" prefWidth="200.0" />
                 <Button font="$x1" layoutX="260.0" layoutY="400.0" mnemonicParsing="false" onAction="#doSearchGraphG" text="Go" />
-                <Text fx:id="searchStatusLabel" layoutX="57.0" layoutY="360.0" scaleX="1.0000163787583833" strokeType="OUTSIDE" strokeWidth="0.0" />
+                <Text fx:id="searchStatusLabel" layoutX="57.0" layoutY="320.0" scaleX="1.0000163787583833" strokeType="OUTSIDE" strokeWidth="0.0" />
                 <ChoiceBox fx:id="selectionBoxGraph" layoutX="578.0" layoutY="427.0" prefWidth="167.0">
                   <items>
                     <FXCollections fx:factory="observableArrayList">
@@ -89,7 +89,7 @@
                   </items>
                 </ChoiceBox>
                 
-                <Label font="$x1" layoutX="360.0" layoutY="431.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="50.0" text="Limit:" />
+                <Label font="$x1" layoutX="324.0" layoutY="431.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="120.0" text="Branch Limit:" />
               </children>
             </AnchorPane>
           </content>
@@ -122,7 +122,7 @@
                   </items>
                 </ChoiceBox>
                 
-                <Label font="$x1" layoutX="360.0" layoutY="431.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="50.0" text="Limit:" />
+                <Label font="$x1" layoutX="324.0" layoutY="431.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="120.0" text="Branch Limit:" />
                 <Label id="statusLabelGraph" fx:id="statusLabelTable" font="$x2" layoutX="57.0" layoutY="424.0" text="Please enter a search term">
                   <textFill>
                     <Color blue="0.376" green="0.376" red="0.376" fx:id="x3" />
@@ -195,7 +195,7 @@
                   </items>
                 </ChoiceBox>
                 
-                <Label font="$x1" layoutX="360.0" layoutY="431.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="50.0" text="Limit:" />
+                <Label font="$x1" layoutX="324.0" layoutY="431.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="120.0" text="Branch Limit:" />
                 <Text font="$x1" layoutX="8.0" layoutY="415.0" scaleY="0.9999910471279186" strokeType="OUTSIDE" strokeWidth="0.0" text="Search: " />
                 <Label id="statusLabelGraph" fx:id="statusLabelDual" font="$x2" layoutX="57.0" layoutY="424.0" text="Please enter a search term" textFill="$x3" />
                 <Pane id="" fx:id="tableDualGraph" layoutX="389.0" layoutY="14.0" prefHeight="362.0" prefWidth="353.9998779296875" />

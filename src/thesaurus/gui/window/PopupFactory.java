@@ -181,10 +181,16 @@ public class PopupFactory {
 		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
+				String remove = referenceWindow.getVisualisationRoot().getCurrentVertex().getWord();
 				referenceWindow.getVisualisationRoot().getCurrentParser().removeVertex(addWordInput.getText());
 				currentPopup.hide();
 				currentPopup = null;
-				referenceWindow.getVisualisationRoot().initialSearch();
+				if(remove.trim().equalsIgnoreCase(addWordInput.getText().trim())){
+					referenceWindow.getVisualisationRoot().initialSearch();
+				}else{
+					referenceWindow.getVisualisationRoot().doClickSearchGraph(remove);
+				}
+				
 			}
 		});
 		Button cancelButton = new Button();
