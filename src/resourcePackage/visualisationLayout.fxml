@@ -49,7 +49,7 @@
                 <TextField fx:id="searchBoxGraph" layoutX="53.0" layoutY="400.0" prefWidth="200.0" />
                 <Button font="$x1" layoutX="260.0" layoutY="400.0" mnemonicParsing="false" onAction="#doSearchGraphG" text="Go" />
                 <Text fx:id="searchStatusLabel" layoutX="57.0" layoutY="320.0" scaleX="1.0000163787583833" strokeType="OUTSIDE" strokeWidth="0.0" />
-                <ChoiceBox fx:id="selectionBoxGraph" layoutX="578.0" layoutY="427.0" prefWidth="167.0">
+                <ChoiceBox fx:id="selectionBoxGraph" layoutX="650.0" layoutY="427.0" prefWidth="100.0">
                   <items>
                     <FXCollections fx:factory="observableArrayList">
                       <String fx:value="Both" />
@@ -58,7 +58,7 @@
                     </FXCollections>
                   </items>
                 </ChoiceBox>
-                <ChoiceBox fx:id="groupingGraph" layoutX="470.0" layoutY="427.0" prefWidth="100.0">
+                <ChoiceBox fx:id="groupingGraph" layoutX="540.0" layoutY="427.0" prefWidth="100.0">
                   <items>
                     <FXCollections fx:factory="observableArrayList">
                       <String fx:value="Grouped" />
@@ -71,7 +71,7 @@
                     <Font name="Arial" size="11.0" fx:id="x2" />
                   </font>
                 </Label>
-                <ChoiceBox fx:id="sliderGraph" layoutX="400.0" layoutY="427.0" prefWidth="60.0">
+                <ChoiceBox fx:id="sliderGraph" layoutX="470.0" layoutY="427.0" prefWidth="60.0">
                   <items>
                     <FXCollections fx:factory="observableArrayList">
                       <String fx:value="1" />
@@ -87,8 +87,8 @@
                     </FXCollections>
                   </items>
                 </ChoiceBox>
-                <Label font="$x1" layoutX="324.0" layoutY="431.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="120.0" text="Branch Limit:" />
-                <Button font="$x1" layoutX="210.0" layoutY="428.0" mnemonicParsing="false" onAction="#doFullScreen" prefWidth="100.0" text="Full Screen" />
+                <Label font="$x1" layoutX="410.0" layoutY="431.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="60.0" text="Branches:" />
+                <Button font="$x1" layoutX="305.0" layoutY="428.0" mnemonicParsing="false" onAction="#doFullScreen" prefWidth="100.0" text="Full Screen" />
               </children>
             </AnchorPane>
           </content>
@@ -104,7 +104,7 @@
                 <Button font="$x1" layoutX="650.0" layoutY="400.0" mnemonicParsing="false" onAction="#doRemoveWord" prefWidth="100.0" text="Remove" />
                 <Text font="$x1" layoutX="8.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search: " />
                 <Button font="$x1" layoutX="305.0" layoutY="400.0" mnemonicParsing="false" onAction="#doRefreshGraph" prefWidth="100.0" text="Refresh" />
-                <ChoiceBox fx:id="sliderTable" layoutX="400.0" layoutY="427.0" prefWidth="60.0">
+                <ChoiceBox fx:id="sliderTable" layoutX="470.0" layoutY="427.0" prefWidth="60.0">
                   <items>
                     <FXCollections fx:factory="observableArrayList">
                       <String fx:value="1" />
@@ -120,14 +120,14 @@
                     </FXCollections>
                   </items>
                 </ChoiceBox>
-                <Label font="$x1" layoutX="324.0" layoutY="431.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="120.0" text="Branch Limit:" />
+                <Label font="$x1" layoutX="410.0" layoutY="431.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="60.0" text="Branches:" />
                 <Label id="statusLabelGraph" fx:id="statusLabelTable" font="$x2" layoutX="57.0" layoutY="424.0" text="Please enter a search term">
                   <textFill>
                     <Color blue="0.376" green="0.376" red="0.376" fx:id="x3" />
                   </textFill>
                 </Label>
                 <Pane fx:id="tableFullGraph" layoutX="15.0" layoutY="14.0" prefHeight="366.0" prefWidth="728.0" />
-                <ChoiceBox id="selectionBoxGraph" fx:id="selectionBoxTable" layoutX="578.0" layoutY="427.0" prefWidth="167.0">
+                <ChoiceBox id="selectionBoxGraph" fx:id="selectionBoxTable" layoutX="650.0" layoutY="427.0" prefWidth="100.0">
                   <items>
                     <FXCollections fx:factory="observableArrayList">
                       <String fx:value="Both" />
@@ -136,7 +136,7 @@
                     </FXCollections>
                   </items>
                 </ChoiceBox>
-                <ChoiceBox fx:id="groupingTable" layoutX="470.0" layoutY="427.0" prefWidth="100.0">
+                <ChoiceBox fx:id="groupingTable" layoutX="540.0" layoutY="427.0" prefWidth="100.0">
                   <items>
                     <FXCollections fx:factory="observableArrayList">
                       <String fx:value="Grouped" />
@@ -144,7 +144,7 @@
                     </FXCollections>
                   </items>
                 </ChoiceBox>
-                <Button font="$x1" layoutX="210.0" layoutY="428.0" mnemonicParsing="false" onAction="#doFullScreen" prefWidth="100.0" text="Full Screen" />
+                <Button font="$x1" layoutX="305.0" layoutY="428.0" mnemonicParsing="false" onAction="#doFullScreen" prefWidth="100.0" text="Full Screen" />
               </children>
             </AnchorPane>
           </content>
@@ -153,7 +153,7 @@
           <content>
             <AnchorPane id="dualTabContent" minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="538.0">
               <children>
-                <ChoiceBox id="selectionBoxGraph" fx:id="selectionBoxDual" layoutX="578.0" layoutY="427.0" prefWidth="167.0">
+                <ChoiceBox id="selectionBoxGraph" fx:id="selectionBoxDual" layoutX="650.0" layoutY="427.0" prefWidth="100.0">
                   <items>
                     <FXCollections fx:factory="observableArrayList">
                       <String fx:value="Both" />
@@ -162,7 +162,7 @@
                     </FXCollections>
                   </items>
                 </ChoiceBox>
-                <ChoiceBox fx:id="groupingDual" layoutX="470.0" layoutY="427.0" prefWidth="100.0">
+                <ChoiceBox fx:id="groupingDual" layoutX="540.0" layoutY="427.0" prefWidth="100.0">
                   <items>
                     <FXCollections fx:factory="observableArrayList">
                       <String fx:value="Grouped" />
@@ -177,7 +177,7 @@
                 <Button font="$x1" layoutX="535.0" layoutY="400.0" mnemonicParsing="false" onAction="#doEditWord" prefWidth="100.0" text="Edit" />
                 <Button font="$x1" layoutX="650.0" layoutY="400.0" mnemonicParsing="false" onAction="#doRemoveWord" prefWidth="100.0" text="Remove" />
                 <Pane fx:id="canvasDualGraph" layoutX="16.0" layoutY="14.0" prefHeight="362.0" prefWidth="354.0" />
-                <ChoiceBox fx:id="sliderDual" layoutX="400.0" layoutY="427.0" prefWidth="60.0">
+                <ChoiceBox fx:id="sliderDual" layoutX="470.0" layoutY="427.0" prefWidth="60.0">
                   <items>
                     <FXCollections fx:factory="observableArrayList">
                       <String fx:value="1" />
@@ -193,11 +193,11 @@
                     </FXCollections>
                   </items>
                 </ChoiceBox>
-                <Label font="$x1" layoutX="324.0" layoutY="431.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="120.0" text="Branch Limit:" />
+                <Label font="$x1" layoutX="410.0" layoutY="431.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="60.0" text="Branches:" />
                 <Text font="$x1" layoutX="8.0" layoutY="415.0" scaleY="0.9999910471279186" strokeType="OUTSIDE" strokeWidth="0.0" text="Search: " />
                 <Label id="statusLabelGraph" fx:id="statusLabelDual" font="$x2" layoutX="57.0" layoutY="424.0" text="Please enter a search term" textFill="$x3" />
                 <Pane id="" fx:id="tableDualGraph" layoutX="389.0" layoutY="14.0" prefHeight="362.0" prefWidth="353.9998779296875" />
-                <Button font="$x1" layoutX="210.0" layoutY="428.0" mnemonicParsing="false" onAction="#doFullScreen" prefWidth="100.0" text="Full Screen" />
+                <Button font="$x1" layoutX="305.0" layoutY="428.0" mnemonicParsing="false" onAction="#doFullScreen" prefWidth="100.0" text="Full Screen" />
               </children>
             </AnchorPane>
           </content>

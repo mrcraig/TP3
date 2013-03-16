@@ -66,6 +66,8 @@ public class VisualisationRoot extends AnchorPane {
 	    displayPane.setStyle("-fx-background-color: black;");
 	    displayPane.setPrefSize(popupWidth+50, popupHeight+50);
 	    setLabel();
+	    
+	    currentVertex = null;
 
 		referenceWindow = inputWindow;
 
@@ -181,6 +183,9 @@ public class VisualisationRoot extends AnchorPane {
 	}
 
 	public void doSearchRefresh() {
+		if(currentVertex == null){
+			return;
+		}
 		Vertex replacementVertex = getCurrentParser().getOneSynomyn(currentVertex.getWord());
 		setCurrentVertex(referenceWindow.getVisualisationRoot().runSpringOnVertex(replacementVertex));
 		referenceWindow.getVisualisationRoot().addCanvas();
@@ -204,6 +209,9 @@ public class VisualisationRoot extends AnchorPane {
 	}
 	
 	public void fullScreen(){
+		if(currentVertex == null){
+			return;
+		}
 		if(fullScreen){
 			displayPane.getChildren().removeAll(displayPane.getChildren());
 			fullScreenPopup.getContent().removeAll(fullScreenPopup.getContent());
