@@ -18,12 +18,23 @@ import thesaurus.parser.Vertex;
 import javafx.stage.FileChooser;
 
 public class TextParser {
+	
+	File inFile;
+	File outFile;
+	
+	public TextParser(String inFileString, String outFileString) throws IOException{
+		inFile = new File(inFileString);
+		OutputStreamWriter fileWriter;
+		fileWriter = new OutputStreamWriter(new FileOutputStream(outFileString),"UTF-8");
+		fileWriter.write("<graphml><graph></graph></graphml>");
+		fileWriter.close();
+		outFile = new File(outFileString);
+	}
 
-	public static void main(String[] args) throws IOException {
-		File recentFile = new File("./src/resourcePackage/importparser.txt");
+	public void run() throws IOException {
 		Scanner fileScan = null;
 		try {
-			fileScan = new Scanner(recentFile);
+			fileScan = new Scanner(inFile);
 			fileScan.useDelimiter("\n");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -60,20 +71,9 @@ public class TextParser {
 			}
 		}
 		
-		OutputStreamWriter fileWriter;
-		fileWriter = new OutputStreamWriter(new FileOutputStream("smile.graphml"),"UTF-8");
-		fileWriter.write("<graphml><graph></graph></graphml>");
-		fileWriter.close();
-		
-		File inputFile = new File("smile.graphml");
-		
-		InternalRepresentation currentParser = new InternalRepresentation(inputFile);
+		InternalRepresentation currentParser = new InternalRepresentation(outFile);
 		
 		for (ArrayList<String> s : entryArray) {
-			for(String st: s){
-				//System.out.println(st);
-			}
-			//System.in.read();
 			currentParser.addVertex(s.get(0), s.get(1),s.get(2),"");
 		}
 		

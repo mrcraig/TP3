@@ -94,10 +94,12 @@ public class InternalRepresentation {
 				nodes.add(v);
 				v.addSynonym(n);
 				write.addVertex(v, false);
+				write.addVertex(n, true);
 			} else {
 				n.addSynonym(syn);
 				syn.addSynonym(n);
 				write.addVertex(n,true);
+				write.addVertex(syn, true);
 			}
 		}
 	}
@@ -113,10 +115,12 @@ public class InternalRepresentation {
 				nodes.add(v);
 				v.addAntonym(n);
 				write.addVertex(v, false);
+				write.addVertex(n, true);
 			} else {
 				n.addAntonym(ant);
 				ant.addAntonym(n);
 				write.addVertex(n,true);
+				write.addVertex(ant, true);
 			}
 		}
 	}
@@ -127,7 +131,6 @@ public class InternalRepresentation {
 		if (vertices == null) {
 			this.catergories.addCatergory(catergory).add(n.getWord());
 			System.out.println("categories are "+this.catergories.getAllCategories());
-			this.write.addCategories();
 			return;
 		}
 		this.catergories.addVertexToCatergory(catergory, n.getWord());
@@ -146,7 +149,6 @@ public class InternalRepresentation {
 				added.addGrouping(v);
 			}
 		}
-		write.addVertex(n, true);
 	}
 	
 	public boolean isEmptyFile() {
@@ -255,7 +257,7 @@ public class InternalRepresentation {
 		// return nodes.getNodes().getFirst();
 	}
 
-	public Vertex getOneSynomyn(String s) {
+	public Vertex getVertexFromWord(String s) {
 		System.out.println("method called for " + s);
 		if (s.equalsIgnoreCase(""))
 			return null;

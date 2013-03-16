@@ -509,7 +509,7 @@ public class SystemController {
 			searchText = searchBoxDual.getText();
 		}
 		Vertex currentVertex = referenceWindow.getVisualisationRoot()
-				.getCurrentParser().getOneSynomyn(searchText);
+				.getCurrentParser().getVertexFromWord(searchText);
 		if (currentVertex == null) {
 			lookupHashMap.get(choiceString).setText(
 					String.format("Can't find \"%s\"", searchText));

@@ -1,0 +1,133 @@
+alcohol
+alky, booze, canned heat, cocktail, drink, ethanol, firewater, hard stuff, hootch, intoxicant, liquor, methanol
+
+shoe
+basketball shoe, boat shoe, boot, cleat, clog, cowboy boot, flip-flops, footgear, golf shoe, high heels, hightops
+
+airplane
+aeroplane, airbus, aircraft, airliner, airship, cab, crate, jet, kite, plane, ramjet, ship
+
+art
+adroitness,aptitude,artistry,craft,dexterity
+lack,unskill, science
+
+be
+abide,act,breathe,continue,do
+
+science 
+art, branch, discipline, information, learning
+art
+
+education
+apprenticeship,background,coaching,drilling,guidance
+ignorance
+
+erudition
+bookishness,brains,cultivation,culture,enlightenment
+ignorance
+
+eclectic
+all-embracing, assorted, broad, catholic, dilettantish, diverse, diversified, heterogeneous,
+
+sputnik
+ancillary, asteroid, luna, moon, rocket, spacecraft
+
+discharge
+acquittal, clearance, disimprisonment, exoneration, liberation, pardon, parole, probation, release,
+remittance
+
+direction
+advice,assignment,guidelines,plan,specs
+misdirection,misinstruction
+
+advice
+aid,steer,caution,charge,directions
+betrayal,deceit,deception,falsehood,lie
+
+caution
+attention,care,heed,prudence
+imprudence,vigilance,negligence
+
+care
+alarm,anguish,charge,dismay,distress,fear,hardship,sorrow,stew,strain
+carelessness,disregard,ignorance,neglect,oversight
+
+computer
+CPU, MAC, PC, abacus, adding machine, analog, artificial intelligence, brain, calculator, clone
+
+onus
+blame,blur,bland,charge,culpability,fault
+aid,benefit,blessing,help
+
+blot
+blemish,blur,bland,defect,onus
+blank,clarity
+
+brand
+blot,blur,mark,onus,spot,stain
+
+charge
+allegation,beef,gripe
+exculpation,freeing
+
+duty
+burden, business, calling, charge, chore, commission, commitment, committal, contract, devoir, dues, engagement, function, hook, job, load, millstone, minding the store, mission, must, need, obligation, occupation, office, onus, ought, pains, part, province, role, service, station, string, taking care of business, task, trouble, trust, undertaking, weight, work
+disregard,responsibility
+
+affair
+assignment,avocation, calling, case, circumstance,duty
+
+allegiance
+adherence, ardor, constancy,duty,fealty
+disloyalty,emnity,treason
+
+assessment
+appraisal,charge,demand,duty
+
+assignment
+responsibility,task,appointment,beat,charge,duty,job
+
+burden
+task,blame,care,duty,concern,mishap,onus
+aid,help,relief
+
+business
+affair,assignment,duty,function
+
+chore
+assignment,burden,duty,effort,grind
+
+command
+act,ban,behest,call,canon,caveat,duty,law,mandate
+contradiction,countermand,opposition,recall
+
+commitment
+charge,commital,duty,engagement,must,need,ought
+denial,refusal
+
+compulsion
+coercion,constraint,demand,drive,duty,force
+freedom,independence,liberty,license
+
+conscience
+censor,duty,morals,principles,qualms,
+immorality
+
+debt
+iou,arrears,bill,check,claim,credit,duty,deficit
+asset,cash,credit,excess,profit
+
+department
+activity,admin,assignment,capacity,duty,office,realm
+
+detail
+army,body,duty,fatigue,force,squad,unit
+
+dues
+ante,assessment,charge,custom,debt,duty
+
+errand
+assignment,task,duty,job
+
+excise
+customs,duty,levy,toll

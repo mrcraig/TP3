@@ -113,17 +113,23 @@ public class Vertex {
     
     public void addSynonym(Vertex n)
     {
-        synonyms.addLast(n);
+    	if(!synonyms.contains(n)){
+    		synonyms.addLast(n);
+    	}
     }
     
     public void addAntonym(Vertex n)
     {
-    	antonyms.addLast(n);
+    	if(!antonyms.contains(n)){
+    		antonyms.addLast(n);
+    	}
     }
     
     public void addGrouping(Vertex g)
     {
-    	groupings.add(g);
+    	if(!groupings.contains(g)){
+    		groupings.add(g);
+    	}
     }
     
     public void removeSynonym(Vertex s)

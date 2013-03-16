@@ -171,7 +171,7 @@ public class VisualisationRoot extends AnchorPane {
 	}
 
 	public void doClickSearchGraph(String inputString) {
-		setCurrentVertex(getCurrentParser().getOneSynomyn(inputString));
+		setCurrentVertex(getCurrentParser().getVertexFromWord(inputString));
 		if (currentVertex == null) {
 			return;
 		}
@@ -187,7 +187,7 @@ public class VisualisationRoot extends AnchorPane {
 		if(currentVertex == null){
 			return;
 		}
-		Vertex replacementVertex = getCurrentParser().getOneSynomyn(currentVertex.getWord());
+		Vertex replacementVertex = getCurrentParser().getVertexFromWord(currentVertex.getWord());
 		setCurrentVertex(referenceWindow.getVisualisationRoot().runSpringOnVertex(replacementVertex));
 		referenceWindow.getVisualisationRoot().addCanvas();
 		referenceWindow.getVisualisationRoot().addTable();
