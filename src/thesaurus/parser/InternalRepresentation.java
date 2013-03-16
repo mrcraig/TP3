@@ -182,6 +182,9 @@ public class InternalRepresentation {
 			return;
 		}
 		Vertex editVertex = nodes.getVertexFromWord(w);
+		if(editVertex == null){
+			return;
+		}
 		editVertex.getSynomyns().clear();
 		editVertex.getAntonyms().clear();
 		editVertex.getGroupings().clear();

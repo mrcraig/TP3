@@ -183,7 +183,9 @@ public class PopupFactory {
 		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				if(referenceWindow.getVisualisationRoot().getCurrentVertex() == null){
+				if((referenceWindow.getVisualisationRoot().getCurrentVertex() == null) || (addWordInput.getText().isEmpty())){
+					currentPopup.hide();
+					currentPopup = null;
 					return;
 				}
 				String remove = referenceWindow.getVisualisationRoot().getCurrentVertex().getWord();
