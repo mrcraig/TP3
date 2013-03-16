@@ -69,7 +69,10 @@ public class ViewGraph {
 		int nodeWidth = v.getWord().length() * 12;
 		
 		gc.setStroke(Color.BLACK);
-		gc.setFill(Color.rgb(176,220,247));
+		if(colourToggle==0)
+			gc.setFill(Color.rgb(176,220,247));
+		else
+			gc.setFill(Color.web("#99CCFF"));
 		gc.setLineWidth(2);
 		gc.strokeOval((v.getPos().getX()-(nodeWidth/2)-xOffset),(v.getPos().getY()-13-yOffset), nodeWidth, 36);
 		gc.fillOval((v.getPos().getX()+1-(nodeWidth/2)-xOffset),(v.getPos().getY()-12-yOffset),nodeWidth-2,34);
@@ -83,7 +86,10 @@ public class ViewGraph {
 		int nodeWidth = v.getWord().length() * 8;
 		
 		gc.setStroke(Color.BLACK);
-		gc.setFill(Color.rgb(191, 247, 176));
+		if(colourToggle==0)
+			gc.setFill(Color.rgb(191, 247, 176));
+		else 
+			gc.setFill(Color.web("#ACD65A"));
 		gc.setLineWidth(2);
 		gc.strokeOval((v.getPos().getX()-(nodeWidth/2)-xOffset),(v.getPos().getY()-10-yOffset), nodeWidth, 30);
 		gc.fillOval((v.getPos().getX()+1-(nodeWidth/2)-xOffset),(v.getPos().getY()-9-yOffset),nodeWidth-2,28);
@@ -97,8 +103,10 @@ public class ViewGraph {
 		int nodeWidth = v.getWord().length() * 8;
 		
 		gc.setStroke(Color.BLACK);
-		gc.setFill(Color.rgb(242, 211, 211));
-		
+		if(colourToggle==0)
+			gc.setFill(Color.rgb(242, 211, 211));
+		else
+			gc.setFill(Color.web("#EE993B"));
 		gc.setLineWidth(2);
 		gc.strokeOval((v.getPos().getX()-(nodeWidth/2)-xOffset),(v.getPos().getY()-10-yOffset), nodeWidth, 30);
 		gc.fillOval((v.getPos().getX()+1-(nodeWidth/2)-xOffset),(v.getPos().getY()-9-yOffset),nodeWidth-2,28);
@@ -111,10 +119,16 @@ public class ViewGraph {
 	private void drawConnector(double x1, double y1, double x2, double y2, int type){
 		if(type==1){
 			//Synonym
-			gc.setStroke(Color.GREEN);
+			if(colourToggle==0)
+				gc.setStroke(Color.GREEN);
+			else
+				gc.setStroke(Color.web("#ACD65A"));
 		} else {
 			//Antonym
-			gc.setStroke(Color.RED);
+			if(colourToggle==0)
+				gc.setStroke(Color.RED);
+			else
+				gc.setStroke(Color.web("#EE993B"));
 		}
 		
 		gc.setLineWidth(2);
