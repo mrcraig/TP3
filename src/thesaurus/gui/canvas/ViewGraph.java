@@ -31,16 +31,16 @@ public class ViewGraph {
 	
 	private int displaySynonyms;
 	private int displayAntonyms;
-	private int groupingEnabled;
+	private int colourToggle;
 	
-	public ViewGraph(int width, int height, Vertex vertex, VisualisationRoot vr, int displaySynonyms, int displayAntonyms, int groupingEnabled){
+	public ViewGraph(int width, int height, Vertex vertex, VisualisationRoot vr, int displaySynonyms, int displayAntonyms, int colourToggle){
 		windowWidth = width;
 		windowHeight = height;
 		this.vertex = vertex;
 		this.vr = vr;
 		this.displaySynonyms = displaySynonyms;
 		this.displayAntonyms = displayAntonyms;
-		this.groupingEnabled = groupingEnabled;
+		this.colourToggle = colourToggle;
 		
 		//Move window to right to support dual view better
 		if(windowWidth<500){
@@ -98,6 +98,7 @@ public class ViewGraph {
 		
 		gc.setStroke(Color.BLACK);
 		gc.setFill(Color.rgb(242, 211, 211));
+		
 		gc.setLineWidth(2);
 		gc.strokeOval((v.getPos().getX()-(nodeWidth/2)-xOffset),(v.getPos().getY()-10-yOffset), nodeWidth, 30);
 		gc.fillOval((v.getPos().getX()+1-(nodeWidth/2)-xOffset),(v.getPos().getY()-9-yOffset),nodeWidth-2,28);
