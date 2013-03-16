@@ -217,7 +217,7 @@ public class VisualisationRoot extends AnchorPane {
 			displayPane.getChildren().removeAll(displayPane.getChildren());
 			fullScreenPopup.getContent().removeAll(fullScreenPopup.getContent());
 		}
-		ViewGraph tempC = new ViewGraph(popupWidth, popupHeight,currentVertex, referenceWindow.getVisualisationRoot(),state.get(0),state.get(1),state.get(2));
+		ViewGraph tempC = new ViewGraph(popupWidth, popupHeight,currentVertex, referenceWindow.getVisualisationRoot(),state.get(0),state.get(1),state.get(4));
 	    returnGraph = tempC.returnGraph();
 	    displayPane.getChildren().add(returnGraph);
 		fullScreenPopup.getContent().add(displayPane);
