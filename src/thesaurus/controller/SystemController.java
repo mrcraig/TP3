@@ -666,6 +666,13 @@ public class SystemController {
 	}
 	
 	@FXML
+	private void handleColourScheme(final ActionEvent event) {
+		ArrayList<Integer> referenceArray = referenceWindow.getVisualisationRoot().getStateArray();
+		referenceArray.set(4, (1-referenceArray.get(4)));
+		referenceWindow.getVisualisationRoot().doSearchRefresh();
+	}
+	
+	@FXML
 	private void tutorialNext (final ActionEvent event) {
 		referenceWindow.getTutorialRootCurrent().next();
 	}

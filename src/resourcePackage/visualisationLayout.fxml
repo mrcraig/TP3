@@ -21,6 +21,11 @@
             <MenuItem id="menuExit" mnemonicParsing="false" onAction="#handleExitAction" text="Exit" />
           </items>
         </Menu>
+        <Menu mnemonicParsing="false" text="Accessibility">
+          <items>
+            <MenuItem id="menuColourScheme" mnemonicParsing="false" onAction="#handleColourScheme" text="Toggle Colour-Blind Mode" />
+          </items>
+        </Menu>
         <Menu mnemonicParsing="false" text="Help">
           <items>
             <MenuItem id="menuTutorial" mnemonicParsing="false" onAction="#doRunTutorial" text="Tutorial" />
