@@ -4,9 +4,22 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Popup;
+import javafx.stage.Screen;
 import thesaurus.controller.SystemController;
 import thesaurus.gui.canvas.ViewGraph;
 import thesaurus.gui.table.ViewTable;
@@ -28,6 +41,14 @@ public class VisualisationRoot extends AnchorPane {
 	private ViewGraph displayGraphFull;
 	private ViewGraph displayGraphDual;
 	private ArrayList<Integer> state;
+	private Popup fullScreenPopup;
+	Rectangle2D screenBounds;
+	int popupWidth;
+	int popupHeight;
+	StackPane displayPane;
+    ScrollPane returnGraph;
+    Label escapePopupLabel;
+    boolean fullScreen;
 
 	public VisualisationRoot(MainWindow inputWindow) throws IOException {
 		
@@ -36,6 +57,17 @@ public class VisualisationRoot extends AnchorPane {
 		state.add(1);
 		state.add(0);
 		state.add(5);
+		
+		fullScreenPopup = new Popup();
+		screenBounds = Screen.getPrimary().getVisualBounds();
+		popupWidth = (int)screenBounds.getWidth() - 100;
+		popupHeight = (int)screenBounds.getHeight() - 100;
+		displayPane = new StackPane();
+	    displayPane.setStyle("-fx-background-color: black;");
+	    displayPane.setPrefSize(popupWidth+50, popupHeight+50);
+	    setLabel();
+	    
+	    currentVertex = null;
 
 		referenceWindow = inputWindow;
 
@@ -51,6 +83,25 @@ public class VisualisationRoot extends AnchorPane {
 			throw new RuntimeException(exception);
 		}
 
+	}
+
+	private void setLabel() {
+	    escapePopupLabel = new Label("Press Escape Or Click Here To Close Window");
+	    escapePopupLabel.setTextFill(Color.web("#ffffff"));
+	    escapePopupLabel.relocate((popupWidth-200)/2, 3);
+	    escapePopupLabel.setFont(Font.font("Arial", 14));
+	    escapePopupLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, 
+                new EventHandler<MouseEvent>() {
+
+					@Override
+					public void handle(MouseEvent arg0) {
+						displayPane.getChildren().removeAll(displayPane.getChildren());
+						fullScreenPopup.getContent().removeAll(fullScreenPopup.getContent());
+						fullScreenPopup.hide();
+						fullScreen = false;
+					}
+                    
+                });		
 	}
 
 	public void addCanvas() {
@@ -126,9 +177,15 @@ public class VisualisationRoot extends AnchorPane {
 		setCurrentVertex(referenceWindow.getVisualisationRoot().runSpringOnVertex(currentVertex));
 		referenceWindow.getVisualisationRoot().addCanvas();
 		referenceWindow.getVisualisationRoot().addTable();
+		if(fullScreen){
+			fullScreen();
+		}
 	}
 
 	public void doSearchRefresh() {
+		if(currentVertex == null){
+			return;
+		}
 		Vertex replacementVertex = getCurrentParser().getOneSynomyn(currentVertex.getWord());
 		setCurrentVertex(referenceWindow.getVisualisationRoot().runSpringOnVertex(replacementVertex));
 		referenceWindow.getVisualisationRoot().addCanvas();
@@ -150,4 +207,22 @@ public class VisualisationRoot extends AnchorPane {
 	public ViewGraph getDualGraph() {
 		return displayGraphDual;
 	}
+	
+	public void fullScreen(){
+		if(currentVertex == null){
+			return;
+		}
+		if(fullScreen){
+			displayPane.getChildren().removeAll(displayPane.getChildren());
+			fullScreenPopup.getContent().removeAll(fullScreenPopup.getContent());
+		}
+		ViewGraph tempC = new ViewGraph(popupWidth, popupHeight,currentVertex, referenceWindow.getVisualisationRoot(),state.get(0),state.get(1),state.get(2));
+	    returnGraph = tempC.returnGraph();
+	    displayPane.getChildren().add(returnGraph);
+		fullScreenPopup.getContent().add(displayPane);
+		fullScreenPopup.getContent().add(escapePopupLabel);
+		fullScreenPopup.show(referenceWindow.getStage());
+		fullScreen = true;
+	}
+	
 }

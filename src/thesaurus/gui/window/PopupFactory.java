@@ -6,6 +6,7 @@ import thesaurus.parser.Vertex;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -37,6 +38,7 @@ public class PopupFactory {
 			currentPopup = new Popup();
 			currentPopup.getContent().add(makeAbout());
 		}
+		
 	}
 
 	private Pane makeCanvasAdd() {
@@ -181,6 +183,11 @@ public class PopupFactory {
 		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
+				if((referenceWindow.getVisualisationRoot().getCurrentVertex() == null) || (addWordInput.getText().isEmpty())){
+					currentPopup.hide();
+					currentPopup = null;
+					return;
+				}
 				String remove = referenceWindow.getVisualisationRoot().getCurrentVertex().getWord();
 				referenceWindow.getVisualisationRoot().getCurrentParser().removeVertex(addWordInput.getText());
 				currentPopup.hide();

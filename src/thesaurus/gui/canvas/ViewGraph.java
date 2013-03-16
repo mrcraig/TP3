@@ -295,6 +295,10 @@ public class ViewGraph {
 			graph.setScaleX(scale);
 			graph.setScaleY(scale);
 		}
+		else{
+			graph.setScaleX(1.0);
+			graph.setScaleY(1.0);
+		}
 	}
 	
 	private void start() {
