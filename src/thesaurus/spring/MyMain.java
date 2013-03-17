@@ -1,16 +1,14 @@
 package thesaurus.spring;
 
-import java.util.LinkedList;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import thesaurus.parser.*;
+import thesaurus.parser.Vertex;
 public class MyMain extends Application {
 
 	Canvas graph;

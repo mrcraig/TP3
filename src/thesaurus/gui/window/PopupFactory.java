@@ -2,11 +2,8 @@ package thesaurus.gui.window;
 
 import java.util.LinkedList;
 
-import thesaurus.parser.Vertex;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -14,6 +11,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Popup;
+import thesaurus.parser.Vertex;
 
 
 public class PopupFactory {

@@ -5,17 +5,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 
 import thesaurus.parser.InternalRepresentation;
-import thesaurus.parser.Vertex;
-
-import javafx.stage.FileChooser;
 
 public class TextParser {
 	

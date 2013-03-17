@@ -3,7 +3,8 @@ package thesaurus.spring;
 
 import java.awt.geom.Point2D;
 import java.util.LinkedList;
-import thesaurus.parser.*;
+
+import thesaurus.parser.Vertex;
 
 
 /**

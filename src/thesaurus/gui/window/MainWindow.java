@@ -3,12 +3,12 @@ package thesaurus.gui.window;
 import java.io.File;
 import java.util.ArrayList;
 
-import thesaurus.controller.SystemController;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.stage.Stage;
+import thesaurus.controller.SystemController;
 
 /**
  * This main window class sets out what is displayed in the window.
