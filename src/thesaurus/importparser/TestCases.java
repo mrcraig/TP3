@@ -1,13 +1,7 @@
-package thesaurus.importparser;
-
-import static org.junit.Assert.*;
+/*package thesaurus.importparser;
 
 import java.io.File;
 import java.io.IOException;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 
 import thesaurus.parser.InternalRepresentation;
 import thesaurus.parser.Vertex;
@@ -40,3 +34,4 @@ public class TestCases {
 	}
 
 }
+*/

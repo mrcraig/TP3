@@ -78,8 +78,7 @@ public class SplashRoot extends AnchorPane {
 			currentPopup.hide();
 			currentPopup = null;
 		}
-		PopupFactory currentPopupFactory = new PopupFactory(inputChoice, referenceWindow);
-		currentPopup = currentPopupFactory.getPopup();
+		currentPopup = referenceWindow.getPopupFactory().getPopup(inputChoice);
 		currentPopup.show(referenceWindow.getStage());
 		currentPopup.setY(currentPopup.getY()+50);
 	}

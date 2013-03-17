@@ -28,6 +28,7 @@ public class MainWindow extends Application {
 	private ArrayList<String> currentRecentArray;
 	private ObservableList<String> currentRecentList;
 	private Scene sceneChoice;
+	private PopupFactory currentPopupFactory;
 
 	public void launchProgram(String[] args) {
 		launch(args);
@@ -43,6 +44,7 @@ public class MainWindow extends Application {
 		}
 		setCurrentRecentFile(recentFile);
 
+		currentPopupFactory = new PopupFactory(this);
 		splashRootCurrent = new SplashRoot(this);
 		stageCurrent = stage;
 		stageCurrent.setResizable(false);
@@ -121,6 +123,10 @@ public class MainWindow extends Application {
 	
 	public Scene getCurrentScene(){
 		return sceneChoice;
+	}
+	
+	public PopupFactory getPopupFactory(){
+		return currentPopupFactory;
 	}
 
 }

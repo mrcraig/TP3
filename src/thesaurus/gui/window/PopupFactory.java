@@ -9,6 +9,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Popup;
@@ -19,9 +21,11 @@ public class PopupFactory {
 	Popup currentPopup = null;
 	MainWindow referenceWindow;
 
-	public PopupFactory(String inputChoice, MainWindow inputWindow) {
-
+	public PopupFactory(MainWindow inputWindow) {
 		referenceWindow = inputWindow;
+	}
+	
+	public Popup getPopup(String inputChoice){
 		if (inputChoice.equals("add")) {
 			currentPopup = new Popup();
 			currentPopup.getContent().add(makeCanvasAdd());
@@ -38,7 +42,7 @@ public class PopupFactory {
 			currentPopup = new Popup();
 			currentPopup.getContent().add(makeAbout());
 		}
-		
+		return currentPopup;
 	}
 
 	private Pane makeCanvasAdd() {
@@ -46,6 +50,7 @@ public class PopupFactory {
 		Text addWordLabel = getText(35,10,"Add Word",2);
 		Text promptWordLabel = getText(5,52,"Word: ",1);
 		final TextField addWordInput = getTextField(80, 50, 120);
+		setEnterKey(addWordInput);
 		Text promptSynLabel = getText(5,82,"Synonyms: ",1);
 		final TextField addSynInput = getTextField(80, 80, 120);
 		Text promptAntLabel = getText(5,112,"Antonyms: ",1);
@@ -55,7 +60,7 @@ public class PopupFactory {
 		Button confirmButton = new Button();
 		confirmButton.setText("Confirm");
 		confirmButton.relocate(25, 190);
-		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
+		EventHandler<ActionEvent> addEventHandler = new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				referenceWindow.getVisualisationRoot().getCurrentParser().addVertex(addWordInput.getText(), addSynInput.getText(),addAntInput.getText(),addCatInput.getText());
@@ -66,7 +71,12 @@ public class PopupFactory {
 				referenceWindow.getVisualisationRoot().addCanvas();
 				referenceWindow.getVisualisationRoot().addTable();
 			}
-		});
+		};
+		confirmButton.setOnAction(addEventHandler);
+		addWordInput.setOnAction(addEventHandler);
+		addSynInput.setOnAction(addEventHandler);
+		addAntInput.setOnAction(addEventHandler);
+		addCatInput.setOnAction(addEventHandler);
 		Button cancelButton = new Button();
 		cancelButton.setText("Cancel");
 		cancelButton.relocate(105, 190);
@@ -138,7 +148,7 @@ public class PopupFactory {
 		Button confirmButton = new Button();
 		confirmButton.setText("Confirm");
 		confirmButton.relocate(25, 190);
-		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
+		EventHandler<ActionEvent> editEventHandler = new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				String remove = referenceWindow.getVisualisationRoot().getCurrentVertex().getWord();
@@ -147,7 +157,12 @@ public class PopupFactory {
 				currentPopup.hide();
 				currentPopup = null;
 			}
-		});
+		};
+		confirmButton.setOnAction(editEventHandler);
+		addWordInput.setOnAction(editEventHandler);
+		addSynInput.setOnAction(editEventHandler);
+		addAntInput.setOnAction(editEventHandler);
+		addCatInput.setOnAction(editEventHandler);
 		Button cancelButton = new Button();
 		cancelButton.setText("Cancel");
 		cancelButton.relocate(105, 190);
@@ -176,30 +191,32 @@ public class PopupFactory {
 		Pane canvas = getPane(200,200);
 		Text addWordLabel = getText(50,10,"Remove Word",2);
 		Text promptWordLabel = getText(10,52,"Word: ",1);
-		final TextField addWordInput = getTextField(70, 50, 120);
+		final TextField removeWordInput = getTextField(70, 50, 120);
 		Button confirmButton = new Button();
 		confirmButton.setText("Confirm");
 		confirmButton.relocate(25, 160);
-		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
+		EventHandler<ActionEvent> removeEventHandler = new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				if((referenceWindow.getVisualisationRoot().getCurrentVertex() == null) || (addWordInput.getText().isEmpty())){
+				if((referenceWindow.getVisualisationRoot().getCurrentVertex() == null) || (removeWordInput.getText().isEmpty())){
 					currentPopup.hide();
 					currentPopup = null;
 					return;
 				}
 				String remove = referenceWindow.getVisualisationRoot().getCurrentVertex().getWord();
-				referenceWindow.getVisualisationRoot().getCurrentParser().removeVertex(addWordInput.getText());
+				referenceWindow.getVisualisationRoot().getCurrentParser().removeVertex(removeWordInput.getText());
 				currentPopup.hide();
 				currentPopup = null;
-				if(remove.trim().equalsIgnoreCase(addWordInput.getText().trim())){
+				if(remove.trim().equalsIgnoreCase(removeWordInput.getText().trim())){
 					referenceWindow.getVisualisationRoot().initialSearch();
 				}else{
 					referenceWindow.getVisualisationRoot().doClickSearchGraph(remove);
 				}
 				
 			}
-		});
+		};
+		confirmButton.setOnAction(removeEventHandler);
+		removeWordInput.setOnAction(removeEventHandler);
 		Button cancelButton = new Button();
 		cancelButton.setText("Cancel");
 		cancelButton.relocate(105, 160);
@@ -210,13 +227,9 @@ public class PopupFactory {
 				currentPopup = null;
 			}
 		});
-		canvas.getChildren().addAll(addWordLabel, promptWordLabel,addWordInput, confirmButton, cancelButton);
+		canvas.getChildren().addAll(addWordLabel, promptWordLabel,removeWordInput, confirmButton, cancelButton);
 		canvas.setStyle("	-fx-background-color: #dfdfdf;"+ "-fx-border-color: black;" + "-fx-border-width: 1px;" + "-fx-font-family: 'Arial';");
 		return canvas;
-	}
-
-	public Popup getPopup() {
-		return currentPopup;
 	}
 
 	private Pane getPane(int x, int y) {
@@ -232,6 +245,17 @@ public class PopupFactory {
 		currentWordLabel.setScaleX(scale);
 		currentWordLabel.setScaleY(scale);
 		return currentWordLabel;
+	}
+	
+	private void setEnterKey(TextField fieldInput){
+		fieldInput.setOnKeyReleased(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent keyInput) {
+				if (keyInput.getCode().equals(KeyCode.ENTER)) {
+					//doSearchGraph("dual");
+				}
+			}
+		});
 	}
 
 	private TextField getTextField(int x, int y, int width) {
