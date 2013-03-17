@@ -2,11 +2,6 @@ package thesaurus.gui.table;
 
 import java.util.LinkedList;
 
-import com.sun.net.ssl.SSLContext;
-
-import thesaurus.gui.window.VisualisationRoot;
-import thesaurus.parser.Vertex;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -15,6 +10,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import thesaurus.gui.window.VisualisationRoot;
+import thesaurus.parser.Vertex;
  
 public class ViewTable {
  

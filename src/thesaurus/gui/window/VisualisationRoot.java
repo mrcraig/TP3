@@ -6,24 +6,21 @@ import java.util.ArrayList;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.Popup;
 import javafx.stage.Screen;
 import thesaurus.controller.SystemController;
 import thesaurus.gui.canvas.ViewGraph;
 import thesaurus.gui.table.ViewTable;
-import thesaurus.parser.*;
+import thesaurus.parser.InternalRepresentation;
+import thesaurus.parser.Vertex;
 import thesaurus.spring.FrSpring;
 
 /**
@@ -149,8 +146,7 @@ public class VisualisationRoot extends AnchorPane {
 			currentPopup.hide();
 			currentPopup = null;
 		}
-		PopupFactory currentPopupFactory = new PopupFactory(inputChoice, referenceWindow);
-		currentPopup = currentPopupFactory.getPopup();
+		currentPopup = referenceWindow.getPopupFactory().getPopup(inputChoice);
 		currentPopup.show(referenceWindow.getStage());
 		currentPopup.setY(currentPopup.getY()+15);
 	}

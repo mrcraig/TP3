@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -22,21 +21,17 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuBar;
-import javafx.scene.control.Slider;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Popup;
-
 import thesaurus.gui.window.MainWindow;
-import thesaurus.gui.window.PopupFactory;
 import thesaurus.gui.window.TutorialRoot;
 import thesaurus.gui.window.VisualisationRoot;
 import thesaurus.parser.Vertex;
@@ -170,7 +165,7 @@ public class SystemController {
 		visualisationRootCurrent.setCurrentParser(currentFile);
 		setVisualisationFileName();
 		
-		setSearchBoxEvents();
+		setEnterKeyEvents();
 
 		setSelectionBoxDefault();
 
@@ -212,7 +207,7 @@ public class SystemController {
 		visualisationRootCurrent.setCurrentParser(file);
 		setVisualisationFileName();
 
-		setSearchBoxEvents();
+		setEnterKeyEvents();
 
 		setSelectionBoxDefault();
 
@@ -255,7 +250,7 @@ public class SystemController {
 		visualisationRootCurrent.setCurrentParser(file);
 		setVisualisationFileName();
 
-		setSearchBoxEvents();
+		setEnterKeyEvents();
 
 		setSelectionBoxDefault();
 
@@ -453,7 +448,7 @@ public class SystemController {
 				- currentIndex;
 	}
 
-	private void setSearchBoxEvents() {
+	private void setEnterKeyEvents() {
 
 		searchBoxGraph.setOnKeyReleased(new EventHandler<KeyEvent>() {
 			@Override
@@ -654,8 +649,7 @@ public class SystemController {
 	
 	@FXML
 	private void handleAboutAction(final ActionEvent event) {
-		PopupFactory currentPopupFactory = new PopupFactory("about", referenceWindow);
-		Popup currentPopup = currentPopupFactory.getPopup();
+		Popup currentPopup = referenceWindow.getPopupFactory().getPopup("about");
 		currentPopup.show(referenceWindow.getStage());
 		currentPopup.setY(currentPopup.getY()+15);
 	}

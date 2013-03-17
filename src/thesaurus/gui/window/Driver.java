@@ -1,5 +1,4 @@
 package thesaurus.gui.window;
-import thesaurus.gui.window.MainWindow;
 
 public class Driver {
 

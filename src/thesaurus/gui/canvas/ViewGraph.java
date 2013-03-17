@@ -2,7 +2,6 @@ package thesaurus.gui.canvas;
 
 import java.util.LinkedList;
 
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;

@@ -1,10 +1,11 @@
 package thesaurus.spring;
 import java.awt.geom.Point2D;
+import java.util.LinkedList;
+
+import thesaurus.parser.Vertex;
 //import java.util.LinkedList;
 //import java.util.List;
 //import java.util.ArrayList;
-import java.util.LinkedList;
-import thesaurus.parser.*;
 public class WalshawSpring {
 	
 	private int area;
