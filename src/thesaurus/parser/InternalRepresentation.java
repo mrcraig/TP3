@@ -18,7 +18,7 @@ public class InternalRepresentation {
 		this.emptyFile = read.emptyFile;
 		nodes.setNodes(read.getAllNodes());
 		this.catergories = new Catergories();
-		write = new XmlWrite(f, nodes, catergories);
+		write = new XmlWrite(f, nodes);
 		
 	}
 

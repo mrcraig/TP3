@@ -195,7 +195,7 @@ public class XmlRead
 				case 'a': if(!s.getAntonyms().contains(t)) s.addAntonym(t);
 				          break;
 				          
-				case 'g': if(!s.getGroupings().contains(t)) s.addGrouping(t);
+				case 'g': if(!s.getGroupings().contains(t)) continue;
 			}
 		}
 	}	

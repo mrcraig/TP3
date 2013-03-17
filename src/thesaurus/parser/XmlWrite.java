@@ -1,13 +1,7 @@
 package thesaurus.parser;
 
 
-
-//each category has its own node
-//if a vertex is in a category, link it to it
-
 import java.io.File;
-import java.util.ArrayList;
-import java.util.LinkedList;
 
 
 import javax.xml.transform.Transformer;
@@ -31,9 +25,8 @@ public class XmlWrite {
 	private Document xml;
 	private String path;
 	private HashGraph nodes;
-	private Catergories categories;
 	
-	public XmlWrite (File f, HashGraph nodes2, Catergories c)
+	public XmlWrite (File f, HashGraph nodes2)
 	{
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		try 
@@ -41,7 +34,6 @@ public class XmlWrite {
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			path = f.getPath();
 			this.nodes = nodes2;
-			this.categories = c;
 			this.xml = docBuilder.parse(path);
 			checkNew();
 		} 
@@ -59,33 +51,7 @@ public class XmlWrite {
 			System.out.println(n.item(i).getTextContent());	
 		}
 	}
-	
-	
-	public void addCategories()
-	{
-		System.out.println("adding to xml");
-		ArrayList<String> categories = this.categories.getAllCategories();
-		//make sure id is well above the range of the nodes
-		int id = (this.nodes.size()*2)+this.categories.getAllCategories().size();
-		for(String c : categories)
-		{
-			Element node = this.xml.createElement("node");
-			Element data = this.xml.createElement("data");
-			node.setAttribute("id", Integer.toString(id++));
-			data.setAttribute("key","c");
-			data.setTextContent(c);
-			node.appendChild(data);
-			this.xml.getElementsByTagName("graph").item(0).appendChild(node);
-			System.out.println("adding "+c+" to xml.");
-			//LinkedList<String> vertices = this.catergories.getCatergory(catergory);
-			
-		}
-		//for every vertex in a category, write an edge between them
-		
-		saveFile();
-	}
 
-	
 	public void addVertex(Vertex v, boolean exists)
 	{	
 		if(!exists) this.addNode(v.getWord(), v.getID());
@@ -103,12 +69,6 @@ public class XmlWrite {
 			if(i==null) continue;
 			target = i.getID();
 			this.addEdge(source, target, "a");
-		}
-		for(Vertex h: v.getGroupings())
-		{
-			if(h==null) continue;
-			target = h.getID();
-			this.addEdge(source, target, "g");
 		}
 		saveFile();
 	}
