@@ -17,17 +17,14 @@ public class FrSpring {
 	private LinkedList<Vertex> lstVertices;
 	private double EPSILON = 0.000001D;
 	private thesaurus.parser.Vertex myWord;
-	private int layerIndex = 1;
 	final private int length = 1000;
 	final private int width = 1300;
-	private boolean overlap = false;
-	private boolean overEdgeCrossing = false;
+	//private boolean overlap = false;
+	//private boolean overEdgeCrossing = false;
 	private double constAF = 10;
 	private double constRF = 90;
 	private double constK = 1.0;
-	/*
-	 * private int syn = 0; private int ant = 0;
-	 */
+	
 	private int hyp = 0;
 
 	public FrSpring(Vertex v1in, int syn, int ant, int hyp, int limit) {
@@ -40,9 +37,7 @@ public class FrSpring {
 		this.area = (this.width) * (this.length);
 		this.myWord = v1;
 		lstVertices = new LinkedList<Vertex>();
-		/*
-		 * this.syn = syn; this.ant = ant;
-		 */
+		
 		this.hyp = hyp;
 
 		if (syn == 1 & ant == 0 & hyp == 0) {
@@ -93,17 +88,17 @@ public class FrSpring {
 			constK = Math.sqrt(((double) this.area / (double) this.size));
 			k = 40 * constK; // compute optimal pairwise distance
 
-			// System.out.println(k);
+			
 		}
 
-		// System.out.println(k);
+		
 		mySpring();
 
 	}
 
 	private void mySpring() {
 		for (int ite = 0; ite < (900); ite++) {
-			for (Vertex v : this.lstVertices) {
+			for (Vertex v : this.lstVertices) { // apply repulsion force
 				v.getDis().setLocation(0, 0);
 				// boolean v1_OnBorder = isOnBorder(v.getDis());
 				for (Vertex u : this.lstVertices) {
@@ -138,7 +133,9 @@ public class FrSpring {
 					}
 				}
 			} // this is the end of the the loop that repulse every every vertex
-			for (int i = 0; i < this.size; i++) { // the edges of the graph
+			
+			
+			for (int i = 0; i < this.size; i++) { // attraction for synonym displacement
 				Vertex source = this.lstVertices.get(i);
 
 				if (source.getPos() == null)
@@ -160,7 +157,7 @@ public class FrSpring {
 							.distanceSq(target.getPos()));
 					double aForce = 1;
 					if (source.equals(myWord) || target.equals(myWord)) {
-						constAF = 20.0;
+						constAF = 20.0;// force towards the center is strong
 					} else {
 						constAF = 10;
 					}
@@ -189,9 +186,11 @@ public class FrSpring {
 					double tdisY = (target.getDis().getY() + (disY * aForce));
 					target.getDis().setLocation(tdisX, tdisY);
 				}
-				// this is replication and bad code organization make a method
-				// to be use by antonyms and syn
-				for (Vertex target : source.getAntonyms()) {
+				
+				
+				
+				
+				for (Vertex target : source.getAntonyms()) {// attraction force for Antonyms displacement
 					if (target.equals(lstVertices.get(0)))
 						continue;
 					if (target.equals(lstVertices.get(i)))
@@ -241,7 +240,7 @@ public class FrSpring {
 				}
 			}
 
-			for (int j = 0; j < this.size; j++) {
+			for (int j = 0; j < this.size; j++) { //update coordinates
 
 				if (this.lstVertices.get(j).equals(myWord))
 					continue;
@@ -296,46 +295,45 @@ public class FrSpring {
 			// System.out.print(this.lstVertices.get(i).getWord()+" ");
 		}
 		int count = 0;
-
+		
+        /*check for overlapping*/
 		for (int i = 0; i < this.size; i++) {
 			for (int j = 0; j < this.size; j++) {
 
 				if (i != j) {
 
 					if (tmp[i].equals(tmp[j])) {
-						count++;
-						System.out.println(j);
+						count++;         //Increment if there are vertex overlapping
+						
 					}
 
 				}
 			}
 
 		}
+		
+		/*reset the vertices for the next instruction*/
 		for (Vertex ve : this.lstVertices) {
 			ve.setVisited(false);
 		}
+		/*at this point the coordinate of vertices is not randomly distributed but organized using previous result from spring*/
+		/*rerunning the spring from such position will produce better display*/
 		int optimaztion = 0;
-		while (optimaztion > 10) {
-			mySpring();
+		while (optimaztion > 10) { 
+			mySpring();            
 			optimaztion++;
 		}
-
+		/*if there is overlapping, two or more vertices have the same coordinate rerun spring */
 		if (count != 0)
 			mySpring();
 
 	}
 
-	public boolean isOverlap() {
-		return overlap;
-	}
 
-	public boolean isOverEdgeCrossing() {
-		return overEdgeCrossing;
-	}
 
 	/*
 	 * calculates repulsion force between non-adjacent vertices x is a distance
-	 * calculated by pythagoras
+	 * calculated by pythagoras theorem
 	 */
 	private double repulsionF(double x) {
 
@@ -364,7 +362,7 @@ public class FrSpring {
 			}
 			aForce = attractionF(Math.abs(deltaLength)); // compute attraction
 															// force
-			// if (source.equals(myWord)|| target.equals(myWord)) aForce*= 10;
+			
 			assert Double.isNaN(aForce) == false : "Unexpected mathematical result in FRSpring Layout:Spring[Attraction force]";
 
 			double sdisX = (v.getDis().getX() - (disX * aForce)); // displacement
@@ -499,7 +497,10 @@ public class FrSpring {
 		}
 		return 0;
 	}
-
+	
+	
+	
+/*returns the updated coordinates to canvas for drawing*/
 	public Vertex getCoordinates() {
 		return myWord;
 	}
@@ -512,7 +513,11 @@ public class FrSpring {
 		return (x.getX() == 0.0 || x.getY() == 0.0
 				|| x.getX() == (double) this.width || x.getY() == (double) this.length);
 	}
-
+	
+	
+	
+	
+/*load data according to the limit given from a user*/
 	private Vertex alterVertex(Vertex v1in, int limit) {
 		ArrayList<String> currentArray = new ArrayList<String>();
 		Vertex current0s = new Vertex(v1in.getID());
