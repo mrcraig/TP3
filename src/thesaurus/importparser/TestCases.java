@@ -1,7 +1,13 @@
-/*package thesaurus.importparser;
+package thesaurus.importparser;
+
+import static org.junit.Assert.*;
 
 import java.io.File;
 import java.io.IOException;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 import thesaurus.parser.InternalRepresentation;
 import thesaurus.parser.Vertex;
@@ -14,7 +20,7 @@ public class TestCases {
 	@Before
 	public void setUp() throws Exception {
 		//Open thesaurus source with some known values
-		testParser = new TextParser("./src/resourcePackage/importparsersmall.txt","output.graphml");
+		testParser = new TextParser("./src/resourcePackage/importparser.txt","output.graphml");
 		testInternal = new InternalRepresentation(new File("out.graphml"));
 	}
 
@@ -34,4 +40,3 @@ public class TestCases {
 	}
 
 }
-*/
