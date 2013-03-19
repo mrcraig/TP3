@@ -19,19 +19,31 @@ public class ViewGraph {
 	private static final int SYNONYM = 1;
 	private static final int ANTONYM = 0;
 	
+	/* Stores window dimensions */
 	private int windowWidth;
 	private int windowHeight;
+	
+	/* Recieves vertex given from Spring */
 	private Vertex vertex;
+	
+	/* Allows interaction with GUI */
 	private VisualisationRoot vr;
+	
+	/* Holds instantiation of canvas object */
 	private Canvas graph;
 	private GraphicsContext gc;
+	
+	/* Holds x/y offset required for panning */
 	private int xOffset = 0;
 	private int yOffset = 0;
 	
+	/* Holds value of toggles from GUI */
 	private int displaySynonyms;
 	private int displayAntonyms;
 	private int colourToggle;
 	
+	/* Constructor
+	 */
 	public ViewGraph(int width, int height, Vertex vertex, VisualisationRoot vr, int displaySynonyms, int displayAntonyms, int colourToggle){
 		windowWidth = width;
 		windowHeight = height;
@@ -53,6 +65,9 @@ public class ViewGraph {
 		start();
 	}
 	
+	/* Returns canvas object inside a scrollpane
+	 * Scrollpane used to minimize window resizing
+	 */
 	public ScrollPane returnGraph(){
 		ScrollPane sp = new ScrollPane();
 		sp.setPrefSize(windowWidth, windowHeight);
@@ -64,6 +79,9 @@ public class ViewGraph {
 		return sp;
 	}
 	
+	/*
+	 * Draw main node on canvas
+	 */
 	private void drawMainNode(Vertex v){
 		int nodeWidth = v.getWord().length() * 12;
 		
@@ -81,6 +99,9 @@ public class ViewGraph {
 		gc.fillText(v.getWord(), (v.getPos().getX()-xOffset), (v.getPos().getY()+10-yOffset));
 	}
 	
+	/* 
+	 * Draw synonym node on canvas
+	 */
 	private void drawSynNode(Vertex v){
 		int nodeWidth = v.getWord().length() * 8;
 		
@@ -98,6 +119,9 @@ public class ViewGraph {
 		gc.fillText(v.getWord(), (v.getPos().getX()-xOffset), (v.getPos().getY()+9-yOffset));
 	}
 	
+	/*
+	 * Draw antonym node on canvas
+	 */
 	private void drawAntNode(Vertex v){
 		int nodeWidth = v.getWord().length() * 8;
 		
@@ -115,6 +139,9 @@ public class ViewGraph {
 		gc.fillText(v.getWord(), (v.getPos().getX()-xOffset), (v.getPos().getY()+9-yOffset));
 	}
 	
+	/*
+	 * Draw connector from x1,y1 to x2,y2 of type type on canvas
+	 */
 	private void drawConnector(double x1, double y1, double x2, double y2, int type){
 		if(type==1){
 			//Synonym
@@ -296,12 +323,19 @@ public class ViewGraph {
 		
 	}
 	
+	/*
+	 * Clears all nodes from graph
+	 */
 	private void resetGraph(){
 		gc.setFill(Color.rgb(242,242,242));
 		gc.fillRect(0, 0, windowWidth*2, windowHeight*2);
 		gc.setFill(Color.BLACK);
 	}
 	
+	/*
+	 * Used in zoom functionality
+	 * Sets the scale of the canvas system where >1 means more zoomed in
+	 */
 	public void setScale(double scale){
 		if(scale+graph.getScaleX()>=1){
 			scale += graph.getScaleX();
@@ -314,6 +348,9 @@ public class ViewGraph {
 		}
 	}
 	
+	/*
+	 * Calls all required methods to display canvas
+	 */
 	private void start() {
 		graph = new Canvas(windowWidth,windowHeight);
 		gc = graph.getGraphicsContext2D();
@@ -348,6 +385,11 @@ public class ViewGraph {
 			}
 		});
 		
+		/*
+		 * Event Handler
+		 * Panning
+		 * Stops graph jumping when mouse released
+		 */
 		graph.addEventHandler(MouseEvent.MOUSE_RELEASED,
 				new EventHandler<MouseEvent>(){
 			public void handle(MouseEvent e){
@@ -356,12 +398,20 @@ public class ViewGraph {
 			}
 		});
 		
+		/*
+		 * Event Handler
+		 * Handles zoom when using mouse wheel
+		 */
 		graph.setOnScroll(new EventHandler<ScrollEvent>() {
             @Override public void handle(ScrollEvent event) {
                 setScale(event.getDeltaY()/400);
             }
         });
 		
+		/*
+		 * Event Handler
+		 * Double click to focus node
+		 */
 		graph.addEventHandler(MouseEvent.MOUSE_CLICKED, 
 				new EventHandler<MouseEvent>(){
 			public void handle(MouseEvent e){
