@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 import thesaurus.parser.InternalRepresentation;
 
+/*Parser to import simple text file into graphml format*/
 public class TextParser {
 	
 	File inFile;

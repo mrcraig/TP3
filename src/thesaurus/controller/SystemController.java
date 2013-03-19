@@ -36,6 +36,10 @@ import thesaurus.gui.window.TutorialRoot;
 import thesaurus.gui.window.VisualisationRoot;
 import thesaurus.parser.Vertex;
 
+/*Controller class takes all user interaction with
+ * the program and updates the model and the view
+ * accordingly.
+ */
 public class SystemController {
 
 	@FXML
@@ -124,6 +128,7 @@ public class SystemController {
 		referenceWindow = inputWindow;
 	}
 
+	/*Used to create new files*/
 	@FXML
 	protected void doCreate() throws IOException {
 
@@ -179,6 +184,7 @@ public class SystemController {
 
 	}
 
+	/*Used to import existing files*/
 	@FXML
 	protected void doImport() throws IOException {
 
@@ -186,7 +192,7 @@ public class SystemController {
 		File file = currentFileChooser.showOpenDialog(referenceWindow
 				.getStage());
 		if (file != null) {
-			// System.out.println(file.getAbsolutePath());
+			System.out.println("");
 		} else {
 			return;
 		}
@@ -223,6 +229,7 @@ public class SystemController {
 
 	}
 
+	/*Used to open recent files from main window*/
 	private void doOpenRecent(int index) throws IOException {
 		File file = new File(referenceWindow.getCurrentRecentArray().get(
 				reverseIndex(index + 1) - 1));
@@ -273,6 +280,7 @@ public class SystemController {
 		lookupHashMap.put("dual", statusLabelDual);
 	}
 
+	/*Set default user buttons, drop down menus and such*/
 	private void setSelectionBoxDefault() {
 		selectionBoxGraph.getSelectionModel().select(0);
 		selectionBoxTable.getSelectionModel().select(0);
@@ -285,6 +293,7 @@ public class SystemController {
 		sliderDual.getSelectionModel().select(4);
 	}
 
+	/*Add event handlers to GUI*/
 	private void setSelectionBoxHandlers(){
 		
 		
@@ -406,6 +415,7 @@ public class SystemController {
 
 	}
 
+	/*Add event handlers*/
 	private void setSliderHandlers() {
 		
 		sliderGraph.getSelectionModel().selectedIndexProperty()
@@ -443,11 +453,13 @@ public class SystemController {
 		
 	}
 
+	/*Helper function to reverse index for recent files*/
 	private int reverseIndex(int currentIndex) {
 		return (referenceWindow.getCurrentRecentArray().size() + 1)
 				- currentIndex;
 	}
 
+	/*Add event handlers*/
 	private void setEnterKeyEvents() {
 
 		searchBoxGraph.setOnKeyReleased(new EventHandler<KeyEvent>() {
@@ -494,6 +506,7 @@ public class SystemController {
 		doSearchGraph("dual");
 	}
 
+	/*Search graph based on user interaction*/
 	private void doSearchGraph(String choiceString) {
 		String searchText = null;
 		if (choiceString.equals("graph")) {
@@ -519,6 +532,7 @@ public class SystemController {
 		referenceWindow.getVisualisationRoot().addTable();
 	}
 
+	/*Return to main menu*/
 	@FXML
 	protected void doReturn() throws IOException {
 		referenceWindow.getStage().setScene(referenceWindow.getSplashScene());
@@ -558,6 +572,7 @@ public class SystemController {
 		referenceWindow.getVisualisationRoot().fullScreen();
 	}
 
+	/*Save file function*/
 	private void saveFile(String content, File file) {
 		try {
 			OutputStreamWriter fileWriter;
@@ -595,6 +610,7 @@ public class SystemController {
 				.getCurrentFile().getName());
 	}
 
+	/*File chooser for GUI is generated to reduce code overlap*/
 	private FileChooser getFileChooser() {
 		FileChooser myFileChooser = new FileChooser();
 		FileChooser.ExtensionFilter graphmlFilter = new FileChooser.ExtensionFilter(
@@ -603,6 +619,7 @@ public class SystemController {
 		return myFileChooser;
 	}
 
+	/*Populate recent array list*/
 	public void populateList() {
 		Collections.reverse(referenceWindow.getCurrentRecentArray());
 		ArrayList<String> parsedArray = new ArrayList<String>();
@@ -618,6 +635,7 @@ public class SystemController {
 		referenceWindow.setCurrentRecentList(parsedList);
 	}
 
+	/*Add event handlers*/
 	public void addListenerListView() {
 
 		currentListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -659,6 +677,7 @@ public class SystemController {
 		System.exit(0);
 	}
 	
+	/*Used for colour blind toggling*/
 	@FXML
 	private void handleColourScheme(final ActionEvent event) {
 		ArrayList<Integer> referenceArray = referenceWindow.getVisualisationRoot().getStateArray();

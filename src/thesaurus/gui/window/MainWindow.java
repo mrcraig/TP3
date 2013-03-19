@@ -30,12 +30,16 @@ public class MainWindow extends Application {
 	private Scene sceneChoice;
 	private PopupFactory currentPopupFactory;
 
+	//Launches JavaFX start method
 	public void launchProgram(String[] args) {
 		launch(args);
 	}
 
+	//Point of entry into JavaFX
 	public void start(Stage stage) throws Exception {
 
+		//Simple setup of various variables
+		
 		setCurrentController(new SystemController(this));
 
 		File recentFile = new File("./src/resourcePackage/recentfiles.dat");
@@ -57,6 +61,8 @@ public class MainWindow extends Application {
 
 	}
 
+	/*Following is getters and setter*/
+	
 	public Stage getStage() {
 		return stageCurrent;
 	}

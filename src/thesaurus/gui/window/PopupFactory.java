@@ -13,6 +13,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Popup;
 import thesaurus.parser.Vertex;
 
+/*Class which serves the purposes of creating Popups needed in GUI*/
 
 public class PopupFactory {
 
@@ -23,6 +24,7 @@ public class PopupFactory {
 		referenceWindow = inputWindow;
 	}
 	
+	/*Return popup based on choice*/
 	public Popup getPopup(String inputChoice){
 		if (inputChoice.equals("add")) {
 			currentPopup = new Popup();
@@ -43,6 +45,7 @@ public class PopupFactory {
 		return currentPopup;
 	}
 
+	/*Add word popup*/
 	private Pane makeCanvasAdd() {
 		Pane canvas = getPane(220,230);
 		Text addWordLabel = getText(35,10,"Add Word",2);
@@ -93,6 +96,7 @@ public class PopupFactory {
 		return canvas;
 	}
 
+	/*File error popup*/
 	private Pane makeCanvasFileError() {
 		Pane canvas = getPane(150,80);
 		Text confirmLabel = getText(25,10,"File Does Not Exist",1);
@@ -112,6 +116,7 @@ public class PopupFactory {
 		return canvas;
 	}
 
+	/*About page popup*/
 	private Pane makeAbout() {
 		Pane canvas = getPane(150,80);
 		Text one_Label = getText(8,10,"Graphical Thesaurus",1);
@@ -132,6 +137,7 @@ public class PopupFactory {
 		return canvas;
 	}
 
+	/*Edit Word popup*/
 	private Pane makeCanvasEdit() {
 		Pane canvas = getPane(220,230);
 		Text addWordLabel = getText(35,10,"Edit Word",2);
@@ -185,6 +191,7 @@ public class PopupFactory {
 		return canvas;
 	}
 
+	/*Remove word popup*/
 	private Pane makeCanvasRemove() {
 		Pane canvas = getPane(200,200);
 		Text addWordLabel = getText(50,10,"Remove Word",2);
@@ -230,12 +237,14 @@ public class PopupFactory {
 		return canvas;
 	}
 
+	/*Introduced to reduce code redundancy, as pane is created many times*/
 	private Pane getPane(int x, int y) {
 		Pane currentCanvas = new Pane();
 		currentCanvas.setPrefSize(x, y);
 		return currentCanvas;
 	}
 
+	/*Introduced to reduce code redundancy, as text is required many times*/
 	private Text getText(int x, int y, String inputString, int scale) {
 		Text currentWordLabel = new Text();
 		currentWordLabel.relocate(x, y);
@@ -245,6 +254,7 @@ public class PopupFactory {
 		return currentWordLabel;
 	}
 	
+	/*Add event key handlers for popup windows*/
 	private void setEnterKey(TextField fieldInput){
 		fieldInput.setOnKeyReleased(new EventHandler<KeyEvent>() {
 			@Override
@@ -256,6 +266,7 @@ public class PopupFactory {
 		});
 	}
 
+	/*Introduced to reduce code redundancy, as TextField is created many times*/
 	private TextField getTextField(int x, int y, int width) {
 		TextField currentWordInput = new TextField();
 		currentWordInput.setPrefWidth(width);
@@ -263,6 +274,7 @@ public class PopupFactory {
 		return currentWordInput;
 	}
 	
+	/*Simple function to convert array to csv*/
 	private String convertCsv(LinkedList<Vertex> input){
 		String toreturn = "";
 		for(Vertex s:input){

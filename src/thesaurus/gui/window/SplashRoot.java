@@ -50,6 +50,7 @@ public class SplashRoot extends AnchorPane {
 
 	}
 
+	/*Set up array for holding recent files*/
 	private ArrayList<String> createRecentListArray() throws IOException {
 		ArrayList<String> toReturn = new ArrayList<String>();
 		Scanner fileScanner = new Scanner(referenceWindow.getCurrentRecentFile(), "UTF-8");
@@ -60,6 +61,7 @@ public class SplashRoot extends AnchorPane {
 		return toReturn;
 	}
 
+	/*Write to recent file fromarray*/
 	public void writeToRecentFile() throws IOException {
 		File toWrite = referenceWindow.getCurrentRecentFile();
 		OutputStreamWriter fileWriter;

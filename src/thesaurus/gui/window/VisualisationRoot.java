@@ -47,6 +47,7 @@ public class VisualisationRoot extends AnchorPane {
     Label escapePopupLabel;
     boolean fullScreen;
 
+    /*Constructor sets up initial variables*/
 	public VisualisationRoot(MainWindow inputWindow) throws IOException {
 		
 		state = new ArrayList<Integer>();
@@ -83,6 +84,7 @@ public class VisualisationRoot extends AnchorPane {
 
 	}
 
+	/*Label for full screen popup*/
 	private void setLabel() {
 	    escapePopupLabel = new Label("Press Escape Or Click Here To Close Window");
 	    escapePopupLabel.setTextFill(Color.web("#ffffff"));
@@ -102,6 +104,7 @@ public class VisualisationRoot extends AnchorPane {
                 });		
 	}
 
+	/*Add in visualised graph*/
 	public void addCanvas() {
 		currentController.getCanvasFullGraph().getChildren().removeAll(currentController.getCanvasFullGraph().getChildren());
 		currentController.getCanvasDualGraph().getChildren().removeAll(currentController.getCanvasDualGraph().getChildren());
@@ -111,6 +114,7 @@ public class VisualisationRoot extends AnchorPane {
 		currentController.getCanvasDualGraph().getChildren().add(displayGraphDual.returnGraph());
 	}
 
+	/*Add in table data visualisation*/
 	public void addTable() {
 		currentController.getTableFullGraph().getChildren().removeAll(currentController.getTableFullGraph().getChildren());
 		currentController.getTableDualGraph().getChildren().removeAll(currentController.getTableDualGraph().getChildren());
@@ -151,11 +155,13 @@ public class VisualisationRoot extends AnchorPane {
 		currentPopup.setY(currentPopup.getY()+15);
 	}
 
+	/*Call spring to analyse vertices*/
 	public Vertex runSpringOnVertex(Vertex inputVertex) {
 		FrSpring currentSpring = new FrSpring(inputVertex,state.get(0),state.get(1),state.get(2),state.get(3));
 		return currentSpring.getCoordinates();
 	}
-
+	
+	/*Used for initial search in code*/
 	public void initialSearch() {
 		setCurrentVertex(currentParser.getFirst());
 		if (currentVertex == null) {
@@ -166,6 +172,7 @@ public class VisualisationRoot extends AnchorPane {
 		referenceWindow.getVisualisationRoot().addTable();
 	}
 
+	/*Search called by visualised graph when node is clicked*/
 	public void doClickSearchGraph(String inputString) {
 		setCurrentVertex(getCurrentParser().getVertexFromWord(inputString));
 		if (currentVertex == null) {
@@ -179,6 +186,7 @@ public class VisualisationRoot extends AnchorPane {
 		}
 	}
 
+	/*Search when refresh is clicked*/
 	public void doSearchRefresh() {
 		if(currentVertex == null){
 			return;
@@ -205,6 +213,7 @@ public class VisualisationRoot extends AnchorPane {
 		return displayGraphDual;
 	}
 	
+	/*Initiate full screen mode*/
 	public void fullScreen(){
 		if(currentVertex == null){
 			return;

@@ -69,6 +69,7 @@ public class TutorialRoot extends AnchorPane {
         currentController.getTutOnePane().getChildren().add(picture);
 	}
 	
+	/*Loop through tutorial*/
 	public void next(){
 		if(count == 6){
 			referenceWindow.getStage().setScene(referenceWindow.getCurrentScene());
@@ -84,6 +85,7 @@ public class TutorialRoot extends AnchorPane {
 		}
 	}
 	
+	/*Loop through tutorial*/
 	public void previous(){
 		if(count == 0){
 			referenceWindow.getStage().setScene(referenceWindow.getSplashScene());

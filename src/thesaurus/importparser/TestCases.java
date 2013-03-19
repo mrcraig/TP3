@@ -20,7 +20,7 @@ public class TestCases {
 	@Before
 	public void setUp() throws Exception {
 		//Open thesaurus source with some known values
-		testParser = new TextParser("./src/resourcePackage/importparser.txt","output.graphml");
+		testParser = new TextParser("./src/resourcePackage/importparsermedium.txt","out.graphml");
 		testInternal = new InternalRepresentation(new File("out.graphml"));
 	}
 
