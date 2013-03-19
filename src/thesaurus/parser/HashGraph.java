@@ -5,7 +5,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map.Entry;
 
-
+//Hash table implementation of our graph.
+//Key is the Vertex word, value is the actual vertex itself.
 public class HashGraph {
 	private HashMap<String, Vertex> nodesMap;
 
@@ -14,6 +15,7 @@ public class HashGraph {
 
 	}
 
+	//case insensitive
 	void add(Vertex v) {
 		nodesMap.put(v.getWord().toLowerCase().trim(), v);
 	}
@@ -22,6 +24,7 @@ public class HashGraph {
 		return nodesMap.size();
 	}
 
+	//method used in the parsing. Main bottleneck when the program loads graphML files.
 	Vertex getVertexFromIndex(String index) {
 		Iterator<Entry<String, Vertex>> all = nodesMap.entrySet().iterator();
 		while (all.hasNext()) {
@@ -55,6 +58,9 @@ public class HashGraph {
 		return nodesMap;
 	}
 
+	//iterate over every vertex, all its antonyms and synonyms and groupings.
+	//quadratic complexity.
+	//Iterators used to avoid concurrent modification exceptions.
 	void removeVertex(Vertex old) {
 		String word = old.getWord();
 		System.out.println("word to be deleted " + word);

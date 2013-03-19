@@ -5,14 +5,8 @@ import java.util.LinkedList;
 
 
 /*
- * one vertex at a time
- * hashmap of string - vertex
- * 
- * getNodes() - returns entries
- * 
- * clear() - same
- * 
- * craig doesnt touch the word in vertex - can use value set or similar
+ *This is the linked list implementation of our graph.
+ *It is now depreciated. 
  */
 
 public class Graph 
@@ -33,7 +27,7 @@ public class Graph
 		 }
 	 }
 	 
-	 //should probably iterate backwards? not helping.
+	 //Iterating backwards to avoid cocurrant modification issues.
 	 void removeVertex(Vertex v)
 	 {
 		 String w = v.getWord();
@@ -55,9 +49,9 @@ public class Graph
 				 nodes.remove(i);
 			 }
 		 }
-		 //System.out.println("current nodes are\n"+nodes);
 	 }
 
+	 
 	void setNodes(LinkedList<Vertex> nodes)
 	{
 		this.nodes = nodes;
@@ -78,10 +72,12 @@ public class Graph
 		return nodes.size();
 	}
 	
+	//used in parsing, very convenient method
 	void setLastWord(String word)
 	{
 		nodes.getLast().setWord(word);
 	}
+	
 	
 	boolean contains(Vertex v)
 	{
@@ -104,10 +100,9 @@ public class Graph
 		return null;
 	}
 	
-	
+	//Linear search through the graph.
 	 Vertex getVertexFromWord(String word)
 	{
-		 //System.out.println("word looking for "+word);
 		for(Vertex v : nodes)
 		{
 			System.out.println(v.getWord());
@@ -140,6 +135,7 @@ public class Graph
 			return results;
 		}
 	 
+	 //created to provide a convenient data structure for table view
 	 public HashMap<String,HashMap<String, LinkedList<String>>> getTableData()
 		{	
 		 HashMap<String, HashMap<String, LinkedList<String>>> tableData = new HashMap<String, HashMap<String, LinkedList<String>>>();

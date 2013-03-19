@@ -87,6 +87,7 @@ public class XmlWrite {
 	}
 	
 
+ 	//methods for adding individual graphML elements
  	// s for synonym, a for antonym
    void addEdge(String source, String target, String type)
 	{
@@ -112,6 +113,7 @@ public class XmlWrite {
 		this.xml.getElementsByTagName("graph").item(0).appendChild(node);
 	}
 
+	//makes sure a file is valid graphML
 	private void checkNew()
 	{
 		if(this.xml.getElementsByTagName("graphml").getLength()==0)
@@ -126,6 +128,7 @@ public class XmlWrite {
 		}
 	}
 	
+	//calls the two methods below
 	public void removeVertex(String w)
 	{
 		Vertex v = nodes.getVertexFromWord(w);
@@ -169,6 +172,9 @@ public class XmlWrite {
 		}
 	}
 	
+	
+	//method called everytime a change is made to internal memory,
+	//to make sure changes are reflected in the underlying graphML
 	private void saveFile()
 	{
 		

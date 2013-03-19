@@ -4,6 +4,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+//facade design pattern.
+//provides an API to the rest of the package.
+//instantiated once in an external package. 
+
 public class InternalRepresentation {
 	private HashGraph nodes = new HashGraph();
 	private XmlRead read;
@@ -11,6 +15,7 @@ public class InternalRepresentation {
 	private Catergories catergories;
 	private boolean emptyFile;
 
+	//Internal Representation contains several discrete modules, allowing for swapping of components
 	public InternalRepresentation(File f) {
 		read = new XmlRead(f);
 		this.emptyFile = read.emptyFile;
@@ -123,6 +128,8 @@ public class InternalRepresentation {
 		}
 	}
 
+	//this method gets the vertices in a paticular category, and adds them to a vertex.
+	//it also loops over the vertices in that category, and adds the new vertex to them. 
 	private void addGroupings(Vertex n, String catergory) {
 
 		LinkedList<String> vertices = this.catergories.getCatergory(catergory);
@@ -220,7 +227,7 @@ public class InternalRepresentation {
 		nodes.removeVertex(r);
 	}
 
-	// need to alter xml too
+	
 	public void addSynonym(String word, String synonym) {
 		Vertex w = nodes.getVertexFromWord(word);
 		Vertex s = nodes.getVertexFromWord(synonym);
@@ -235,16 +242,9 @@ public class InternalRepresentation {
 		write.addEdge(word, antonym, "a");
 	}
 
-	/*
-	 * public void debug() { nodes.debug(); }
-	 */
 
-	/* facade pattern */
-	/*
-	 * public LinkedList<Vertex> getListOfSynomyns(String s, int max) { return
-	 * nodes.getListOfSynomyns(s, max); }
-	 */
-
+	
+	//used to get a default vertex when a thesaurus is initially loaded, and a search has yet to be executed
 	public Vertex getFirst() {
 		if (!nodes.getNodes().isEmpty()){
 			return nodes.getRandVertex();
@@ -252,7 +252,7 @@ public class InternalRepresentation {
 			return null;
 		}
 		
-		// return nodes.getNodes().getFirst();
+		
 	}
 
 	public Vertex getVertexFromWord(String s) {
@@ -260,26 +260,11 @@ public class InternalRepresentation {
 		if (s.equalsIgnoreCase(""))
 			return null;
 		return nodes.getVertexFromWord(s);
-		// if(nodes.getListOfSynomyns(s,1)!=null) return
-		// nodes.getListOfSynomyns(s, 1).getFirst();
-		// return null;
 	}
 
-	// public LinkedList<Vertex> getListOfSynomyns(String s){return
-	// getListOfSynomyns(s, 100);}
 
-	/*
-	 * public HashMap<String, HashMap<String, LinkedList<String>>>
-	 * getTableData() { return nodes.getTableData(); }
-	 */
 
-	/*
-	 * String[] parseCsvToArray(String inputCsvString) { String[] hold =
-	 * inputCsvString.split(","); String[] toReturn = new String[hold.length];
-	 * int i = 0; for (String s : hold) { toReturn[i++] = s.replaceAll("\\s",
-	 * ""); } return toReturn; }
-	 */
-
+	//helper method, used to get categories
 	LinkedList<String> parseCsvToList(String inputCsvString) {
 		if (inputCsvString.isEmpty()) {
 			return new LinkedList<String>();

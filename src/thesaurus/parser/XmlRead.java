@@ -27,6 +27,9 @@ public class XmlRead
 	boolean emptyFile = false;
 	private int lastIndex;
 	
+	
+	//loads the input file into an XML Document, and then parses the
+	//data into Vertex objects, that are collected into a HashGraph
 	public XmlRead(File f)
 	{
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -55,11 +58,8 @@ public class XmlRead
 		getEdges();
 	}
 	
-	//boolean checkEmpty()
-	//{
-	//	XPathExpression expr = xpath.compile("//graphml)
-	//}
 	
+	//used in XMlWrite when adding a vertex, makes sure the graphML IDs are unique.
 	String getLastVertexIndex() 
 	{
 		String newID = null;
@@ -182,8 +182,6 @@ public class XmlRead
 			String target = e.getAttributes().getNamedItem("target").getTextContent();
 			Vertex s = nodes.getVertexFromIndex(source);
 			Vertex t = nodes.getVertexFromIndex(target); 
-			//vertex with 5 is null
-			//System.out.println("------>"+type);
 			
 			switch(type)
 			{

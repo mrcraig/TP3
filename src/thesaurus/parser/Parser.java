@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-//use boolean flags to indicate to characters method what it should parse - switch statement
+//part of the SAX parser, depreciated.
 
 public class Parser {
 	

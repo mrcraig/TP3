@@ -6,6 +6,8 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+//component of the SAX parser.
+//Depreciated.
 
 
 public class Handler extends DefaultHandler

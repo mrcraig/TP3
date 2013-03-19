@@ -3,7 +3,7 @@ import java.awt.geom.Point2D;
 import java.util.LinkedList;
 
 
-
+//The Vertex class that is created in this parser package, and passed around until the data is drawn.
 public class Vertex {
    
     private LinkedList<Vertex> synonyms; 
@@ -43,6 +43,7 @@ public class Vertex {
 		this.word = word;
 	}
     
+	//Very useful in debugging
     public String toString()
     {
     	StringBuilder sb = new StringBuilder();
@@ -57,7 +58,7 @@ public class Vertex {
      	sb.append("\nAntonyms\n");
      	for(Vertex a : this.antonyms)
      	{
-     		if(a==null)continue; //a shouldnt be null
+     		if(a==null)continue; //a shouldn't ever be null
      		sb.append(a.getWord());
      		sb.append(",");
      	}
@@ -166,6 +167,7 @@ public class Vertex {
         return synonyms.size();
     }
 
+    //both hashCode and equals are used to ensure the contain method works correctly.
 	@Override
 	public int hashCode() {
 		final int prime = 31;
